@@ -18,7 +18,8 @@ console.log(dispatch,'this is dispatch over here');
         console.log(data,'this is register form data')
         const email=data.email
         const password=data.password
-        dispatch(createUser({email,password}))
+        const name=data.fullName
+        dispatch(createUser({email,password,name}))
         
         alert('Form submited')
     }

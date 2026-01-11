@@ -1,7 +1,7 @@
 import { auth } from "@/firebase/firebase.init";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 const initialState = {
   loading: false,
   error: null,
@@ -10,8 +10,18 @@ const initialState = {
 //create user thunk
 export const createUser = createAsyncThunk(
   "authSlice/createUser",
-  async ({ email, password }) => {
+  async ({ email, password,name }) => {
+    console.log(name,'this is name inside authslice')
+    const defaultPhoto='https://i.ibb.co.com/JFdJJ5F6/ndefault.jpg'
     const res = await createUserWithEmailAndPassword(auth, email, password);
+    // update user profile in firebase
+    await updateProfile(res.user,{
+        displayName:name,
+        photoURL:defaultPhoto
+    })
+
+    //user info save to db start here
+
     return res.user;
   }
 );
