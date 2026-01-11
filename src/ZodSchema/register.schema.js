@@ -10,5 +10,5 @@ export const registerSchema = z.object({
     .string()
     .nonempty({ message: "Email is required" })
     .email({ message: "Invalid email" }),
-  pasword: z.noempty({ message: "Password is required" }),
+  password: z .string().nonempty({ message: "Password is required" }),
 });

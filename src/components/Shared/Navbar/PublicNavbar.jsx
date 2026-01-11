@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import logo from "../../../assets/logo/logo.png";
 import darklogo from "../../../assets/logo/dark-logo.png";
@@ -6,6 +7,7 @@ import Image from "next/image";
 import GlobalButton from "../Button/GlobalButton";
 import ModeToggle from "../ModeToggle/ModeToggle";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { useAuth } from "@/Hooks/useAuth";
 const PublicNavbar = () => {
   const navItems = [
     { href: "/home", label: "Home" },
@@ -14,6 +16,9 @@ const PublicNavbar = () => {
     { href: "/about", label: "About Us" },
     { href: "/contact", label: "Contact Us" },
   ];
+  const userInfo=useAuth()
+
+  console.log(userInfo,'this is user info in public navbar');
   return (
     <header className="bg-background dark:bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
