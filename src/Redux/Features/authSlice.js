@@ -1,5 +1,6 @@
 import { auth } from "@/firebase/firebase.init";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 const initialState = {
@@ -10,17 +11,26 @@ const initialState = {
 //create user thunk
 export const createUser = createAsyncThunk(
   "authSlice/createUser",
-  async ({ email, password,name }) => {
-    console.log(name,'this is name inside authslice')
-    const defaultPhoto='https://i.ibb.co.com/JFdJJ5F6/ndefault.jpg'
+  async ({ email, password, name }) => {
+  
+    const defaultPhoto = "https://i.ibb.co.com/JFdJJ5F6/ndefault.jpg";
     const res = await createUserWithEmailAndPassword(auth, email, password);
     // update user profile in firebase
-    await updateProfile(res.user,{
-        displayName:name,
-        photoURL:defaultPhoto
-    })
+    await updateProfile(res.user, {
+      displayName: name,
+      photoURL: defaultPhoto,
+    });
 
     //user info save to db start here
+
+    const result =await axios.post("http://localhost:5000/api/auth/register", {
+      fullName: name,
+      email,
+      userRole: "guest",
+    });
+    console.log(result, "this is response from backend after registering user");
+
+    // user info save to db end here
 
     return res.user;
   }

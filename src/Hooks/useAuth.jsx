@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { setCurrentUser, setLoading } from "@/Redux/Features/authSlice";
 export const useAuth = () => {
   const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.auth);
+ 
 
   useEffect(() => {
     dispatch(setLoading(true));
@@ -18,9 +19,13 @@ export const useAuth = () => {
       dispatch(setCurrentUser(currentUser));
     });
 
-    // ✅ cleanup function
+    // cleanup function
     return () => unsubscribe();
   }, [dispatch]);
-
-  return { user, loading };
+  const userInfo = {
+    name: user?.displayName,
+    email: user?.email,
+    photoUrl: user?.photoURL,
+  };
+  return { userInfo, loading };
 };

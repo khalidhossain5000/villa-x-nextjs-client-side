@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "@/Redux/Features/authSlice";
 const RegisterForm = () => {
     const test =useSelector(state=>console.log(state))
-    console.log(test);
+   
     const dispatch=useDispatch()
     const {register,handleSubmit,formState:{errors}}=useForm({
         resolver:zodResolver(registerSchema)
     })
-console.log(dispatch,'this is dispatch over here');
+
     const onSubmit=data=>{
         console.log(data,'this is register form data')
         const email=data.email
