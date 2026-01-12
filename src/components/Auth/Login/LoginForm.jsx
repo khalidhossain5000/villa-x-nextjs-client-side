@@ -1,11 +1,22 @@
 'use client'
+import { loginUser } from "@/Redux/Features/authSlice";
 import React from "react";
+import { useForm } from "react-hook-form";
 import { RiLockPasswordLine, RiUserLine } from "react-icons/ri";
+import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
+  const dispatch=useDispatch()
+  const {register, handleSubmit, formState: { errors }} = useForm();
+  const onSubmit=data=>{
+    console.log(data);
+    const email=data.email
+    const password=data.password
+    dispatch(loginUser({email,password}))
+  }
   return (
     <div>
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         {/* Email Input */}
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-[#cbd5e1] mb-2">
@@ -17,6 +28,7 @@ const LoginForm = () => {
             </div>
             <input
               type="email"
+              {...register("email", { required: true })}
               className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-transparent text-[#1f2937] dark:text-[#f1f5f9] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1a5f0e] dark:focus:ring-[#4ade80] focus:border-transparent transition-all duration-200"
               placeholder="Enter your email"
             />
@@ -42,6 +54,7 @@ const LoginForm = () => {
             </div>
             <input
               type="password"
+              {...register("password", { required: true })}
               className="block w-full pl-10 pr-3 py-3 border border-gray-300 dark:border-gray-700 rounded-lg bg-transparent text-[#1f2937] dark:text-[#f1f5f9] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#1a5f0e] dark:focus:ring-[#4ade80] focus:border-transparent transition-all duration-200"
               placeholder="Enter your password"
             />

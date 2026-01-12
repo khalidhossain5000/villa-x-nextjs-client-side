@@ -1,13 +1,17 @@
 import { auth } from "@/firebase/firebase.init";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider } from "firebase/auth";
 
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 const initialState = {
   loading: false,
   error: null,
   user: null,
 };
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 //create user thunk
 export const createUser = createAsyncThunk(
   "authSlice/createUser",
@@ -35,6 +39,34 @@ export const createUser = createAsyncThunk(
     return res.user;
   }
 );
+
+
+//login user thunk will be added here
+export const loginUser=createAsyncThunk(
+    'authSlice/loginUser',
+    async({email,password})=>{
+        const res=await signInWithEmailAndPassword(auth,email,password)
+
+        return res.user
+    }
+)
+
+//social login start
+
+//GOOGLE LOGIN STARTS HERE
+export const googleSignIn=createAsyncThunk(
+  'authSlice/googleSignIn',
+  async()=>{
+    return await signInWithPopup(auth,googleProvider)
+  }
+)
+//GITHUB   LOGIN STARTS HERE
+export const githubSignIn=createAsyncThunk(
+  'authSlice/githubSignIn',
+  async()=>{
+    return await signInWithPopup(auth,githubProvider)
+  }
+)
 const authSlice = createSlice({
   name: "AuthSlice",
   initialState,
@@ -67,7 +99,31 @@ const authSlice = createSlice({
       })
       .addCase(createUser.rejected, (state, action) => {
         state.error = action?.error?.message;
-      });
+      })
+      //login user
+      .addCase(loginUser.pending,(state)=>{
+        state.loading=true;
+      })
+      .addCase(loginUser.fulfilled,(state,action)=>{
+        state.loading=false;
+        state.user=action.payload.user;
+      })
+      .addCase(loginUser.rejected,(state,action)=>{
+        state.error=action?.error?.message;
+      })
+
+      //google login
+      .addCase(googleSignIn.pending,(state)=>{
+        state.loading=true
+      })
+       .addCase(googleSignIn.fulfilled,(state,action)=>{
+        state.loading=false;
+        console.log(action,'this is inside google sign in fullfilled inside authslice')
+        state.user=action.payload.user;
+      })
+      .addCase(googleSignIn.rejected,(state,action)=>{
+        state.error=action?.error?.message;
+      })
   },
 });
 
