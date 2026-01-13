@@ -8,7 +8,8 @@ import { useDispatch } from "react-redux";
 const SocialLogin = () => {
   const dispatch=useDispatch()
   const handleGoogleLogin=()=>{
-    dispatch(googleSignIn())
+    const test=dispatch(googleSignIn())
+    console.log(test,'this is google sign in dispatch result')
   }
 
 

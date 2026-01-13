@@ -1,7 +1,9 @@
 import { Urbanist, Poppins } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/Providers/ThemeProvider";
-
+import 'react-date-range/dist/styles.css'
+import 'react-date-range/dist/theme/default.css'
+import TanstackProvider from "@/providers/TanstackProvider";
 // Urbanist font
 const urbanist = Urbanist({
   variable: "--font-urbanist",
@@ -27,6 +29,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${urbanist.variable} ${poppins.variable} antialiased`}
       >
+        <TanstackProvider>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -35,6 +38,7 @@ export default function RootLayout({ children }) {
         >
           {children}
         </ThemeProvider>
+        </TanstackProvider>
       </body>
     </html>
   );

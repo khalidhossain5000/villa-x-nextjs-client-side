@@ -1,4 +1,4 @@
-
+'use client'
 import React from "react";
 import logo from "../../../assets/logo/logo.png";
 import darklogo from "../../../assets/logo/dark-logo.png";
@@ -8,6 +8,7 @@ import GlobalButton from "../Button/GlobalButton";
 import ModeToggle from "../ModeToggle/ModeToggle";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import UserInfo from "@/components/Auth/NavBarUserInfo/UserInfo";
+import useRole from "@/Hooks/useRole";
 
 const PublicNavbar = () => {
   const navItems = [
@@ -15,10 +16,12 @@ const PublicNavbar = () => {
     { href: "/all-room", label: "All Room" },
     { href: "/host", label: "Available Host" },
     { href: "/about", label: "About Us" },
+    { href: "/host/dashboard", label: "Dashboard" },
     { href: "/contact", label: "Contact Us" },
   ];
  
-
+  const tests=useRole()
+console.log(tests,'this is from public navbar')
   return (
     <header className="bg-background dark:bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">

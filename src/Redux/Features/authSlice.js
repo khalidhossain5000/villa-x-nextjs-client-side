@@ -1,7 +1,7 @@
 import { auth } from "@/firebase/firebase.init";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup,signOut } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -67,6 +67,14 @@ export const githubSignIn=createAsyncThunk(
     return await signInWithPopup(auth,githubProvider)
   }
 )
+
+//signout user
+export const signOutUser=createAsyncThunk(
+  'authSlice/signOut',
+  async()=>{
+    return signOut(auth)
+  }
+)
 const authSlice = createSlice({
   name: "AuthSlice",
   initialState,
@@ -122,6 +130,30 @@ const authSlice = createSlice({
         state.user=action.payload.user;
       })
       .addCase(googleSignIn.rejected,(state,action)=>{
+        state.error=action?.error?.message;
+      }) 
+      //github login
+      .addCase(githubSignIn.pending,(state)=>{
+        state.loading=true
+      })
+       .addCase(githubSignIn.fulfilled,(state,action)=>{
+        state.loading=false;
+        console.log(action,'this is inside github sign in fullfilled inside authslice')
+        state.user=action.payload.user;
+      })
+      .addCase(githubSignIn.rejected,(state,action)=>{
+        state.error=action?.error?.message;
+      })
+
+      //signout user
+      .addCase(signOutUser.pending,(state)=>{
+        state.loading=true
+      })
+      .addCase(signOutUser.fulfilled,(state)=>{
+        state.loading=false;
+        state.user=null;
+      })
+      .addCase(signOutUser.rejected,(state,action)=>{
         state.error=action?.error?.message;
       })
   },
