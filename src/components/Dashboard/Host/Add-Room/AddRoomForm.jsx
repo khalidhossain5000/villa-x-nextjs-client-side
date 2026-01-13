@@ -1,29 +1,61 @@
 "use client";
 
-
 import { categories } from "@/components/Shared/HomePage/Categories/CategoriesData";
+import { useAuth } from "@/Hooks/useAuth";
+import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
 import React, { useState } from "react";
 import { DateRange } from "react-date-range";
+import { useForm } from "react-hook-form";
+import { TbFidgetSpinner } from "react-icons/tb";
 
-const AddRoomForm = ({
-  loading = false,
-  handleImageChange,
-  uploadButtonText,
-}) => {
+const AddRoomForm = ({ loading }) => {
+  const { register, handleSubmit } = useForm();
+  const {userInfo}=useAuth()
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
-    key: 'selection',
-  })
+    key: "selection",
+  });
+  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
   // Handle date change from react-date-range calender
-  const handleDates = ranges => {
-    console.log(ranges)
-    setDates(ranges.selection)
-  }
-  const handleSubmit = (e) => {};
+  const handleDates = (ranges) => {
+    console.log(ranges);
+    setDates(ranges.selection);
+  };
+
+  //image upload change
+  // Handle Image button text
+  const handleImageChange = (image) => {
+    setUploadButtonText(image.name);
+    
+  };
+
+  //HANDLE FORM SUBMIT STARTS HERE
+  const onSubmit = async (data, e) => {
+    const image = e.target.image.files[0];
+    const image_uri = await imageUpload(image);
+    const roomImage = image_uri?.data?.display_url;
+    const to = dates.endDate;
+    const from = dates.startDate;
+    const hostInfo={
+name:userInfo?.name,
+email:userInfo?.email,
+photoUrl:userInfo?.photorl
+    }
+    const roomData={
+      ...data,
+      roomImage,
+      to,
+      from,
+      hostInfo
+    }
+
+    console.log(hostInfo,'thi si fhost final room data ready to send')
+  };
+
   return (
     <div className="max-w-5xl mx-auto py-6 mt-12">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-6">
             <div className="space-y-1 text-sm">
@@ -32,7 +64,7 @@ const AddRoomForm = ({
               </label>
               <input
                 className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                name="location"
+                {...register("location")}
                 id="location"
                 type="text"
                 placeholder="Location"
@@ -47,7 +79,7 @@ const AddRoomForm = ({
               <select
                 required
                 className="w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md"
-                name="category"
+                {...register("category")}
               >
                 {categories.map((category) => (
                   <option value={category.label} key={category.label}>
@@ -76,7 +108,7 @@ const AddRoomForm = ({
               </label>
               <input
                 className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                name="title"
+                {...register("title")}
                 id="title"
                 type="text"
                 placeholder="Title"
@@ -111,7 +143,7 @@ const AddRoomForm = ({
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  name="price"
+                  {...register("price")}
                   id="price"
                   type="number"
                   placeholder="Price"
@@ -125,7 +157,7 @@ const AddRoomForm = ({
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  name="total_guest"
+                  {...register("total_guest")}
                   id="guest"
                   type="number"
                   placeholder="Total guest"
@@ -141,7 +173,7 @@ const AddRoomForm = ({
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  name="bedrooms"
+                  {...register("bedrooms")}
                   id="bedrooms"
                   type="number"
                   placeholder="Bedrooms"
@@ -155,7 +187,7 @@ const AddRoomForm = ({
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  name="bathrooms"
+                  {...register("bathrooms")}
                   id="bathrooms"
                   type="number"
                   placeholder="Bathrooms"
@@ -172,7 +204,7 @@ const AddRoomForm = ({
               <textarea
                 id="description"
                 className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 "
-                name="description"
+                {...register("description")}
               ></textarea>
             </div>
           </div>
@@ -182,12 +214,11 @@ const AddRoomForm = ({
           type="submit"
           className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
         >
-          {/* {loading ? (
-            <TbFidgetSpinner className='m-auto animate-spin' size={24} />
+          {loading ? (
+            <TbFidgetSpinner className="m-auto animate-spin" size={24} />
           ) : (
-            'Save & Continue'
-          )} */}
-          Save & Continue
+            "Save & Continue"
+          )}
         </button>
       </form>
     </div>

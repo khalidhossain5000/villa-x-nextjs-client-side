@@ -22,7 +22,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="relative h-full lg:h-[95vh] w-full overflow-hidden">
+    <div className="relative h-full lg:h-[calc(100vh-64px)] w-full overflow-hidden">
       {/* Background images stacked */}
       {slides.map((slide, index) => (
         <motion.img

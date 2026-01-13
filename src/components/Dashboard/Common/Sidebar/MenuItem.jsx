@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 const MenuItem = ({ label, address, icon: Icon }) => {
   const pathName = usePathname();
   const isActive = pathName === address;
-  console.log(pathName, "this is pathname inside menutItem component", address);
+  // console.log(pathName, "this is pathname inside menutItem component", address);
   return (
     <Link
       href={address}
