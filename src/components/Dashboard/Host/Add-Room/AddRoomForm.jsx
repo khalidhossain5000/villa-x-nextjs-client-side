@@ -2,8 +2,9 @@
 
 import { categories } from "@/components/Shared/HomePage/Categories/CategoriesData";
 import { useAuth } from "@/Hooks/useAuth";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
-import { registerSchema } from "@/ZodSchema/register.schema";
+import { roomFrontSchema } from "@/ZodSchema/room.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { DateRange } from "react-date-range";
@@ -11,10 +12,18 @@ import { useForm } from "react-hook-form";
 import { TbFidgetSpinner } from "react-icons/tb";
 
 const AddRoomForm = ({ loading }) => {
-  const { register, handleSubmit,formState:{errors} } = useForm({
-     resolver:zodResolver(registerSchema)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(roomFrontSchema),
   });
   const { userInfo } = useAuth();
+  // axios secure
+
+  const axiosSecure = useAxiosSecure();
+
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -42,7 +51,7 @@ const AddRoomForm = ({ loading }) => {
     const hostInfo = {
       name: userInfo?.name,
       email: userInfo?.email,
-      photoUrl: userInfo?.photourl,
+      photoUrl: userInfo?.photoUrl,
     };
     const roomData = {
       ...data,
@@ -56,11 +65,22 @@ const AddRoomForm = ({ loading }) => {
       hostInfo,
       "thi si fhost final room data ready to send",
       roomData,
-      userInfo
     );
+
+    axiosSecure
+      .post("/api/rooms", roomData)
+      .then((res) => {
+        console.log(res, "this is res of adding room inside add rooom form");
+        if(res.data?.success===true){
+          alert('Room added successfully check the db')
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  console.log(errors,'this is form submit error over here ')
+  console.log(errors, "this is form submit error over here ");
   return (
     <div className="max-w-5xl mx-auto py-6 mt-12">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,8 +96,11 @@ const AddRoomForm = ({ loading }) => {
                 id="location"
                 type="text"
                 placeholder="Location"
-                required
               />
+              {/* error message */}
+              {errors && (
+                <p className="text-red-600">{errors?.location?.message}</p>
+              )}
             </div>
 
             <div className="space-y-1 text-sm">
@@ -85,7 +108,6 @@ const AddRoomForm = ({ loading }) => {
                 Category
               </label>
               <select
-                required
                 className="w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md"
                 {...register("category")}
               >
@@ -107,6 +129,16 @@ const AddRoomForm = ({ loading }) => {
                 onChange={handleDates}
                 minDate={new Date()}
               />
+              <div className="flex items-center gap-6">
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.from?.message}</p>
+                )}
+                {/* error message */}
+                {errors && (
+                  <p className="text-orange-600">{errors?.to?.message}</p>
+                )}
+              </div>
             </div>
           </div>
           <div className="space-y-6">
@@ -120,8 +152,12 @@ const AddRoomForm = ({ loading }) => {
                 id="title"
                 type="text"
                 placeholder="Title"
-                required
               />
+
+              {/* error message */}
+              {errors && (
+                <p className="text-red-600">{errors?.title?.message}</p>
+              )}
             </div>
 
             <div className=" p-4 bg-white w-full  m-auto rounded-lg">
@@ -140,6 +176,13 @@ const AddRoomForm = ({ loading }) => {
                     <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
                       {uploadButtonText}
                     </div>
+
+                    {/* error message */}
+                    {errors && (
+                      <p className="text-red-600">
+                        {errors?.roomImage?.message}
+                      </p>
+                    )}
                   </label>
                 </div>
               </div>
@@ -151,12 +194,15 @@ const AddRoomForm = ({ loading }) => {
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("price")}
+                  {...register("price", { valueAsNumber: true })}
                   id="price"
                   type="number"
                   placeholder="Price"
-                  required
                 />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.price?.message}</p>
+                )}
               </div>
 
               <div className="space-y-1 text-sm">
@@ -165,12 +211,15 @@ const AddRoomForm = ({ loading }) => {
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("total_guest")}
+                  {...register("total_guest", { valueAsNumber: true })}
                   id="guest"
                   type="number"
                   placeholder="Total guest"
-                  required
                 />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.total_guest?.message}</p>
+                )}
               </div>
             </div>
 
@@ -181,12 +230,15 @@ const AddRoomForm = ({ loading }) => {
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("bedrooms")}
+                  {...register("bedrooms", { valueAsNumber: true })}
                   id="bedrooms"
                   type="number"
                   placeholder="Bedrooms"
-                  required
                 />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.bedrooms?.message}</p>
+                )}
               </div>
 
               <div className="space-y-1 text-sm">
@@ -195,12 +247,15 @@ const AddRoomForm = ({ loading }) => {
                 </label>
                 <input
                   className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("bathrooms")}
+                  {...register("bathrooms", { valueAsNumber: true })}
                   id="bathrooms"
                   type="number"
                   placeholder="Bathrooms"
-                  required
                 />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.bathrooms?.message}</p>
+                )}
               </div>
             </div>
 
@@ -214,13 +269,17 @@ const AddRoomForm = ({ loading }) => {
                 className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 "
                 {...register("description")}
               ></textarea>
+              {/* error message */}
+              {errors && (
+                <p className="text-red-600">{errors?.description?.message}</p>
+              )}
             </div>
           </div>
         </div>
 
         <button
           type="submit"
-          className="w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
+          className="cursor-pointer w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
         >
           {loading ? (
             <TbFidgetSpinner className="m-auto animate-spin" size={24} />

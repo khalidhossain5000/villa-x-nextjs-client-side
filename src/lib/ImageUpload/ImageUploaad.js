@@ -8,6 +8,5 @@ export const imageUpload = async image => {
     formData
   )
 
-  console.log(data,'THis is image url dat inside ahndle image upload function ')
   return data
 }

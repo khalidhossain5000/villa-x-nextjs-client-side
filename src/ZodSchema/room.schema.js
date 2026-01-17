@@ -4,43 +4,41 @@ export const roomFrontSchema = z.object({
   location: z
     .string()
     .nonempty({ message: "Location is required" }),
+
   category: z
     .string()
     .nonempty({ message: "Category is required" }),
+
   title: z
     .string()
     .nonempty({ message: "Title is required" }),
 
   price: z
-    .string()
-    .nonempty({ message: "Price is required" })
-    .regex(/^\d+$/, { message: "Price must be a number" }),
+    .coerce
+    .number({ invalid_type_error: "Price must be a number" })
+    .positive({ message: "Price must be greater than 0" }),
+
   total_guest: z
-    .string()
-    .nonempty({ message: "Total guest is required" })
-    .regex(/^\d+$/, { message: "Total guest must be a number" }),
+    .coerce
+    .number({ invalid_type_error: "Total guest must be a number" })
+    .positive({ message: "Total guest must be greater than 0" }),
+
   bedrooms: z
-    .string()
-    .nonempty({ message: "Bedrooms is required" })
-    .regex(/^\d+$/, { message: "Bedrooms must be a number" }),
+    .coerce
+    .number({ invalid_type_error: "Bedrooms must be a number" })
+    .positive({ message: "Bedrooms must be greater than 0" }),
+
   bathrooms: z
-    .string()
-    .nonempty({ message: "Bathrooms is required" })
-    .regex(/^\d+$/, { message: "Bathrooms must be a number" }),
+    .coerce
+    .number({ invalid_type_error: "Bathrooms must be a number" })
+    .positive({ message: "Bathrooms must be greater than 0" }),
 
   description: z
     .string()
-    .min(10, { message: "Description must be at least 10 characters long" }),
+    .min(5, { message: "Description must be at least 5 characters long" }),
 
-  roomImage: z
-    .string()
-    .nonempty({ message: "Image URL is required" })
-    .url({ message: "Invalid image URL" }),
-
-  from: z
-    .string({ required_error: "Start date is required" }),
-  to: z
-    .string({ required_error: "End date is required" }),
-
-  
+  // পরে add করবে
+  // roomImage: z.string().url(),
+  // from: z.string(),
+  // to: z.string(),
 });
