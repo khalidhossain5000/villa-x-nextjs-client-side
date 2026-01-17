@@ -15,7 +15,7 @@ const RegisterForm = () => {
     })
 
     const onSubmit=data=>{
-        console.log(data,'this is register form data')
+       
         const email=data.email
         const password=data.password
         const name=data.fullName

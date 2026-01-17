@@ -3,14 +3,18 @@
 import { categories } from "@/components/Shared/HomePage/Categories/CategoriesData";
 import { useAuth } from "@/Hooks/useAuth";
 import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
+import { registerSchema } from "@/ZodSchema/register.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { DateRange } from "react-date-range";
 import { useForm } from "react-hook-form";
 import { TbFidgetSpinner } from "react-icons/tb";
 
 const AddRoomForm = ({ loading }) => {
-  const { register, handleSubmit } = useForm();
-  const {userInfo}=useAuth()
+  const { register, handleSubmit,formState:{errors} } = useForm({
+     resolver:zodResolver(registerSchema)
+  });
+  const { userInfo } = useAuth();
   const [dates, setDates] = useState({
     startDate: new Date(),
     endDate: new Date(),
@@ -22,12 +26,10 @@ const AddRoomForm = ({ loading }) => {
     console.log(ranges);
     setDates(ranges.selection);
   };
-
   //image upload change
   // Handle Image button text
   const handleImageChange = (image) => {
     setUploadButtonText(image.name);
-    
   };
 
   //HANDLE FORM SUBMIT STARTS HERE
@@ -37,22 +39,28 @@ const AddRoomForm = ({ loading }) => {
     const roomImage = image_uri?.data?.display_url;
     const to = dates.endDate;
     const from = dates.startDate;
-    const hostInfo={
-name:userInfo?.name,
-email:userInfo?.email,
-photoUrl:userInfo?.photorl
-    }
-    const roomData={
+    const hostInfo = {
+      name: userInfo?.name,
+      email: userInfo?.email,
+      photoUrl: userInfo?.photourl,
+    };
+    const roomData = {
       ...data,
       roomImage,
       to,
       from,
-      hostInfo
-    }
+      hostInfo,
+    };
 
-    console.log(hostInfo,'thi si fhost final room data ready to send')
+    console.log(
+      hostInfo,
+      "thi si fhost final room data ready to send",
+      roomData,
+      userInfo
+    );
   };
 
+  console.log(errors,'this is form submit error over here ')
   return (
     <div className="max-w-5xl mx-auto py-6 mt-12">
       <form onSubmit={handleSubmit(onSubmit)}>
