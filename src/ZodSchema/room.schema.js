@@ -37,8 +37,5 @@ export const roomFrontSchema = z.object({
     .string()
     .min(5, { message: "Description must be at least 5 characters long" }),
 
-  // পরে add করবে
-  // roomImage: z.string().url(),
-  // from: z.string(),
-  // to: z.string(),
+ 
 });

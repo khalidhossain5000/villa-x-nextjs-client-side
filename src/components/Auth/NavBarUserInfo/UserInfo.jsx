@@ -12,7 +12,6 @@ const UserInfo = () => {
   const { userInfo, loading } = useAuth();
 const dispatch=useDispatch()
   if (loading || !userInfo ) return <p>Loading...</p>;
-  console.log(userInfo.photoUrl, "this is user info in userinfo component");
 
   const signOutHandler=()=>{
     dispatch(signOutUser())

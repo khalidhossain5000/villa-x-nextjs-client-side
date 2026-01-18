@@ -4,11 +4,11 @@ import logo from "../../../assets/logo/logo.png";
 import darklogo from "../../../assets/logo/dark-logo.png";
 import Link from "next/link";
 import Image from "next/image";
-import GlobalButton from "../Button/GlobalButton";
+
 import ModeToggle from "../ModeToggle/ModeToggle";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import UserInfo from "@/components/Auth/NavBarUserInfo/UserInfo";
-import useRole from "@/Hooks/useRole";
+
 
 const PublicNavbar = () => {
   const navItems = [
@@ -20,8 +20,8 @@ const PublicNavbar = () => {
     { href: "/contact", label: "Contact Us" },
   ];
  
-  const tests=useRole()
-console.log(tests,'this is from public navbar')
+  
+
   return (
     <header className="bg-background dark:bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
