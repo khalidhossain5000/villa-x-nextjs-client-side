@@ -13,7 +13,7 @@ import UserInfo from "@/components/Auth/NavBarUserInfo/UserInfo";
 const PublicNavbar = () => {
   const navItems = [
     { href: "/home", label: "Home" },
-    { href: "/all-room", label: "All Room" },
+    { href: "/all-rooms", label: "All Rooms" },
     { href: "/host", label: "Available Host" },
     { href: "/about", label: "About Us" },
     { href: "/host/dashboard", label: "Dashboard" },
