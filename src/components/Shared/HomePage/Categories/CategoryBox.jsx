@@ -1,24 +1,26 @@
-// import qs from "query-string";
-
-import { useRouter } from "next/navigation";
+'use client'
+import { useRouter, useSearchParams } from "next/navigation";
 import queryString from "query-string";
 
-/* eslint-disable react/prop-types */
 const CategoryBox = ({ label, icon: Icon, selected }) => {
+  const params = useSearchParams();
+  const navigate = useRouter();
+  const category = params.get("category");
+  const isSelected = category == label;
 
-const navigate=useRouter()
+  console.log(isSelected, "this is is selected over here",category,label);
 
-const handleClick=()=>{
-const currentQuery={category:label}
-console.log('handleclick is called here')
+  const handleClick = () => {
+    const currentQuery = { category: label };
+    
 
-const url=queryString.stringifyUrl({
-  url:'/all-rooms',
-  query:currentQuery
-})
-console.log(url,'this is url')
-navigate.push(url)
-}
+    const url = queryString.stringifyUrl({
+      url: "/all-rooms",
+      query: currentQuery,
+    });
+    console.log(url, "this is url");
+    navigate.push(url);
+  };
   return (
     <div
       onClick={handleClick}

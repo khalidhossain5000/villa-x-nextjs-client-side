@@ -4,7 +4,7 @@ import React from 'react';
 
 const AllRooms = () => {
     return (
-        <div>
+        <div className="px-20 pt-20">
             <h2>This is all rooms page start over here</h2>
 
             {/* categories */}
