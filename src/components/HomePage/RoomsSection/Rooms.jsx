@@ -15,7 +15,7 @@ const Rooms = () => {
   const { data: allRoomData, isLoading } = useQuery({
     queryKey: ["allRoomsData"],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/api/rooms`);
+      const res = await axiosInstance.get(`/api/rooms?category=${category}`);
       return res.data.allRoomData;
     },
     keepPreviousData: true,
