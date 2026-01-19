@@ -2,7 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import queryString from "query-string";
 
-const CategoryBox = ({ label, icon: Icon, selected }) => {
+const CategoryBox = ({ label, icon: Icon }) => {
   const params = useSearchParams();
   const navigate = useRouter();
   const category = params.get("category");

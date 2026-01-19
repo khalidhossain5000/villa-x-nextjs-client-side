@@ -98,6 +98,16 @@ const Sidebar = () => {
                 label="Statistics"
                 address="/dashboard"
               />
+              <MenuItem
+                icon={BsGraphUp}
+                label="Add Room"
+                address="/host/dashboard/add-room"
+              /> 
+              <MenuItem
+                icon={BsGraphUp}
+                label="My Listing (Host)"
+                address="/host/dashboard/my-listing"
+              />
 
               {/* Host Menu Items */}
               {role === "guest" && <GuestMenu />}
@@ -127,7 +137,7 @@ const Sidebar = () => {
           >
             <GrLogout className="w-5 h-5" />
 
-            <span className="mx-4 font-medium">Logout</span>
+            <span className="mx-4 font-medium">Logouts</span>
           </button>
         </div>
       </div>
