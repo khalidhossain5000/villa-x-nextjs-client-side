@@ -13,7 +13,7 @@ const MyListing = () => {
    
       // all rooms data
       const { data: myListingData, isLoading,refetch } = useQuery({
-        queryKey: ["myListingData"],
+        queryKey: ["myListingData",userInfo?.email],
         queryFn: async () => {
           const res = await axiosInstance.get(`/api/rooms?email=${userInfo?.email}`);
           return res.data.allRoomData;
