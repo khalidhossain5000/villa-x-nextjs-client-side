@@ -6,9 +6,9 @@ const CategoryBox = ({ label, icon: Icon, selected }) => {
   const params = useSearchParams();
   const navigate = useRouter();
   const category = params.get("category");
-  const isSelected = category == label;
+  const isSelected = category === label;
 
-  console.log(isSelected, "this is is selected over here",category,label);
+  console.log(isSelected, "this is category",category,'this is lable here',label);
 
   const handleClick = () => {
     const currentQuery = { category: label };
@@ -30,10 +30,10 @@ const CategoryBox = ({ label, icon: Icon, selected }) => {
   justify-center 
   gap-2
   p-3
-  border-b-2
+  
   hover:text-neutral-800
   transition
-  cursor-pointer ${selected ? "border-b-neutral-800 text-neutral-800" : ""}`}
+  cursor-pointer ${isSelected && "border-b border-b-red-600 text-neutral-800"}`}
     >
       <Icon size={26} />
       <div className="text-sm font-medium"> {label}</div>

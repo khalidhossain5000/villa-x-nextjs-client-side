@@ -10,7 +10,7 @@ const Rooms = () => {
   const axiosInstance = useAxios();
   const params = useSearchParams();
   const category = params.get("category");
-  console.log(category,'this is category')
+ 
   // all rooms data
   const { data: allRoomData, isLoading } = useQuery({
     queryKey: ["allRoomsData",category],
@@ -23,7 +23,6 @@ const Rooms = () => {
 
   if (isLoading) return <Loader />;
 
-  console.log(allRoomData,'this is allroom data over here')
   return (
     <div>
       {allRoomData && allRoomData.length > 0 ? (
