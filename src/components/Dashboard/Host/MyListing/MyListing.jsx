@@ -11,7 +11,7 @@ const MyListing = () => {
      const axiosInstance=useAxios()
      const {userInfo}=useAuth()
    
-      // all rooms data
+      // this are mylisting data is over here to be dispalyed
       const { data: myListingData, isLoading,refetch } = useQuery({
         queryKey: ["myListingData",userInfo?.email],
         queryFn: async () => {
