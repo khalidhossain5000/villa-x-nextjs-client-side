@@ -24,7 +24,7 @@ const MyListing = () => {
     
       if (isLoading) return <Loader />;
 
-      console.log(myListingData,'this is mylisting data over here')
+      console.log(myListingData,'this is completed')
   return (
     <div>
       {myListingData && Array.isArray(myListingData) && myListingData.length > 0 ? (
