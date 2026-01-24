@@ -23,7 +23,13 @@ const MyListing = () => {
       });
     
       if (isLoading) return <Loader />;
+// hadnle listi delte starts here
 
+
+
+const handleDeleteListing=(id)=>{
+  console.log(id,'this is id that to be delted')
+}
       console.log(myListingData,'this is completed')
   return (
     <div>
@@ -86,6 +92,7 @@ const MyListing = () => {
                           key={room?._id}
                           room={room}
                           refetch={refetch}
+                          handleDeleteListing={handleDeleteListing}
                         />
                       ))}
                   </tbody>

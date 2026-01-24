@@ -51,11 +51,11 @@ const Banner = () => {
         className="inline-block font-urbanist"
         animate={{
           color: [
-            '#ff0000', // red
-            '#00ff00', // green
-            '#0000ff', // blue
-            '#ffff00', // yellow
-            '#ff00ff', // magenta
+            '#ff0000', 
+            '#00ff00',
+            '#0000ff',
+            '#ffff00', 
+            '#ff00ff',
             '#00ffff'  
           ]
         }}
