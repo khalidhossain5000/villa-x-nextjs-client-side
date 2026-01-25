@@ -4,11 +4,14 @@ import React from "react";
 import RoomDataRow from "../../Common/TableRows/RoomDataRow";
 import Loader from "@/components/Shared/Loading/Loader";
 import useAxios from "@/Hooks/useAxios";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/Hooks/useAuth";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const MyListing = () => {
      const axiosInstance=useAxios()
+     const axiosSecure=useAxiosSecure()
      const {userInfo}=useAuth()
    
       // this are mylisting data is over here to be dispalyed
@@ -21,14 +24,31 @@ const MyListing = () => {
         keepPreviousData: true,
         enabled:!!userInfo?.email
       });
-    
+    //delte starts
+    const {mutateAsync}=useMutation({
+  mutationKey:['deleteMyListing'],
+  mutationFn:async id=>{
+    const res=await axiosSecure.delete(`/api/room/${id}`)
+    return res.data
+  },
+  onSuccess:(data)=>{
+    console.log(data,'this is delte response data over here')
+    toast.success('Listing detlted')
+  }
+})
       if (isLoading) return <Loader />;
 // hadnle listi delte starts here
 
 
 
-const handleDeleteListing=(id)=>{
+const handleDeleteListing=async(id)=>{
   console.log(id,'this is id that to be delted')
+  try{
+    await mutateAsync(id)
+  }
+  catch(error){
+    console.log(error,'this is delte error')
+  }
 }
       console.log(myListingData,'this is completed')
   return (
