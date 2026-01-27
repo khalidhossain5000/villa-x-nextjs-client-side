@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Calender from "./Calendar";
 import BookingModal from "@/components/Shared/Modal/BookingModal/BookingModal";
 import { useAuth } from "@/Hooks/useAuth";
-import { differenceInCalendarDays } from "date-fns";
+import { differenceInCalendarDays, formatDistance } from "date-fns";
 
 const RoomReservation = ({ room }) => {
   const { userInfo: user } = useAuth();
@@ -27,8 +27,10 @@ const RoomReservation = ({ room }) => {
         new Date(room?.from)
     )
   ) * room?.price
-
-console.log(totalPrice,"this is total price")
+  const totalDays = parseInt(
+    formatDistance(new Date(room?.to), new Date(room?.from)).split(' ')[0]
+  )
+console.log(totalPrice,"this is total price",totalDays)
   return (
     <div className="rounded-xl border-[1px] border-neutral-200 overflow-hidden bg-white">
       <div className="flex items-center gap-1 p-4">

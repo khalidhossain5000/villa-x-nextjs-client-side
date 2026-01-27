@@ -5,6 +5,12 @@ import React, { useState } from "react";
 const RoomDataRow = ({ room,handleDeleteListing }) => {
   const [isOpen,setIsOpen]=useState(false)
 
+
+
+
+
+
+  // close modla is os hdsg s 
   const closeModal=()=>{
     setIsOpen(false)
   }
