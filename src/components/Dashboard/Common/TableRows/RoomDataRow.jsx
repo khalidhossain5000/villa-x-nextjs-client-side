@@ -10,7 +10,7 @@ const RoomDataRow = ({ room,handleDeleteListing }) => {
 
 
 
-  // close modla is os hdsg s done ehe 
+  // close modla is os hdsg s done ehe over here 
   const closeModal=()=>{
     setIsOpen(false)
   }
