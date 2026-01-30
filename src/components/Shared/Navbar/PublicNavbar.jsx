@@ -10,9 +10,12 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import UserInfo from "@/components/Auth/NavBarUserInfo/UserInfo";
 import HostModal from "../Modal/HostRequestModal/HostModal";
 import { useAuth } from "@/Hooks/useAuth";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 
 const PublicNavbar = () => {
-  const {userInfo}=useAuth()
+  const { userInfo } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const navItems = [
     { href: "/home", label: "Home" },
     { href: "/all-rooms", label: "All Rooms" },
@@ -25,13 +28,26 @@ const PublicNavbar = () => {
   // host req modal
   const [isOpen, setIsOpen] = useState(false);
 
+  const modalHandler = async () => {
+    console.log("i want to be a host accpet requ");
+    await axiosSecure
+      .patch(`/api/auth/update-user/${userInfo?.email}`, {
+        status: "requested",
+      })
+      .then((res) =>{
+        toast.success("Host request sent wait for admin approval")
+         console.log(res.data, "this is res")
+      })
+      .catch((err) => {
+        console.log(err, "this eerrrr")
+        if(err.status ===400){
+          toast.error("You have already sent a host request,wait for admin approval")
+        }
+      });
 
-
-  const modalHandler=async()=>{
-console.log('i want to be a host accpet requ')
-
-setIsOpen(false)
-  }
+ 
+    setIsOpen(false);
+  };
   return (
     <header className="bg-background dark:bg-background">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
@@ -67,19 +83,23 @@ setIsOpen(false)
         </nav>
         <div className="auth-btns hidden md:flex items-center space-x-5">
           {/* host apply button div container */}
-        {
-          userInfo &&   <div>
-            <button
-            onClick={() => setIsOpen(true)}
-            className="cursor-pointer text-xl font-bold text-slate-600 animate-skeletonLoader"
-          >
-            Host Your Home
-          </button>
-          {/* host req modal here below */}
+          {userInfo && (
+            <div>
+              <button
+                onClick={() => setIsOpen(true)}
+                className="cursor-pointer text-xl font-bold text-slate-600 animate-skeletonLoader"
+              >
+                Host Your Home
+              </button>
+              {/* host req modal here below */}
 
-          <HostModal isOpen={isOpen} closeModal={() => setIsOpen(false)} modalHandler={modalHandler}/>
-          </div>
-        }
+              <HostModal
+                isOpen={isOpen}
+                closeModal={() => setIsOpen(false)}
+                modalHandler={modalHandler}
+              />
+            </div>
+          )}
 
           <ModeToggle />
 
