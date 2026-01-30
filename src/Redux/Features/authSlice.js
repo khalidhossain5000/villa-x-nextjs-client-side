@@ -25,6 +25,8 @@ export const createUser = createAsyncThunk(
       photoURL: defaultPhoto,
     });
 
+
+    
     //user info save to db start here
 
     const result =await axios.post("http://localhost:5000/api/auth/register", {
@@ -57,8 +59,22 @@ export const loginUser=createAsyncThunk(
 export const googleSignIn=createAsyncThunk(
   'authSlice/googleSignIn',
   async()=>{
-    return await signInWithPopup(auth,googleProvider)
+    const res= await signInWithPopup(auth,googleProvider)
+    console.log(res,'this is from gogle lign')
+    //user info save to db start here
+
+    const result =await axios.post("http://localhost:5000/api/auth/register", {
+      fullName: res.user.displayName,
+      email: res.user.email,
+      userRole: "guest",
+    });
+    console.log(result, "this is response from backend after registering user");
+
+    // user info save to db end here
+
+    return res.user;
   }
+  
 )
 //GITHUB   LOGIN STARTS HERE
 export const githubSignIn=createAsyncThunk(
