@@ -4,11 +4,11 @@ import MenuItem from "../Sidebar/MenuItem";
 import { useState } from "react";
 import HostModal from "@/components/Shared/Modal/HostRequestModal/HostModal";
 import useRole from "@/Hooks/useRole";
-import { useAuth } from "@/Hooks/useAuth";
+
 import Loader from "@/components/Shared/Loading/Loader";
 const GuestMenu = () => {
   const { role, roleLoading } = useRole();
-  const { userInfo } = useAuth();
+  
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => {
     setIsOpen(false);
