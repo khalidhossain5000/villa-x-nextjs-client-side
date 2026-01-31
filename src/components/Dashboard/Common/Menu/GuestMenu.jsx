@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import HostModal from "@/components/Shared/Modal/HostRequestModal/HostModal";
 import useRole from "@/Hooks/useRole";
 import { useAuth } from "@/Hooks/useAuth";
+import Loader from "@/components/Shared/Loading/Loader";
 const GuestMenu = () => {
   const { role, roleLoading } = useRole();
   const { userInfo } = useAuth();
@@ -30,13 +31,12 @@ const GuestMenu = () => {
     //   setIsOpen(false)
     // }
   };
+
+  if(roleLoading) return <Loader/>
+
   return (
     <>
-      <MenuItem
-        icon={BsFingerprint}
-        label="My Bookings"
-        address="my-bookings"
-      />
+     
 
       {role === "guest" && (
         <div

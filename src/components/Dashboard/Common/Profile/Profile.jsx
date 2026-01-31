@@ -10,9 +10,9 @@ const Profile = () => {
 const {user,loading}=useSelector(state=>state.auth)
 
   const{role,roleLoading}=useRole()
-  console.log(user)
 
-  if(roleLoading && loading) return <Loader/>
+
+  if(roleLoading || loading) return <Loader/>
   return (
     <div className='flex justify-center items-center h-screen'>
    
@@ -47,7 +47,7 @@ const {user,loading}=useSelector(state=>state.auth)
               </p>
               <p className='flex flex-col'>
                 Email
-                <span className='font-bold text-black '>{user.email}</span>
+                <span className='font-bold text-black '>{user?.email}</span>
               </p>
 
               <div>

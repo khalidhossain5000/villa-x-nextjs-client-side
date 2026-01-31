@@ -5,6 +5,8 @@ const AdminMenu = () => {
   return (
     <>
       <MenuItem icon={FaUserCog} label='Manage Users' address='manage-users' />
+      <MenuItem icon={FaUserCog} label='My Profile' address='/admin/dashboard/profile' />
+    
     </>
   )
 }

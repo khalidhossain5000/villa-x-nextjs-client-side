@@ -7,7 +7,7 @@ import logo from "../../../../assets/logo/dark-logo.png";
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
-import { BsGraphUp } from "react-icons/bs";
+import { House } from 'lucide-react';
 import MenuItem from "./MenuItem";
 
 import Image from "next/image";
@@ -19,6 +19,7 @@ import useRole from "@/Hooks/useRole";
 import GuestMenu from "../Menu/GuestMenu";
 import HostMenu from "../Menu/HostMenu";
 import AdminMenu from "../Menu/AdminMenu";
+import Loader from "@/components/Shared/Loading/Loader";
 
 const Sidebar = () => {
   const dispatch=useDispatch()
@@ -41,6 +42,10 @@ const Sidebar = () => {
    const signOutHandler=()=>{
       dispatch(signOutUser())
     }
+
+
+    if(roleLoading) return <Loader/>
+    console.log(role,'from sidebar')
   return (
     <>
       {/* Small Screen Navbar */}
@@ -75,7 +80,7 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-[#0a1929] mx-auto">
+            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-[#0a1929f6] mx-auto">
               <Link href={"/"}>
                 <Image
                   src={logo}
@@ -88,27 +93,20 @@ const Sidebar = () => {
             </div>
           </div>
 
+
           {/* Nav Items */}
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/* If a user is host */}
-            {role === "host" && <ToggleBtn toggleHandler={toggleHandler} />}
+            {role === "host" || role === "admin" ? <ToggleBtn toggleHandler={toggleHandler} /> : ""}
             <nav>
+              {/* these are common route  */}
               <MenuItem
-                icon={BsGraphUp}
-                label="Statistics"
-                address="/dashboard"
+                icon={House}
+                label="Home"
+                address={`/${role}/dashboard`}
               />
-              <MenuItem
-                icon={BsGraphUp}
-                label="Add Room"
-                address="/host/dashboard/add-room"
-              /> 
-              <MenuItem
-                icon={BsGraphUp}
-                label="My Listing (Host)"
-                address="/host/dashboard/my-listing"
-              />
-
+             
+   {/* these are common route  */}
               {/* Host Menu Items */}
               {role === "guest" && <GuestMenu />}
               {role === "host" ? toggle ? <HostMenu /> : <GuestMenu /> : ""}
