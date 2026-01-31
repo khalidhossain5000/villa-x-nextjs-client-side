@@ -1,21 +1,35 @@
+'use client'
 import { useQuery } from '@tanstack/react-query'
-import { Helmet } from 'react-helmet-async'
-import { getAllUsers } from '../../../api/auth'
-import UserDataRow from '../../../components/Dashboard/Sidebar/TableRows/UserDataRow'
+
+
+import useAxiosSecure from '@/Hooks/useAxiosSecure'
+import UserDataRow from '../../Common/TableRows/UserDataRow'
+import Loader from '@/components/Shared/Loading/Loader'
 
 const ManageUsers = () => {
-  const { data: users = [], refetch } = useQuery({
-    queryKey: ['users'],
-    queryFn: async () => await getAllUsers(),
-  })
+  const axiosSecure=useAxiosSecure()
+  const {
+      data: allUsers,
+      isLoading,
+      refetch,
+    } = useQuery({
+      queryKey: ["allUsers",],
+      queryFn: async () => {
+        const res = await axiosSecure.get(
+          `/api/auth/all-users`,
+        );
+        return res.data.userData
+      },
+     
+    });
 
-  console.log(users)
+  console.log(allUsers,'all users from manage users page')
+
+  if(isLoading) return <Loader/>
   return (
     <>
       <div className='container mx-auto px-4 sm:px-8'>
-        <Helmet>
-          <title>Manage Users</title>
-        </Helmet>
+        
         <div className='py-8'>
           <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
             <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
@@ -50,8 +64,8 @@ const ManageUsers = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users &&
-                    users.map(user => (
+                  {allUsers &&
+                    allUsers.map(user => (
                       <UserDataRow
                         key={user._id}
                         user={user}
