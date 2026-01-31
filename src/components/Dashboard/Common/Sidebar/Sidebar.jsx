@@ -31,6 +31,7 @@ const Sidebar = () => {
   //   For guest/host menu item toggle button
   const toggleHandler = (event) => {
     setToggle(event.target.checked);
+
   };
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -45,7 +46,7 @@ const Sidebar = () => {
 
 
     if(roleLoading) return <Loader/>
-    console.log(role,'from sidebar')
+  
   return (
     <>
       {/* Small Screen Navbar */}
@@ -66,7 +67,7 @@ const Sidebar = () => {
 
         <button
           onClick={handleToggle}
-          className="mobile-menu-button p-4 focus:outline-none focus:bg-gray-200"
+          className="mobile-menu-button p-4 bg-pink-600 focus:outline-none focus:bg-gray-200"
         >
           <AiOutlineBars className="h-5 w-5" />
         </button>
@@ -97,7 +98,7 @@ const Sidebar = () => {
           {/* Nav Items */}
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/* If a user is host */}
-            {role === "host" || role === "admin" ? <ToggleBtn toggleHandler={toggleHandler} /> : ""}
+            {role === "host" ? <ToggleBtn toggleHandler={toggleHandler} /> : ""}
             <nav>
               {/* these are common route  */}
               <MenuItem

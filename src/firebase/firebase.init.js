@@ -12,8 +12,6 @@ const firebaseConfig = {
 };
 
 
-console.log(process.env.authDomain,'this is si sgshsg')
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
