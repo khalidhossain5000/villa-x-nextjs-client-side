@@ -23,7 +23,6 @@ const ManageUsers = () => {
      
     });
 
-  console.log(allUsers,'all users from manage users page')
 
   if(isLoading) return <Loader/>
   return (

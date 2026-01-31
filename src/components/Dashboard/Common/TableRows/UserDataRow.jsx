@@ -1,14 +1,40 @@
 'use client'
 import UpdateUserModal from '@/components/Shared/Modal/UpdateUserModal/UpdateUserModal'
+import useAxiosSecure from '@/Hooks/useAxiosSecure'
+import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 
 import { toast } from 'react-hot-toast'
 const UserDataRow = ({ user, refetch }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const axiosSecure=useAxiosSecure()
+console.log(user,'from user data row')
+ const { mutateAsync } = useMutation({
+    mutationKey: ["update-user-role"],
+    mutationFn: async (role) => {
+      const res = await axiosSecure.patch(`/api/auth/update-user-role-admin/${user?._id}/role`,{
+        role:role
+      });
+      return res.data;
+    },
+    onSuccess: (data) => {
+      console.log(data, "this is delte response data over here");
+      refetch()
+      toast.success("Luser dupd du sd ds");
+    },
+  });
+
+
+
+
+
   const modalHandler = async role => {
+    console.log(role, 'from user data row')
     try {
-      const data = await updateRole({ email: user?.email, role })
-      console.log(data)
+      
+await mutateAsync(role)
+      
       refetch()
       toast.success('User role updated!')
     } catch (err) {
@@ -24,7 +50,7 @@ const UserDataRow = ({ user, refetch }) => {
         <p className='text-gray-900 whitespace-no-wrap'>{user?.email}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>{user?.role}</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{user?.userRole}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         {user?.status ? (
