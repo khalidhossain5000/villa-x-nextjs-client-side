@@ -6,6 +6,7 @@ import { useAuth } from "@/Hooks/useAuth";
 import { differenceInCalendarDays, formatDistance } from "date-fns";
 
 const RoomReservation = ({ room }) => {
+  let [isOpen, setIsOpen] = useState(false)
   const { userInfo: user } = useAuth();
   const [value, setValue] = useState({
     startDate: new Date(room?.from),
@@ -19,6 +20,9 @@ const RoomReservation = ({ room }) => {
       key: "selection",
     });
   };
+ const closeModal = () => {
+    setIsOpen(false)
+  }
 
 //total price of room
   const totalPrice=parseInt(
@@ -30,7 +34,31 @@ const RoomReservation = ({ room }) => {
   const totalDays = parseInt(
     formatDistance(new Date(room?.to), new Date(room?.from)).split(' ')[0]
   )
-console.log(totalPrice,"this is total price",totalDays)
+
+
+ const [bookingInfo, setBookingInfo] = useState({
+    guest: {
+      name: user?.displayName,
+      email: user?.email,
+      image: user?.photoURL,
+    },
+    host: room?.host?.email,
+    location: room?.location,
+    price: totalPrice,
+    to: value.endDate,
+    from: value.startDate,
+    title: room?.title,
+    roomId: room?._id,
+    image: room?.image,
+  })
+
+
+
+
+
+
+
+console.log(bookingInfo,"this is total price",totalDays)
   return (
     <div className="rounded-xl border-[1px] border-neutral-200 overflow-hidden bg-white">
       <div className="flex items-center gap-1 p-4">
@@ -58,9 +86,9 @@ console.log(totalPrice,"this is total price",totalDays)
       </div>
 
       <BookingModal
-      // closeModal={closeModal}
-      // isOpen={isOpen}
-      // bookingInfo={bookingInfo}
+      closeModal={closeModal}
+      isOpen={isOpen}
+      bookingInfo={bookingInfo}
       />
     </div>
   );
