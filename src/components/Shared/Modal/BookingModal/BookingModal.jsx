@@ -3,6 +3,7 @@ import { format } from 'date-fns'
 import { Fragment } from 'react'
 
 const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
+  // console.log(bookingInfo, 'booking info in modal')
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -56,6 +57,7 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
                     From: {format(new Date(bookingInfo.from), 'PP')} - To:{' '}
                     {format(new Date(bookingInfo.to), 'PP')}
                   </p>
+                  
                 </div>
 
                 <div className='mt-2'>

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { DateRange } from 'react-date-range'
 
-const Calender = ({ value, handleDateChange }) => {
+const Calender = ({ value, handleDateChange , room}) => {
   return (
     <DateRange
       ranges={[value]}
@@ -9,6 +9,8 @@ const Calender = ({ value, handleDateChange }) => {
       direction='vertical'
       showDateDisplay={false}
       onChange={handleDateChange}
+      minDate={new Date(room?.from)}
+      maxDate={new Date(room?.to)}
     />
   )
 }

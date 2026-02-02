@@ -6,37 +6,48 @@ import { useAuth } from "@/Hooks/useAuth";
 import { differenceInCalendarDays, formatDistance } from "date-fns";
 
 const RoomReservation = ({ room }) => {
-  let [isOpen, setIsOpen] = useState(false)
+  let [isOpen, setIsOpen] = useState(false);
   const { userInfo: user } = useAuth();
   const [value, setValue] = useState({
     startDate: new Date(room?.from),
     endDate: new Date(room?.to),
     key: "selection",
   });
-  const handleDateChange = () => {
-    setValue({
-      startDate: new Date(room?.from),
-      endDate: new Date(room?.to),
-      key: "selection",
-    });
+
+  const [userSelectedRange, setUserSelectedRange] = useState({
+    startDate: new Date(room?.from),
+    endDate: new Date(room?.to),
+    key:'user'
+  });
+  // const handleDateChange = () => {
+  //   setValue({
+  //     startDate: new Date(room?.from),
+  //     endDate: new Date(room?.to),
+  //     key: "selection",
+  //   });
+  // };
+
+  const handleDateChange = (ranges) => {
+    setUserSelectedRange(ranges.user);
+    setValue(ranges.selection);
   };
- const closeModal = () => {
-    setIsOpen(false)
-  }
 
-//total price of room
-  const totalPrice=parseInt(
-    differenceInCalendarDays(
-        new Date(room?.to),
-        new Date(room?.from)
-    )
-  ) * room?.price
+  console.log(userSelectedRange, "this is user selected rnage");
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  //total price of room
+  const totalPrice =
+    parseInt(
+      differenceInCalendarDays(new Date(room?.to), new Date(room?.from)),
+    ) * room?.price;
   const totalDays = parseInt(
-    formatDistance(new Date(room?.to), new Date(room?.from)).split(' ')[0]
-  )
+    formatDistance(new Date(room?.to), new Date(room?.from)).split(" ")[0],
+  );
 
-
- const [bookingInfo, setBookingInfo] = useState({
+  const [bookingInfo, setBookingInfo] = useState({
     guest: {
       name: user?.displayName,
       email: user?.email,
@@ -45,20 +56,15 @@ const RoomReservation = ({ room }) => {
     host: room?.host?.email,
     location: room?.location,
     price: totalPrice,
-    to: value.endDate,
-    from: value.startDate,
+    to: userSelectedRange?.endDate,
+    from: userSelectedRange?.startDate,
     title: room?.title,
     roomId: room?._id,
     image: room?.image,
-  })
+  });
 
-//more will be here added nsons g
+  //more will be here added nsons g
 
-
-
-
-
-console.log(bookingInfo,"this is total price",totalDays)
   return (
     <div className="rounded-xl border-[1px] border-neutral-200 overflow-hidden bg-white">
       <div className="flex items-center gap-1 p-4">
@@ -67,7 +73,11 @@ console.log(bookingInfo,"this is total price",totalDays)
       </div>
       <hr />
       <div className="flex justify-center">
-        <Calender handleDateChange={handleDateChange} value={value} />
+        <Calender
+          handleDateChange={handleDateChange}
+          value={value}
+          room={room}
+        />
       </div>
       <hr />
       <div className="p-4">
@@ -86,9 +96,9 @@ console.log(bookingInfo,"this is total price",totalDays)
       </div>
 
       <BookingModal
-      closeModal={closeModal}
-      isOpen={isOpen}
-      bookingInfo={bookingInfo}
+        closeModal={closeModal}
+        isOpen={isOpen}
+        bookingInfo={bookingInfo}
       />
     </div>
   );
