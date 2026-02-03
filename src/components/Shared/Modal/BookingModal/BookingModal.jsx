@@ -2,7 +2,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { format } from 'date-fns'
 import { Fragment } from 'react'
 
-const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
+const BookingModal = ({ closeModal, isOpen, bookingInfo ,userSelectedRange ,selectedTotalDays ,totalPrice}) => {
   // console.log(bookingInfo, 'booking info in modal')
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -51,18 +51,26 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
                   <p className='text-sm text-gray-500'>
                     Guest: {bookingInfo.guest.name}
                   </p>
+                  
                 </div>
                 <div className='mt-2'>
-                  <p className='text-sm text-gray-500'>
+                  {/* <p className='text-sm text-gray-500'>
                     From: {format(new Date(bookingInfo.from), 'PP')} - To:{' '}
                     {format(new Date(bookingInfo.to), 'PP')}
-                  </p>
+                  </p> */}
                   
+                  <p className='text-lg text-indigo-600 font-bold'>
+                    From: {format(new Date(userSelectedRange.startDate), 'PP')} - To:{' '}
+                    {format(new Date(userSelectedRange.endDate), 'PP')}
+                  </p>
+                  <p className='text-sm text-red-600 font-bold'>
+                    Total Data: {selectedTotalDays}
+                  </p>
                 </div>
 
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Price: $ {bookingInfo.price}
+                    Price: $ {totalPrice}
                   </p>
                 </div>
                 <hr className='mt-8 ' />

@@ -28,7 +28,7 @@ const RoomReservation = ({ room }) => {
   // };
 
   const handleDateChange = (ranges) => {
-    setUserSelectedRange(ranges.user);
+    setUserSelectedRange(ranges.selection);
     setValue(ranges.selection);
   };
 
@@ -41,11 +41,17 @@ const RoomReservation = ({ room }) => {
   //total price of room over here is ready
   const totalPrice =
     parseInt(
-      differenceInCalendarDays(new Date(room?.to), new Date(room?.from)),
+      differenceInCalendarDays(new Date(userSelectedRange.endDate), new Date(userSelectedRange.startDate)),
     ) * room?.price;
+
   const totalDays = parseInt(
     formatDistance(new Date(room?.to), new Date(room?.from)).split(" ")[0],
   );
+
+ const selectedTotalDays = parseInt(
+    formatDistance(new Date(userSelectedRange.endDate), new Date(userSelectedRange.startDate)).split(" ")[0],
+  );
+
 
   const [bookingInfo, setBookingInfo] = useState({
     guest: {
@@ -99,6 +105,9 @@ const RoomReservation = ({ room }) => {
         closeModal={closeModal}
         isOpen={isOpen}
         bookingInfo={bookingInfo}
+        userSelectedRange={userSelectedRange}
+        selectedTotalDays={selectedTotalDays}
+        totalPrice={totalPrice}
       />
     </div>
   );
