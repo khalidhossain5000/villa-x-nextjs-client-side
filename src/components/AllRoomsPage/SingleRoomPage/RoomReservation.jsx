@@ -38,7 +38,7 @@ const RoomReservation = ({ room }) => {
     setIsOpen(false);
   };
 
-  //total price of room
+  //total price of room over here is ready
   const totalPrice =
     parseInt(
       differenceInCalendarDays(new Date(room?.to), new Date(room?.from)),
