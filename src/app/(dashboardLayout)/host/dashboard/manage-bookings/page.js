@@ -1,10 +1,11 @@
-import { Helmet } from 'react-helmet-async'
-import useAuth from '../../../hooks/useAuth'
+
+
 import { useQuery } from '@tanstack/react-query'
 import { getHostBookings } from '../../../api/bookings'
-import Loader from '../../../components/Shared/Loader'
+
 import TableRow from '../../../components/Dashboard/Sidebar/TableRows/TableRow'
 import EmptyMessage from '@/components/Shared/EmptyMessage/EmptyMessage'
+import Loader from '@/components/Shared/Loading/Loader'
 
 
 const ManageBookings = () => {
@@ -22,9 +23,7 @@ const ManageBookings = () => {
   if (isLoading) return <Loader />
   return (
     <>
-      <Helmet>
-        <title>Manage Bookings</title>
-      </Helmet>
+     
       {bookings && Array.isArray(bookings) && bookings.length > 0 ? (
         <div className='container mx-auto px-4 sm:px-8'>
           <div className='py-8'>
