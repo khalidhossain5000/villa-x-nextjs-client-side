@@ -1,7 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { format } from 'date-fns'
 import { Fragment } from 'react'
-
+import { loadStripe } from '@stripe/stripe-js'
 const BookingModal = ({ closeModal, isOpen, bookingInfo ,userSelectedRange ,selectedTotalDays ,totalPrice}) => {
   
   return (
