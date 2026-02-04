@@ -34,11 +34,11 @@ export const createUser = createAsyncThunk(
       email,
       userRole: "guest",
     });
-    console.log(result, "this is response from backend after registering user");
 
     // user info save to db end here
 
-    return res.user;
+    // return res.user;
+        return getSafeUser(res.user);
   }
 );
 
@@ -72,7 +72,8 @@ export const googleSignIn=createAsyncThunk(
 
     // user info save to db end here
 
-    return res.user;
+    // return res.user;
+        return getSafeUser(res.user);
   }
   
 )
@@ -91,12 +92,29 @@ export const signOutUser=createAsyncThunk(
     return signOut(auth)
   }
 )
+
+
+const getSafeUser = (user) => {
+  if (!user) return null;
+  console.log(user,'this is user inside get safe user')
+  return {
+    accessToken: user.accessToken,
+    email: user.email,
+    displayName: user.displayName,
+    photoURL: user.photoURL,
+  };
+};
+
+
+
 const authSlice = createSlice({
   name: "AuthSlice",
   initialState,
   reducers: {
     setCurrentUser: (state, action) => {
-      state.user = action.payload;
+      console.log(action, "this is action.payload in setCurrentUser",action.payload,state);
+      // state.user = action.payload;
+      state.user = getSafeUser(action.payload);
       state.loading = false;
       state.error = null;
     },
@@ -116,10 +134,11 @@ const authSlice = createSlice({
         console.log(
           action,
           "this is action in createUser fullfilled ",
-          action.payload.user
+          action.payload
         );
         state.loading = false;
-        state.user = action.payload;
+        // state.user = action.payload;
+        state.user = getSafeUser(action.payload);
       })
       .addCase(createUser.rejected, (state, action) => {
         state.error = action?.error?.message;
@@ -130,7 +149,8 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled,(state,action)=>{
         state.loading=false;
-        state.user=action.payload.user;
+        // state.user=action.payload.user;
+        state.user=getSafeUser(action.payload);
       })
       .addCase(loginUser.rejected,(state,action)=>{
         state.error=action?.error?.message;
@@ -142,8 +162,9 @@ const authSlice = createSlice({
       })
        .addCase(googleSignIn.fulfilled,(state,action)=>{
         state.loading=false;
-        console.log(action,'this is inside google sign in fullfilled inside authslice')
-        state.user=action.payload.user;
+        console.log(action,'this is inside google sign in fullfilled inside authslice',action.payload)
+        // state.user=action.payload.user;
+        state.user=getSafeUser(action.payload);
       })
       .addCase(googleSignIn.rejected,(state,action)=>{
         state.error=action?.error?.message;
@@ -155,7 +176,8 @@ const authSlice = createSlice({
        .addCase(githubSignIn.fulfilled,(state,action)=>{
         state.loading=false;
         console.log(action,'this is inside github sign in fullfilled inside authslice')
-        state.user=action.payload.user;
+        // state.user=action.payload.user;
+        state.user=getSafeUser(action.payload);
       })
       .addCase(githubSignIn.rejected,(state,action)=>{
         state.error=action?.error?.message;

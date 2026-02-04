@@ -17,12 +17,13 @@ export const useAuth = () => {
   const logOutHandler = () => {
     dispatch(signOutUser());
   };
-
+console.log(user,)
   useEffect(() => {
     dispatch(setLoading(true));
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       dispatch(setCurrentUser(currentUser));
+      console.log(currentUser, "current user in useAuth hook")
     });
 
     // cleanup function

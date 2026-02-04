@@ -87,10 +87,13 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
       }
       try {
         // save payment information to the server api call
-        await saveBookingInfo(paymentInfo)
+        // await saveBookingInfo(paymentInfo)
 
         // Update room status in db api call
-        await updateStatus(bookingInfo.roomId, true)
+        // await updateStatus(bookingInfo.roomId, true)
+
+
+
         const text = `Booking Successful! ${paymentIntent.id}`
         toast.success(text)
         navigate.push('/dashboard/my-bookings')
