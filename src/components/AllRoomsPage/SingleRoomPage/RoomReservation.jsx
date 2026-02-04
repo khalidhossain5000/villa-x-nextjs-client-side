@@ -13,7 +13,7 @@ const RoomReservation = ({ room }) => {
     endDate: new Date(room?.to),
     key: "selection",
   });
-
+console.log(user,'this is userinfo after user')
   const [userSelectedRange, setUserSelectedRange] = useState({
     startDate: new Date(room?.from),
     endDate: new Date(room?.to),
@@ -55,9 +55,9 @@ const RoomReservation = ({ room }) => {
 
   const [bookingInfo, setBookingInfo] = useState({
     guest: {
-      name: user?.displayName,
+      name: user?.name,
       email: user?.email,
-      image: user?.photoURL,
+      image: user?.photoUrl,
     },
     host: room?.host?.email,
     location: room?.location,
