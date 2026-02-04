@@ -3,7 +3,7 @@ import { format } from 'date-fns'
 import { Fragment } from 'react'
 
 const BookingModal = ({ closeModal, isOpen, bookingInfo ,userSelectedRange ,selectedTotalDays ,totalPrice}) => {
-  // console.log(bookingInfo, 'booking info in modal')
+  
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={closeModal}>
