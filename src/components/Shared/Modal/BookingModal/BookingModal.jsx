@@ -2,8 +2,14 @@ import { Dialog, Transition } from '@headlessui/react'
 import { format } from 'date-fns'
 import { Fragment } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+import CheckoutForm from './CheckoutForm'
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+
+
 const BookingModal = ({ closeModal, isOpen, bookingInfo ,userSelectedRange ,selectedTotalDays ,totalPrice}) => {
-  
+  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,'key',stripePromise ,'this is striped promse over here')
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -74,7 +80,13 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo ,userSelectedRange ,sele
                   </p>
                 </div>
                 <hr className='mt-8 ' />
-                {/* Card data form */}
+                {/* Card data form checkout form*/}
+                <Elements stripe={stripePromise}>
+                  <CheckoutForm
+                    closeModal={closeModal}
+                    bookingInfo={bookingInfo}
+                  />
+                </Elements>
               </Dialog.Panel>
             </Transition.Child>
           </div>

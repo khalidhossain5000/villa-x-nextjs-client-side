@@ -13,7 +13,7 @@ const RoomReservation = ({ room }) => {
     endDate: new Date(room?.to),
     key: "selection",
   });
-console.log(user,'this is userinfo after user')
+
   const [userSelectedRange, setUserSelectedRange] = useState({
     startDate: new Date(room?.from),
     endDate: new Date(room?.to),
@@ -31,8 +31,6 @@ console.log(user,'this is userinfo after user')
     setUserSelectedRange(ranges.selection);
     setValue(ranges.selection);
   };
-
-  console.log(userSelectedRange, "this is user selected rnage");
 
   const closeModal = () => {
     setIsOpen(false);
