@@ -11,11 +11,7 @@ const HostMenu = () => {
         label="Manage Bookings"
         address="/host/dashboard/manage-bookings"
       />
-      <MenuItem
-        icon={MdOutlineManageHistory}
-        label="My Profile"
-        address="/host/dashboard/profile"
-      />
+     
     </>
   );
 };
