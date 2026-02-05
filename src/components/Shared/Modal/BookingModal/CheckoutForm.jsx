@@ -12,9 +12,10 @@ import { ImSpinner9 } from 'react-icons/im'
 import toast from 'react-hot-toast'
 import { useAuth } from '@/Hooks/useAuth'
 import { useRouter } from 'next/navigation'
+import useAxiosSecure from '@/Hooks/useAxiosSecure'
 
 
-const CheckoutForm = ({ bookingInfo, closeModal }) => {
+const CheckoutForm = ({ bookingInfo, closeModal ,totalPrice}) => {
   const stripe = useStripe()
   const elements = useElements()
   const { userInfo:user } = useAuth()
@@ -22,15 +23,35 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
   const [clientSecret, setClientSecret] = useState('')
   const [processing, setProcessing] = useState(false)
   const navigate = useRouter()
+  const axiosSecure=useAxiosSecure()
+
+
+
+
+
+console.log(bookingInfo,'this is booking info ')
+
+
+
   useEffect(() => {
     // create payment intent
     if (bookingInfo.price > 0) {
-      createPaymentIntent({ price: bookingInfo.price }).then(data => {
-        console.log(data.clientSecret)
-        setClientSecret(data.clientSecret)
+
+
+        //create payment intent api call
+        
+        axiosSecure.post('/api/payments/create-payment-intent',{
+            price:totalPrice
+        }) .then(data => {
+        console.log(data.data.clientSecret,'this is data success')
+        setClientSecret(data.data.clientSecret)
+      })
+      .catch((error)=>{
+        console.log(error)
       })
     }
-  }, [bookingInfo])
+    // createPaymentIntent({ price: bookingInfo.price })
+  }, [bookingInfo,totalPrice,axiosSecure])
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -85,9 +106,20 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
         transactionId: paymentIntent.id,
         date: new Date(),
       }
+      console.log(paymentInfo,'this is payment info ')
       try {
         // save payment information to the server api call
         // await saveBookingInfo(paymentInfo)
+
+        await axiosSecure.post('/api/bookings/',paymentInfo).then((res)=>{
+            toast.success('Booking info saved successfully')
+            console.log(res,'this is booking response')
+        }).catch((err)=>{
+            console.log(err,'this is booking error here')
+        })
+
+
+
 
         // Update room status in db api call
         // await updateStatus(bookingInfo.roomId, true)
@@ -96,7 +128,7 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
 
         const text = `Booking Successful! ${paymentIntent.id}`
         toast.success(text)
-        navigate.push('/dashboard/my-bookings')
+        // navigate.push('/dashboard/my-bookings')
       } catch (err) {
         console.log(err)
         toast.error(err.message)
@@ -137,13 +169,14 @@ const CheckoutForm = ({ bookingInfo, closeModal }) => {
           </button>
           <button
             type='submit'
+            onClick={handleSubmit}
             disabled={!stripe || !clientSecret || processing}
             className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
           >
             {processing ? (
               <ImSpinner9 className='m-auto animate-spin' size={24} />
             ) : (
-              `Pay ${bookingInfo.price}$`
+              `Pay ${totalPrice}$`
             )}
           </button>
         </div>

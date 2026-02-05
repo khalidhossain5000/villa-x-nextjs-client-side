@@ -9,7 +9,7 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 
 const BookingModal = ({ closeModal, isOpen, bookingInfo ,userSelectedRange ,selectedTotalDays ,totalPrice}) => {
-  console.log(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,'key',stripePromise ,'this is striped promse over here')
+ 
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -85,6 +85,7 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo ,userSelectedRange ,sele
                   <CheckoutForm
                     closeModal={closeModal}
                     bookingInfo={bookingInfo}
+                    totalPrice={totalPrice}
                   />
                 </Elements>
               </Dialog.Panel>

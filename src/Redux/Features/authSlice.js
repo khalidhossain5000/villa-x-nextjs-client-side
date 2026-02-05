@@ -60,7 +60,7 @@ export const googleSignIn=createAsyncThunk(
   'authSlice/googleSignIn',
   async()=>{
     const res= await signInWithPopup(auth,googleProvider)
-    console.log(res,'this is from gogle lign')
+    // console.log(res,'this is from gogle lign')
     //user info save to db start here
 
     const result =await axios.post("http://localhost:5000/api/auth/register", {
@@ -68,7 +68,7 @@ export const googleSignIn=createAsyncThunk(
       email: res.user.email,
       userRole: "guest",
     });
-    console.log(result, "this is response from backend after registering user");
+    // console.log(result, "this is response from backend after registering user");
 
     // user info save to db end here
 
@@ -96,7 +96,7 @@ export const signOutUser=createAsyncThunk(
 
 const getSafeUser = (user) => {
   if (!user) return null;
-  console.log(user,'this is user inside get safe user')
+  // console.log(user,'this is user inside get safe user')
   return {
     accessToken: user.accessToken,
     email: user.email,
@@ -112,7 +112,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCurrentUser: (state, action) => {
-      console.log(action, "this is action.payload in setCurrentUser",action.payload,state);
+      // console.log(action, "this is action.payload in setCurrentUser",action.payload,state);
       // state.user = action.payload;
       state.user = getSafeUser(action.payload);
       state.loading = false;
@@ -131,11 +131,11 @@ const authSlice = createSlice({
         state.loading = true;
       })
       .addCase(createUser.fulfilled, (state, action) => {
-        console.log(
-          action,
-          "this is action in createUser fullfilled ",
-          action.payload
-        );
+        // console.log(
+        //   action,
+        //   "this is action in createUser fullfilled ",
+        //   action.payload
+        // );
         state.loading = false;
         // state.user = action.payload;
         state.user = getSafeUser(action.payload);
@@ -162,7 +162,7 @@ const authSlice = createSlice({
       })
        .addCase(googleSignIn.fulfilled,(state,action)=>{
         state.loading=false;
-        console.log(action,'this is inside google sign in fullfilled inside authslice',action.payload)
+        // console.log(action,'this is inside google sign in fullfilled inside authslice',action.payload)
         // state.user=action.payload.user;
         state.user=getSafeUser(action.payload);
       })
@@ -175,7 +175,7 @@ const authSlice = createSlice({
       })
        .addCase(githubSignIn.fulfilled,(state,action)=>{
         state.loading=false;
-        console.log(action,'this is inside github sign in fullfilled inside authslice')
+        // console.log(action,'this is inside github sign in fullfilled inside authslice')
         // state.user=action.payload.user;
         state.user=getSafeUser(action.payload);
       })
