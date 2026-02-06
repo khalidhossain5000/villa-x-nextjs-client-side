@@ -3,17 +3,59 @@ import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
 import DeleteModal from '@/components/Shared/Modal/DeleteModal/DeleteModal'
+import useAxiosSecure from '@/Hooks/useAxiosSecure'
 
 
 const TableRow = ({ booking, refetch }) => {
   let [isOpen, setIsOpen] = useState(false)
-
+console.log(booking,'this is bookinginfo inside table row')
   const closeModal = () => setIsOpen(false)
+const axiosSecure=useAxiosSecure()
+const cancelBookingRequestData={
+  bookingId:booking._id,
+  roomId:booking.roomId,
+  requestedByInfo:{...booking.guest},
+  hostEmail:booking.hostEmail
+}
 
+console.log(cancelBookingRequestData,'this is cancel booking request data')
   const modalHandler = async id => {
     try {
-      await deleteBooking(id)
-      await updateStatus(booking.roomId, false)
+      // await deleteBooking(id)
+      // await updateStatus(booking.roomId, false)
+
+
+
+
+
+
+
+
+
+
+
+
+axiosSecure.post('/api/room-cancel-request',cancelBookingRequestData).then((res)=>{
+  console.log(res,'this is res')
+  toast.success('Cancel request sent to host')
+}).catch((err)=>{
+  console.log(err,'this is cancel req errorr')
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       refetch()
       toast.success('Booking Canceled')
     } catch (err) {
