@@ -2,8 +2,8 @@
 import { format } from "date-fns";
 import toast from "react-hot-toast";
 import { useState } from "react";
-import DeleteModal from "@/components/Shared/Modal/DeleteModal/DeleteModal";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
+import DeleteModalRoom from "@/components/Shared/Modal/DeleteMyBookingModal/DeleteModalRoom";
 
 const TableRow = ({ booking, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -91,7 +91,7 @@ const TableRow = ({ booking, refetch }) => {
         </p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <span
+        <button
           onClick={() => setIsOpen(true)}
           className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
         >
@@ -100,8 +100,8 @@ const TableRow = ({ booking, refetch }) => {
             className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
           ></span>
           <span className="relative">Cancel</span>
-        </span>
-        <DeleteModal
+        </button>
+        <DeleteModalRoom
           isOpen={isOpen}
           closeModal={closeModal}
           modalHandler={modalHandler}

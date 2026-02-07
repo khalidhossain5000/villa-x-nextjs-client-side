@@ -24,7 +24,7 @@ const MyBookings = () => {
       enabled: !!user?.email,
     });
 
-  if (isLoading || loading) return <Loader />
+  if (isLoading ) return <Loader />
 
   console.log(myBookingsData,'this is my bookings data')
   return (
