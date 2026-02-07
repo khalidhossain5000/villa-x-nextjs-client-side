@@ -1,8 +1,7 @@
 "use client";
-import DeleteModal from "@/components/Shared/Modal/DeleteModal/DeleteModal";
-import React, { useState } from "react";
+import React  from "react";
 
-const cancelReqCancelRow = ({ cancelReq, handleDeleteListing }) => {
+const cancelReqCancelRow = ({ cancelReq }) => {
  
 console.log(cancelReq)
   // close modla is os hdsg s done ehe over here  like it go done

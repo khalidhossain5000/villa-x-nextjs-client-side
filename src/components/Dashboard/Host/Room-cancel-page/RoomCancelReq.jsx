@@ -3,7 +3,8 @@
 import React from "react";
 
 
-import { useMutation, useQuery } from "@tanstack/react-query";
+import {  useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 import toast from "react-hot-toast";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
@@ -42,7 +43,27 @@ const RoomCancelReq = () => {
 
   console.log(roomCancelReqData, "this is room cancel req data");
   // hadnle listi delte starts here
+const handleBookingCancelReqApproval =async(id)=>{
+  Swal.fire({
+  title: 'Are you sure?',
+  text: "This action cannot be undone!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#d33',
+  cancelButtonColor: '#3085d6',
+  confirmButtonText: 'Yes, delete it!',
+  cancelButtonText: 'No, cancel'
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire(
+      'Deleted!',
+      'Your data has been deleted.',
+      'success'
+    )
+  }
+});
 
+}
  
   return (
     <div>
