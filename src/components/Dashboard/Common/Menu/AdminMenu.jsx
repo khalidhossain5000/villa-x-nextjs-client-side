@@ -4,7 +4,9 @@ import MenuItem from '../Sidebar/MenuItem'
 const AdminMenu = () => {
   return (
     <>
-      <MenuItem icon={FaUserCog} label='Manage Users' address='/admin/dashboard/manage-users' />
+      <MenuItem icon={FaUserCog} label='Manage Users' address='/admin/dashboard/manage-users' />  
+      
+      
     
     
     </>

@@ -10,6 +10,12 @@ const HostMenu = () => {
         icon={MdOutlineManageHistory}
         label="Manage Bookings"
         address="/host/dashboard/manage-bookings"
+      />  
+      
+      <MenuItem
+        icon={MdOutlineManageHistory}
+        label="Room Cancel Requests"
+        address="/host/dashboard/room-cancel-request"
       />
      
     </>
