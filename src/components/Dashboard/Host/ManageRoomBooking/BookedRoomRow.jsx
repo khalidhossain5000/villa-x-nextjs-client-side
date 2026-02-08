@@ -7,13 +7,18 @@ import useAxiosSecure from '@/Hooks/useAxiosSecure'
 
 const BookedRoomRow = ({ booking, refetch }) => {
   let [isOpen, setIsOpen] = useState(false)
-
+console.log(booking,'thsdf dboksdfnsdf')
   const closeModal = () => setIsOpen(false)
 const axiosSecure=useAxiosSecure()
-  const modalHandler = async roomId => {
+  const modalHandler = async id => {
     try {
-      await axiosSecure.delete(`/api/delete-booking/${booking?.roomId}`)
-      await updateStatus(booking.roomId, false)
+      await axiosSecure.delete(`/api/delete-booking/${id}`)
+      .then((res)=>{
+        console.log(res)
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
       refetch()
       toast.success('Booking Canceled')
     } catch (err) {
@@ -81,13 +86,13 @@ const axiosSecure=useAxiosSecure()
             aria-hidden='true'
             className='absolute inset-0 bg-red-200 opacity-50 rounded-full'
           ></span>
-          <span className='relative'>Cancel</span>
+          <span className='relative'>Delete</span>
         </span>
         <DeleteRoomBookingByHost
           isOpen={isOpen}
           closeModal={closeModal}
           modalHandler={modalHandler}
-          id={booking.roomId}
+          id={booking._id}
         />
       </td>
     </tr>
