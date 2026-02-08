@@ -2,16 +2,17 @@
 import { format } from 'date-fns'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
-// import DeleteModal from '../../../Modal/DeleteModal'
-// import { deleteBooking, updateStatus } from '../../../../api/bookings'
+import DeleteRoomBookingByHost from '@/components/Shared/Modal/DeleteRoomBooking/DeleteRoomBookingModal'
+import useAxiosSecure from '@/Hooks/useAxiosSecure'
+
 const BookedRoomRow = ({ booking, refetch }) => {
   let [isOpen, setIsOpen] = useState(false)
 
   const closeModal = () => setIsOpen(false)
-
-  const modalHandler = async id => {
+const axiosSecure=useAxiosSecure()
+  const modalHandler = async roomId => {
     try {
-      await deleteBooking(id)
+      await axiosSecure.delete(`/api/delete-booking/${booking?.roomId}`)
       await updateStatus(booking.roomId, false)
       refetch()
       toast.success('Booking Canceled')
@@ -82,12 +83,12 @@ const BookedRoomRow = ({ booking, refetch }) => {
           ></span>
           <span className='relative'>Cancel</span>
         </span>
-        {/* <DeleteModal
+        <DeleteRoomBookingByHost
           isOpen={isOpen}
           closeModal={closeModal}
           modalHandler={modalHandler}
-          id={booking._id}
-        /> */}
+          id={booking.roomId}
+        />
       </td>
     </tr>
   )
