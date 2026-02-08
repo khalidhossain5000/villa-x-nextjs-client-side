@@ -1,7 +1,7 @@
 "use client";
 import React  from "react";
 
-const cancelReqCancelRow = ({ cancelReq,handleBookingCancelReqApproval }) => {
+const MyRoomCancelRow = ({ cancelReq }) => {
  
 console.log(cancelReq)
   // close modla is os hdsg s done ehe over here  like it go done
@@ -34,16 +34,17 @@ console.log(cancelReq)
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
-          onClick={() => handleBookingCancelReqApproval(cancelReq.bookingId,cancelReq._id)}
+          
           className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
         >
           <span
             aria-hidden="true"
-            className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+            className={`absolute inset-0 ${cancelReq?.status === "approved" ? "bg-green-200" : cancelReq?.status === "requested" ? "bg-red-500" : "bg-yellow-200"
+              } opacity-50 rounded-full`}
           ></span>
-          <span className="relative">Approve</span>
+          <span className="relative">{cancelReq?.status}</span>
         </button>
-        {/* delete modal here */}
+        
        
       </td>
       
@@ -51,4 +52,4 @@ console.log(cancelReq)
   );
 };
 
-export default cancelReqCancelRow;
+export default MyRoomCancelRow;

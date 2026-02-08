@@ -46,6 +46,17 @@ const GuestMenu = () => {
         </div>
       )}
 <MenuItem icon={FaUserCog} label='My Bookings' address='/guest/dashboard/my-bookings' />
+
+<MenuItem icon={FaUserCog} label='My Room Cancel Requests' address='/guest/dashboard/room-cancel-req' />
+
+
+
+
+
+
+
+
+
       <HostModal
         closeModal={closeModal}
         isOpen={isOpen}
