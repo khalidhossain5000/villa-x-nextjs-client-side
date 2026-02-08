@@ -1,23 +1,45 @@
 'use client'
 import axios from 'axios';
 import React, { useEffect } from 'react';
-
+import { useSelector } from 'react-redux';
 import { useAuth } from './useAuth';
-
+import Loader from '@/components/Shared/Loading/Loader';
 
 const axiosSecure = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 })
 
 const useAxiosSecure = () => {
-     const { userInfo, loading,logOutHandler } = useAuth();
-  
+     const { userInfo,logOutHandler } = useAuth();
+  const {user,loading}=useSelector((state)=>state.auth)
+
+console.log(user)
+
 
 
     useEffect(() => {
+
+
+  if (!user?.accessToken || !userInfo) return; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // intercept request
         const reqInterceptor = axiosSecure.interceptors.request.use(config => {
-            config.headers.Authorization = `Bearer ${userInfo?.accessToken}`
+            console.log(userInfo,'inside axios secure','this is ocnfing')
+            config.headers.Authorization = `Bearer ${user?.accessToken}`
             return config
         })
 
@@ -29,7 +51,7 @@ const useAxiosSecure = () => {
 
             const statusCode = error.status;
             if (statusCode === 401 || statusCode === 403) {
-                logOutHandler()
+                // logOutHandler()
             }
 
 
@@ -41,7 +63,7 @@ const useAxiosSecure = () => {
             axiosSecure.interceptors.response.eject(resInterceptor);
         }
 
-    }, [userInfo, logOutHandler])
+    }, [userInfo, logOutHandler,user])
 
     return axiosSecure;
 };

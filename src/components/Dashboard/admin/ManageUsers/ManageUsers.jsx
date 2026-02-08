@@ -23,7 +23,7 @@ const ManageUsers = () => {
      
     });
 
-
+console.log(isLoading,'this is is loaing')
   if(isLoading) return <Loader/>
   return (
     <>
