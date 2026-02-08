@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import imgi from "../../../assets/forbiddenImg/forbidden-img.jpg";
 import Link from "next/link";

@@ -1,19 +1,40 @@
-'use client'
+"use client";
+import { useAuth } from "@/Hooks/useAuth";
 import { loginUser } from "@/Redux/Features/authSlice";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { RiLockPasswordLine, RiUserLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 
 const LoginForm = () => {
-  const dispatch=useDispatch()
-  const {register, handleSubmit, formState: { errors }} = useForm();
-  const onSubmit=data=>{
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { userInfo: user, loading } = useAuth();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+  // If user already logged-in → redirect home automatically
+  useEffect(() => {
+    if (!loading && user) {
+      router.push("/"); // redirect home
+    }
+  }, [user, loading, router]);
+
+
+
+  
+  const onSubmit = (data) => {
     console.log(data);
-    const email=data.email
-    const password=data.password
-    dispatch(loginUser({email,password}))
-  }
+    const email = data.email;
+    const password = data.password;
+    dispatch(loginUser({ email, password }));
+    router.push(callbackUrl);
+  };
   return (
     <div>
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
