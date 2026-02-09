@@ -6,7 +6,7 @@ import { GithubAuthProvider } from "firebase/auth";
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 const initialState = {
-  loading: false,
+  loading: true,
   error: null,
   user: null,
 };

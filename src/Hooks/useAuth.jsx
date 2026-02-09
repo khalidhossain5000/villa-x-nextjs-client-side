@@ -19,7 +19,7 @@ export const useAuth = () => {
   };
 
   useEffect(() => {
-    dispatch(setLoading(true));
+    // dispatch(setLoading(true));
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser,'this is currentUser over here in useAuth')
@@ -31,7 +31,7 @@ export const useAuth = () => {
       }
       // dispatch(setCurrentUser(currentUser));
       dispatch(setCurrentUser(serializableUserInfo));
-      
+      dispatch(setLoading(false))
     });
 
     // cleanup function
@@ -42,5 +42,7 @@ export const useAuth = () => {
     email: user?.email,
     photoUrl: user?.photoURL,
   };
+
+  console.log(userInfo,'from use auth')
   return { userInfo, loading, logOutHandler };
 };
