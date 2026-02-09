@@ -30,7 +30,7 @@ export const useAuth = () => {
         email:currentUser.email,
         photoURL:currentUser.photoURL
       }
-      dispatch(setCurrentUser(serializableUserInfo));
+      dispatch(setCurrentUser(serializableUserInfo));;;;;
       }
       else {
       dispatch(setCurrentUser(null)); // 🔥 MUST
