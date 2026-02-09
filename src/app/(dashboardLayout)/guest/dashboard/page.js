@@ -4,7 +4,7 @@ import React from "react";
 
 const GuestDashboardHomePage = () => {
   return (
-    <PrivateRoute>
+    <PrivateRoute requiredRoles={['guest']}>
       <div>
         <h2>Welcome to Guest dashboard page ove r here</h2>
         <h3 className="text-xl text-pink-600 text-center py-12">
