@@ -1,7 +1,5 @@
-import React from "react";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
-import { RiLockPasswordLine, RiUserLine } from "react-icons/ri";
+import React, { Suspense } from "react";
+
 import Link from "next/link";
 import SocialLogin from "@/components/Auth/SocialLogin/SocialLogin";
 import LoginForm from "@/components/Auth/Login/LoginForm";
@@ -41,8 +39,10 @@ const LoginPage = () => {
           </div>
 
           {/* Login Form */}
-          <LoginForm />
+<Suspense fallback={'loadingsss'}>
 
+          <LoginForm />
+</Suspense>
           {/* Sign Up Link */}
           <div className="mt-8 text-center">
             <p className="text-sm text-gray-600 dark:text-[#cbd5e1]">
