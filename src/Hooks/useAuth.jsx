@@ -38,11 +38,11 @@ export const useAuth = () => {
     return () => unsubscribe();
   }, [dispatch]);
   const userInfo = {
-    name: user?.displayName,
-    email: user?.email,
-    photoUrl: user?.photoURL,
+    name: user?.displayName || null,
+    email: user?.email || null,
+    photoUrl: user?.photoURL || null,
   };
-
-  console.log(userInfo,'from use auth')
+ 
+  console.log(userInfo,'from use auth',loading)
   return { userInfo, loading, logOutHandler };
 };
