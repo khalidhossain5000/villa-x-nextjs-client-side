@@ -13,7 +13,7 @@ const PrivateRoute = ({ children, requiredRoles = [] }) => {
   if (authLoading || roleLoading || !userInfo || role == null) {
     return <Loader />;
   }
-
+console.log('requiredRoles',requiredRoles)
   console.log(authLoading, "this is authloading", roleLoading, userInfo, role);
   // const userExist = !!(userInfo && userInfo.email);
   const userExist = Boolean(userInfo?.email);
