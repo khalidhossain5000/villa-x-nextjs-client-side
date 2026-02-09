@@ -1,6 +1,6 @@
 import Rooms from "@/components/HomePage/RoomsSection/Rooms";
 import Categories from "@/components/Shared/HomePage/Categories/Categories";
-import React from "react";
+import React, { Suspense } from "react";
 
 const AllRooms = () => {
   return (
@@ -14,7 +14,10 @@ const AllRooms = () => {
       </div>
       {/* allrooms data is here */}
       <div>
+              <Suspense fallback={<div>Loading...</div>}>
         <Rooms />
+      </Suspense>
+        {/* <Rooms /> */}
       </div>
     </div>
   );
