@@ -10,8 +10,10 @@ const Rooms = () => {
   const axiosInstance = useAxios();
   const params = useSearchParams();
   const category = params.get("category");
- 
-  // all rooms data
+ console.log(params,'tparams',category,'this is category');
+
+
+  // all rooms data showing category wise
   const { data: allRoomData, isLoading } = useQuery({
     queryKey: ["allRoomsData",category],
     queryFn: async () => {
