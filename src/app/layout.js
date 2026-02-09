@@ -1,6 +1,6 @@
 import { Urbanist, Poppins } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/Providers/ThemeProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import TanstackProvider from "@/providers/TanstackProvider";
