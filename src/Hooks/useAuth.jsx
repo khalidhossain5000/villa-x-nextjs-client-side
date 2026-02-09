@@ -23,14 +23,20 @@ export const useAuth = () => {
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser,'this is currentUser over here in useAuth')
-      const serializableUserInfo={
+      if(currentUser){
+        const serializableUserInfo={
         accessToken:currentUser.accessToken,
         displayName:currentUser.displayName,
         email:currentUser.email,
         photoURL:currentUser.photoURL
       }
-      // dispatch(setCurrentUser(currentUser));
       dispatch(setCurrentUser(serializableUserInfo));
+      }
+      else {
+      dispatch(setCurrentUser(null)); // 🔥 MUST
+    }
+      // dispatch(setCurrentUser(currentUser));
+      
       dispatch(setLoading(false))
     });
 

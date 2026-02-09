@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 const UserInfo = () => {
   const { userInfo, loading } = useAuth();
 const dispatch=useDispatch()
-  // if (!loading || !userInfo ) return <p>Loading...</p>;
+  if (loading || !userInfo ) return <p>Loading...</p>;
 
   const signOutHandler=()=>{
     dispatch(signOutUser())
