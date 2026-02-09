@@ -10,7 +10,7 @@ const Rooms = () => {
   const axiosInstance = useAxios();
   const params = useSearchParams();
   const category = params.get("category");
- console.log(params,'tparams',category,'this is category');
+
 
 
   // all rooms data showing category wise

@@ -11,12 +11,12 @@ const PrivateRoute = ({ children, requiredRoles = [] }) => {
   const router = useRouter();
   const pathname = usePathname();
 
- 
+ console.log(authLoading,'this is authloading')
   // wait until both auth and role are loaded
-  const loading = authLoading || roleLoading;
+  const loading = authLoading || roleLoading || (userInfo && role === null);
   // make sure user is null if not logged in
   const user = userInfo?.email ? userInfo : null;
-   console.log(pathname, "this is pathname in privateroute",user,role);
+   console.log(pathname, "this is pathname in privateroute",user,role,loading,authLoading,'user,role,loadig');
   useEffect(() => {
     if (!loading) {
       if (!user) {

@@ -12,6 +12,7 @@ import HostModal from "../Modal/HostRequestModal/HostModal";
 import { useAuth } from "@/Hooks/useAuth";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
+import useRole from "@/Hooks/useRole";
 
 const PublicNavbar = () => {
   const { userInfo } = useAuth();
@@ -24,7 +25,8 @@ const PublicNavbar = () => {
     { href: "/host/dashboard", label: "Dashboard" },
     { href: "/contact", label: "Contact Us" },
   ];
-
+  const {role}=useRole()
+console.log(userInfo,'this is userInfo',role)
   // host req modal
   const [isOpen, setIsOpen] = useState(false);
 
