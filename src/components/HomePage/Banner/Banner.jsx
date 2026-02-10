@@ -70,7 +70,7 @@ const Banner = () => {
       ))}
 
       {/*  Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-l from-black/70 via-black/40 to-transparent" />
 
       {/* Animated Content  */}
       <AnimatePresence mode="wait" >
@@ -82,27 +82,20 @@ const Banner = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="container mx-auto px-6">
+          <div className="max-w-4xl  ml-auto px-6 lg:px-12">
             {/* Title */}
             <motion.h1
               initial={{ x: 120, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -120, opacity: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="text-5xl md:text-7xl font-bold text-white font-poppins"
+              className="text-5xl md:text-7xl font-bold text-white font-poppins text-left"
             >
-              {currentSlide.title}
+              {/* {currentSlide.title} */}
+              {currentSlide.description}
             </motion.h1>
 
-            {/* CTA
-            <motion.button
-              initial={{ y: 30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="mt-8 bg-cyan-500 px-8 py-3 text-white font-semibold rounded-sm"
-            >
-              Explore Villa
-            </motion.button> */}
+         
           </div>
         </motion.div>
       </AnimatePresence>
