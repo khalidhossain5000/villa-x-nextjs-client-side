@@ -94,13 +94,7 @@ const PublicNavbar = () => {
               height={50}
               className=""
             />
-            {/* <Image
-              src={darklogo}
-              alt="Logo"
-              width={150}
-              height={50}
-              className="hidden dark:block"
-            /> */}
+          
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
