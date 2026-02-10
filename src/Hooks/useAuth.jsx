@@ -35,7 +35,7 @@ export const useAuth = () => {
       else {
       dispatch(setCurrentUser(null)); 
     }
-      // dispatch(setCurrentUser(currentUser));
+     
       
       dispatch(setLoading(false))
     });

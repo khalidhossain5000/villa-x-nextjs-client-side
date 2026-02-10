@@ -16,16 +16,17 @@ import useRole from "@/Hooks/useRole";
 
 const PublicNavbar = () => {
   const { userInfo } = useAuth();
+  const {role}=useRole()
   const axiosSecure = useAxiosSecure();
   const navItems = [
-    { href: "/home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/all-rooms", label: "All Rooms" },
     { href: "/host", label: "Available Host" },
     { href: "/about", label: "About Us" },
-    { href: "/host/dashboard", label: "Dashboard" },
+    { href: `/${role}/dashboard`, label: "Dashboard" },
     { href: "/contact", label: "Contact Us" },
   ];
-  const {role}=useRole()
+  
 console.log(userInfo,'this is userInfo',role)
   // host req modal
   const [isOpen, setIsOpen] = useState(false);
