@@ -23,7 +23,7 @@ const UserInfo = () => {
           <img
             src={userInfo?.photoUrl}
             alt="user photo"
-            className="rounded-full border-2 border-primary w-10 h-10 p-1"
+            className="rounded-full border-2 border-primary w-14 h-14 p-1"
           />
 
           <button className="Btn" onClick={signOutHandler}>

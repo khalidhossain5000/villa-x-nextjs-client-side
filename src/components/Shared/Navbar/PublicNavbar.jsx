@@ -14,6 +14,7 @@ import { useAuth } from "@/Hooks/useAuth";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useRole from "@/Hooks/useRole";
+import { PulsatingButton } from "@/components/ui/pulsating-button";
 
 const PublicNavbar = () => {
   const { userInfo } = useAuth();
@@ -118,7 +119,9 @@ const PublicNavbar = () => {
                 className="cursor-pointer text-xl font-bold text-slate-100 animate-skeletonLoader"
               >
                 Host Your Home
+
               </button>
+              <PulsatingButton   className='bg-black text-white'>Join Affiliate Program</PulsatingButton>
               {/* host req modal here below */}
 
               <HostModal

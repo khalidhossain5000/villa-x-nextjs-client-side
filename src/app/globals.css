@@ -30,6 +30,15 @@ body {
   --accent-hover: var(--accent-hover);
   --color-text-secondary-dark: var(--text-secondary-dark);
   --color-accent-hover: var(--accent-hover);
+  --animate-pulse: pulse var(--duration) ease-out infinite;
+  @keyframes pulse {
+  0%, 100% {
+    boxShadow: 0 0 0 0 var(--pulse-color);
+    }
+  50% {
+    boxShadow: 0 0 0 8px var(--pulse-color);
+    }
+  }
 }
 /* #fcfff2 */
 :root {
@@ -67,3 +76,11 @@ body {
   --accent: #ffa500;
   */
 
+  @layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
