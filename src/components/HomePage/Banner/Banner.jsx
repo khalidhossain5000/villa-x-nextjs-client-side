@@ -7,34 +7,50 @@ import { FaLocationDot } from "react-icons/fa6";
 // Images
 import banneri from "../../../assets/Banner/i.jpg";
 import bannerii from "../../../assets/Banner/Main-rev-img-2.jpg";
-import banneriii from "../../../assets/Banner/location-11.jpg";
-import banneriv from "../../../assets/Banner/location-12.jpg";
+import banneriv from "../../../assets/Banner/new-optisdf.jpg";
+import banneriii from "../../../assets/Banner/ndj-willbengs.jpg";
 
 // Slide Data (image + content)
 const slides = [
   {
     image: banneri,
-    title: "Swiss Luxury Chalet",
+    // title: "Swiss Luxury Chalet",
     location: "Zermatt, Switzerland",
-    description: "Luxury mountain villa with breathtaking alpine views",
+    title: {
+      start: "Feel the",
+      middle: "fresh air & Scout",
+      end: "the outdoors with friends",
+    },
   },
   {
     image: bannerii,
-    title: "Oceanfront Paradise",
+    // title: "Oceanfront Paradise",
     location: "Maldives",
-    description: "Private beachfront villa with infinity pool",
+    title: {
+      start: "Enjoy",
+      middle: "camping & climbing",
+      end: "activities with our guides",
+    },
   },
   {
     image: banneriii,
-    title: "Modern City Escape",
+    // title: "Modern City Escape",
     location: "Dubai, UAE",
-    description: "Premium villa in the heart of the city skyline",
+    title: {
+      start: "Stunning",
+      middle: "accommodation",
+      end: "options around the globe",
+    },
   },
   {
     image: banneriv,
-    title: "Nature Retreat",
+    // title: "Nature Retreat",
     location: "Aspen, Colorado",
-    description: "Calm, cozy retreat surrounded by pine forests",
+    title: {
+      start: "Exquisite",
+      middle: "living crafted &",
+      end: "for modern lifestyles",
+    },
   },
 ];
 
@@ -74,7 +90,7 @@ const Banner = () => {
       <div className="absolute inset-0 bg-linear-to-l from-black/70 via-black/40 to-transparent" />
 
       {/* Animated Content  */}
-      <AnimatePresence mode="wait" >
+      <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
           className="relative z-10 flex h-full items-center"
@@ -92,11 +108,15 @@ const Banner = () => {
               transition={{ duration: 1, ease: "easeOut" }}
               className="text-5xl md:text-7xl font-bold text-white font-poppins text-left"
             >
-              {/* {currentSlide.title} */}
-              {currentSlide.description}
-            </motion.h1>
+              <h2 className="font-raleway py-4">
+                {currentSlide.title.start}{" "}
+                <span className="font-playfair">
+                  {currentSlide.title.middle}
+                </span>
+              </h2>
 
-         
+              <h2 className="font-playfair">{currentSlide.title.end}</h2>
+            </motion.h1>
           </div>
         </motion.div>
       </AnimatePresence>
@@ -112,7 +132,7 @@ const Banner = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <p className="flex items-center gap-6 uppercase tracking-wide text-white font-playfair text-2xl justify-center">
-           <FaLocationDot /> {currentSlide.location}
+            <FaLocationDot /> {currentSlide.location}
           </p>
           <h3 className="mt-2 text-xl font-semibold text-gray-900">
             {/* {currentSlide.description} */}
