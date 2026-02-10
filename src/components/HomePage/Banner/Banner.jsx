@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaLocationDot } from "react-icons/fa6";
 
 // Images
 import banneri from "../../../assets/Banner/i.jpg";
@@ -104,17 +105,17 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="absolute bottom-10 left-10 z-20 max-w-sm bg-white/90 backdrop-blur-md p-6 shadow-xl"
+          className="absolute bottom-0 left-0 z-20 w-xl bg-[#365140] py-16 px-9 shadow-xl"
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 60, opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <p className="text-sm uppercase tracking-wide text-gray-500">
-            {currentSlide.location}
+          <p className="flex items-center gap-6 uppercase tracking-wide text-white font-playfair text-2xl justify-center">
+           <FaLocationDot /> {currentSlide.location}
           </p>
           <h3 className="mt-2 text-xl font-semibold text-gray-900">
-            {currentSlide.description}
+            {/* {currentSlide.description} */}
           </h3>
         </motion.div>
       </AnimatePresence>
