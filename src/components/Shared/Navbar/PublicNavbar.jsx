@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import logo from "../../../assets/logo/logo.png";
+import React, { useEffect, useState } from "react";
+// import logo from "../../../assets/logo/logo.png";
+import logo from "../../../assets/logo/dsgsdg.png";
 import darklogo from "../../../assets/logo/dark-logo.png";
 import Link from "next/link";
 import Image from "next/image";
@@ -16,8 +17,9 @@ import useRole from "@/Hooks/useRole";
 
 const PublicNavbar = () => {
   const { userInfo } = useAuth();
-  const {role}=useRole()
+  const { role } = useRole();
   const axiosSecure = useAxiosSecure();
+  const [sticky, setSticky] = useState(false);
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/all-rooms", label: "All Rooms" },
@@ -26,8 +28,8 @@ const PublicNavbar = () => {
     { href: `/${role}/dashboard`, label: "Dashboard" },
     { href: "/contact", label: "Contact Us" },
   ];
-  
-console.log(userInfo,'this is userInfo',role)
+
+  // console.log(userInfo,'this is userInfo',role)
   // host req modal
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,22 +39,51 @@ console.log(userInfo,'this is userInfo',role)
       .patch(`/api/auth/update-user/${userInfo?.email}`, {
         status: "requested",
       })
-      .then((res) =>{
-        toast.success("Host request sent wait for admin approval")
-         console.log(res.data, "this is res")
+      .then((res) => {
+        toast.success("Host request sent wait for admin approval");
+        console.log(res.data, "this is res");
       })
       .catch((err) => {
-        console.log(err, "this eerrrr")
-        if(err.status ===400){
-          toast.error("You have already sent a host request,wait for admin approval")
+        console.log(err, "this eerrrr");
+        if (err.status === 400) {
+          toast.error(
+            "You have already sent a host request,wait for admin approval",
+          );
         }
       });
 
- 
     setIsOpen(false);
   };
+
+  
+  
+
+
+    useEffect(() => {
+    // handler: set sticky if scrolled more than 50px
+    const onScroll = () => {
+      setSticky(window.scrollY > 50);
+    };
+
+    // use passive listener for better scroll performance
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    // run once to set initial state (if page opened not at top)
+    onScroll();
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  // sticky code ends
+  console.log(sticky);
   return (
-    <header className="bg-background dark:bg-background">
+    // <header className="bg-transparent absolute top-0 left-0 w-full z-50">
+    <header
+      className={`py-2 transition-all duration-300 ${
+        sticky
+          ? "sticky top-0 left-0 w-full bg-black  shadow-md backdrop-blur z-99999"
+          : "absolute top-0 left-0 w-full bg-transparent py-3 lg:py-4 xl:py-5 z-50"
+      }`}
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="logo">
           <Link href={"/"}>
@@ -78,7 +109,7 @@ console.log(userInfo,'this is userInfo',role)
               key={link.label}
               href={link.href}
               prefetch={true}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-white hover:text-white transition-colors text-xl capitalize"
             >
               {link.label}
             </Link>
@@ -90,7 +121,7 @@ console.log(userInfo,'this is userInfo',role)
             <div>
               <button
                 onClick={() => setIsOpen(true)}
-                className="cursor-pointer text-xl font-bold text-slate-600 animate-skeletonLoader"
+                className="cursor-pointer text-xl font-bold text-slate-100 animate-skeletonLoader"
               >
                 Host Your Home
               </button>

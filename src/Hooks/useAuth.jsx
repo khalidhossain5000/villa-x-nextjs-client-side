@@ -49,6 +49,6 @@ export const useAuth = () => {
     photoUrl: user?.photoURL || null,
   };
  
-  console.log(userInfo,'from use auth',loading)
+  // console.log(userInfo,'from use auth',loading)
   return { userInfo, loading, logOutHandler };
 };

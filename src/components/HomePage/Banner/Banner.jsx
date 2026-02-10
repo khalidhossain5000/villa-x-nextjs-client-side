@@ -52,7 +52,7 @@ const Banner = () => {
   const currentSlide = slides[currentIndex];
 
   return (
-    <div className="relative h-[calc(100vh-64px)] w-full overflow-hidden">
+    <div className="relative h-[100vh] w-full overflow-hidden">
       {/*  Bg images */}
       {slides.map((slide, index) => (
         <motion.img
