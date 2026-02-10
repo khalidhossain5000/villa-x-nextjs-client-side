@@ -30,18 +30,19 @@ body {
 /* #fcfff2 */
 :root {
   --background: #f8fafc;
-  --primary: #1a5f0e;
+  --primary: #0300ff;
   --text-primary: #1f2937;
   --text-secondary: #f9f9f9;
-  --accent: #71f9a3;
-  --accent-hover: #0d9276;
+  --accent: #facc15;
+  --accent-hover: #eab308;
 }
 
 .dark {
   --background: #0a1929;
-  --primary: #4ade80;
+  --primary: #0fe60e;
   --text-dark-primary: #f1f5f9;
   --text-secondary-dark: #cbd5e1;
   --accent: #71f9a3;
   --accent-hover: #0d9276;
 }
+
