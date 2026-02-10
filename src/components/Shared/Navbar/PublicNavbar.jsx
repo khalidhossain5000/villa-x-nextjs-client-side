@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 // import logo from "../../../assets/logo/logo.png";
-import logo from "../../../assets/logo/dsgsdg.png";
-import darklogo from "../../../assets/logo/dark-logo.png";
+import logo from "../../../assets/logo/logohdsg.png";
+
 import Link from "next/link";
 import Image from "next/image";
 
@@ -90,17 +90,17 @@ const PublicNavbar = () => {
             <Image
               src={logo}
               alt="Logo"
-              width={150}
+              width={200}
               height={50}
-              className="dark:hidden"
+              className=""
             />
-            <Image
+            {/* <Image
               src={darklogo}
               alt="Logo"
               width={150}
               height={50}
               className="hidden dark:block"
-            />
+            /> */}
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">

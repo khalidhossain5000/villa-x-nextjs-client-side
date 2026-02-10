@@ -16,7 +16,9 @@ body {
 }
 @theme inline {
   --color-background: var(--background);
+  --color-dark-bg-secondary:var(--background-secondary-dark);
   --color-primary: var(--primary);
+  --color-primary-hover:var(--primary-hover);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --font-urbanist: var(--font-urbanist);
@@ -33,6 +35,7 @@ body {
 :root {
   --background: #f8fafc;
   --primary: #0300ff;
+    --primary-hover: #0200cc;
   --text-primary: #1f2937;
   --text-secondary: #f9f9f9;
   --accent: #facc15;
@@ -41,10 +44,26 @@ body {
 
 .dark {
   --background: #0a1929;
+    --background-secondary-dark: #1e293b;
   --primary: #0fe60e;
+  --primary-hover: #0bc50b;
   --text-dark-primary: #f1f5f9;
   --text-secondary-dark: #cbd5e1;
   --accent: #71f9a3;
   --accent-hover: #0d9276;
 }
+
+/* light theme text color backup check combo */
+  /* --text-primary: #0f172a;
+  --text-secondary: #64748b; 
+  --text-tertiary: #94a3b8; 
+  --accent: #ff6b6b;
+    --accent-hover: #ff5252;
+
+    for dark theme
+      --text-dark-primary: #f1f5f9;
+  --text-secondary-dark: #cbd5e1;
+  --text-tertiary-dark: #94a3b8;
+  --accent: #ffa500;
+  */
 
