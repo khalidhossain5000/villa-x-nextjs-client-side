@@ -122,7 +122,7 @@ const PublicNavbar = () => {
 
               </button>
               <PulsatingButton   className='bg-black text-white'>Join Affiliate Program TOday now</PulsatingButton>
-              {/* host req modal here below */}
+              {/* host req modal here below  start here*/}
 
               <HostModal
                 isOpen={isOpen}
