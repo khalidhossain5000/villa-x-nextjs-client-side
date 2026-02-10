@@ -21,6 +21,8 @@ body {
   --color-text-secondary: var(--text-secondary);
   --font-urbanist: var(--font-urbanist);
   --font-poppins: var(--font-poppins);
+  --font-raleway:var(--font-raleway);
+ --font-playfair : var(--font-playdisplay);
   --color-accent: var(--accent);
   --color-text-dark-primary: var(--text-dark-primary);
   --accent-hover: var(--accent-hover);

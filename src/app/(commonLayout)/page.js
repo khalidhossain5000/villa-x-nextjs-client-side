@@ -10,6 +10,11 @@ const HomePage = () => {
       <Suspense fallback={"loadings....."}>
         <Rooms />
       </Suspense>
+
+
+      <h2 className="text-4xl text-black py-12 font-bold font-playfair">THis is play fair disply & camping & climbing  
+</h2>
+      <h2 className="text-4xl text-green-400 py-12 font-bold font-raleway">THis is raleway fotn font over here fair disply &&&&&</h2>
     </div>
   );
 };

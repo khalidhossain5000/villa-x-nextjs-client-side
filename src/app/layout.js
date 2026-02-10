@@ -15,8 +15,8 @@ const raleway = Raleway({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
-const playFairDisplay = Playfair_Display({
-  variable: "--font-playfairdisplay",
+const playdisplay = Playfair_Display({
+  variable: "--font-playdisplay",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${urbanist.variable} ${poppins.variable} antialiased`}
+        className={`${urbanist.variable} ${poppins.variable} ${raleway.variable} ${playdisplay.variable} antialiased`}
       >
         <TanstackProvider>
         <ThemeProvider
