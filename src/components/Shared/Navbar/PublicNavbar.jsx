@@ -121,7 +121,7 @@ const PublicNavbar = () => {
                 Host Your Home
 
               </button>
-              <PulsatingButton   className='bg-black text-white'>Join Affiliate Program</PulsatingButton>
+              <PulsatingButton   className='bg-black text-white'>Join Affiliate Program TOday now</PulsatingButton>
               {/* host req modal here below */}
 
               <HostModal
