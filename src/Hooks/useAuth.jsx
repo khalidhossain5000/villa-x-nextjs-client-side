@@ -33,7 +33,7 @@ export const useAuth = () => {
       dispatch(setCurrentUser(serializableUserInfo));
       }
       else {
-      dispatch(setCurrentUser(null)); // 🔥 MUST
+      dispatch(setCurrentUser(null)); 
     }
       // dispatch(setCurrentUser(currentUser));
       
