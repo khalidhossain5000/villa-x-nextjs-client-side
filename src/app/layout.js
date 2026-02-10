@@ -1,4 +1,4 @@
-import { Urbanist, Poppins } from "next/font/google";
+import { Urbanist, Poppins,Raleway,Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import 'react-date-range/dist/styles.css'
@@ -7,6 +7,16 @@ import TanstackProvider from "@/providers/TanstackProvider";
 // Urbanist font
 const urbanist = Urbanist({
   variable: "--font-urbanist",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+const raleway = Raleway({
+  variable: "--font-raleway",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+const playFairDisplay = Playfair_Display({
+  variable: "--font-playfairdisplay",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });

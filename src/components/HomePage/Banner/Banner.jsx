@@ -82,7 +82,7 @@ const Banner = () => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="max-w-4xl  ml-auto px-6 lg:px-12">
+          <div className="max-w-6xl  ml-auto px-6 lg:pr-36">
             {/* Title */}
             <motion.h1
               initial={{ x: 120, opacity: 0 }}
