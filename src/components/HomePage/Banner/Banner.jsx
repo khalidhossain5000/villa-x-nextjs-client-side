@@ -9,13 +9,14 @@ import banneri from "../../../assets/Banner/i.jpg";
 import bannerii from "../../../assets/Banner/Main-rev-img-2.jpg";
 import banneriv from "../../../assets/Banner/new-optisdf.jpg";
 import banneriii from "../../../assets/Banner/ndj-willbengs.jpg";
+import {  FaGlobeAsia } from "react-icons/fa";
 
 // Slide Data (image + content)
 const slides = [
   {
     image: banneri,
-    
-        location: {
+
+    location: {
       name: "Zermatt, Valais, Switzerland",
       coordinates: "46°01'N 7°45'E",
     },
@@ -27,8 +28,10 @@ const slides = [
   },
   {
     image: bannerii,
-    // title: "Oceanfront Paradise",
-    location: "Maldives",
+    location: {
+      name: "Malé, Kaafu Atoll, Maldives",
+      coordinates: "4°10'N 73°30'E",
+    },
     title: {
       start: "Enjoy",
       middle: "camping & climbing",
@@ -37,8 +40,11 @@ const slides = [
   },
   {
     image: banneriii,
-    // title: "Modern City Escape",
-    location: "Dubai, UAE",
+
+    location: {
+      name: "Downtown Dubai, UAE",
+      coordinates: "25°12'N 55°16'E",
+    },
     title: {
       start: "Stunning",
       middle: "accommodation",
@@ -47,8 +53,10 @@ const slides = [
   },
   {
     image: banneriv,
-    // title: "Nature Retreat",
-    location: "Aspen, Colorado",
+    location: {
+      name: "Aspen, Colorado, USA",
+      coordinates: "39°11'N 106°49'W",
+    },
     title: {
       start: "Exquisite",
       middle: "living crafted &",
@@ -126,20 +134,19 @@ const Banner = () => {
 
       {/* Bottom Left Info Card*/}
       <AnimatePresence mode="wait">
-        <motion.div
+        <motion.div //bg-[#365140] -->old card bg this was
           key={currentIndex}
-          className="absolute bottom-0 left-0 z-20 w-xl bg-[#365140] py-16 px-9 shadow-xl"
+          className="absolute bottom-0 left-0 z-20 w-xl bg-primary py-12 px-9 shadow-xl"
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 60, opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <p className="flex items-center gap-6 uppercase tracking-wide text-white font-playfair text-2xl justify-center">
-            <FaLocationDot /> {currentSlide.location}
+          <p className="flex items-center gap-6 uppercase tracking-wide text-white font-playfair text-2xl pl-12 ">
+            <FaLocationDot /> {currentSlide.location.name}
           </p>
-          <h3 className="mt-2 text-xl font-semibold text-gray-900">
-            {/* {currentSlide.description} */}
-          </h3>
+          <h2 className="uppercase tracking-wide text-white font-playfair text-xl justify-start pt-4 pl-12 flex gap-3 items-center"><FaGlobeAsia/>Coordinates: {currentSlide.location.coordinates}</h2>
+         
         </motion.div>
       </AnimatePresence>
     </div>
