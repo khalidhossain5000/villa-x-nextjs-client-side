@@ -15,6 +15,7 @@ import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useRole from "@/Hooks/useRole";
 import ShinyText from "@/components/lightswind/shiny-text";
+import HostYourHomeInfo from "./HostYourHomeInfo";
 
 const PublicNavbar = () => {
   const { userInfo } = useAuth();
@@ -71,7 +72,7 @@ const PublicNavbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // sticky code ends
-  console.log(sticky);
+  console.log(role,'this is role');
   return (
     
     <header
@@ -101,20 +102,10 @@ const PublicNavbar = () => {
         </nav>
         <div className="auth-btns hidden md:flex items-center space-x-5">
           {/* host apply button div container */}
-          {userInfo && (
+          {role==='host' && (
             <div>
-              <div onClick={() => setIsOpen(true)}>
-                <ShinyText
-                 
-                  baseColor="#ffffff"
-                  shineColor="#71f9a3"
-                  weight="bold"
-                  className="hover:scale-125 border border-slate-300 p-2 rounded-full transition duration-300 cursor-pointer text-sm xl:text-xl xl:text-nowrap"
-                  pauseOnHover={true}
-                >
-                  Host Your Home
-                </ShinyText>
-              </div>
+              {/* host req modal will open by clicking host your home */}
+              <HostYourHomeInfo setIsOpen={setIsOpen}/>
 
               {/* host req modal here below  start here*/}
 
@@ -137,6 +128,11 @@ const PublicNavbar = () => {
         
         <MobileMenu
           navItems={navItems}
+          role={role}
+          setIsOpen={setIsOpen}
+                          isOpen={isOpen}
+                closeModal={() => setIsOpen(false)}
+                modalHandler={modalHandler}
           //   hasAccessToken={!!accessToken}
           //   userInfo={userInfo}
           //   dashboardRoute={dashboardRoute}
