@@ -14,8 +14,11 @@ import banneriii from "../../../assets/Banner/ndj-willbengs.jpg";
 const slides = [
   {
     image: banneri,
-    // title: "Swiss Luxury Chalet",
-    location: "Zermatt, Switzerland",
+    
+        location: {
+      name: "Zermatt, Valais, Switzerland",
+      coordinates: "46°01'N 7°45'E",
+    },
     title: {
       start: "Feel the",
       middle: "fresh air & Scout",

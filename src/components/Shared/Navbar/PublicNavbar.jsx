@@ -14,6 +14,7 @@ import { useAuth } from "@/Hooks/useAuth";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import useRole from "@/Hooks/useRole";
+import ShinyText from "@/components/lightswind/shiny-text";
 
 const PublicNavbar = () => {
   const { userInfo } = useAuth();
@@ -55,11 +56,7 @@ const PublicNavbar = () => {
     setIsOpen(false);
   };
 
-  
-  
-
-
-    useEffect(() => {
+  useEffect(() => {
     // handler: set sticky if scrolled more than 50px
     const onScroll = () => {
       setSticky(window.scrollY > 50);
@@ -87,14 +84,7 @@ const PublicNavbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="logo">
           <Link href={"/"}>
-            <Image
-              src={logo}
-              alt="Logo"
-              width={200}
-              height={50}
-              className=""
-            />
-          
+            <Image src={logo} alt="Logo" width={200} height={50} className="" />
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
@@ -113,14 +103,19 @@ const PublicNavbar = () => {
           {/* host apply button div container */}
           {userInfo && (
             <div>
-              <button
-                onClick={() => setIsOpen(true)}
-                className="cursor-pointer text-xl font-bold text-slate-100 animate-skeletonLoader"
-              >
-                Host Your Home
+              <div onClick={() => setIsOpen(true)}>
+                <ShinyText
+                  size="2xl"
+                  baseColor="#ffffff"
+                  shineColor="#71f9a3"
+                  weight="bold"
+                  className="hover:scale-125 border border-slate-300 p-2 rounded-full transition duration-300 cursor-pointer"
+                  pauseOnHover={true}
+                >
+                  Host Your Home
+                </ShinyText>
+              </div>
 
-              </button>
-           
               {/* host req modal here below  start here*/}
 
               <HostModal
