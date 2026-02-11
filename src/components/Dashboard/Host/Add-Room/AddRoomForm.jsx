@@ -47,7 +47,13 @@ const [roomImages, setRoomImages] = useState([]);
     
     setUploadButtonText(image.name);
   };
-
+// Room images (new)
+const handleRoomImagesChange = (files) => {
+  const selectedFiles = Array.from(files);
+  setRoomImages(selectedFiles);
+  const previewUrls = selectedFiles.map(file => URL.createObjectURL(file));
+  setPreviewImages(previewUrls);
+};
   //HANDLE FORM SUBMIT STARTS HERE
   const onSubmit = async (data, e) => {
     const image = e.target.image.files[0];
