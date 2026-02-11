@@ -77,7 +77,7 @@ const PublicNavbar = () => {
     <header
       className={`py-2 transition-all duration-300 ${
         sticky
-          ? "sticky top-0 left-0 w-full bg-transparent backdrop-blur-3xl  shadow-md z-99999"
+          ? "sticky top-0 left-0 w-full bg-transparent backdrop-blur-3xl  shadow-md z-99999 py-3"
           : "absolute top-0 left-0 w-full bg-transparent py-3 lg:py-4 xl:py-5 z-50"
       }`}
     >
