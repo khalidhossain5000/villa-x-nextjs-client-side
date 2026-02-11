@@ -36,6 +36,7 @@ const [roomImages, setRoomImages] = useState([]);
     key: "selection",
   });
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
+  const [roomImageUploadText, setroomImageUploadText] = useState("Upload Image");
   // Handle date change from react-date-range calender
   const handleDates = (ranges) => {
     console.log(ranges);
@@ -57,7 +58,7 @@ const handleRoomImagesChange = (files) => {
   setPreviewImages(previewUrls);
 
   // Update button text
-  setUploadButtonText(`${selectedFiles.length} images selected`);
+  setroomImageUploadText(`${selectedFiles.length} images selected`);
   console.log(files,selectedFiles,previewUrls,'previewUrls')
 };
 
@@ -296,7 +297,7 @@ const handleRoomImagesChange = (files) => {
                       hidden
                     />
                     <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
-                      {uploadButtonText}
+                      {roomImageUploadText}
                     </div>
 
                     {/* error message */}
