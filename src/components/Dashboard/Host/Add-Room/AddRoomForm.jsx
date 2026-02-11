@@ -43,7 +43,7 @@ const [roomImages, setRoomImages] = useState([]);
   };
   //image upload change
   // Handle Image button text
-  const handleImageChange = (image) => {
+  const handleImageChange = (image,files) => {
     setUploadButtonText(image.name);
   };
 
