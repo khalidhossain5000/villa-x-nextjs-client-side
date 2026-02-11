@@ -1,9 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { categories } from "@/components/Shared/HomePage/Categories/CategoriesData";
 import { useAuth } from "@/Hooks/useAuth";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
-import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
+import { imageUpload, uploadRoomImages } from "@/lib/ImageUpload/ImageUploaad";
 import { roomFrontSchema } from "@/ZodSchema/room.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
@@ -67,6 +68,10 @@ const handleRoomImagesChange = (files) => {
     const image = e.target.image.files[0];
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
+
+  // Room multiple images upload
+  const roomImageUrls = await uploadRoomImages();
+console.log(roomImageUrls,'this is imggb dup multiple room image')
     const to = dates.endDate;
     const from = dates.startDate;
     const hostInfo = {
