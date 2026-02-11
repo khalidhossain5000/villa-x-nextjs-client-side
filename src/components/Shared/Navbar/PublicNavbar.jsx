@@ -16,12 +16,14 @@ import toast from "react-hot-toast";
 import useRole from "@/Hooks/useRole";
 import ShinyText from "@/components/lightswind/shiny-text";
 import HostYourHomeInfo from "./HostYourHomeInfo";
+import { usePathname } from "next/navigation";
 
 const PublicNavbar = () => {
   const { userInfo } = useAuth();
   const { role } = useRole();
   const axiosSecure = useAxiosSecure();
   const [sticky, setSticky] = useState(false);
+  const pathname=usePathname()
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/all-rooms", label: "All Rooms" },
@@ -72,17 +74,28 @@ const PublicNavbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // sticky code ends
-  console.log(role,'this is role');
+  console.log(pathname,'this is pathname');
   return (
     
+    // <header
+    //   className={`py-2 transition-all duration-300 ${
+    //     sticky
+    //       ? `sticky top-0 left-0 w-full ${pathname==='/' ? 'bg-transparent' : 'bg-blue-200'}  backdrop-blur-3xl  shadow-md z-99999 py-3`
+    //       : `absolute top-0 left-0 w-full  ${pathname==='/' ? 'bg-transparent' : 'bg-linear from-[#0300ff] to-red-600'} py-3 lg:py-4 xl:py-5 z-50`
+    //   }`}
+    // >
+
     <header
-      className={`py-2 transition-all duration-300 ${
-        sticky
-          ? "sticky top-0 left-0 w-full bg-transparent backdrop-blur-3xl  shadow-md z-99999 py-3"
-          : "absolute top-0 left-0 w-full bg-transparent py-3 lg:py-4 xl:py-5 z-50"
-      }`}
-    >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+  className={`py-3 transition-all duration-300 ${
+    pathname === "/"
+      ? sticky
+        ? "sticky top-0 left-0 w-full bg-transparent backdrop-blur-3xl shadow-md z-50"
+        : "absolute top-0 left-0 w-full bg-transparent z-50"
+      : "sticky top-0 left-0 w-full bg-linear-to-r from-primary via-[#0200cc] dark:via-[#0bc50b]  to-[#027016] shadow-md z-50"
+  }`}
+>
+
+      <div className="container  mx-auto flex h-16 items-center justify-between px-4">
         <div className="logo">
           <Link href={"/"}>
             <Image src={logo} alt="Logo" width={200} height={50}  className="w-38 lg:w-full" />
