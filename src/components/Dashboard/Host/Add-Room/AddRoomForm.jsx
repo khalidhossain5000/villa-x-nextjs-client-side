@@ -44,8 +44,8 @@ const [roomImages, setRoomImages] = useState([]);
     setDates(ranges.selection);
   };
   //image upload change
+  const handleImageChange = (image) => {
   // Handle Image button text
-  const handleImageChange = (image,) => {
     
     setUploadButtonText(image.name);
   };
@@ -86,10 +86,11 @@ const handleRemoveImage = (index) => {
 
   //HANDLE FORM SUBMIT STARTS HERE 
   const onSubmit = async (data, e) => {
+    console.log(e.target.image.files[0],'this is image')
     const image = e.target.image.files[0]; //err here
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
-console.log(image,'this is image',image_uri)
+
   // Room multiple images upload
   const roomImageUrls = await uploadRoomImages();
 console.log(roomImageUrls,'this is imggb dup multiple room image')
