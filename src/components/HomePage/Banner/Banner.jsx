@@ -101,7 +101,7 @@ const Banner = () => {
         >
           <div className="max-w-6xl  ml-auto px-6 lg:pr-36">
             {/* Title */}
-            <motion.h1
+            <motion.div
               initial={{ x: 120, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -120, opacity: 0 }}
@@ -116,7 +116,7 @@ const Banner = () => {
               </h2>
 
               <h2 className="font-playfair">{currentSlide.title.end}</h2>
-            </motion.h1>
+            </motion.div>
           </div>
         </motion.div>
       </AnimatePresence>
