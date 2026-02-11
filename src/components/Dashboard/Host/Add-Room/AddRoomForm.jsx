@@ -89,7 +89,7 @@ const handleRemoveImage = (index) => {
     const image = e.target.image.files[0]; //err here
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
-
+console.log(image,'this is image',image_uri)
   // Room multiple images upload
   const roomImageUrls = await uploadRoomImages();
 console.log(roomImageUrls,'this is imggb dup multiple room image')
