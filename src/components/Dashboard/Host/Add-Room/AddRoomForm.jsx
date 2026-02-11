@@ -50,10 +50,16 @@ const [roomImages, setRoomImages] = useState([]);
 // Room images (new)
 const handleRoomImagesChange = (files) => {
   const selectedFiles = Array.from(files);
-  setRoomImages(selectedFiles);
+  setRoomImages(selectedFiles); // Save original files for upload
+
+  // Generate preview urls
   const previewUrls = selectedFiles.map(file => URL.createObjectURL(file));
   setPreviewImages(previewUrls);
+
+  // Update button text
+  setUploadButtonText(`${selectedFiles.length} images selected`);
 };
+
   //HANDLE FORM SUBMIT STARTS HERE
   const onSubmit = async (data, e) => {
     const image = e.target.image.files[0];
@@ -74,11 +80,11 @@ const handleRoomImagesChange = (files) => {
       hostInfo,
     };
 
-    console.log(
-      hostInfo,
-      "thi si fhost final room data ready to send",
-      roomData,
-    );
+    // console.log(
+    //   hostInfo,
+    //   "thi si fhost final room data ready to send",
+    //   roomData,
+    // );
 
     axiosSecure
       .post("/api/rooms", roomData)
