@@ -104,13 +104,13 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="relative z-10 flex h-full pt-36 md:pt-44 lg:pt-0 items-start lg:items-center"
+          className="relative z-10 flex h-full pt-36 md:pt-44 lg:pt-44 xl:pt-0 items-start xl:items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="max-w-7xl md:max-w-6xl mx-auto lg:mx-0 lg:ml-auto px-4 lg:px-6 lg:pr-36">
+          <div className="max-w-7xl md:max-w-6xl mx-auto lg:mx-0 lg:ml-auto px-4 lg:px-6  xl:pr-36">
             {/* Title */}
             <motion.div
               initial={{ x: 120, opacity: 0 }}

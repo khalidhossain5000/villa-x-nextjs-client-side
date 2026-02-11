@@ -77,7 +77,7 @@ const PublicNavbar = () => {
     <header
       className={`py-2 transition-all duration-300 ${
         sticky
-          ? "sticky top-0 left-0 w-full bg-black  shadow-md backdrop-blur z-99999"
+          ? "sticky top-0 left-0 w-full bg-transparent backdrop-blur-3xl  shadow-md z-99999"
           : "absolute top-0 left-0 w-full bg-transparent py-3 lg:py-4 xl:py-5 z-50"
       }`}
     >
@@ -87,7 +87,7 @@ const PublicNavbar = () => {
             <Image src={logo} alt="Logo" width={200} height={50}  className="w-38 lg:w-full" />
           </Link>
         </div>
-        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden xl:flex items-center space-x-6 text-sm font-medium">
           {navItems.map((link) => (
             <Link
               key={link.label}
@@ -109,7 +109,7 @@ const PublicNavbar = () => {
                   baseColor="#ffffff"
                   shineColor="#71f9a3"
                   weight="bold"
-                  className="hover:scale-125 border border-slate-300 p-2 rounded-full transition duration-300 cursor-pointer text-sm xl:text-2xl"
+                  className="hover:scale-125 border border-slate-300 p-2 rounded-full transition duration-300 cursor-pointer text-sm xl:text-xl xl:text-nowrap"
                   pauseOnHover={true}
                 >
                   Host Your Home
@@ -132,6 +132,9 @@ const PublicNavbar = () => {
 
           {/* Mobile Menu */}
         </div>
+
+        {/* mobile menu responsive one here */}
+        
         <MobileMenu
           navItems={navItems}
           //   hasAccessToken={!!accessToken}
