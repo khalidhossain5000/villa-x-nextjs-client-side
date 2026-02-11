@@ -84,7 +84,7 @@ const handleRemoveImage = (index) => {
 };
 
 
-  //HANDLE FORM SUBMIT STARTS HERE over here
+  //HANDLE FORM SUBMIT STARTS HERE 
   const onSubmit = async (data, e) => {
     const image = e.target.image.files[0];
     const image_uri = await imageUpload(image);
