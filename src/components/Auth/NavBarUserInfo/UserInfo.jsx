@@ -8,6 +8,8 @@ import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
 import './logoutstyles.css'
+
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 const UserInfo = () => {
   const { userInfo, loading } = useAuth();
   const dispatch = useDispatch();
@@ -26,6 +28,13 @@ const UserInfo = () => {
             className="rounded-full border-2 border-primary w-12 h-12 p-1"
           />
 
+
+<Tooltip>
+  <TooltipTrigger>Hover</TooltipTrigger>
+  <TooltipContent>
+    <p>Add to library</p>
+  </TooltipContent>
+</Tooltip>
           <button className="Btn" onClick={signOutHandler}>
             <div className="sign">
               <svg viewBox="0 0 512 512">
