@@ -299,7 +299,17 @@ const handleRoomImagesChange = (files) => {
                     <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
                       {roomImageUploadText}
                     </div>
-
+{/* Preview */}
+<div className="flex gap-2 mt-2 flex-wrap">
+  {previewImages.map((img, index) => (
+    <img
+      key={index}
+      src={img}
+      alt={`preview ${index}`}
+      className="w-20 h-20 object-cover rounded border"
+    />
+  ))}
+</div>
                     {/* error message */}
                     {errors && (
                       <p className="text-red-600">
