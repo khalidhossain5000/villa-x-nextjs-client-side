@@ -92,7 +92,6 @@ const handleRemoveImage = (index) => {
 
   // Room multiple images upload
   const roomImageUrls = await uploadRoomImages();
-console.log(roomImageUrls,'this is imggb dup multiple room image')
     const to = dates.endDate;
     const from = dates.startDate;
     const hostInfo = {
