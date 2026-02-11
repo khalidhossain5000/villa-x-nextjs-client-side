@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin 'lightswind/plugin';
 @import "tw-animate-css";
 
@@ -16,15 +16,15 @@ body {
 }
 @theme inline {
   --color-background: var(--background);
-  --color-dark-bg-secondary:var(--background-secondary-dark);
+  --color-dark-bg-secondary: var(--background-secondary-dark);
   --color-primary: var(--primary);
-  --color-primary-hover:var(--primary-hover);
+  --color-primary-hover: var(--primary-hover);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --font-urbanist: var(--font-urbanist);
   --font-poppins: var(--font-poppins);
-  --font-raleway:var(--font-raleway);
- --font-playfair : var(--font-playdisplay);
+  --font-raleway: var(--font-raleway);
+  --font-playfair: var(--font-playdisplay);
   --color-accent: var(--accent);
   --color-text-dark-primary: var(--text-dark-primary);
   --accent-hover: var(--accent-hover);
@@ -32,11 +32,12 @@ body {
   --color-accent-hover: var(--accent-hover);
   --animate-pulse: pulse var(--duration) ease-out infinite;
   @keyframes pulse {
-  0%, 100% {
-    boxShadow: 0 0 0 0 var(--pulse-color);
+    0%,
+    100% {
+      boxshadow: 0 0 0 0 var(--pulse-color);
     }
-  50% {
-    boxShadow: 0 0 0 8px var(--pulse-color);
+    50% {
+      boxshadow: 0 0 0 8px var(--pulse-color);
     }
   }
 }
@@ -44,7 +45,7 @@ body {
 :root {
   --background: #f8fafc;
   --primary: #0300ff;
-    --primary-hover: #0200cc;
+  --primary-hover: #0200cc;
   --text-primary: #1f2937;
   --text-secondary: #f9f9f9;
   --accent: #facc15;
@@ -53,7 +54,7 @@ body {
 
 .dark {
   --background: #0a1929;
-    --background-secondary-dark: #1e293b;
+  --background-secondary-dark: #1e293b;
   --primary: #0fe60e;
   --primary-hover: #0bc50b;
   --text-dark-primary: #f1f5f9;
@@ -63,7 +64,7 @@ body {
 }
 
 /* light theme text color backup check combo */
-  /* --text-primary: #0f172a;
+/* --text-primary: #0f172a;
   --text-secondary: #64748b; 
   --text-tertiary: #94a3b8; 
   --accent: #ff6b6b;
@@ -76,7 +77,7 @@ body {
   --accent: #ffa500;
   */
 
-  @layer base {
+@layer base {
   * {
     @apply border-border outline-ring/50;
   }

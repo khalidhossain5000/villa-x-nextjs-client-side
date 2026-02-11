@@ -4,8 +4,12 @@ import MenuItem from "../Sidebar/MenuItem";
 const HostMenu = () => {
   return (
     <>
-      <MenuItem icon={BsFillHouseAddFill} label="Add Room" address="host/dashboard/add-room" />
-      <MenuItem icon={MdHomeWork} label="My Listings" address="my-listings" />
+      <MenuItem icon={BsFillHouseAddFill}
+       label="Add Room" 
+       address="/host/dashboard/add-room" />
+      <MenuItem icon={MdHomeWork} 
+      label="My Listings" 
+      address="/host/dashboard/my-listing" />
       <MenuItem
         icon={MdOutlineManageHistory}
         label="Manage Bookings"

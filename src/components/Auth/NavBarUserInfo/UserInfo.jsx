@@ -7,9 +7,13 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useDispatch } from "react-redux";
-import './logoutstyles.css'
+import "./logoutstyles.css";
 
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 const UserInfo = () => {
   const { userInfo, loading } = useAuth();
   const dispatch = useDispatch();
@@ -22,19 +26,19 @@ const UserInfo = () => {
     <div>
       {userInfo?.photoUrl ? (
         <div className="flex items-center gap-4">
-          <img
-            src={userInfo?.photoUrl}
-            alt="user photo"
-            className="rounded-full border-2 border-primary w-12 h-12 p-1"
-          />
+          <Tooltip>
+            <TooltipTrigger>
+              <img
+                src={userInfo?.photoUrl}
+                alt="user photo"
+                className="rounded-full border-2 border-primary w-12 h-12 p-1 cursor-pointer"
+              />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{userInfo?.email}</p>
+            </TooltipContent>
+          </Tooltip>
 
-
-<Tooltip>
-  <TooltipTrigger>Hover</TooltipTrigger>
-  <TooltipContent>
-    <p>Add to library</p>
-  </TooltipContent>
-</Tooltip>
           <button className="Btn" onClick={signOutHandler}>
             <div className="sign">
               <svg viewBox="0 0 512 512">

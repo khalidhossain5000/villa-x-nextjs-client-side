@@ -98,7 +98,7 @@ const PublicNavbar = () => {
       <div className="container  mx-auto flex h-16 items-center justify-between px-4">
         <div className="logo">
           <Link href={"/"}>
-            <Image src={logo} alt="Logo" width={200} height={50}  className="w-38 lg:w-full" />
+            <Image src={logo} alt="Logo" width={140} height={50}  className="w-38 lg:w-9/12" />
           </Link>
         </div>
         <nav className="hidden xl:flex items-center space-x-6 text-sm font-medium">
