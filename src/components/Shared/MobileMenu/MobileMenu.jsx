@@ -11,7 +11,7 @@ import React from "react";
 
 const MobileMenu = ({ navItems, userInfo, dashboardRoute }) => {
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline">

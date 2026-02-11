@@ -104,20 +104,20 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="relative z-10 flex h-full pt-36 lg:pt-0 items-start lg:items-center"
+          className="relative z-10 flex h-full pt-36 md:pt-44 lg:pt-0 items-start lg:items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="max-w-6xl  ml-auto px-6 lg:pr-36">
+          <div className="max-w-7xl md:max-w-6xl mx-auto lg:mx-0 lg:ml-auto px-4 lg:px-6 lg:pr-36">
             {/* Title */}
             <motion.div
               initial={{ x: 120, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -120, opacity: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="text-3xl md:text-4xl text-center font-bold text-white font-poppins md:text-left"
+              className="text-4xl md:text-6xl text-center font-bold text-white lg:text-left"
             >
               <h2 className="font-raleway py-1 lg:py-4">
                 {currentSlide.title.start}{" "}

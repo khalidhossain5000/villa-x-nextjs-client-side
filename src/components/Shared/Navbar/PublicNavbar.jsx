@@ -87,7 +87,7 @@ const PublicNavbar = () => {
             <Image src={logo} alt="Logo" width={200} height={50}  className="w-38 lg:w-full" />
           </Link>
         </div>
-        <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+        <nav className="hidden lg:flex items-center space-x-6 text-sm font-medium">
           {navItems.map((link) => (
             <Link
               key={link.label}
@@ -105,11 +105,11 @@ const PublicNavbar = () => {
             <div>
               <div onClick={() => setIsOpen(true)}>
                 <ShinyText
-                  size="2xl"
+                 
                   baseColor="#ffffff"
                   shineColor="#71f9a3"
                   weight="bold"
-                  className="hover:scale-125 border border-slate-300 p-2 rounded-full transition duration-300 cursor-pointer"
+                  className="hover:scale-125 border border-slate-300 p-2 rounded-full transition duration-300 cursor-pointer text-sm xl:text-2xl"
                   pauseOnHover={true}
                 >
                   Host Your Home
