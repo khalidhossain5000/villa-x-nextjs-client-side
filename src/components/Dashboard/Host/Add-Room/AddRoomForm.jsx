@@ -58,6 +58,7 @@ const handleRoomImagesChange = (files) => {
 
   // Update button text
   setUploadButtonText(`${selectedFiles.length} images selected`);
+  console.log(files,selectedFiles,previewUrls,'previewUrls')
 };
 
   //HANDLE FORM SUBMIT STARTS HERE
