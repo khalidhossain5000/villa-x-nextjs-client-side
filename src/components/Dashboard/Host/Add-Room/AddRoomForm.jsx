@@ -63,6 +63,27 @@ const handleRoomImagesChange = (files) => {
   console.log(files,selectedFiles,previewUrls,'previewUrls')
 };
 
+
+const handleRemoveImage = (index) => {
+  // remove from preview
+  const newPreview = [...previewImages];
+  newPreview.splice(index, 1);
+  setPreviewImages(newPreview);
+
+  // remove from original files (roomImages)
+  const newRoomImages = [...roomImages];
+  newRoomImages.splice(index, 1);
+  setRoomImages(newRoomImages);
+
+  // update button text
+  setUploadButtonText(
+    newRoomImages.length > 0
+      ? `${newRoomImages.length} images selected`
+      : "Upload Room Images"
+  );
+};
+
+
   //HANDLE FORM SUBMIT STARTS HERE
   const onSubmit = async (data, e) => {
     const image = e.target.image.files[0];
