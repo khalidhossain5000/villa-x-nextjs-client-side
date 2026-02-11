@@ -73,7 +73,7 @@ const PublicNavbar = () => {
   // sticky code ends
   console.log(sticky);
   return (
-    // <header className="bg-transparent absolute top-0 left-0 w-full z-50">
+    
     <header
       className={`py-2 transition-all duration-300 ${
         sticky
@@ -84,7 +84,7 @@ const PublicNavbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="logo">
           <Link href={"/"}>
-            <Image src={logo} alt="Logo" width={200} height={50} className="" />
+            <Image src={logo} alt="Logo" width={200} height={50}  className="w-38 lg:w-full" />
           </Link>
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">

@@ -104,7 +104,7 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="relative z-10 flex h-full items-center"
+          className="relative z-10 flex h-full pt-36 lg:pt-0 items-start lg:items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -117,9 +117,9 @@ const Banner = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -120, opacity: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="text-5xl md:text-7xl font-bold text-white font-poppins text-left"
+              className="text-3xl md:text-4xl text-center font-bold text-white font-poppins md:text-left"
             >
-              <h2 className="font-raleway py-4">
+              <h2 className="font-raleway py-1 lg:py-4">
                 {currentSlide.title.start}{" "}
                 <span className="font-playfair">
                   {currentSlide.title.middle}
@@ -136,16 +136,16 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div //bg-[#365140] -->old card bg this was
           key={currentIndex}
-          className="absolute bottom-0 left-0 z-20 w-xl bg-primary py-12 px-9 shadow-xl"
+          className="absolute bottom-0 left-0 z-20 w-full lg:w-xl bg-primary lg:py-12 lg:px-9 shadow-xl py-9 "
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 60, opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <p className="flex items-center gap-6 uppercase tracking-wide text-white font-playfair text-2xl pl-12 ">
+          <p className="flex items-center gap-1 justify-center lg:justify-start lg:gap-6 uppercase lg:tracking-wide text-white font-playfair text-[18px] sm:text-xl lg:text-2xl lg:pl-12 ">
             <FaLocationDot /> {currentSlide.location.name}
           </p>
-          <h2 className="uppercase tracking-wide text-white font-playfair text-xl justify-start pt-4 pl-12 flex gap-3 items-center"><FaGlobeAsia/>Coordinates: {currentSlide.location.coordinates}</h2>
+          <h2 className="capitialize lg:uppercase lg:tracking-wide text-white font-playfair text-sm lg:text-xl  pt-4 lg:pl-12 flex gap-3 items-center justify-center lg:justify-start"><FaGlobeAsia className='hidden lg:block'/>Coordinates: {currentSlide.location.coordinates}</h2>
          
         </motion.div>
       </AnimatePresence>
