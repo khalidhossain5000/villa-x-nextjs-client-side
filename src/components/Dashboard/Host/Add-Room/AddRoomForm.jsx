@@ -92,6 +92,7 @@ const handleRemoveImage = (index) => {
 
   // Room multiple images upload
   const roomImageUrls = await uploadRoomImages();
+console.log(roomImageUrls,'this is imggb dup multiple room image')
     const to = dates.endDate;
     const from = dates.startDate;
     const hostInfo = {
@@ -107,11 +108,11 @@ const handleRemoveImage = (index) => {
       hostInfo,
     };
 
-    // console.log(
-    //   hostInfo,
-    //   "thi si fhost final room data ready to send",
-    //   roomData,
-    // );
+    console.log(
+      hostInfo,
+      "thi si fhost final room data ready to send",
+      roomData,
+    );
 
     axiosSecure
       .post("/api/rooms", roomData)
