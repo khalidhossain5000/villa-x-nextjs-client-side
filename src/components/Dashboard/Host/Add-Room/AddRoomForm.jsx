@@ -304,17 +304,26 @@ console.log(roomImageUrls,'this is imggb dup multiple room image')
                     <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
                       {roomImageUploadText}
                     </div>
-{/* Preview */}
 <div className="flex gap-2 mt-2 flex-wrap">
   {previewImages.map((img, index) => (
-    <img
-      key={index}
-      src={img}
-      alt={`preview ${index}`}
-      className="w-20 h-20 object-cover rounded border"
-    />
+    <div key={index} className="relative">
+      <img
+        src={img}
+        alt={`preview ${index}`}
+        className="w-20 h-20 object-cover rounded border"
+      />
+      {/* Remove button */}
+      <button
+        type="button"
+        onClick={() => handleRemoveImage(index)}
+        className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600"
+      >
+        ×
+      </button>
+    </div>
   ))}
 </div>
+
                     {/* error message */}
                     {errors && (
                       <p className="text-red-600">
