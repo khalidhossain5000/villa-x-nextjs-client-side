@@ -284,7 +284,8 @@ const handleRoomImagesChange = (files) => {
                   <h2>Add More Room Image</h2>
                   <label>
                     <input
-                      onChange={(e) => handleImageChange(e.target.files[0])}
+                         onChange={(e) => handleRoomImagesChange(e.target.files)}
+
                       className="text-sm cursor-pointer w-36 hidden"
                       type="file"
                       name="image"
