@@ -86,7 +86,7 @@ const handleRemoveImage = (index) => {
 
   //HANDLE FORM SUBMIT STARTS HERE 
   const onSubmit = async (data, e) => {
-    const image = e.target.image.files[0];
+    const image = e.target.image.files[0]; //err here
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
 
