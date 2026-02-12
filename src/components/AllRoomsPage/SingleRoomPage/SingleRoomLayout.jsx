@@ -26,8 +26,21 @@ const SingleRoomLayout = ({ roomId }) => {
 
   if(!singleRoomData) return <Loader/>
   return (
-    <div>
-      <div className="max-w-7xl mx-auto">
+  <div className="min-h-screen w-full relative z-0">
+      <div
+    className="absolute inset-0 z-0 dark:hidden"
+    style={{
+      background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #0300ff90 100%)",
+    }}
+  />
+
+   <div
+    className="absolute inset-0 z-0 hidden dark:block"
+    style={{
+      background: "radial-gradient(125% 125% at 50% 10%, #0a192960 40%, #072607 100%)",
+    }}
+  />
+      <div className="max-w-7xl mx-auto z-50 relative py-22">
         <div className="flex flex-col gap-6">
           <Header room={singleRoomData} />
         </div>
@@ -45,3 +58,6 @@ const SingleRoomLayout = ({ roomId }) => {
 };
 
 export default SingleRoomLayout;
+// 
+
+

@@ -20,8 +20,7 @@ const Header = ({ room }) => {
   className="py-22 mt-12 rounded-xl shadow-xl" 
 >
 <h2 className='text-center text-white font-playfair text-xl md:text-2xl lg:text-3xl'>Explore Rooms Available Images:</h2>
-      <h2 className="text-center text-white font-playfair text-xl md:text-2xl lg:text-3xl py-4 font-bold">Room Title:{room?.title}</h2>
-      <h5 className="text-center text-white font-playfair text-xl md:text-2xl ">Location: {room?.location}</h5>
+     
      
 
       {/* slider */}
