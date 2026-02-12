@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 
 "use client";
 
@@ -31,7 +32,10 @@ const AddRoomForm = ({ loading }) => {
     key: "selection",
   });
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
-  //state for uploading 
+  //state for uploading multiple room images
+  const [roomImages, setRoomImages] = useState([]);
+  const [previewImages, setPreviewImages] = useState([]);
+  const [roomUploadText, setRoomUploadText] = useState("upload room images");
   // Handle date change from react-date-range calender
   const handleDates = (ranges) => {
     console.log(ranges);
@@ -42,14 +46,63 @@ const AddRoomForm = ({ loading }) => {
   const handleImageChange = (image) => {
     setUploadButtonText(image.name);
   };
+  //for room uiage
+  const handleRoomImagesChange = (files) => {
+    const selectedFiles = Array.from(files);
+    setRoomImages(selectedFiles);
 
+    const previewUrls = selectedFiles.map((file) => {
+     return URL.createObjectURL(file);
+    });
+
+    setPreviewImages(previewUrls);
+
+    setRoomUploadText(`${selectedFiles.length} images selected`);
+  };
+
+  const handleRemoveRoomImage = (index) => {
+    const updatedPreview = [...previewImages];
+    updatedPreview.splice(index, 1);
+    setPreviewImages(updatedPreview);
+
+    const updatedRoomImages = [...roomImages];
+    updatedRoomImages.splice(index, 1);
+    setRoomImages(updatedRoomImages);
+
+    // Button text update
+    setRoomUploadText(
+      updatedRoomImages.length > 0
+        ? `${updatedRoomImages.length} images selected`
+        : "Upload Room Images",
+    );
+  };
+
+  const uploadRoomImages = async () => {
+    const uploadedUrls = [];
+
+    for (let file of roomImages) {
+      const res = await imageUpload(file);
+      const imageUrl = res?.data?.display_url;
+      uploadedUrls.push(imageUrl);
+    }
+
+    return uploadedUrls;
+  };
+console.log(previewImages,'previewImages')
   //HANDLE FORM SUBMIT STARTS HERE
   const onSubmit = async (data, e) => {
+    console.log("on submit is triggred over here");
     const image = e.target.image.files[0];
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
     const to = dates.endDate;
     const from = dates.startDate;
+
+    // 🔹 Multiple Room Images Upload
+    const roomImageUrls = await uploadRoomImages();
+
+    console.log(roomImageUrls, "thisi sirom djgsigsdgjsdjgljsdgljdsg");
+
     const hostInfo = {
       name: userInfo?.name,
       email: userInfo?.email,
@@ -73,8 +126,8 @@ const AddRoomForm = ({ loading }) => {
       .post("/api/rooms", roomData)
       .then((res) => {
         console.log(res, "this is res of adding room inside add rooom form");
-        if(res.data?.success===true){
-          alert('Room added successfully check the db')
+        if (res.data?.success === true) {
+          alert("Room added successfully check the db");
         }
       })
       .catch((error) => {
@@ -120,7 +173,51 @@ const AddRoomForm = ({ loading }) => {
                 ))}
               </select>
             </div>
+            {/* room images is over here */}
 
+            <div className=" p-4 bg-white w-full  m-auto rounded-lg">
+              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
+                <div className="flex flex-col w-max mx-auto text-center">
+                  <label>
+                    <input
+                      onChange={(e) => handleRoomImagesChange(e.target.files)}
+                      className="hidden"
+                      type="file"
+                      accept="image/*"
+                      multiple
+                    />
+                    <div className="bg-blue-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-blue-600">
+                      {roomUploadText}
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              {/* Room Images Preview */}
+              {previewImages.length > 0 && (
+                <div className="flex flex-wrap gap-3 mt-4">
+                  {previewImages.map((img, index) => (
+                    <div key={index} className="relative">
+                      <img
+                        src={img}
+                        alt={`preview-${index}`}
+                        className="w-24 h-24 object-cover rounded-md border"
+                      />
+                      {/* Remove Button */}
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveRoomImage(index)}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm hover:bg-red-600"
+                      >
+                        ✕
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* room images ends over here */}
             <div className="space-y-1">
               <label htmlFor="location" className="block text-gray-600">
                 Select Availability Range
@@ -295,8 +392,3 @@ const AddRoomForm = ({ loading }) => {
 };
 
 export default AddRoomForm;
-
-
-
-
-
