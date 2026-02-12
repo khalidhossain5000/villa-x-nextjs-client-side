@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
+
 "use client";
 
 import { categories } from "@/components/Shared/HomePage/Categories/CategoriesData";
 import { useAuth } from "@/Hooks/useAuth";
 import useAxiosSecure from "@/Hooks/useAxiosSecure";
-import { imageUpload, uploadRoomImages } from "@/lib/ImageUpload/ImageUploaad";
+import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
 import { roomFrontSchema } from "@/ZodSchema/room.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
@@ -13,13 +13,6 @@ import { useForm } from "react-hook-form";
 import { TbFidgetSpinner } from "react-icons/tb";
 
 const AddRoomForm = ({ loading }) => {
-  // preview 
-const [previewImages, setPreviewImages] = useState([]); 
-
-// for image file store data
-const [roomImages, setRoomImages] = useState([]);
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
-  const [roomImageUploadText, setroomImageUploadText] = useState("Upload Rooms Image");
   const {
     register,
     handleSubmit,
@@ -37,63 +30,24 @@ const [roomImages, setRoomImages] = useState([]);
     endDate: new Date(),
     key: "selection",
   });
-
+  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
+  //state for uploading 
   // Handle date change from react-date-range calender
   const handleDates = (ranges) => {
     console.log(ranges);
     setDates(ranges.selection);
   };
   //image upload change
-  const handleImageChange = (image) => {
   // Handle Image button text
-    
+  const handleImageChange = (image) => {
     setUploadButtonText(image.name);
   };
-// Room images (new)
-const handleRoomImagesChange = (files) => {
-  const selectedFiles = Array.from(files);
-  setRoomImages(selectedFiles); // Save original files for upload
 
-  // Generate preview urls
-  const previewUrls = selectedFiles.map(file => URL.createObjectURL(file));
-  setPreviewImages(previewUrls);
-
-  // Update button text
-  setroomImageUploadText(`${selectedFiles.length} images selected`);
-  console.log(files,selectedFiles,previewUrls,'previewUrls')
-};
-
-
-const handleRemoveImage = (index) => {
-  // remove from preview
-  const newPreview = [...previewImages];
-  newPreview.splice(index, 1);
-  setPreviewImages(newPreview);
-
-  // remove from original files (roomImages)
-  const newRoomImages = [...roomImages];
-  newRoomImages.splice(index, 1);
-  setRoomImages(newRoomImages);
-
-  // update button text
-  setUploadButtonText(
-    newRoomImages.length > 0
-      ? `${newRoomImages.length} images selected`
-      : "Upload Room Images"
-  );
-};
-
-
-  //HANDLE FORM SUBMIT STARTS HERE 
+  //HANDLE FORM SUBMIT STARTS HERE
   const onSubmit = async (data, e) => {
-    console.log(e.target.image.files[0],'this is image',e)
-    const image = e.target.image.files[0]; //err here
+    const image = e.target.image.files[0];
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
-
-  // Room multiple images upload
-  const roomImageUrls = await uploadRoomImages();
-console.log(roomImageUrls,'this is imggb dup multiple room image')
     const to = dates.endDate;
     const from = dates.startDate;
     const hostInfo = {
@@ -119,8 +73,8 @@ console.log(roomImageUrls,'this is imggb dup multiple room image')
       .post("/api/rooms", roomData)
       .then((res) => {
         console.log(res, "this is res of adding room inside add rooom form");
-        if (res.data?.success === true) {
-          alert("Room added successfully check the db");
+        if(res.data?.success===true){
+          alert('Room added successfully check the db')
         }
       })
       .catch((error) => {
@@ -306,71 +260,22 @@ console.log(roomImageUrls,'this is imggb dup multiple room image')
                 )}
               </div>
             </div>
-{/* image room add more here */}
-            <div className=" p-4 bg-white w-full  m-auto rounded-lg">
-              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
-                <div className="flex flex-col w-max mx-auto text-center">
-                  <h2>Add More Room Image</h2>
-                  <label>
-                    <input
-                         onChange={(e) => handleRoomImagesChange(e.target.files)}
 
-                      className="text-sm cursor-pointer w-36 hidden"
-                      type="file"
-                      name="image"
-                      id="image"
-                      accept="image/*"
-                      multiple
-                      hidden
-                    />
-                    <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
-                      {roomImageUploadText}
-                    </div>
-<div className="flex gap-2 mt-2 flex-wrap">
-  {previewImages.map((img, index) => (
-    <div key={index} className="relative">
-      <img
-        src={img}
-        alt={`preview ${index}`}
-        className="w-20 h-20 object-cover rounded border"
-      />
-      {/* Remove button */}
-      <button
-        type="button"
-        onClick={() => handleRemoveImage(index)}
-        className="absolute top-0 right-0 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-600"
-      >
-        ×
-      </button>
-    </div>
-  ))}
-</div>
+            <div className="space-y-1 text-sm">
+              <label htmlFor="description" className="block text-gray-600">
+                Description
+              </label>
 
-                    {/* error message */}
-                    {errors && (
-                      <p className="text-red-600">
-                        {errors?.roomImage?.message}
-                      </p>
-                    )}
-                  </label>
-                </div>
-              </div>
+              <textarea
+                id="description"
+                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 "
+                {...register("description")}
+              ></textarea>
+              {/* error message */}
+              {errors && (
+                <p className="text-red-600">{errors?.description?.message}</p>
+              )}
             </div>
-          </div>
-          <div className="space-y-1 text-sm col-span-2">
-            <label htmlFor="description" className="block text-gray-600">
-              Description
-            </label>
-
-            <textarea
-              id="description"
-              className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 "
-              {...register("description")}
-            ></textarea>
-            {/* error message */}
-            {errors && (
-              <p className="text-red-600">{errors?.description?.message}</p>
-            )}
           </div>
         </div>
 
@@ -390,3 +295,8 @@ console.log(roomImageUrls,'this is imggb dup multiple room image')
 };
 
 export default AddRoomForm;
+
+
+
+
+

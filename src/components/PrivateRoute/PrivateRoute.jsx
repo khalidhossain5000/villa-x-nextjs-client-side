@@ -13,12 +13,12 @@ const PrivateRoute = ({ children, requiredRoles = [] }) => {
   if (authLoading || roleLoading || !userInfo || role == null) {
     return <Loader />;
   }
-console.log('requiredRoles',requiredRoles)
-  console.log(authLoading, "this is authloading", roleLoading, userInfo, role);
+// console.log('requiredRoles',requiredRoles)
+  // console.log(authLoading, "this is authloading", roleLoading, userInfo, role);
   // const userExist = !!(userInfo && userInfo.email);
   const userExist = Boolean(userInfo?.email);
 
-  console.log(userExist, "this is euser exist over here");
+  // console.log(userExist, "this is euser exist over here");
   if (!userExist) {
     router.push(`/auth/login?callbackUrl=${pathname}`);
     return;
