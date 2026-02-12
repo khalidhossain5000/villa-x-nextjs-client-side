@@ -28,6 +28,9 @@ const Rooms = () => {
     
      room?.title.toLowerCase().includes(searchText.toLowerCase())
   );
+
+
+  if(!filteredRooms) return console.log('filer room is not found uer')
   return (
     <div className="flex items-start gap-2 ">
       <div className="searchbox flex-1 bg-gray-200 rounded-lg shadow-xl mt-12">
