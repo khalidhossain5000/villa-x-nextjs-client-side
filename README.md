@@ -1,10 +1,10 @@
 
 ## Getting Started
 
-First, run the development server and then overall htgids
+First, run the development server and then  htgids
 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) 
 
 
 
