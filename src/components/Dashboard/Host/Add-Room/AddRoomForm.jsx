@@ -36,6 +36,7 @@ const AddRoomForm = ({ loading }) => {
   const [roomImages, setRoomImages] = useState([]);
   const [previewImages, setPreviewImages] = useState([]);
   const [roomUploadText, setRoomUploadText] = useState("upload room images");
+  const [uploading,setUploading]=useState(false)
   // Handle date change from react-date-range calender
   const handleDates = (ranges) => {
     console.log(ranges);
@@ -88,20 +89,22 @@ const AddRoomForm = ({ loading }) => {
 
     return uploadedUrls;
   };
-console.log(previewImages,'previewImages')
+
   //HANDLE FORM SUBMIT STARTS HERE
   const onSubmit = async (data, e) => {
     console.log("on submit is triggred over here");
+    setUploading(true)
     const image = e.target.image.files[0];
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
     const to = dates.endDate;
     const from = dates.startDate;
 
-    // 🔹 Multiple Room Images Upload
+    // Multiple Room Images Upload
     const roomImageUrls = await uploadRoomImages();
 
-    console.log(roomImageUrls, "thisi sirom djgsigsdgjsdjgljsdgljdsg");
+    console.log(roomImageUrls, "thisi sirom djgsigsdgjsdjgljsdgljdsg",{      thumbnailImage:roomImage,
+      roomImages:roomImageUrls,});
 
     const hostInfo = {
       name: userInfo?.name,
@@ -110,7 +113,9 @@ console.log(previewImages,'previewImages')
     };
     const roomData = {
       ...data,
-      roomImage,
+      // roomImage,
+      thumbnailImage:roomImage,
+      roomImages:roomImageUrls,
       to,
       from,
       hostInfo,
@@ -121,21 +126,23 @@ console.log(previewImages,'previewImages')
       "thi si fhost final room data ready to send",
       roomData,
     );
-
+console.log(roomData,'this is the room data looking for')
     axiosSecure
       .post("/api/rooms", roomData)
       .then((res) => {
         console.log(res, "this is res of adding room inside add rooom form");
         if (res.data?.success === true) {
           alert("Room added successfully check the db");
+          setUploading(false)
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error,'eeeroere form upload here');
+        setUploading(false)
       });
   };
 
-  console.log(errors, "this is form submit error over here ");
+  // console.log(errors, "this is form submit error over here ");
   return (
     <div className="max-w-5xl mx-auto py-6 mt-12">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -380,7 +387,7 @@ console.log(previewImages,'previewImages')
           type="submit"
           className="cursor-pointer w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
         >
-          {loading ? (
+          {uploading ? (
             <TbFidgetSpinner className="m-auto animate-spin" size={24} />
           ) : (
             "Save & Continue"

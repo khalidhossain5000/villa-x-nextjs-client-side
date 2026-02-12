@@ -29,7 +29,7 @@ const RoomCard = ({ room }) => {
                 group-hover:scale-110 
                 transition
               "
-            src={room?.roomImage}
+            src={room?.thumbnailImage}
             alt="Room"
           />
           <div
