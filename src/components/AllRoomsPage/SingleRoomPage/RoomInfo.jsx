@@ -9,7 +9,7 @@ import { LuBath } from "react-icons/lu";
 const RoomInfo = ({ room }) => {
   return (
     <div className="col-span-4 ">
-      <h2 className=" text-black font-playfair text-xl md:text-2xl py-4  font-bold">
+      <h2 className=" text-black dark:text-text-primary font-playfair text-xl md:text-2xl py-4  font-bold lg:text-4xl">
         {room?.title}
       </h2>
       <h5 className="flex items-center gap-3 text-text-primary font-raleway text-sm   ">
@@ -34,10 +34,10 @@ const RoomInfo = ({ room }) => {
         </div>
       </div>
 
-      <hr className='border border-gray-200'/>
+      <hr className='border-t border-gray-200'/>
       <p
         className="
-          text-lg font-light text-[#1f2937] pt-6"
+          text-lg font-light text-[#1f2937] dark:text-text-secondary pt-6"
       >
         {room?.description}
       </p>
@@ -48,7 +48,7 @@ const RoomInfo = ({ room }) => {
 
 
       
-      <hr />
+      
     </div>
   );
 };
