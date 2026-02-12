@@ -18,7 +18,8 @@ const [previewImages, setPreviewImages] = useState([]);
 
 // for image file store data
 const [roomImages, setRoomImages] = useState([]);
-
+  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
+  const [roomImageUploadText, setroomImageUploadText] = useState("Upload Rooms Image");
   const {
     register,
     handleSubmit,
@@ -36,8 +37,7 @@ const [roomImages, setRoomImages] = useState([]);
     endDate: new Date(),
     key: "selection",
   });
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
-  const [roomImageUploadText, setroomImageUploadText] = useState("Upload Image");
+
   // Handle date change from react-date-range calender
   const handleDates = (ranges) => {
     console.log(ranges);
@@ -86,7 +86,7 @@ const handleRemoveImage = (index) => {
 
   //HANDLE FORM SUBMIT STARTS HERE 
   const onSubmit = async (data, e) => {
-    console.log(e.target.image.files[0],'this is image')
+    console.log(e.target.image.files[0],'this is image',e)
     const image = e.target.image.files[0]; //err here
     const image_uri = await imageUpload(image);
     const roomImage = image_uri?.data?.display_url;
