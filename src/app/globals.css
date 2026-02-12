@@ -91,12 +91,12 @@ body {
 
 /* globals.css অথবা component scoped CSS */
 .light .rdrCalendarWrapper {
-  background-color: rgb(143, 13, 236); /* light mode */
+  /* background-color: rgb(143, 13, 236); light mode */
 }
 
 .dark .rdrCalendarWrapper {
   background-color: #1e293b;
   color:white;
-  font-size: 20px;
+
 }
 

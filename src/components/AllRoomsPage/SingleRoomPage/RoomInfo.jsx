@@ -9,13 +9,13 @@ import { LuBath } from "react-icons/lu";
 const RoomInfo = ({ room }) => {
   return (
     <div className="col-span-4 ">
-      <h2 className=" text-black dark:text-text-primary font-playfair text-xl md:text-2xl py-4  font-bold lg:text-4xl">
+      <h2 className=" text-black dark:text-text-primary font-playfair text-xl md:text-2xl py-4  font-bold lg:text-4xl text-center xl:text-left">
         {room?.title}
       </h2>
-      <h5 className="flex items-center gap-3 text-text-primary font-raleway text-sm   ">
+      <h5 className="flex items-center justify-center xl:justify-start gap-3 text-text-primary font-raleway text-sm   ">
        <FaLocationArrow className="text-primary"/> {room?.location}
       </h5>
-      <div className="flex flex-col gap-2 pt-9">
+      <div className="flex flex-col items-center xl:items-start gap-2 pt-9">
         <div className="  text-xl  font-semibold     flex  flex-row items-center gap-2  ">
           <div>Hosted by : {room?.hostInfo?.name}</div>
 
@@ -37,7 +37,7 @@ const RoomInfo = ({ room }) => {
       <hr className='border-t border-gray-200'/>
       <p
         className="
-          text-lg font-light text-[#1f2937] dark:text-text-secondary pt-6"
+          text-lg font-light text-[#1f2937] dark:text-text-secondary pt-6 text-center xl:text-left"
       >
         {room?.description}
       </p>

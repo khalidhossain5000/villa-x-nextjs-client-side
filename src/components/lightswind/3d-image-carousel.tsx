@@ -283,7 +283,7 @@ export const ThreeDImageCarousel: React.FC<ThreeDImageCarouselProps> = ({
             {/* 2. SLIDER HTML STRUCTURE */}
             <div
                 className={`cascade-slider_container ${className} bg-transparent 
-                min-w-[600px]`}
+                lg:min-w-[600px]`}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleExit}
                 onMouseDown={onMouseDown}

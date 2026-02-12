@@ -19,7 +19,7 @@ const Calender = ({ value, handleDateChange, room, disabledRanges }) => {
       maxDate={new Date(room?.to)}
       disabledDay={isDateBlocked}
     
-        wrapperClassName="bg-red-900 dark:bg-gray-900 p-6 rounded-lg dark:text-white" // outer wrapper
+        wrapperClassName="bg-red-900 dark:bg-gray-900 p-2 lg:p-6 rounded-lg dark:text-white" // outer wrapper
 
       dayContentRenderer={(date) => {
         const blocked = isDateBlocked(date);

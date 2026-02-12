@@ -22,29 +22,31 @@ const SingleRoomLayout = ({ roomId }) => {
   if (isLoading) return <Loader />;
 
   const singleRoomData = allRoomData.find((room) => room._id == roomId.id);
-  console.log(singleRoomData, "this is single room data",roomId.id);
+  console.log(singleRoomData, "this is single room data", roomId.id);
 
-  if(!singleRoomData) return <Loader/>
+  if (!singleRoomData) return <Loader />;
   return (
-  <div className="min-h-screen w-full relative z-0">
+    <div className="min-h-screen w-full relative z-0">
       <div
-    className="absolute inset-0 z-0 dark:hidden"
-    style={{
-      background: "radial-gradient(125% 125% at 50% 10%, #fff 40%, #0300ff90 100%)",
-    }}
-  />
+        className="absolute inset-0 z-0 dark:hidden"
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 10%, #fff 40%, #0300ff90 100%)",
+        }}
+      />
 
-   <div
-    className="absolute inset-0 z-0 hidden dark:block"
-    style={{
-      background: "radial-gradient(125% 125% at 50% 10%, #0a192960 40%, #072607 100%)",
-    }}
-  />
+      <div
+        className="absolute inset-0 z-0 hidden dark:block"
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 10%, #0a192960 40%, #072607 100%)",
+        }}
+      />
       <div className="max-w-7xl mx-auto z-50 relative py-22">
         <div className="flex flex-col gap-6">
           <Header room={singleRoomData} />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-7 md:gap-10 mt-6 px-2 xl:px-0">
           <RoomInfo room={singleRoomData} />
 
           <div className="md:col-span-3 order-first md:order-last mb-10">
@@ -58,6 +60,4 @@ const SingleRoomLayout = ({ roomId }) => {
 };
 
 export default SingleRoomLayout;
-// 
-
-
+//
