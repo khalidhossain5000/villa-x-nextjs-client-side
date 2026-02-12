@@ -28,7 +28,7 @@ const Rooms = () => {
   return (
     <div>
       {allRoomData && allRoomData.length > 0 ? (
-        <div className="px-20 pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-8">
+        <div className="px-20 pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
           {allRoomData.map((room) => (
             <RoomCard key={room._id} room={room}></RoomCard>
           ))}
