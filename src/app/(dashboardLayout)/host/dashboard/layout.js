@@ -4,7 +4,7 @@ import React from "react";
 const HostDashboardLayout = ({ children }) => {
   return (
     <PrivateRoute requiredRoles={["host"]}>
-      <div>{children}</div>
+      <div className=''>{children}</div>
     </PrivateRoute>
   );
 };

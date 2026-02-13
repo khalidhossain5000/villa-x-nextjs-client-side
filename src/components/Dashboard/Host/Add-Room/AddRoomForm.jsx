@@ -39,10 +39,10 @@ const AddRoomForm = ({ loading }) => {
   const [uploading,setUploading]=useState(false)
   // Handle date change from react-date-range calender
   const handleDates = (ranges) => {
-    console.log(ranges);
+ 
     setDates(ranges.selection);
   };
-  //image upload change
+  
   // Handle Image button text
   const handleImageChange = (image) => {
     setUploadButtonText(image.name);

@@ -6,7 +6,6 @@ import logo from "../../../../assets/logo/logohdsg.png";
 // Icons
 import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
-import { AiOutlineBars } from "react-icons/ai";
 import { House } from "lucide-react";
 import MenuItem from "./MenuItem";
 
@@ -24,7 +23,7 @@ import ModeToggle from "@/components/Shared/ModeToggle/ModeToggle";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const [isActive, setActive] = useState(false);
+  const [isActive, setActive] = useState(true);
   const { role, roleLoading } = useRole();
 
 
@@ -61,9 +60,9 @@ const Sidebar = () => {
 
         <button
           onClick={handleToggle}
-          className="mobile-menu-button p-4 bg-pink-600 focus:outline-none focus:bg-gray-200"
+          className="mobile-menu-button p-4  focus:outline-none focus:bg-gray-200"
         >
-          <GiHamburgerMenu className="h-5 w-5" />
+          <GiHamburgerMenu className="h-5 w-5 text-primary" />
         </button>
       </div>
 
