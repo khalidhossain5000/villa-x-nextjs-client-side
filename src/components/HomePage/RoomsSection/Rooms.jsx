@@ -17,17 +17,17 @@ const Rooms = () => {
   const { data: allRoomData, isLoading } = useQuery({
     queryKey: ["allRoomsData", category],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/api/rooms?category=${category}`);
+      const res = await axiosInstance.get(`/api/rooms?category=${category} & search=${searchText}`);
       return res.data.allRoomData;
     },
     keepPreviousData: true,
   });
 
   if (isLoading) return <Loader />;
-  const filteredRooms = allRoomData.filter((room) =>
+  // const filteredRooms = allRoomData.filter((room) =>
     
-     room?.title.toLowerCase().includes(searchText.toLowerCase())
-  );
+  //    room?.title.toLowerCase().includes(searchText.toLowerCase())
+  // );
 
 
   if(!filteredRooms) return console.log('filer room is not found uer')
