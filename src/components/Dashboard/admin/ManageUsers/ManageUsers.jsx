@@ -23,7 +23,7 @@ const ManageUsers = () => {
      
     });
 
-console.log(isLoading,'this is is loaing')
+
   if(isLoading) return <Loader/>
   return (
     <>
@@ -38,26 +38,26 @@ console.log(isLoading,'this is is loaing')
                   <tr>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary'
                     >
                       Email
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary'
                     >
                       Role
                     </th>
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary'
                     >
                       Status
                     </th>
 
                     <th
                       scope='col'
-                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
+                      className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent'
                     >
                       Action
                     </th>

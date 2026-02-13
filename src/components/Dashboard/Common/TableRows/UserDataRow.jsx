@@ -55,13 +55,13 @@ if(loggedInUser?.email===user?.email) {
   };
   return (
     <tr>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{user?.email}</p>
+      <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent text-sm">
+        <p className="text-gray-900 whitespace-no-wrap dark:text-slate-100">{user?.email}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">{user?.userRole}</p>
+      <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent  text-sm">
+        <p className="text-gray-900 whitespace-no-wrap dark:text-slate-100">{user?.userRole}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent text-sm">
         {user?.status ? (
           <p
             className={`${
@@ -71,11 +71,11 @@ if(loggedInUser?.email===user?.email) {
             {user.status}
           </p>
         ) : (
-          <p className="text-red-500 whitespace-no-wrap">Unavailable</p>
+          <p className="text-red-500 whitespace-no-wrap dark:text-slate-100">Unavailable</p>
         )}
       </td>
 
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]   dark:border-accent text-sm">
         <span
           onClick={() => setIsOpen(true)}
           className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
@@ -84,7 +84,7 @@ if(loggedInUser?.email===user?.email) {
             aria-hidden="true"
             className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
           ></span>
-          <span className="relative">Update Role</span>
+          <span className="relative dark:text-slate-100">Update Role</span>
         </span>
         {/* Modal */}
         <UpdateUserModal
