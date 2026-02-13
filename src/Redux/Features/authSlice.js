@@ -42,6 +42,7 @@ export const createUser = createAsyncThunk(
   }
 );
 
+//update profile on firebase from modal
 
 //login user thunk will be added here
 export const loginUser=createAsyncThunk(
