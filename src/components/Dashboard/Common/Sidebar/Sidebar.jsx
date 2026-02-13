@@ -12,7 +12,7 @@ import MenuItem from "./MenuItem";
 
 import Image from "next/image";
 import Link from "next/link";
-import ToggleBtn from "@/components/Shared/Button/ToggleBtn";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { signOutUser } from "@/Redux/Features/authSlice";
 import useRole from "@/Hooks/useRole";
@@ -63,7 +63,7 @@ const Sidebar = () => {
           onClick={handleToggle}
           className="mobile-menu-button p-4 bg-pink-600 focus:outline-none focus:bg-gray-200"
         >
-          <AiOutlineBars className="h-5 w-5" />
+          <GiHamburgerMenu className="h-5 w-5" />
         </button>
       </div>
 
