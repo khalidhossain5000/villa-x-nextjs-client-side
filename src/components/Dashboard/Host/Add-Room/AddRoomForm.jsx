@@ -103,8 +103,7 @@ const AddRoomForm = ({ loading }) => {
     // Multiple Room Images Upload
     const roomImageUrls = await uploadRoomImages();
 
-    console.log(roomImageUrls, "thisi sirom djgsigsdgjsdjgljsdgljdsg",{      thumbnailImage:roomImage,
-      roomImages:roomImageUrls,});
+   
 
     const hostInfo = {
       name: userInfo?.name,
@@ -113,7 +112,6 @@ const AddRoomForm = ({ loading }) => {
     };
     const roomData = {
       ...data,
-      // roomImage,
       thumbnailImage:roomImage,
       roomImages:roomImageUrls,
       to,
@@ -121,12 +119,7 @@ const AddRoomForm = ({ loading }) => {
       hostInfo,
     };
 
-    console.log(
-      hostInfo,
-      "thi si fhost final room data ready to send",
-      roomData,
-    );
-console.log(roomData,'this is the room data looking for')
+   
     axiosSecure
       .post("/api/rooms", roomData)
       .then((res) => {
@@ -142,18 +135,17 @@ console.log(roomData,'this is the room data looking for')
       });
   };
 
-  // console.log(errors, "this is form submit error over here ");
   return (
     <div className="max-w-5xl mx-auto py-6 mt-12">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-6">
             <div className="space-y-1 text-sm">
-              <label htmlFor="location" className="block text-gray-600">
+              <label htmlFor="location" className="block text-gray-600 dark:text-slate-100">
                 Location
               </label>
               <input
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+                className="w-full px-4 py-3 text-gray-800 dark:text-slate-100 border border-primary focus:outline-primary rounded-md "
                 {...register("location")}
                 id="location"
                 type="text"
@@ -164,13 +156,13 @@ console.log(roomData,'this is the room data looking for')
                 <p className="text-red-600">{errors?.location?.message}</p>
               )}
             </div>
-
-            <div className="space-y-1 text-sm">
-              <label htmlFor="category" className="block text-gray-600">
+<label htmlFor="category" className="block text-gray-600 dark:text-slate-100">
                 Category
               </label>
+            <div className="space-y-1 text-sm border dark:border-primary">
+              
               <select
-                className="w-full px-4 py-3 border-rose-300 focus:outline-rose-500 rounded-md"
+                className="w-full px-4 py-3 border-primary focus:outline-primary dark:border-green-600 rounded-md"
                 {...register("category")}
               >
                 {categories.map((category) => (
@@ -180,20 +172,163 @@ console.log(roomData,'this is the room data looking for')
                 ))}
               </select>
             </div>
-            {/* room images is over here */}
+            
+            <div className="space-y-1">
+              <label htmlFor="location" className="block text-gray-600 dark:text-slate-100">
+                Select Availability Range
+              </label>
+              <DateRange
+                rangeColors={["#F43F5E"]}
+                ranges={[dates]}
+                onChange={handleDates}
+                minDate={new Date()}
+                
 
-            <div className=" p-4 bg-white w-full  m-auto rounded-lg">
-              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
+              />
+              <div className="flex items-center gap-6">
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.from?.message}</p>
+                )}
+                {/* error message */}
+                {errors && (
+                  <p className="text-orange-600">{errors?.to?.message}</p>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="space-y-6">
+            <div className="space-y-1 text-sm">
+              <label htmlFor="title" className="block text-gray-600 dark:text-slate-100">
+                Title
+              </label>
+              <input
+                className="w-full px-4 py-3 text-gray-800 dark:text-slate-100 border border-primary focus:outline-primary rounded-md "
+                {...register("title")}
+                id="title"
+                type="text"
+                placeholder="Title"
+              />
+
+              {/* error message */}
+              {errors && (
+                <p className="text-red-600">{errors?.title?.message}</p>
+              )}
+            </div>
+
+            <div className=" p-4 bg-white dark:bg-background  w-full  m-auto rounded-lg">
+              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 dark:border-primary rounded-lg">
                 <div className="flex flex-col w-max mx-auto text-center">
                   <label>
                     <input
+                      onChange={(e) => handleImageChange(e.target.files[0])}
+                      className="text-sm cursor-pointer w-36 hidden "
+                      type="file"
+                      name="image"
+                      id="image"
+                      accept="image/*"
+                      hidden
+                    />
+                    <div className="bg-primary dark:bg-primary text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
+                      {uploadButtonText}
+                    </div>
+
+                    {/* error message */}
+                    {errors && (
+                      <p className="text-red-600">
+                        {errors?.roomImage?.message}
+                      </p>
+                    )}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-between gap-2">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="price" className="block text-gray-600 dark:text-slate-100">
+                  Price
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 dark:text-slate-100 border border-primary focus:outline-primary rounded-md "
+                  {...register("price", { valueAsNumber: true })}
+                  id="price"
+                  type="number"
+                  placeholder="Price"
+                />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.price?.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="guest" className="block text-gray-600 dark:text-slate-100">
+                  Total guest
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 dark:text-slate-100 border border-primary focus:outline-primaryr ounded-md "
+                  {...register("total_guest", { valueAsNumber: true })}
+                  id="guest"
+                  type="number"
+                  placeholder="Total guest"
+                />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.total_guest?.message}</p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex justify-between gap-2">
+              <div className="space-y-1 text-sm">
+                <label htmlFor="bedrooms" className="block text-gray-600 dark:text-slate-100">
+                  Bedrooms
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 border border-primary focus:outline-primary dark:text-slate-100 rounded-md "
+                  {...register("bedrooms", { valueAsNumber: true })}
+                  id="bedrooms"
+                  type="number"
+                  placeholder="Bedrooms"
+                />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.bedrooms?.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-1 text-sm">
+                <label htmlFor="bathrooms" className="block text-gray-600 dark:text-slate-100">
+                  Bathrooms
+                </label>
+                <input
+                  className="w-full px-4 py-3 text-gray-800 border border-primary focus:outline-primary dark:text-slate-100 rounded-md "
+                  {...register("bathrooms", { valueAsNumber: true })}
+                  id="bathrooms"
+                  type="number"
+                  placeholder="Bathrooms"
+                />
+                {/* error message */}
+                {errors && (
+                  <p className="text-red-600">{errors?.bathrooms?.message}</p>
+                )}
+              </div>
+            </div>
+
+           {/* room images is over here */}
+
+            <div className=" p-4 bg-white dark:bg-background w-full  m-auto rounded-lg">
+              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-primary rounded-lg">
+                <div className="flex flex-col w-max mx-auto text-center ">
+                  <label className='bg-red-600'>
+                    <input
                       onChange={(e) => handleRoomImagesChange(e.target.files)}
-                      className="hidden"
+                      className="hidden "
                       type="file"
                       accept="image/*"
                       multiple
                     />
-                    <div className="bg-blue-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-blue-600">
+                    <div className="bg-accent dark:bg-primary text-gray-800 dark:text-slate-100 border border-primary rounded font-semibold cursor-pointer p-1 px-3 hover:bg-accent-hover">
                       {roomUploadText}
                     </div>
                   </label>
@@ -214,7 +349,7 @@ console.log(roomData,'this is the room data looking for')
                       <button
                         type="button"
                         onClick={() => handleRemoveRoomImage(index)}
-                        className="absolute -top-2 -right-2 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-sm hover:bg-red-600"
+                        className="absolute -top-2 -right-2 bg-red-500 text-white dark:text-primary w-6 h-6 rounded-full flex items-center justify-center text-sm hover:bg-red-600"
                       >
                         ✕
                       </button>
@@ -225,154 +360,16 @@ console.log(roomData,'this is the room data looking for')
             </div>
 
             {/* room images ends over here */}
-            <div className="space-y-1">
-              <label htmlFor="location" className="block text-gray-600">
-                Select Availability Range
-              </label>
-              <DateRange
-                rangeColors={["#F43F5E"]}
-                ranges={[dates]}
-                onChange={handleDates}
-                minDate={new Date()}
-              />
-              <div className="flex items-center gap-6">
-                {/* error message */}
-                {errors && (
-                  <p className="text-red-600">{errors?.from?.message}</p>
-                )}
-                {/* error message */}
-                {errors && (
-                  <p className="text-orange-600">{errors?.to?.message}</p>
-                )}
-              </div>
-            </div>
           </div>
-          <div className="space-y-6">
-            <div className="space-y-1 text-sm">
-              <label htmlFor="title" className="block text-gray-600">
-                Title
-              </label>
-              <input
-                className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                {...register("title")}
-                id="title"
-                type="text"
-                placeholder="Title"
-              />
 
-              {/* error message */}
-              {errors && (
-                <p className="text-red-600">{errors?.title?.message}</p>
-              )}
-            </div>
-
-            <div className=" p-4 bg-white w-full  m-auto rounded-lg">
-              <div className="file_upload px-5 py-3 relative border-4 border-dotted border-gray-300 rounded-lg">
-                <div className="flex flex-col w-max mx-auto text-center">
-                  <label>
-                    <input
-                      onChange={(e) => handleImageChange(e.target.files[0])}
-                      className="text-sm cursor-pointer w-36 hidden"
-                      type="file"
-                      name="image"
-                      id="image"
-                      accept="image/*"
-                      hidden
-                    />
-                    <div className="bg-rose-500 text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
-                      {uploadButtonText}
-                    </div>
-
-                    {/* error message */}
-                    {errors && (
-                      <p className="text-red-600">
-                        {errors?.roomImage?.message}
-                      </p>
-                    )}
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div className="flex justify-between gap-2">
-              <div className="space-y-1 text-sm">
-                <label htmlFor="price" className="block text-gray-600">
-                  Price
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("price", { valueAsNumber: true })}
-                  id="price"
-                  type="number"
-                  placeholder="Price"
-                />
-                {/* error message */}
-                {errors && (
-                  <p className="text-red-600">{errors?.price?.message}</p>
-                )}
-              </div>
-
-              <div className="space-y-1 text-sm">
-                <label htmlFor="guest" className="block text-gray-600">
-                  Total guest
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("total_guest", { valueAsNumber: true })}
-                  id="guest"
-                  type="number"
-                  placeholder="Total guest"
-                />
-                {/* error message */}
-                {errors && (
-                  <p className="text-red-600">{errors?.total_guest?.message}</p>
-                )}
-              </div>
-            </div>
-
-            <div className="flex justify-between gap-2">
-              <div className="space-y-1 text-sm">
-                <label htmlFor="bedrooms" className="block text-gray-600">
-                  Bedrooms
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("bedrooms", { valueAsNumber: true })}
-                  id="bedrooms"
-                  type="number"
-                  placeholder="Bedrooms"
-                />
-                {/* error message */}
-                {errors && (
-                  <p className="text-red-600">{errors?.bedrooms?.message}</p>
-                )}
-              </div>
-
-              <div className="space-y-1 text-sm">
-                <label htmlFor="bathrooms" className="block text-gray-600">
-                  Bathrooms
-                </label>
-                <input
-                  className="w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md "
-                  {...register("bathrooms", { valueAsNumber: true })}
-                  id="bathrooms"
-                  type="number"
-                  placeholder="Bathrooms"
-                />
-                {/* error message */}
-                {errors && (
-                  <p className="text-red-600">{errors?.bathrooms?.message}</p>
-                )}
-              </div>
-            </div>
-
-            <div className="space-y-1 text-sm">
-              <label htmlFor="description" className="block text-gray-600">
+           <div className="space-y-1 text-sm col-span-2">
+              <label htmlFor="description" className="block text-gray-600 dark:text-slate-100">
                 Description
               </label>
 
               <textarea
                 id="description"
-                className="block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-rose-300 focus:outline-rose-500 "
+                className="block rounded-md focus:primary w-full h-32 px-4 py-3 text-gray-800 dark:text-slate-100 border border-primary focus:outline-primary"
                 {...register("description")}
               ></textarea>
               {/* error message */}
@@ -380,17 +377,16 @@ console.log(roomData,'this is the room data looking for')
                 <p className="text-red-600">{errors?.description?.message}</p>
               )}
             </div>
-          </div>
         </div>
 
         <button
           type="submit"
-          className="cursor-pointer w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-rose-500"
+          className="cursor-pointer w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-primary"
         >
           {uploading ? (
             <TbFidgetSpinner className="m-auto animate-spin" size={24} />
           ) : (
-            "Save & Continue"
+            "Add Room"
           )}
         </button>
       </form>

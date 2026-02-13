@@ -7,7 +7,7 @@ const HostAddRoomPage = () => {
     return (
         <div className=''>
             <PageTitle className='pt-3'>Add Room</PageTitle>
-<div className='shadow-xl max-w-6xl mx-auto rounded-xl bg-background dark:bg-background'>
+<div className='shadow-xl max-w-6xl mx-auto rounded-xl bg-background dark:bg-[#1e293b]'>
 <AddRoomForm
             
             ></AddRoomForm>
