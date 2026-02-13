@@ -30,8 +30,8 @@ const Rooms = () => {
  
 
   return (
-    <div className="flex items-start gap-2 ">
-      <div className="searchbox flex-1 bg-gray-200 rounded-lg shadow-xl mt-12">
+    <div className="flex items-start flex-col lg:flex-row gap-2 ">
+      <div className="searchbox lg:flex-1 bg-gray-200 rounded-lg shadow-xl mt-12">
         <div className="relative">
           <input
           ref={inputRef}
@@ -47,9 +47,9 @@ const Rooms = () => {
         </div>
       </div>
 
-      <div className="flex-4">
+      <div className="lg:flex-3 xl:flex-4">
         {allRoomData && allRoomData.length > 0 ? (
-          <div className="px-20 pt-12 grid grid-cols-1  md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div className="xl:px-20 pt-12 grid grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-8">
             {allRoomData.map((room) => (
               <RoomCard key={room._id} room={room}></RoomCard>
             ))}

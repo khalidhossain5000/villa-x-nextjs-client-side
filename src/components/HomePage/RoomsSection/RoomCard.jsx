@@ -7,7 +7,7 @@ const RoomCard = ({ room }) => {
   return (
  <Link
       href={`/room/${room?._id}`}
-      className="col-span-1 cursor-pointer group"
+      className=" cursor-pointer group"
     >
        <div className="h-full bg-gradient-to-br from-[#facc15] via-[#fbbf24] to-[#d97706] text-[#211f54] shadow-2xl w-full mx-auto relative overflow-hidden border border-yellow-400 hover:scale-105 transition-transform duration-300">
          
@@ -16,7 +16,7 @@ const RoomCard = ({ room }) => {
             className="max-h-60 lg:h-96 w-full"
             alt={room?.title}
           />
-          <div className="contentds p-6 urbanist mt-6">
+          <div className="contentds p-6 font-urbanist mt-6">
             <h3 className="text-[#211f54]  text-xl font-medium">
               <span className="font-bold">Hosted By</span> :{" "}
               {room?.hostInfo?.name}

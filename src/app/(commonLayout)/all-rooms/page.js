@@ -9,7 +9,7 @@ import PageSubTitle from "@/components/Shared/Title/PageSubtitle";
 
 const AllRooms = () => {
   return (
-    <div className="px-20 pt-20 min-h-screen w-full bg-[#f0fdfa] dark:bg-primary relative">
+    <div className="px-4 lg:px-20 pt-20 min-h-screen w-full bg-[#f0fdfa] dark:bg-primary relative">
 
 <div
     className="absolute inset-0 z-0 dark:hidden"
@@ -28,9 +28,6 @@ const AllRooms = () => {
     }}
   />
 
-
-
-    {/* Arctic Lights Background with Top Glow */}
     <div
       className="absolute inset-0 z-0 hidden dark:block"
       style={{
