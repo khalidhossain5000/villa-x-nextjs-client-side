@@ -90,8 +90,8 @@ const PublicNavbar = () => {
     pathname === "/"
       ? sticky
         ? "sticky top-0 left-0 w-full bg-transparent backdrop-blur-3xl shadow-md z-50"
-        : "absolute top-0 left-0 w-full bg-transparent z-50"
-      : "sticky top-0 left-0 w-full bg-linear-to-r from-primary via-[#0200cc] dark:via-[#0bc50b]  to-[#027016] shadow-md z-50"
+        : "absolute top-0 left-0 w-full bg-transparent z-[9999999]"
+      : "sticky top-0 left-0 w-full bg-linear-to-r from-primary via-[#0200cc] dark:via-[#0bc50b]  to-[#027016] shadow-md z-[9999999999]"
   }`}
 >
 
