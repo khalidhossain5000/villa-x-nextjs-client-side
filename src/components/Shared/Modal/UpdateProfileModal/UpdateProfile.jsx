@@ -44,12 +44,12 @@ const UpdateProfile = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Update Profile</Button>
+        <Button variant="outline" className={` dark:text-white bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1`}>Update Profile</Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-md bg-white dark:bg-slate-900">
         <DialogHeader>
-          <DialogTitle className="text-gray-800 dark:text-white">
+          <DialogTitle className="">
             Update Profile
           </DialogTitle>
         </DialogHeader>

@@ -33,7 +33,7 @@ const Profile = () => {
   console.log(singleUser, "from db",user);
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-white shadow-lg rounded-2xl w-3/5">
+      <div className="bg-white dark:bg-[#0f172b] shadow-lg rounded-2xl w-3/5">
         <img
           alt="profile"
           src={bgImg.src}
@@ -49,14 +49,14 @@ const Profile = () => {
             />
           </a>
 
-          <p className="p-2 px-4 text-xs text-white bg-pink-500 rounded-full">
+          <p className="p-2 px-4 text-xs text-white dark:text-black  bg-primary rounded-full font-bold">
             Role: {role && role.toUpperCase()}
           </p>
-          <p className="mt-2 text-xl font-medium text-gray-800 ">
+          <p className="mt-2 text-xl font-medium text-gray-800 dark:text-slate-100">
             User Id: {singleUser?._id}
           </p>
 
-          <p className="mt-2 text-xl font-medium text-pink-800 ">
+          <p className="mt-2 text-xl font-medium text-gray-800 dark:text-slate-100">
             Member Since:{" "}
             {singleUser?.createdAt &&
               new Date(singleUser.createdAt).toLocaleDateString("en-GB", {
@@ -66,7 +66,7 @@ const Profile = () => {
               })}
           </p>
 
-          <p className="mt-2 text-xl font-medium text-pink-800 ">
+          <p className="mt-2 text-xl font-medium text-gray-800  dark:text-slate-100 ">
             Last Updated:{" "}
             {singleUser?.updatedAt &&
               new Date(singleUser.updatedAt).toLocaleDateString("en-GB", {
@@ -84,22 +84,20 @@ const Profile = () => {
             <div className="flex flex-wrap items-center justify-between text-sm text-gray-600 ">
               <p className="flex flex-col">
                 Name
-                <span className="font-bold text-black ">
+                <span className="font-bold text-black  dark:text-slate-100">
                   {user?.displayName}
                 </span>
               </p>
               <p className="flex flex-col">
                 Email
-                <span className="font-bold text-black ">{user?.email}</span>
+                <span className="font-bold text-black  dark:text-slate-100">{user?.email}</span>
               </p>
 
               <div>
 
 <UpdateProfile/>
 
-                <button className="bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1">
-                  Update Profile
-                </button>
+               
                 <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
                   Change Password
                 </button>
