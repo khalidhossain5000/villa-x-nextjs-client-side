@@ -24,14 +24,10 @@ import ModeToggle from "@/components/Shared/ModeToggle/ModeToggle";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
-  const [toggle, setToggle] = useState(false);
   const [isActive, setActive] = useState(false);
   const { role, roleLoading } = useRole();
 
-  //   For guest/host menu item toggle button
-  const toggleHandler = (event) => {
-    setToggle(event.target.checked);
-  };
+
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive);
