@@ -93,14 +93,9 @@ const Sidebar = () => {
             </div>
    
 
-          {/* Nav Items */}
+         
           <div className="flex flex-col justify-between flex-1 mt-6">
-            {/* If a user is host */}
-            {role === "host" ? (
-              <ToggleBtn toggleHandler={toggleHandler} toggle={toggle} />
-            ) : (
-              ""
-            )}
+           
             <nav>
               {/* these are common route  */}
               <MenuItem
@@ -112,7 +107,7 @@ const Sidebar = () => {
               {/* these are common route ends here */}
               {/* Host Menu Items */}
               {role === "guest" && <GuestMenu />}
-              {role === "host" ? toggle ? <HostMenu /> : <GuestMenu /> : ""}
+              {role === "host" && <HostMenu /> }
               {role === "admin" && <AdminMenu />}
             </nav>
           </div>
