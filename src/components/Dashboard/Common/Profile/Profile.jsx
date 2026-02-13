@@ -7,7 +7,7 @@ import useRole from "@/Hooks/useRole";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import bgImg from "../../../../assets/dashboard/profile-bg.jpg";
-import Image from "next/image";
+import UpdateProfile from "@/components/Shared/Modal/UpdateProfileModal/UpdateProfile";
 const Profile = () => {
   const { user, loading } = useSelector((state) => state.auth);
 
@@ -25,7 +25,10 @@ const Profile = () => {
     enabled: !!user?.email,
   });
 
-  if (roleLoading || loading || isLoading) return <Loader />;
+
+
+
+  if (roleLoading || loading || isLoading || !singleUser || !user) return <Loader />;
 
   console.log(singleUser, "from db",user);
   return (
@@ -91,6 +94,9 @@ const Profile = () => {
               </p>
 
               <div>
+
+<UpdateProfile/>
+
                 <button className="bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1">
                   Update Profile
                 </button>
