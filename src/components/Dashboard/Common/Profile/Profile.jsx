@@ -6,7 +6,8 @@ import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import useRole from "@/Hooks/useRole";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-
+import bgImg from "../../../../assets/dashboard/profile-bg.jpg";
+import Image from "next/image";
 const Profile = () => {
   const { user, loading } = useSelector((state) => state.auth);
 
@@ -26,15 +27,16 @@ const Profile = () => {
 
   if (roleLoading || loading || isLoading) return <Loader />;
 
-  console.log(singleUser, "from db");
+  console.log(singleUser, "from db",user);
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white shadow-lg rounded-2xl w-3/5">
         <img
           alt="profile"
-          src="https://wallpapercave.com/wp/wp10784415.jpg"
-          className="w-full mb-4 rounded-t-lg h-36"
+          src={bgImg.src}
+          className="w-full mb-4 rounded-t-lg h-36 lg:h-48 xl:56"
         />
+      
         <div className="flex flex-col items-center justify-center p-4 -mt-16">
           <a href="#" className="relative block">
             <img
@@ -48,7 +50,7 @@ const Profile = () => {
             Role: {role && role.toUpperCase()}
           </p>
           <p className="mt-2 text-xl font-medium text-gray-800 ">
-            User Id: {user?.uid}
+            User Id: {singleUser?._id}
           </p>
 
           <p className="mt-2 text-xl font-medium text-pink-800 ">
@@ -65,13 +67,13 @@ const Profile = () => {
             Last Updated:{" "}
             {singleUser?.updatedAt &&
               new Date(singleUser.updatedAt).toLocaleDateString("en-GB", {
-                   day: "numeric",
-    month: "short",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    second: "numeric",
-    hour12: true,
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+                hour12: true,
               })}
           </p>
 

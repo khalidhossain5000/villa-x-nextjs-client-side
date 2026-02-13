@@ -19,8 +19,7 @@ const TableRow = ({ booking, refetch }) => {
 
   const modalHandler = async (id) => {
     try {
-      // await deleteBooking(id)
-      // await updateStatus(booking.roomId, false)
+     
 
       axiosSecure
         .post("/api/room-cancel-request", cancelBookingRequestData)
@@ -43,7 +42,7 @@ const TableRow = ({ booking, refetch }) => {
   };
   return (
     <tr>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <div className="block relative">
@@ -55,11 +54,11 @@ const TableRow = ({ booking, refetch }) => {
             </div>
           </div>
           <div className="ml-3">
-            <p className="text-gray-900 whitespace-no-wrap">{booking?.title}</p>
+            <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">{booking?.title}</p>
           </div>
         </div>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b border-gray-200 dark:text-slate-100 bg-white text-sm">
         <div className="flex items-center">
           <div className="flex-shrink-0">
             <div className="block relative">
@@ -71,26 +70,26 @@ const TableRow = ({ booking, refetch }) => {
             </div>
           </div>
           <div className="ml-3">
-            <p className="text-gray-900 whitespace-no-wrap">
+            <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">
               {booking?.guest?.name}
             </p>
           </div>
         </div>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">${booking?.price}</p>
+      <td className="px-5 py-5 border-b dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent border-gray-200 bg-white text-sm">
+        <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">${booking?.price}</p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">
+      <td className="px-5 py-5 border-b dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent border-gray-200 bg-white text-sm">
+        <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">
           {format(new Date(booking?.from), "P")}
         </p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 whitespace-no-wrap">
+      <td className="px-5 py-5 border-b dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent border-gray-200 bg-white text-sm">
+        <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">
           {format(new Date(booking?.to), "P")}
         </p>
       </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+      <td className="px-5 py-5 border-b dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent border-gray-200 bg-white text-sm">
         <button
           onClick={() => setIsOpen(true)}
           className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"

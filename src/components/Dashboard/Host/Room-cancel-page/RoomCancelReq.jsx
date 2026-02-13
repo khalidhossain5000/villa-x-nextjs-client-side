@@ -138,8 +138,8 @@ const RoomCancelReq = () => {
         </div>
       ) : (
         <EmptyMessage
-          message="Chill No Cancel Request Recived Yet🥴"
-          label="Add Rooms"
+          message="Chill No Cancel Request Send Yet🥴"
+          
         />
       )}
     </div>
