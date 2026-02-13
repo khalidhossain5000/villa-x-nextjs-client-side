@@ -30,7 +30,7 @@ const axiosSecure=useAxiosSecure()
   }
   return (
     <tr>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b] dark:border-primary text-sm'>
         <div className='flex items-center'>
           <div className='flex-shrink-0'>
             <div className='block relative'>
@@ -42,11 +42,11 @@ const axiosSecure=useAxiosSecure()
             </div>
           </div>
           <div className='ml-3'>
-            <p className='text-gray-900 whitespace-no-wrap'>{booking?.title}</p>
+            <p className='text-gray-900  dark:text-slate-100  whitespace-no-wrap'>{booking?.title}</p>
           </div>
         </div>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b] dark:border-primary dark:text-slate-100 text-sm'>
         <div className='flex items-center'>
           <div className='flex-shrink-0'>
             <div className='block relative'>
@@ -58,35 +58,35 @@ const axiosSecure=useAxiosSecure()
             </div>
           </div>
           <div className='ml-3'>
-            <p className='text-gray-900 whitespace-no-wrap'>
+            <p className='text-gray-900  dark:text-slate-100 whitespace-no-wrap'>
               {booking?.guest?.name}
             </p>
           </div>
         </div>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>${booking?.price}</p>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary text-sm'>
+        <p className='text-gray-900 whitespace-no-wrap dark:text-slate-100 '>${booking?.price}</p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary text-sm'>
+        <p className='text-gray-900 whitespace-no-wrap dark:text-slate-100 '>
           {format(new Date(booking?.from), 'P')}
         </p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary text-sm'>
+        <p className='text-gray-900 whitespace-no-wrap dark:text-slate-100 '>
           {format(new Date(booking?.to), 'P')}
         </p>
       </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+      <td className='px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary text-sm'>
         <span
           onClick={() => setIsOpen(true)}
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight'
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold dark:text-slate-100  text-green-900 leading-tight'
         >
           <span
             aria-hidden='true'
             className='absolute inset-0 bg-red-200 opacity-50 rounded-full'
           ></span>
-          <span className='relative'>Delete</span>
+          <span className='relative dark:text-slate-100 '>Delete</span>
         </span>
         <DeleteRoomBookingByHost
           isOpen={isOpen}

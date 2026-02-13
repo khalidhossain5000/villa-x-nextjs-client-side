@@ -68,43 +68,43 @@ const MyListing = () => {
                     <tr>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white dark:bg-[#1e293b] dark:text-slate-100 border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Title
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white dark:bg-[#1e293b] dark:text-slate-100  border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Location
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white dark:bg-[#1e293b] dark:text-slate-100  border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Price
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white dark:bg-[#1e293b] dark:text-slate-100  border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         From
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white dark:bg-[#1e293b]  dark:text-slate-100 border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         To
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white dark:bg-[#1e293b] dark:text-slate-100  border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Delete
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white dark:bg-[#1e293b] dark:text-slate-100  border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Update
                       </th>
