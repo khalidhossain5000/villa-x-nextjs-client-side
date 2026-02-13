@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import Rooms from "@/components/HomePage/RoomsSection/Rooms";
 import Categories from "@/components/Shared/HomePage/Categories/Categories";
 import React, { Suspense } from "react";
-import { FaSearch } from "react-icons/fa";
+
 
 
 const AllRooms = () => {

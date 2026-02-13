@@ -2,7 +2,7 @@
 import Loader from "@/components/Shared/Loading/Loader";
 import useAxios from "@/Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import RoomCard from "./RoomCard";
 import { useSearchParams } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
@@ -12,34 +12,33 @@ const Rooms = () => {
   const params = useSearchParams();
   const category = params.get("category");
   const [searchText, setSearchText] = useState("");
+  const inputRef = useRef(null);
 
   // all rooms data showing category wise
   const { data: allRoomData, isLoading } = useQuery({
-    queryKey: ["allRoomsData", category],
+    queryKey: ["allRoomsData", category,searchText],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/api/rooms?category=${category} & search=${searchText}`);
+      const res = await axiosInstance.get(`/api/rooms?category=${category}&search=${searchText}`);
       return res.data.allRoomData;
     },
     keepPreviousData: true,
   });
-
+  useEffect(() => {
+    inputRef.current?.focus();
+  });
   if (isLoading) return <Loader />;
-  // const filteredRooms = allRoomData.filter((room) =>
-    
-  //    room?.title.toLowerCase().includes(searchText.toLowerCase())
-  // );
+ 
 
-
-  if(!filteredRooms) return console.log('filer room is not found uer')
   return (
     <div className="flex items-start gap-2 ">
       <div className="searchbox flex-1 bg-gray-200 rounded-lg shadow-xl mt-12">
         <div className="relative">
           <input
+          ref={inputRef}
             type="text"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
-            placeholder="Search by room..."
+            placeholder="Search by room name..."
             className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg shadow-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
           />
           <button className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-indigo-600">
@@ -49,9 +48,9 @@ const Rooms = () => {
       </div>
 
       <div className="flex-4">
-        {filteredRooms && filteredRooms.length > 0 ? (
+        {allRoomData && allRoomData.length > 0 ? (
           <div className="px-20 pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-8">
-            {filteredRooms.map((room) => (
+            {allRoomData.map((room) => (
               <RoomCard key={room._id} room={room}></RoomCard>
             ))}
           </div>
