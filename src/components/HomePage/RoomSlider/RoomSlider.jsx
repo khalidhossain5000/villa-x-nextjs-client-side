@@ -1,18 +1,21 @@
 "use client";
+
+import React, { useState, useEffect } from "react";
 import Loader from "@/components/Shared/Loading/Loader";
 import useAxios from "@/Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
 import RoomSlide from "./RoomSlide";
-import { AnimatePresence,motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const RoomSlider = () => {
   const axiosInstance = useAxios();
   const [currentSlide, setCurrentSlide] = useState(0);
-  const cat='Mountain'
-  // all rooms data showing category wise
-  const { data: allRoomData, isLoading } = useQuery({
-    queryKey: ["allRoomsData"],
+  const [itemsToShow, setItemsToShow] = useState(3);
+  const cat = "Mountain";
+
+  // Fetch room data
+  const { data: allRoomData = [], isLoading } = useQuery({
+    queryKey: ["allRoomsData", cat],
     queryFn: async () => {
       const res = await axiosInstance.get(`/api/rooms?category=${cat}`);
       return res.data.allRoomData;
@@ -20,54 +23,88 @@ const RoomSlider = () => {
     keepPreviousData: true,
   });
 
-  if (isLoading) return <Loader />;
-  
+  // Responsive items per view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) setItemsToShow(1);
+      else if (window.innerWidth < 1024) setItemsToShow(2);
+      else setItemsToShow(3);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? allRoomData.length - 1 : prev - 1
-    );
-  };
+  // Infinite loop next/prev
+  const totalSlides = allRoomData.length;
 
   const nextSlide = () => {
-    setCurrentSlide((prev) =>
-      prev === allRoomData.length - 1 ? 0 : prev + 1
-    );
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
   };
-//   console.log(allRoomData,'fetched')
-  return  <div className="relative w-full h-[500px] overflow-hidden">
-      <AnimatePresence mode="wait">
-        {allRoomData.map(
-          (room, index) =>
-            index === currentSlide && (
-              <motion.div
-                key={room._id}
-                initial={{ opacity: 0, x: 200 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -200 }}
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0"
-              >
-                <RoomSlide room={room} />
-              </motion.div>
-            )
-        )}
-      </AnimatePresence>
 
-      {/* Navigation buttons */}
-      <button
-        onClick={prevSlide}
-        className="absolute top-1/2 left-5 -translate-y-1/2 z-10 bg-white/50 px-4 py-2 rounded"
-      >
-        Prev
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-5 -translate-y-1/2 z-10 bg-white/50 px-4 py-2 rounded"
-      >
-        Next
-      </button>
-    </div>;
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  // Auto-slide every 3 seconds
+  useEffect(() => {
+    if (totalSlides === 0) return; // data not yet loaded
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [totalSlides]); // depend on totalSlides, not allRoomData
+
+  if (isLoading) return <Loader />;
+  if (totalSlides === 0) return null;
+
+  const slideWidth = 100 / itemsToShow;
+
+  return (
+    <div className="relative container mx-auto my-10 px-4">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold">
+          Our Mountain Rooms
+        </h2>
+        <div className="flex gap-2">
+          <button
+            onClick={prevSlide}
+            className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200"
+          >
+            Prev
+          </button>
+          <button
+            onClick={nextSlide}
+            className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+
+      {/* Slider */}
+      <div className="overflow-hidden relative">
+        <motion.div
+          className="flex gap-4"
+          animate={{ x: `-${currentSlide * slideWidth}%` }}
+          transition={{ type: "tween", duration: 0.5 }}
+        >
+          {/* Duplicate slides for infinite feel */}
+          {[...allRoomData, ...allRoomData].map((room, index) => (
+            <div
+              key={`${room._id}-${index}`}
+              className="flex-shrink-0"
+              style={{ width: `${slideWidth}%` }}
+            >
+              <RoomSlide room={room} />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
 };
 
 export default RoomSlider;
