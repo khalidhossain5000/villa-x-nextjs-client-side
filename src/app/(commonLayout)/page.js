@@ -8,9 +8,9 @@ const HomePage = () => {
   return (
     <div>
       <Banner />
-      <Suspense fallback={"loadings....."}>
+      {/* <Suspense fallback={"loadings....."}>
         <Rooms />
-      </Suspense>
+      </Suspense> */}
 <RoomSlider/>
         
     </div>

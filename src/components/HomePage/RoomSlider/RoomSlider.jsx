@@ -1,16 +1,22 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Loader from "@/components/Shared/Loading/Loader";
 import useAxios from "@/Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
-import RoomSlide from "./RoomSlide";
-import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+// import required modules
+import { FreeMode, Pagination } from "swiper/modules";
 const RoomSlider = () => {
   const axiosInstance = useAxios();
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [itemsToShow, setItemsToShow] = useState(3);
+
   const cat = "Mountain";
 
   // Fetch room data
@@ -23,86 +29,41 @@ const RoomSlider = () => {
     keepPreviousData: true,
   });
 
-  // Responsive items per view
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) setItemsToShow(1);
-      else if (window.innerWidth < 1024) setItemsToShow(2);
-      else setItemsToShow(3);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Infinite loop next/prev
-  const totalSlides = allRoomData.length;
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  // Auto-slide every 3 seconds
-  useEffect(() => {
-    if (totalSlides === 0) return; // data not yet loaded
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [totalSlides]); // depend on totalSlides, not allRoomData
-
   if (isLoading) return <Loader />;
-  if (totalSlides === 0) return null;
-
-  const slideWidth = 100 / itemsToShow;
 
   return (
-    <div className="relative container mx-auto my-10 px-4">
-      {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl sm:text-3xl font-bold">
-          Our Mountain Rooms
-        </h2>
-        <div className="flex gap-2">
-          <button
-            onClick={prevSlide}
-            className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200"
-          >
-            Prev
-          </button>
-          <button
-            onClick={nextSlide}
-            className="bg-white text-black px-4 py-2 rounded shadow hover:bg-gray-200"
-          >
-            Next
-          </button>
-        </div>
-      </div>
+    <div className="py-48 container mx-auto">
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[FreeMode, Pagination]}
+        autoplay={true}
+        loop={true}
+        grabCursor={true}
+      >
+        {allRoomData.map((room) => (
+          <SwiperSlide key={room._id}>
+            <div className="w-full h-full relative cursor-grab">
+              {/* Background Image */}
+              <img
+                src={room?.thumbnailImage}
+                alt={room?.title}
+                className="w-full h-full object-cover rounded-lg"
+              />
 
-      {/* Slider */}
-      <div className="overflow-hidden relative">
-        <motion.div
-          className="flex gap-4"
-          animate={{ x: `-${currentSlide * slideWidth}%` }}
-          transition={{ type: "tween", duration: 0.5 }}
-        >
-          {/* Duplicate slides for infinite feel */}
-          {[...allRoomData, ...allRoomData].map((room, index) => (
-            <div
-              key={`${room._id}-${index}`}
-              className="flex-shrink-0"
-              style={{ width: `${slideWidth}%` }}
-            >
-              <RoomSlide room={room} />
+              {/* Text Overlay */}
+              <div className="absolute bottom-10 left-10 text-white bg-black/30 p-4 rounded">
+                <h2 className="text-2xl font-bold">{room.title}</h2>
+                <p className="mt-1">{room.description}</p>
+              </div>
             </div>
-          ))}
-        </motion.div>
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };
