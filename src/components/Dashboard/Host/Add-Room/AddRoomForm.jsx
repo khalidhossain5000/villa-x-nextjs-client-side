@@ -13,11 +13,12 @@ import { DateRange } from "react-date-range";
 import { useForm } from "react-hook-form";
 import { TbFidgetSpinner } from "react-icons/tb";
 
-const AddRoomForm = ({ loading }) => {
+const AddRoomForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm({
     resolver: zodResolver(roomFrontSchema),
   });
@@ -92,7 +93,7 @@ const AddRoomForm = ({ loading }) => {
 
   //HANDLE FORM SUBMIT STARTS HERE
   const onSubmit = async (data, e) => {
-    console.log("on submit is triggred over here");
+    console.log(e.target.image.files[0],"on submit is triggred over here");
     setUploading(true)
     const image = e.target.image.files[0];
     const image_uri = await imageUpload(image);
@@ -103,7 +104,7 @@ const AddRoomForm = ({ loading }) => {
     // Multiple Room Images Upload
     const roomImageUrls = await uploadRoomImages();
 
-   
+   console.log(roomImage,'roomImage',roomImageUrls,'roomImageUrls')
 
     const hostInfo = {
       name: userInfo?.name,
@@ -119,7 +120,7 @@ const AddRoomForm = ({ loading }) => {
       hostInfo,
     };
 
-   
+   console.log(roomData,'this is roomdata')
     axiosSecure
       .post("/api/rooms", roomData)
       .then((res) => {
@@ -127,6 +128,11 @@ const AddRoomForm = ({ loading }) => {
         if (res.data?.success === true) {
           alert("Room added successfully check the db");
           setUploading(false)
+          reset()
+          setRoomUploadText('select Room Images')
+          setUploadButtonText("select Thumbnail")
+          setRoomImages([])
+          setPreviewImages([])
         }
       })
       .catch((error) => {
@@ -222,6 +228,7 @@ const AddRoomForm = ({ loading }) => {
                   className="hidden"
                   type="file"
                   accept="image/*"
+                  name='image'
                 />
                 <div className="bg-primary dark:bg-primary text-white border border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500">
                   {uploadButtonText}
