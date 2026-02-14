@@ -52,7 +52,9 @@ export const useAuth = () => {
   //upate profile
   const updateFirebaseUserProfile = async (name, photoUrl) => {
     try {
-      await axiosSecure.patch(`/api/auth/update-name/${user.email}`, { name });
+      if(name){
+        await axiosSecure.patch(`/api/auth/update-name/${user.email}`, { name });
+      }
 
       await updateProfile(userAuththis.currentUser, {
         displayName: name,

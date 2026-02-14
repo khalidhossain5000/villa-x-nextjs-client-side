@@ -18,10 +18,10 @@ import { useAuth } from "@/Hooks/useAuth";
 
 
 const UpdateProfile = () => {
-  const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-  const { updateFirebaseUserProfile } = useAuth();
+  const { updateFirebaseUserProfile,userInfo } = useAuth();
+  const [name, setName] = useState(userInfo.name);
  const [updating,setUpdating]=useState(false)
    const [open, setOpen] = useState(false);
 
@@ -129,7 +129,7 @@ setUpdating(true)
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit" className="bg-pink-500 hover:bg-pink-600">
+            <Button type="submit" className="bg-pink-500 hover:bg-pink-600 cursor-pointer">
               {updating? 'Profile Updating......' : 'Update Profile'}
             </Button>
           </DialogFooter>

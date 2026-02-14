@@ -7,12 +7,13 @@ import {
   GiCaveEntrance,
   GiForestCamp,
   GiIsland,
-  GiWindmill,
+  GiMountaintop,
 } from 'react-icons/gi'
 import { FaSkiing } from 'react-icons/fa'
 import { BsSnow } from 'react-icons/bs'
 import { IoDiamond } from 'react-icons/io5'
 import { MdOutlineVilla } from 'react-icons/md'
+// import { GiMountaintop } from "react-icons/gi";
 
 export const categories = [
   {
@@ -21,8 +22,8 @@ export const categories = [
     description: 'This property is close to the beach!',
   },
   {
-    label: 'Windmills',
-    icon: GiWindmill,
+    label: 'Mountain',
+    icon: GiMountaintop ,
     description: 'This property is has windmills!',
   },
   {
