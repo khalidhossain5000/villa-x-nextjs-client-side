@@ -1,4 +1,5 @@
 import Banner from "@/components/HomePage/Banner/Banner";
+import Info from "@/components/HomePage/InfoSection/Info";
 import RoomSlider from "@/components/HomePage/RoomSlider/RoomSlider";
 import Rooms from "@/components/HomePage/RoomsSection/Rooms";
 
@@ -12,7 +13,7 @@ const HomePage = () => {
         <Rooms />
       </Suspense> */}
 <RoomSlider/>
-        
+        <Info/>
     </div>
   );
 };
