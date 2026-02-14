@@ -1,7 +1,7 @@
 import { auth } from "@/firebase/firebase.init";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { getAuth, GoogleAuthProvider, signInWithPopup,signOut } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup,signOut } from "firebase/auth";
 import { GithubAuthProvider } from "firebase/auth";
 
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -13,7 +13,6 @@ const initialState = {
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
-const updateAuth=getAuth()
 //create user thunk
 export const createUser = createAsyncThunk(
   "authSlice/createUser",
@@ -44,13 +43,10 @@ export const createUser = createAsyncThunk(
   }
 );
 
-//update profile on firebase from modal
+
 
 export const updateFireBaseProfile=createAsyncThunk("authSlice/updateProfile",async({name,email,photoURL})=>{
-  await updateProfile(updateAuth.currentUser,{
-    displayName:name,
-    photoURL:photoURL
-  })
+  await updateProfile(auth)
 })
 
 //login user thunk will be added here
