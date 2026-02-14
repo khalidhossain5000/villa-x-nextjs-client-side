@@ -16,9 +16,11 @@ const Rooms = () => {
 
   // all rooms data showing category wise
   const { data: allRoomData, isLoading } = useQuery({
-    queryKey: ["allRoomsData", category,searchText],
+    queryKey: ["allRoomsData", category, searchText],
     queryFn: async () => {
-      const res = await axiosInstance.get(`/api/rooms?category=${category}&search=${searchText}`);
+      const res = await axiosInstance.get(
+        `/api/rooms?category=${category}&search=${searchText}`,
+      );
       return res.data.allRoomData;
     },
     keepPreviousData: true,
@@ -27,14 +29,13 @@ const Rooms = () => {
     inputRef.current?.focus();
   });
   if (isLoading) return <Loader />;
- 
 
   return (
     <div className="flex items-start flex-col lg:flex-row gap-2 ">
       <div className="searchbox lg:flex-1 bg-gray-200 rounded-lg shadow-xl mt-12">
         <div className="relative">
           <input
-          ref={inputRef}
+            ref={inputRef}
             type="text"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
