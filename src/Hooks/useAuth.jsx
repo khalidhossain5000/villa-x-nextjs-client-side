@@ -52,18 +52,26 @@ export const useAuth = () => {
   //upate profile
   const updateFirebaseUserProfile = async (name, photoUrl) => {
     try {
+      await axiosSecure.patch(`/api/auth/update-name/${user.email}`, { name });
+
       await updateProfile(userAuththis.currentUser, {
         displayName: name,
         photoURL: photoUrl,
       });
 
-      const res = await axiosSecure.patch("/api/auth/update-name", { name });
-
-      console.log(res, "this is profile udpated data");
+      const updatedUser = userAuththis.currentUser;
+      dispatch(
+        setCurrentUser({
+          accessToken: updatedUser.accessToken,
+          displayName: updatedUser.displayName,
+          email: updatedUser.email,
+          photoURL: updatedUser.photoURL,
+        }),
+      );
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(userInfo,'from use auth',loading)
+  // console.log(userInfo, "from use auth", loading);
   return { userInfo, loading, logOutHandler, updateFirebaseUserProfile };
 };

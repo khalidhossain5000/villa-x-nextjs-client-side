@@ -15,12 +15,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
 import { useAuth } from "@/Hooks/useAuth";
+import { useDispatch } from "react-redux";
+import { setCurrentUser } from "@/Redux/Features/authSlice";
 
 const UpdateProfile = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const { updateFirebaseUserProfile } = useAuth();
+  const dispatch = useDispatch();
   // Handle Image Change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -39,15 +42,23 @@ const UpdateProfile = () => {
   // Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const image = e.target.image.files[0];
-    const image_uri = await imageUpload(image);
-    const photoUrl = image_uri?.data?.display_url;
-    console.log({ name, image }, image_uri, "image_uri", photoUrl);
+    // const image = e.target.image.files[0];
+    // const image_uri = await imageUpload(image);
 
-    if (image && photoUrl) {
+    let photoUrl = null;
+
+    if (e?.target?.image?.files[0]) {
+      const image = e.target.image.files[0];
+      const image_uri = await imageUpload(image);
+      photoUrl = image_uri?.data?.display_url || null;
+    }
+
+    console.log({ name, image }, "image_uri", photoUrl);
+
+    if (image || photoUrl) {
       updateFirebaseUserProfile(name, photoUrl)
         .then((res) => {
-          console.log(res);
+          console.log(res, "this is res updated after");
         })
         .catch((error) => {
           console.log(error);

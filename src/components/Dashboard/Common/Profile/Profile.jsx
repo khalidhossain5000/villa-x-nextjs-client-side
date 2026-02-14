@@ -30,7 +30,7 @@ const Profile = () => {
 
   if (roleLoading || loading || isLoading || !singleUser || !user) return <Loader />;
 
-  console.log(singleUser, "from db",user);
+  // console.log(singleUser, "from db",user);
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white dark:bg-[#0f172b] shadow-lg rounded-2xl w-3/5">
