@@ -15,15 +15,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
 import { useAuth } from "@/Hooks/useAuth";
-import { useDispatch } from "react-redux";
-import { setCurrentUser } from "@/Redux/Features/authSlice";
+
 
 const UpdateProfile = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const { updateFirebaseUserProfile } = useAuth();
-  const dispatch = useDispatch();
+ const [updating,setUpdating]=useState(false)
+   const [open, setOpen] = useState(false);
+
   // Handle Image Change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -44,7 +45,7 @@ const UpdateProfile = () => {
     e.preventDefault();
     // const image = e.target.image.files[0];
     // const image_uri = await imageUpload(image);
-
+setUpdating(true)
     let photoUrl = null;
 
     if (e?.target?.image?.files[0]) {
@@ -57,23 +58,19 @@ const UpdateProfile = () => {
 
     if (image || photoUrl) {
       updateFirebaseUserProfile(name, photoUrl)
-        .then((res) => {
-          console.log(res, "this is res updated after");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        setUpdating(false)
+         setOpen(false);
     }
   };
 
   return (
-    <Dialog>
+    <Dialog  open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
           className={` dark:text-white bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1`}
         >
-          Update Profile
+          Update profile
         </Button>
       </DialogTrigger>
 
@@ -133,7 +130,7 @@ const UpdateProfile = () => {
               <Button variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="submit" className="bg-pink-500 hover:bg-pink-600">
-              Save Changes
+              {updating? 'Profile Updating......' : 'Update Profile'}
             </Button>
           </DialogFooter>
         </form>

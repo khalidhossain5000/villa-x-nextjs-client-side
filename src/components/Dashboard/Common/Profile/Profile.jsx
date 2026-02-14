@@ -25,10 +25,8 @@ const Profile = () => {
     enabled: !!user?.email,
   });
 
-
-
-
-  if (roleLoading || loading || isLoading || !singleUser || !user) return <Loader />;
+  if (roleLoading || loading || isLoading || !singleUser || !user)
+    return <Loader />;
 
   // console.log(singleUser, "from db",user);
   return (
@@ -39,7 +37,7 @@ const Profile = () => {
           src={bgImg.src}
           className="w-full mb-4 rounded-t-lg h-36 lg:h-48 xl:56"
         />
-      
+
         <div className="flex flex-col items-center justify-center p-4 -mt-16">
           <a href="#" className="relative block">
             <img
@@ -90,14 +88,14 @@ const Profile = () => {
               </p>
               <p className="flex flex-col">
                 Email
-                <span className="font-bold text-black  dark:text-slate-100">{user?.email}</span>
+                <span className="font-bold text-black  dark:text-slate-100">
+                  {user?.email}
+                </span>
               </p>
 
               <div>
+                <UpdateProfile />
 
-<UpdateProfile/>
-
-               
                 <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
                   Change Password
                 </button>
