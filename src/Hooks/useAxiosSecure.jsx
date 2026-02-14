@@ -1,20 +1,22 @@
 "use client";
 import axios from "axios";
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useAuth } from "./useAuth";
+import { useDispatch, useSelector } from "react-redux";
+
 import Loader from "@/components/Shared/Loading/Loader";
+import { signOutUser } from "@/Redux/Features/authSlice";
 
 const axiosSecure = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000",
 });
 
 const useAxiosSecure = () => {
-  const { userInfo, logOutHandler } = useAuth();
-  const { user, loading } = useSelector((state) => state.auth);
-
+  const dispatch=useDispatch()
+  const { user, loading, } = useSelector((state) => state.auth);
+ 
   useEffect(() => {
-    if (!user?.accessToken || !userInfo) return;
+   
+    if (!user?.accessToken ) return;
 
     // intercept request
     const reqInterceptor = axiosSecure.interceptors.request.use((config) => {
@@ -32,7 +34,7 @@ const useAxiosSecure = () => {
 
         const statusCode = error.status;
         if (statusCode === 401 || statusCode === 403) {
-          // logOutHandler()
+          // dispatch(signOutUser());
         }
 
         return Promise.reject(error);
@@ -43,7 +45,7 @@ const useAxiosSecure = () => {
       axiosSecure.interceptors.request.eject(reqInterceptor);
       axiosSecure.interceptors.response.eject(resInterceptor);
     };
-  }, [userInfo, logOutHandler, user]);
+  }, [  user,dispatch]);
 
   return axiosSecure;
 };

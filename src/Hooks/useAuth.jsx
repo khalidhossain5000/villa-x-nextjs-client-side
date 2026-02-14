@@ -19,8 +19,8 @@ export const useAuth = () => {
   const logOutHandler = () => {
     dispatch(signOutUser());
   };
-  const userAuth = getAuth();
-  const axiosSecure=useAxiosSecure()
+  const userAuththis = getAuth();
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
     // dispatch(setLoading(true));
 
@@ -52,21 +52,18 @@ export const useAuth = () => {
   //upate profile
   const updateFirebaseUserProfile = async (name, photoUrl) => {
     try {
-    
-      await updateProfile(userAuth.currentUser, {
+      await updateProfile(userAuththis.currentUser, {
         displayName: name,
         photoURL: photoUrl,
       });
 
-      const { data } = await axiosSecure.patch("/api/user/update-name", { name });
+      const res = await axiosSecure.patch("/api/auth/update-name", { name });
 
-
-console.log(data)
-
+      console.log(res, "this is profile udpated data");
     } catch (error) {
       console.log(error);
     }
   };
-  // console.log(userInfo,'from use auth',loading)
-  return { userInfo, loading, logOutHandler };
+  console.log(userInfo,'from use auth',loading)
+  return { userInfo, loading, logOutHandler, updateFirebaseUserProfile };
 };

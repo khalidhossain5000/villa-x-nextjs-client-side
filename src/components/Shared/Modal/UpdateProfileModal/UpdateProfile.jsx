@@ -1,5 +1,4 @@
-
-'use client'
+"use client";
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -14,12 +13,14 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
+import { useAuth } from "@/Hooks/useAuth";
 
 const UpdateProfile = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-
+  const { updateFirebaseUserProfile } = useAuth();
   // Handle Image Change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -36,31 +37,44 @@ const UpdateProfile = () => {
   };
 
   // Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ name, image });
+    const image = e.target.image.files[0];
+    const image_uri = await imageUpload(image);
+    const photoUrl = image_uri?.data?.display_url;
+    console.log({ name, image }, image_uri, "image_uri", photoUrl);
+
+    if (image && photoUrl) {
+      updateFirebaseUserProfile(name, photoUrl)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className={` dark:text-white bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1`}>Update Profile</Button>
+        <Button
+          variant="outline"
+          className={` dark:text-white bg-[#F43F5E] px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053] block mb-1`}
+        >
+          Update Profile
+        </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-md bg-white dark:bg-slate-900">
         <DialogHeader>
-          <DialogTitle className="">
-            Update Profile
-          </DialogTitle>
+          <DialogTitle className="">Update Profile</DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-          
           {/* Name Field */}
           <div className="space-y-2">
-            <Label className="text-gray-700 dark:text-gray-300">
-              Name
-            </Label>
+            <Label className="text-gray-700 dark:text-gray-300">Name</Label>
             <Input
               type="text"
               value={name}
@@ -78,6 +92,7 @@ const UpdateProfile = () => {
             <Input
               type="file"
               accept="image/*"
+              name="image"
               onChange={handleImageChange}
               className="bg-gray-50 dark:bg-slate-800 dark:text-white"
             />
@@ -110,7 +125,6 @@ const UpdateProfile = () => {
               Save Changes
             </Button>
           </DialogFooter>
-
         </form>
       </DialogContent>
     </Dialog>

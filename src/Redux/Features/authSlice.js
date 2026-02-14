@@ -45,9 +45,7 @@ export const createUser = createAsyncThunk(
 
 
 
-export const updateFireBaseProfile=createAsyncThunk("authSlice/updateProfile",async({name,email,photoURL})=>{
-  await updateProfile(auth)
-})
+
 
 //login user thunk will be added here
 export const loginUser=createAsyncThunk(
