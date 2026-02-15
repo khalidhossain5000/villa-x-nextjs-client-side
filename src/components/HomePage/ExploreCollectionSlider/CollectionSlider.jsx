@@ -11,7 +11,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination ,Autoplay} from "swiper/modules";
 import Link from "next/link";
 const CollectionSlider = () => {
   const axiosInstance = useAxios();
@@ -92,8 +92,12 @@ const CollectionSlider = () => {
         spaceBetween={30}
         pagination={{
           clickable: true,
+              type: "fraction",
+
         }}
-        modules={[Pagination]}
+        modules={[Pagination,Autoplay]}
+        autoplay={true}
+        loop={true}
         className="mySwiper"
       >
         {allRoomData.map((room) => (
@@ -104,7 +108,7 @@ const CollectionSlider = () => {
                 <img
                   src={room?.thumbnailImage}
                   alt={room?.title}
-                  className="w-full h-106 xl:w-200 object-cover rounded-lg"
+                  className="w-full h-120 xl:w-200 object-cover rounded-lg"
                 />
 
                 {/* Text Overlay */}

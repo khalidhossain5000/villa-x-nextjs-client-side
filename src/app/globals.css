@@ -106,3 +106,17 @@ body {
 
 }
 
+
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 14px;
+  background: #9ca3af;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px;
+  height: 20px;
+  background: #000;
+}
