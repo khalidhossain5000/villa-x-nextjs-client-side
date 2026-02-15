@@ -1,5 +1,6 @@
 import About from "@/components/HomePage/AboutSection/About";
 import Banner from "@/components/HomePage/Banner/Banner";
+import CollectionSlider from "@/components/HomePage/ExploreCollectionSlider/CollectionSlider";
 import Info from "@/components/HomePage/InfoSection/Info";
 import RoomSlider from "@/components/HomePage/RoomSlider/RoomSlider";
 import Rooms from "@/components/HomePage/RoomsSection/Rooms";
@@ -17,6 +18,7 @@ const HomePage = () => {
         <Info/>
 
         <About/>
+        <CollectionSlider/>
     </div>
   );
 };
