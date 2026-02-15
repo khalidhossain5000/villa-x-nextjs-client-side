@@ -1,3 +1,4 @@
+import About from "@/components/HomePage/AboutSection/About";
 import Banner from "@/components/HomePage/Banner/Banner";
 import Info from "@/components/HomePage/InfoSection/Info";
 import RoomSlider from "@/components/HomePage/RoomSlider/RoomSlider";
@@ -14,6 +15,8 @@ const HomePage = () => {
       </Suspense> */}
 <RoomSlider/>
         <Info/>
+
+        <About/>
     </div>
   );
 };
