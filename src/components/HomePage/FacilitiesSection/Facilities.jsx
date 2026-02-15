@@ -3,23 +3,24 @@ import React from "react";
 import leftImg from "../../../assets/Home/facilites/left-img.webp";
 import rightImg from "../../../assets/Home/facilites/right.webp";
 import Image from "next/image";
+import CountUp from "@/components/Shared/CountUp/CountUp";
 
 const cardData = [
   {
     startTitle: "Total Rooms",
-    title: "180",
+    title: 180,
     connector: "+",
     endTitle: "luxury rooms & suites",
   },
   {
     startTitle: "YEARLY VISITORS",
-    title: "8500",
+    title: 8500,
     connector: "+",
     endTitle: "happy guests",
   },
   {
     startTitle: "SIGNATURE MENU",
-    title: "65",
+    title: 65,
     connector: "+",
     endTitle: "curated dishes & beverages",
   },
@@ -43,27 +44,35 @@ const Facilities = () => {
       </div>
       {/* main big card and grid layout */}
       <div className="container mx-auto py-12 flex flex-col lg:flex-row gap-6 items-stretch">
-        <div style={{backgroundImage:`url(${leftImg.src})`}} className="card bg-cover bg-center rounded-2xl shadow-xl flex-1 min-h-80 lg:min-h-auto">
-
-        </div>
+        <div
+          style={{ backgroundImage: `url(${leftImg.src})` }}
+          className="card bg-cover bg-center rounded-2xl shadow-xl flex-1 min-h-80 lg:min-h-auto"
+        ></div>
         <div className="card grid grid-cols-1 lg:grid-cols-2 flex-1 gap-8">
           {cardData.map((data, i) => (
-            <div key={i} className="flex flex-col justify-around lg:justify-between card bg-cover p-7.5 bg-center rounded-lg shadow-sm h-80 bg-white">
+            <div
+              key={i}
+              className="flex flex-col justify-around lg:justify-between card bg-cover p-7.5 bg-center rounded-lg shadow-sm h-80 bg-white"
+            >
               <h5 className="text-center lg:text-left text-[#59585d] font-semibold uppercase pb-2 border-b border-gray-300">
-                Total Rooms
+                {data.startTitle}
               </h5>
 
               <div>
                 <h1 className="text-center lg:text-left text-5xl xl:text-6xl 2xl:text-7xl font-extrabold text-[#1c1c1d] font-poppins">
-                180 <span className="text-primary">+</span>
-              </h1>
-              <h5 className="text-[#59585d] py-2 font-semibold text-center lg:text-left">luxury rooms & suites</h5>
+                   <CountUp to={data.title} duration={5}/><span className="text-primary">+</span>
+                </h1>
+                <h5 className="text-[#59585d] py-2 font-semibold text-center lg:text-left">
+                  {data.endTitle}
+                </h5>
               </div>
             </div>
           ))}
 
-          <div style={{backgroundImage:`url(${rightImg.src})`}} className="card bg-cover p-7.5 bg-center rounded-2xl shadow-md h-80" >
-          </div>
+          <div
+            style={{ backgroundImage: `url(${rightImg.src})` }}
+            className="card bg-cover p-7.5 bg-center rounded-2xl shadow-md h-80"
+          ></div>
         </div>
       </div>
     </section>
