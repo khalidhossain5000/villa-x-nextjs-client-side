@@ -1,3 +1,4 @@
+import Footer from "@/components/Shared/Footer/Footer";
 import PublicNavbar from "@/components/Shared/Navbar/PublicNavbar";
 
 const CommonLayout = ({ children }) => {
@@ -5,6 +6,7 @@ const CommonLayout = ({ children }) => {
     <>
       <PublicNavbar />
       {children}
+      <Footer/>
     </>
   );
 };
