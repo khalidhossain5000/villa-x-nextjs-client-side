@@ -1,4 +1,3 @@
-import HomeTitle from "@/components/Shared/HomePage/HomeTitle/HomeTitle";
 import React from "react";
 import hiking from "../../../assets/Home/Info/Main-custom-icon-1.png";
 import climbing from "../../../assets/Home/Info/Main-custom-icon-2.png";
@@ -43,9 +42,7 @@ const Info = () => {
 
   return (
     <div className='bg-primary py-14 lg:py-24'>
-        
-      <HomeTitle title="" />
-
+     
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center gap-x-9 gap-y-16 px-2 xl:px-0">
         {activities.map((act, i) => (
           <div key={i} className="flex items-center gap-6 gap-y-16">

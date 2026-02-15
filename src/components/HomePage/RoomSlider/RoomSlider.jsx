@@ -64,24 +64,23 @@ const RoomSlider = () => {
           }}
           loop={true}
           breakpoints={{
-        0: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 40,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 50,
-        },
-      }}
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
         >
           {allRoomData.map((room) => (
-            
-              <SwiperSlide key={room._id}>
-                <Link href={`/room/${room._id}`}>
+            <SwiperSlide key={room._id}>
+              <Link href={`/room/${room._id}`}>
                 <div className="w-full h-full relative ">
                   {/* Background Image */}
                   <img
@@ -96,9 +95,8 @@ const RoomSlider = () => {
                     <p className="mt-1">{room.description.slice(0, 90)}</p>
                   </div>
                 </div>
-                </Link>
-              </SwiperSlide>
-           
+              </Link>
+            </SwiperSlide>
           ))}
         </Swiper>
       </div>
