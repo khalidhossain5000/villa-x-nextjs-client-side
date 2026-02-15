@@ -21,7 +21,8 @@ const About = () => {
 
             {/* Heading */}
             <h2 className="text-4xl md:text-5xl font-serif font-semibold text-gray-900 leading-tight mb-6 text-center lg:text-left">
-              Luxury vacation <br /> <span className="font-playfair">rentals worldwide</span>
+              Luxury vacation <br />{" "}
+              <span className="font-playfair">rentals worldwide</span>
             </h2>
 
             {/* Paragraph */}
