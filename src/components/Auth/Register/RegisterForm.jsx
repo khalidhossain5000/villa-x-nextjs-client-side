@@ -1,13 +1,14 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RiLockPasswordLine, RiUserLine } from "react-icons/ri";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "@/ZodSchema/register.schema";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "@/Redux/Features/authSlice";
+import toast from "react-hot-toast";
 const RegisterForm = () => {
-    const test =useSelector(state=>console.log(state))
+    const [registering,setRegistering]=useState(false)
    
     const dispatch=useDispatch()
     const {register,handleSubmit,formState:{errors}}=useForm({
@@ -15,13 +16,24 @@ const RegisterForm = () => {
     })
 
     const onSubmit=data=>{
-       
+       console.log('register triggered')
+       setRegistering(true)
         const email=data.email
         const password=data.password
         const name=data.fullName
-        dispatch(createUser({email,password,name}))
+        dispatch(createUser({email,password,name})).then((res)=>{
+          console.log(res,'this is res inside create user')
+          if(res.meta.requestStatus="fulfilled"){
+            toast.success("Register Sucess")
+            setRegistering(false)
+          }
+          setRegistering(false)
+        }).catch((error)=>{
+          console.log(error,'this is create user errro')
+          setRegistering(false)
+        })
         
-        alert('Form submited')
+        
     }
   return (
     <div>
@@ -92,7 +104,7 @@ const RegisterForm = () => {
           type="submit"
           className="w-full py-3 px-4 bg-[#1a5f0e] dark:bg-[#4ade80] text-white font-semibold rounded-lg hover:bg-[#0d9276] dark:hover:bg-[#71f9a3] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1a5f0e] dark:focus:ring-[#4ade80] transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer"
         >
-          Sign Up
+          {registering ? "Registering......" : "Sign Up"}
         </button>
       </form>
     </div>

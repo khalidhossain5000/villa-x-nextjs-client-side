@@ -66,7 +66,7 @@ const RoomReservation = ({ room }) => {
     from: userSelectedRange?.startDate,
     title: room?.title,
     roomId: room?._id,
-    image: room?.roomImage,
+    image: room?.thumbnailImage,
   };
 
   //fetching booked room data date for validyity
