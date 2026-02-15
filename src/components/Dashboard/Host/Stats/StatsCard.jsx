@@ -1,34 +1,16 @@
-"use client";
+
 import React from "react";
 import { IoIosTrendingUp } from "react-icons/io";
 import { FaHouseDamage } from "react-icons/fa";
 import { FaMoneyBillWave } from "react-icons/fa6";
 import Loader from "@/components/Shared/Loading/Loader";
-import useAxiosSecure from "@/Hooks/useAxiosSecure";
-import { useAuth } from "@/Hooks/useAuth";
-import { useQuery } from "@tanstack/react-query";
+
 import { MdOutlineWarehouse } from "react-icons/md";
 import { TbTrendingUp2 } from "react-icons/tb";
 
-const StatsCard = () => {
-    const { userInfo: user, loading } = useAuth();
-    const axiosSecure=useAxiosSecure()
-      
-      const {
-        data: hostStats = [],
-        isLoading,
-      } = useQuery({
-        queryKey: ["hostStats", user?.email],
-        enabled: !!user?.email,
-        queryFn: async () => {
-          const res = await axiosSecure(
-            `/api/stats/host/${user?.email}`,
-          );
-          return res.data;
-        },
-      });
-      if (isLoading) return <Loader />;
-      console.log(hostStats,'hostStats');
+const StatsCard = ({hostStats}) => {
+    console.log(hostStats,'inside stat card')
+    if(!hostStats) return <Loader/>
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6 items-stretch px-3 xl:px-0">
       {/* TOTAL ORDERS CARD*/}
