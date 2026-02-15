@@ -23,7 +23,7 @@ const RoomSlider = () => {
 
   // Fetch room data
   const { data: allRoomData = [], isLoading } = useQuery({
-    queryKey: ["allRoomsData", cat],
+    queryKey: ["allRoomsDataForSlider", cat],
     queryFn: async () => {
       const res = await axiosInstance.get(`/api/rooms?category=${cat}`);
       return res.data.allRoomData;
