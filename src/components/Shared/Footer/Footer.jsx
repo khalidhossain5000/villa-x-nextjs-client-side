@@ -30,7 +30,7 @@ const Footer = () => {
     },
   ];
   return (
-    <footer className="bg-[#574640] py-6 m-3 shadow-xl rounded-2xl">
+    <footer className="bg-[#0300ff] py-6 m-3 shadow-xl rounded-2xl">
       <div className="content max-w-7xl mx-auto py-14">
         <div className="flex flex-col lg:flex-row justify-between flex-wrap gap-6 text-center">
           {content.map((item, idx) => (

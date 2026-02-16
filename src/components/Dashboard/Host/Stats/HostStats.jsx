@@ -5,7 +5,8 @@ import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import StatsCard from './StatsCard';
-import HostBarChart from './HostBarChart';
+import HostLineChart from './HostLineChart';
+import HostAreaChart from './HostAreaChart';
 
 const HostStats = () => {
     const { userInfo: user, loading } = useAuth();
@@ -25,13 +26,16 @@ const HostStats = () => {
             },
           });
           if (isLoading) return <Loader />;
-          console.log(hostStats,'hostStats');
-          const charts=hostStats?.charts
+          
     return (
         <div>
             <StatsCard hostStats={hostStats}/>
 
-            <HostBarChart data={charts}/>
+            <div className="flex flex-col lg:flex-row gap-6 items-center">
+              <HostLineChart/>
+
+            <HostAreaChart />
+            </div>
         </div>
     );
 };
