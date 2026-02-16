@@ -4,7 +4,9 @@ import { useAuth } from '@/Hooks/useAuth';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import StatsCard from '../../Host/Stats/StatsCard';
+import AdminStatsCard from './AdminStatsCard';
+import UsersPieChart from './UsersPieChart';
+import RoomCatPieChart from './RoomCatPieChart';
 
 const AdminStats = () => {
      const { userInfo: user, loading } = useAuth();
@@ -31,7 +33,13 @@ const cardData={
               console.log(adminStats,'adminStatsadminStats')
     return (
         <div>
-            <StatsCard totalRooms={adminStats?.totalRooms} totalUsers={adminStats?.totalUsers}/>
+            <AdminStatsCard totalRooms={adminStats?.totalRooms} totalUsers={adminStats?.totalUsers}/>
+
+
+            <div>
+                <UsersPieChart roleChartData={adminStats?.roleChartData}/>
+                <RoomCatPieChart roomCategoryChartData={adminStats?.roomCategoryChartData}/>
+            </div>
         </div>
     );
 };
