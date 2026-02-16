@@ -1,3 +1,4 @@
+import AdminStats from "@/components/Dashboard/admin/AdminStats/AdminStats";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 import React from "react";
 
@@ -6,6 +7,8 @@ const AdminDashboardHomePage = () => {
     <PrivateRoute requiredRoles={["admin"]}>
       <div>
         <h2>Welcome to Admin dashboard page ove r here</h2>
+
+        <AdminStats/>
       </div>
     </PrivateRoute>
   );

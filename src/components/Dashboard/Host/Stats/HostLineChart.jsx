@@ -34,7 +34,7 @@ const HostLineChart = () => {
   const chartConfig = {
     revenue: {
       label: "Revenue",
-      color: "#22c55e", // bright green
+      color: "#22c55e", 
     },
   };
 
