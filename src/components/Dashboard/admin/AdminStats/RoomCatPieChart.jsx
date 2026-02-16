@@ -56,7 +56,7 @@ const RoomCatPieChart = ({ roomCategoryChartData }) => {
           </PieChart>
         </ChartContainer>
 
-        {/* Custom Indicator */}
+        {/* Custom Indicator is over here */}
         <div className="flex flex-wrap justify-center gap-4">
           {chartData.map((item, index) => (
             <div key={index} className="flex items-center gap-2 text-sm">
