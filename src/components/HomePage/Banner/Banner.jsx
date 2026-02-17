@@ -83,6 +83,7 @@ const Banner = () => {
   return (
     <div className="relative h-[100vh] w-full overflow-hidden">
       {/*  Bg images */}
+
       {slides.map((slide, index) => (
         <motion.img
           key={index}
@@ -105,7 +106,7 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="relative z-10 flex h-full pt-36 md:pt-44 lg:pt-44 xl:pt-0 items-start xl:items-center"
+          className="relative z-10 flex h-full pt-32 sm:pt-36 md:pt-44 lg:pt-44 xl:pt-0 items-start xl:items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -118,7 +119,7 @@ const Banner = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -120, opacity: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="text-4xl md:text-6xl 2xl:text-7xl text-center font-bold text-slate-100 dark:text-white lg:text-left"
+              className="text-4xl md:text-6xl 2xl:text-7xl text-center font-bold text-slate-100  dark:text-slate-300 lg:text-left"
             >
               <h2 className="font-poppins py-1 lg:py-4">
                 {currentSlide.title.start}
@@ -127,7 +128,7 @@ const Banner = () => {
                 </span>
               </h2>
 
-             <ShimmerText>{currentSlide.title.end}</ShimmerText>
+              <ShimmerText>{currentSlide.title.end}</ShimmerText>
             </motion.div>
           </div>
         </motion.div>
@@ -137,19 +138,50 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div //bg-[#365140] -->old card bg this was
           key={currentIndex}
-          className="absolute bottom-0 left-0 z-20 w-full lg:w-xl bg-primary lg:py-12 lg:px-9 shadow-xl py-9 "
+          className="absolute bottom-0 left-0 z-20 w-full lg:w-xl bg-[#f9a300] dark:bg-[#0a121f] dark:bg-gradient-none lg:py-12 lg:px-9 shadow-xl py-9 rounded-lg"
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 60, opacity: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <p className="flex items-center gap-1 justify-center lg:justify-start lg:gap-6 uppercase lg:tracking-wide text-white font-playfair text-[18px] sm:text-xl lg:text-2xl lg:pl-12 ">
-            <FaLocationDot /> {currentSlide.location.name}
-          </p>
-          <h2 className="capitialize lg:uppercase lg:tracking-wide text-white font-playfair text-sm lg:text-xl  pt-4 lg:pl-12 flex gap-3 items-center justify-center lg:justify-start">
-            <FaGlobeAsia className="hidden lg:block" />
-            Coordinates: {currentSlide.location.coordinates}
-          </h2>
+          <motion.div
+            whileHover={{ y: -5 }}
+            className=" bg-transparent  py-6   hover:border-primary/50 transition-all relative overflow-hidden group"
+          >
+            {/* Background Scrolling Tags with Edge Fading */}
+            <div className="absolute inset-0 opacity-[0.15] dark:opacity-[0.09] pointer-events-none flex flex-col justify-center gap-2 rotate-[-5deg] scale-110">
+              {/* Gradient Mask to fade text at edges */}
+              <div className="absolute inset-0 bg-linear-to-r from-[#f7b620] via-transparent to-[#f9a300] z-10" />
+
+              <motion.div
+                animate={{ x: [0, -400] }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                className="whitespace-nowrap text-6xl font-black text-foreground uppercase"
+              >
+                #VILLAX #CANADA #MOUNTAIN #BEACH #AIR #PERU #TRAVEL #ROOM #JUNGLE #HILL
+              </motion.div>
+
+              <motion.div
+                animate={{ x: [-400, 0] }}
+                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                className="whitespace-nowrap text-6xl font-black text-foreground uppercase"
+              >
+                #SEA #SHIP #BUS #TRIP #TRAVEL #PATTAYA #SINGAPORE #VILLAX
+                #MOBILE
+              </motion.div>
+            </div>
+
+            {/* Left Content */}
+            <div className="relative z-20">
+              <p className="flex items-center gap-1 justify-center lg:justify-start lg:gap-6 uppercase lg:tracking-wide text-gray-900 dark:text-slate-100 font-poppins text-[18px] sm:text-xl lg:text-2xl lg:pl-9 font-bold">
+                <FaLocationDot /> {currentSlide.location.name}
+              </p>
+              <h2 className="capitialize lg:uppercase lg:tracking-wide text-gray-900 dark:text-slate-100 font-poppins text-sm lg:text-xl  pt-4 lg:pl-12 flex gap-3 items-center justify-center lg:justify-start font-bold">
+                <FaGlobeAsia className="hidden lg:block" />
+                Coordinates: {currentSlide.location.coordinates}
+              </h2>
+            </div>
+          </motion.div>
         </motion.div>
       </AnimatePresence>
     </div>

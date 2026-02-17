@@ -61,7 +61,7 @@ body {
 .dark {
   --background: #0a1929;
   --background-secondary-dark: #1e293b;
-  --primary: #0fe60e;
+  --primary: #0a121f;
     --primary-hover: oklch(0.78 0.18 75);
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
