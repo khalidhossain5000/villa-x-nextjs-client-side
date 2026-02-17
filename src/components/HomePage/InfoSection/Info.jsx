@@ -41,22 +41,22 @@ const Info = () => {
   ];
 
   return (
-    <div className='bg-primary py-14 lg:py-24 mt-12'>
+    <div className='bg-[#fcf7f6] dark:bg-[#050911]  py-14 lg:py-24 pt-12'>
      
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center gap-x-9 gap-y-16 px-2 xl:px-0">
         {activities.map((act, i) => (
-          <div key={i} className="flex items-center gap-6 gap-y-16">
+          <div key={i} className="bg-linear-to-tr from-[#f98d00] to-[#f9a300] border dark:from-[#0a121f] dark:to-[#0a0e16db] rounded-2xl shadow-sm flex items-center gap-6 gap-y-16 py-12 px-6 hover:scale-110 transition duration-300">
             <div className="img">
                 <Image
                 src={act.icon}
-                alt='acttivites icon'
+                alt='acttivites icon '
                 width={150}
                 height={50}
                 />
             </div>
             <div className="content">
-              <h2 className="text-slate-100 text-xl font-medium pb-4">{act.title}</h2>
-              <h5 className="text-slate-100 ">{act.subtitle}</h5>
+              <h2 className="text-black dark:text-[#f5f9ff] text-xl font-medium lg:font-bold pb-4">{act.title}</h2>
+              <h5 className="text-black dark:text-slate-100 ont-medium lg:font-semibold">{act.subtitle}</h5>
             </div>
           </div>
         ))}
