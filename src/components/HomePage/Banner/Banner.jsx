@@ -9,7 +9,7 @@ import banneri from "../../../assets/Banner/i.jpg";
 import bannerii from "../../../assets/Banner/Main-rev-img-2.jpg";
 import banneriv from "../../../assets/Banner/new-optisdf.jpg";
 import banneriii from "../../../assets/Banner/ndj-willbengs.jpg";
-import {  FaGlobeAsia } from "react-icons/fa";
+import { FaGlobeAsia } from "react-icons/fa";
 
 // Slide Data (image + content)
 const slides = [
@@ -117,16 +117,43 @@ const Banner = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -120, opacity: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="text-4xl md:text-6xl text-center font-bold text-white lg:text-left"
+              className="text-4xl md:text-6xl 2xl:text-7xl text-center font-bold text-slate-100 dark:text-white lg:text-left"
             >
-              <h2 className="font-raleway py-1 lg:py-4">
-                {currentSlide.title.start}{" "}
-                <span className="font-playfair">
+              <h2 className="font-poppins py-1 lg:py-4">
+                {currentSlide.title.start}
+                <span className="font-playfair pl-6">
                   {currentSlide.title.middle}
                 </span>
               </h2>
 
-              <h2 className="font-playfair">{currentSlide.title.end}</h2>
+              <h2 className="font-poppins italic text-4xl md:text-6xl 2xl:text-7xl text-center font-bold ">
+                <motion.span
+                  className="inline-block bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: `
+        linear-gradient(
+          90deg,
+          #d97706 0%,
+          #fbbf24 35%,
+          #ffffff 50%,
+          #fbbf24 65%,
+          #d97706 100%
+        )
+      `,
+                    backgroundSize: "200% auto",
+                  }}
+                  animate={{
+                    backgroundPosition: ["0% center", "200% center"],
+                  }}
+                  transition={{
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                >
+                  {currentSlide.title.end}
+                </motion.span>
+              </h2>
             </motion.div>
           </div>
         </motion.div>
@@ -145,8 +172,10 @@ const Banner = () => {
           <p className="flex items-center gap-1 justify-center lg:justify-start lg:gap-6 uppercase lg:tracking-wide text-white font-playfair text-[18px] sm:text-xl lg:text-2xl lg:pl-12 ">
             <FaLocationDot /> {currentSlide.location.name}
           </p>
-          <h2 className="capitialize lg:uppercase lg:tracking-wide text-white font-playfair text-sm lg:text-xl  pt-4 lg:pl-12 flex gap-3 items-center justify-center lg:justify-start"><FaGlobeAsia className='hidden lg:block'/>Coordinates: {currentSlide.location.coordinates}</h2>
-         
+          <h2 className="capitialize lg:uppercase lg:tracking-wide text-white font-playfair text-sm lg:text-xl  pt-4 lg:pl-12 flex gap-3 items-center justify-center lg:justify-start">
+            <FaGlobeAsia className="hidden lg:block" />
+            Coordinates: {currentSlide.location.coordinates}
+          </h2>
         </motion.div>
       </AnimatePresence>
     </div>

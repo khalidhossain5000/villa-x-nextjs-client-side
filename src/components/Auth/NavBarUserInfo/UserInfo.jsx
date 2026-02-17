@@ -14,6 +14,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import HomeButton from "@/components/Shared/Button/HomeButton";
 const UserInfo = () => {
   const { userInfo, loading } = useAuth();
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const UserInfo = () => {
               <p>{userInfo?.email}</p>
             </TooltipContent>
           </Tooltip>
-
+{/* sign out button this is */}
           <button className="Btn" onClick={signOutHandler}>
             <div className="sign">
               <svg viewBox="0 0 512 512">
@@ -51,13 +52,13 @@ const UserInfo = () => {
         </div>
       ) : (
         <Link href="/auth/login">
-          <GlobalButton
+          <HomeButton
             className={
-              "text-secondary dark:text-background  text-sm  font-medium font-urbanist rounded-sm bg-accent hover:bg-accent-hover/50  px-5 py-2 2xl:font-bold"
+              "hover:opacity-90 "
             }
           >
-            Login
-          </GlobalButton>
+            Get Started
+          </HomeButton>
         </Link>
       )}
     </div>
