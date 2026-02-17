@@ -1,5 +1,6 @@
 import React from "react";
 import aboutImg from "../../../assets/Home/about/about.jpg";
+import Link from "next/link";
 const About = () => {
   return (
     <section className="bg-[#ebf3f5] relative">
@@ -38,65 +39,19 @@ const About = () => {
             </p>
 
             {/* Button */}
-            <button className="group inline-flex items-center">
-              <span className="bg-[#8FA6A9] text-white px-6 py-3 text-sm tracking-wide uppercase">
-                Learn More
-              </span>
-              <span className="border border-[#8FA6A9] px-4 py-3 flex items-center justify-center">
-                <svg
-                  className="w-4 h-4 text-gray-800 group-hover:translate-x-1 transition"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </button>
 
-
-<button
-  class="relative h-12 px-8 rounded-lg overflow-hidden transition-all duration-500 group"
->
-  <div
-    class="absolute inset-0 rounded-lg p-[2px] bg-gradient-to-b from-[#654358] via-[#17092A] to-[#2F0D64]"
-  >
-    <div class="absolute inset-0 bg-[#170928] rounded-lg opacity-90"></div>
-  </div>
-  <div class="absolute inset-[2px] bg-[#170928] rounded-lg opacity-95"></div>
-  <div
-    class="absolute inset-[2px] bg-gradient-to-r from-[#170928] via-[#1d0d33] to-[#170928] rounded-lg opacity-90"
-  ></div>
-  <div
-    class="absolute inset-[2px] bg-gradient-to-b from-[#654358]/40 via-[#1d0d33] to-[#2F0D64]/30 rounded-lg opacity-80"
-  ></div>
-  <div
-    class="absolute inset-[2px] bg-gradient-to-br from-[#C787F6]/10 via-[#1d0d33] to-[#2A1736]/50 rounded-lg"
-  ></div>
-  <div
-    class="absolute inset-[2px] shadow-[inset_0_0_15px_rgba(199,135,246,0.15)] rounded-lg"
-  ></div>
-  <div class="relative flex items-center justify-center gap-2">
-    <span
-      class="text-lg font-normal bg-gradient-to-b from-[#D69DDE] to-[#B873F8] bg-clip-text text-transparent drop-shadow-[0_0_12px_rgba(199,135,246,0.4)] tracking-tighter"
-    >
-      Gradient Button
-    </span>
-  </div>
-  <div
-    class="absolute inset-[2px] opacity-0 transition-opacity duration-300 bg-gradient-to-r from-[#2A1736]/20 via-[#C787F6]/10 to-[#2A1736]/20 group-hover:opacity-100 rounded-lg"
-  ></div>
-</button>
-
+            <Link href="/about">
+              <button className="hover:scale-110 transition duration-300 relative inline-flex h-12 active:scale-95 transistion overflow-hidden rounded-lg p-[1px] focus:outline-none">
+                <span class="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#16100f_0%,#f9a300_50%,#f9a300_100%)]"></span>
+                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-[#f97c00] dark:bg-slate-950 px-7 text-sm lg:text-xl lg:font-bold font-medium text-black dark:text-white backdrop-blur-3xl gap-2 undefined ">
+                  Learn More
+               
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
       </div>
-      
     </section>
   );
 };
