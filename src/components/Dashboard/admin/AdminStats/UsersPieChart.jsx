@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Pie, PieChart } from "recharts"
+import { Pie, PieChart, Cell } from "recharts"
 import {
   Card,
   CardContent,
@@ -14,31 +14,39 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
+// আপনার পছন্দের কালার সেট
 const roleColors = {
-  admin: "#f97316",
-  host: "#3b82f6",
-  guest: "#10b981",
+  admin: "#f97316", // Orange
+  host: "#3b82f6",  // Blue
+  guest: "#10b981", // Green
 }
 
 const UsersPieChart = ({ roleChartData }) => {
+  // ডাটা ফরম্যাট করা এবং কালার অ্যাসাইন করা
+  const formattedData = roleChartData?.map((item) => ({
+    ...item,
+    // যদি roleColors এ কালার না থাকে তবে ডিফল্ট কালার সেট হবে
+    fill: roleColors[item.role?.toLowerCase()] || "#9ca3af",
+  })) || []
 
-  const formattedData =
-    roleChartData?.map((item) => ({
-      ...item,
-      fill: roleColors[item.role?.toLowerCase()] || "#9ca3af",
-    })) || []
+  // টোটাল ইউজার সংখ্যা বের করা (ঐচ্ছিক, ডোনাটের মাঝখানে দেখানোর জন্য)
+  const totalUsers = formattedData.reduce((acc, curr) => acc + curr.users, 0);
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="items-center pb-0">
-        <CardTitle>Users By Role</CardTitle>
+    <Card className="flex flex-col border-none shadow-md">
+      <CardHeader className="items-center pb-2">
+        <CardTitle className="text-xl font-bold">Users By Role</CardTitle>
       </CardHeader>
 
-      <CardContent className="flex flex-col items-center gap-6 pb-6">
-
+      <CardContent className="flex flex-col flex-1 items-center gap-4">
         <ChartContainer
-          config={{ users: { label: "Users" } }}
-          className="aspect-square max-h-[280px]"
+          config={{ 
+            users: { label: "Users" },
+            host: { label: "Host", color: roleColors.host },
+            guest: { label: "Guest", color: roleColors.guest },
+            admin: { label: "Admin", color: roleColors.admin },
+          }}
+          className="aspect-square w-full max-h-[250px]"
         >
           <PieChart>
             <ChartTooltip
@@ -49,26 +57,39 @@ const UsersPieChart = ({ roleChartData }) => {
               data={formattedData}
               dataKey="users"
               nameKey="role"
-              stroke="0"
-            />
+              innerRadius={60}    
+              outerRadius={80}    
+              paddingAngle={5}    
+              strokeWidth={0}
+            >
+              {formattedData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
           </PieChart>
         </ChartContainer>
 
-        {/* Custom Indicator */}
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-2 w-full max-w-[300px] mt-2">
           {formattedData.map((item, index) => (
-            <div key={index} className="flex items-center gap-2 text-sm">
-              <span
-                className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: item.fill }}
-              />
-              <span className="capitalize">
-                {item.role} ({item.users})
-              </span>
+            <div key={index} className="flex items-center justify-between gap-3 text-sm">
+              <div className="flex items-center gap-2">
+                <div 
+                  className="w-3 h-3 rounded-full shrink-0" 
+                  style={{ backgroundColor: item.fill }}
+                />
+                <span className="capitalize font-medium text-muted-foreground">
+                    {item.role}
+                </span>
+              </div>
+              <span className="font-bold">{item.users}</span>
             </div>
           ))}
+          {/* Total Count Display */}
+          <div className="col-span-2 border-t pt-2 mt-2 flex justify-between items-center text-sm font-bold">
+            <span>Total Users:</span>
+            <span>{totalUsers}</span>
+          </div>
         </div>
-
       </CardContent>
     </Card>
   )

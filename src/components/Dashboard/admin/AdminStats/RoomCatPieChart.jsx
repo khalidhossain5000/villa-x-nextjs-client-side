@@ -1,79 +1,83 @@
-"use client"
+import React from 'react';
+import { TrendingUp } from "lucide-react";
+import { LabelList, Pie, PieChart } from "recharts";
 
-import React from "react"
-import { Pie, PieChart, LabelList } from "recharts"
 import {
   Card,
   CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const RoomCatPieChart = ({ roomCategoryChartData }) => {
+  // ডাটা না থাকলে বা লোড না হলে হ্যান্ডেল করার জন্য
+  if (!roomCategoryChartData || roomCategoryChartData.length === 0) {
+    return <p className="text-center">No data available</p>;
+  }
 
-  const chartData = roomCategoryChartData || []
+  // Chart এর জন্য ডাইনামিক কনফিগারেশন তৈরি
+  const chartConfig = {
+    rooms: {
+      label: "Total Rooms",
+    },
+    // ডাটা থেকে ক্যাটাগরি অনুযায়ী লেবেল সেট করা
+  };
+
+  roomCategoryChartData.forEach((item) => {
+    chartConfig[item.category.toLowerCase()] = {
+      label: item.category,
+      color: item.fill,
+    };
+  });
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col flex-1">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Rooms By Category</CardTitle>
+        <CardTitle>Room Category Distribution</CardTitle>
+        <CardDescription>Current Statistics</CardDescription>
       </CardHeader>
-
-      <CardContent className="flex flex-col items-center gap-6 pb-6">
+      <CardContent className="flex-1 pb-0">
         <ChartContainer
-          config={{
-            rooms: { label: "Rooms" },
-          }}
-          className="[&_.recharts-text]:fill-background mx-auto aspect-square max-h-[280px]"
+          config={chartConfig}
+          className="[&_.recharts-text]:fill-background mx-auto aspect-square max-h-[250px]"
         >
           <PieChart>
             <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  nameKey="rooms"
-                  labelKey="category"
-                />
-              }
+              content={<ChartTooltipContent nameKey="rooms" hideLabel />}
             />
-
-            <Pie
-              data={chartData}
-              dataKey="rooms"
-              nameKey="category"
-              stroke="0"
+            <Pie 
+                data={roomCategoryChartData} 
+                dataKey="rooms" 
+                nameKey="category"
             >
               <LabelList
                 dataKey="category"
+                className="fill-background"
                 stroke="none"
                 fontSize={12}
+                formatter={(value) => value}
               />
             </Pie>
           </PieChart>
         </ChartContainer>
-
-        {/* Custom Indicator is over here */}
-        <div className="flex flex-wrap justify-center gap-4">
-          {chartData.map((item, index) => (
-            <div key={index} className="flex items-center gap-2 text-sm">
-              <span
-                className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: item.fill }}
-              />
-              <span>
-                {item.category} ({item.rooms})
-              </span>
-            </div>
-          ))}
-        </div>
-
       </CardContent>
+      <CardFooter className="flex-col gap-2 text-sm">
+        <div className="flex items-center gap-2 leading-none font-medium">
+          Total categories tracked: {roomCategoryChartData.length} <TrendingUp className="h-4 w-4" />
+        </div>
+        <div className="text-muted-foreground leading-none">
+          Showing real-time room availability by category
+        </div>
+      </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default RoomCatPieChart
+export default RoomCatPieChart;
