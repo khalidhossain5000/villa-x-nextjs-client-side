@@ -31,7 +31,8 @@ body {
   --color-text-secondary-dark: var(--text-secondary-dark);
   --color-accent-hover: var(--accent-hover);
   --animate-pulse: pulse var(--duration) ease-out infinite;
-  --color-muted: var(--muted) --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted) ;
+  --color-muted-foreground: var(--muted-foreground);
   @keyframes pulse {
     0%,
     100% {

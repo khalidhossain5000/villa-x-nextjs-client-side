@@ -41,7 +41,7 @@ const Info = () => {
   ];
 
   return (
-    <div className='bg-primary py-14 lg:py-24'>
+    <div className='bg-primary py-14 lg:py-24 mt-12'>
      
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center gap-x-9 gap-y-16 px-2 xl:px-0">
         {activities.map((act, i) => (
