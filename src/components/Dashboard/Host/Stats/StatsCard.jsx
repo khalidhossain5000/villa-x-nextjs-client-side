@@ -1,4 +1,3 @@
-
 import React from "react";
 import { IoIosTrendingUp } from "react-icons/io";
 import { FaHouseDamage } from "react-icons/fa";
@@ -8,9 +7,8 @@ import Loader from "@/components/Shared/Loading/Loader";
 import { MdOutlineWarehouse } from "react-icons/md";
 import { TbTrendingUp2 } from "react-icons/tb";
 
-const StatsCard = ({hostStats}) => {
-    console.log(hostStats,'inside stat card')
-    if(!hostStats) return <Loader/>
+const StatsCard = ({ hostStats }) => {
+  if (!hostStats) return <Loader />;
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6 items-stretch px-3 xl:px-0">
       {/* TOTAL ORDERS CARD*/}
@@ -109,7 +107,7 @@ const StatsCard = ({hostStats}) => {
             {/* MIDDLE SECTION: Info */}
             <div className="flex-1 flex items-center pt-2">
               <p className="text-lg md:text-xl lg:text-2xl font-semibold opacity-90">
-              $ {hostStats?.cards?.totalRevenue}
+                $ {hostStats?.cards?.totalRevenue}
               </p>
             </div>
 
@@ -118,8 +116,6 @@ const StatsCard = ({hostStats}) => {
               <span className="text-sm font-light opacity-90">
                 Manage Settings
               </span>
-
-              
             </div>
           </div>
         </div>

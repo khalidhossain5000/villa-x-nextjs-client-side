@@ -31,6 +31,7 @@ body {
   --color-text-secondary-dark: var(--text-secondary-dark);
   --color-accent-hover: var(--accent-hover);
   --animate-pulse: pulse var(--duration) ease-out infinite;
+  --color-muted: var(--muted) --color-muted-foreground: var(--muted-foreground);
   @keyframes pulse {
     0%,
     100% {
@@ -45,18 +46,17 @@ body {
 :root {
   --background: #f8fafc;
   --primary: #0300ff;
-  --primary-hover: #0200cc;
+  --primary-hover: oklch(0.78 0.18 75);
   --text-primary: #1f2937;
   --text-secondary: #f9f9f9;
-  --accent: #facc15;
-  --accent-hover: #eab308;
+  /* --accent: #facc15; */
+  --accent-hover:  oklch(0.78 0.18 75);
+  --accent: oklch(0.96 0.04 85);
+  --accent-foreground: oklch(0.18 0.01 30);
+  /* Muted: Steel (For bios and secondary text) */
+  --muted: oklch(0.95 0.005 30);
+  --muted-foreground: oklch(0.42 0.01 30);
 }
-
-
-
-
-
-
 
 .dark {
   --background: #0a1929;
@@ -92,21 +92,14 @@ body {
   }
 }
 
-
-
-
-
 .light .rdrCalendarWrapper {
   /* background-color: rgb(143, 13, 236); light mode */
 }
 
 .dark .rdrCalendarWrapper {
   background-color: #1e293b;
-  color:white;
-
+  color: white;
 }
-
-
 
 .swiper-pagination-bullet {
   width: 14px;
