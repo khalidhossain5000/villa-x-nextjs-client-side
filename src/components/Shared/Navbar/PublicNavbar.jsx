@@ -80,7 +80,7 @@ const PublicNavbar = () => {
       className={`py-3 transition-all duration-300 ${
         pathname === "/"
           ? sticky
-            ? "sticky top-0 left-0 w-full bg-[#f9a300] backdrop-blur-3xl  shadow-2xl z-50"
+            ? "sticky top-0 left-0 w-full bg-[#f9a300] dark:bg-[#0a121f] backdrop-blur-3xl  shadow-2xl z-50"
             : "absolute top-0 left-0 w-full bg-transparent z-[9999999] "
           : "sticky top-0 left-0 w-full bg-linear-to-tr from-[#f98d00] to-[#f9a300] border dark:from-[#0a121f] dark:to-[#0a0e16db] shadow-md z-[9999999999]"
       }`}
@@ -106,7 +106,7 @@ const PublicNavbar = () => {
                 key={link.label}
                 href={link.href}
                 prefetch={true}
-                className={`text-black hover:text-gray-600 font-semibold transition-colors text-xl capitalize ${isActive ? "bg-[#fceede] px-4 py-2 rounded-full" : ""}`}
+                className={`text-black dark:text-white hover:text-gray-600 font-semibold transition-colors text-xl capitalize ${isActive ? "bg-[#fceede] dark:bg-[#f9a300] px-4 py-2 rounded-full" : ""}`}
               >
                 {link.label}
               </Link>
