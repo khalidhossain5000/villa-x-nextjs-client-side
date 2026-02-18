@@ -76,24 +76,18 @@ const PublicNavbar = () => {
   // sticky code ends
   console.log(pathname, "this is pathname");
   return (
-    // <header
-    //   className={`py-2 transition-all duration-300 ${
-    //     sticky
-    //       ? `sticky top-0 left-0 w-full ${pathname==='/' ? 'bg-transparent' : 'bg-blue-200'}  backdrop-blur-3xl  shadow-md z-99999 py-3`
-    //       : `absolute top-0 left-0 w-full  ${pathname==='/' ? 'bg-transparent' : 'bg-linear from-[#0300ff] to-red-600'} py-3 lg:py-4 xl:py-5 z-50`
-    //   }`}
-    // >
+
 
     <header
       className={`py-3 transition-all duration-300 ${
         pathname === "/"
           ? sticky
-            ? "sticky top-0 left-0 w-full bg-white/90 backdrop-blur-3xl text-black shadow-2xl z-50"
+            ? "sticky top-0 left-0 w-full bg-[#f9a300] backdrop-blur-3xl  shadow-2xl z-50"
             : "absolute top-0 left-0 w-full bg-transparent z-[9999999] "
-          : "sticky top-0 left-0 w-full bg-linear-to-r from-primary via-[#0200cc] dark:via-[#0bc50b]  to-[#027016] shadow-md z-[9999999999]"
+          : "sticky top-0 left-0 w-full bg-linear-to-tr from-[#f98d00] to-[#f9a300] border dark:from-[#0a121f] dark:to-[#0a0e16db] shadow-md z-[9999999999]"
       }`}
     >
-      <div className="container  mx-auto flex h-16 items-center justify-between px-4">
+      <nav className="container  mx-auto flex h-16 items-center justify-between px-4">
         <div className="logo">
           <Link href={"/"}>
             <Image
@@ -111,7 +105,7 @@ const PublicNavbar = () => {
               key={link.label}
               href={link.href}
               prefetch={true}
-              className="text-white hover:text-white transition-colors text-xl capitalize"
+              className="text-black hover:text-gray-600 font-semibold transition-colors text-xl capitalize"
             >
               {link.label}
             </Link>
@@ -151,7 +145,7 @@ const PublicNavbar = () => {
           closeModal={() => setIsOpen(false)}
           modalHandler={modalHandler}
         />
-      </div>
+      </nav>
     </header>
   );
 };
