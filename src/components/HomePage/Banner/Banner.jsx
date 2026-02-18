@@ -48,7 +48,7 @@ const slides = [
     },
     title: {
       start: "Stunning",
-      middle: "accommodation",
+      middle: "Rooms",
       end: "options around the globe",
     },
   },
@@ -81,7 +81,7 @@ const Banner = () => {
   const currentSlide = slides[currentIndex];
 
   return (
-    <div className="relative h-[100vh] w-full overflow-hidden">
+    <div className="relative h-dvh w-full overflow-hidden">
       {/*  Bg images */}
 
       {slides.map((slide, index) => (
@@ -106,7 +106,7 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          className="relative z-10 flex h-full pt-32 sm:pt-36 md:pt-44 lg:pt-44 xl:pt-0 items-start xl:items-center"
+          className="relative z-10 flex  items-center justify-center lg:items-center xl:items-center xl:justify-start h-full pb-20 lg:pt-0  "
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -119,11 +119,11 @@ const Banner = () => {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -120, opacity: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="text-4xl md:text-6xl 2xl:text-7xl text-center font-bold text-slate-100  dark:text-slate-300 lg:text-left"
+              className=" text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl text-center font-bold text-slate-100  dark:text-slate-300 lg:text-left"
             >
-              <h2 className="font-poppins py-1 lg:py-4">
+              <h2 className="text-center lg:text-left font-poppins py-1 lg:py-4">
                 {currentSlide.title.start}
-                <span className="font-playfair pl-6">
+                <span className="font-playfair pl-3 md:pl-6 text-center lg:text-left ">
                   {currentSlide.title.middle}
                 </span>
               </h2>
@@ -138,7 +138,7 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div //bg-[#365140] -->old card bg this was
           key={currentIndex}
-          className="absolute bottom-0 left-0 z-20 w-full lg:w-xl bg-[#f9a300] dark:bg-[#0a121f] dark:bg-gradient-none lg:py-12 lg:px-9 shadow-xl py-9 rounded-lg"
+          className="absolute bottom-0 left-0 z-20 w-full lg:w-xl bg-[#f9a300] dark:bg-[#0a121f] dark:bg-gradient-none lg:py-12 lg:px-9 shadow-xl py-6 lg:py-9 rounded-lg"
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 60, opacity: 0 }}

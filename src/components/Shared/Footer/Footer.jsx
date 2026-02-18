@@ -28,7 +28,7 @@ const Footer = () => {
       content: "T. +929 333 9296",
       contenti: "M. contact@rivora.com",
     },
-  ];
+];
   return (
     <footer className="bg-linear-to-tr from-[#f98d00] to-[#f9a300] border dark:from-[#0a121f] dark:to-stone-800 py-6 m-3 shadow-xl rounded-2xl">
       <div className="content max-w-7xl mx-auto py-14">

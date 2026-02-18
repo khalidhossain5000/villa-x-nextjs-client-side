@@ -4,7 +4,7 @@ import React from 'react';
 
 const ShimmerText = ({children}) => {
     return (
-        <h2 className="font-poppins italic text-4xl md:text-6xl 2xl:text-7xl text-center font-bold ">
+        <h2 className="font-poppins italic text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl text-center lg:text-left  font-bold ">
                 <motion.span
                   className="inline-block bg-clip-text text-transparent"
                   style={{
