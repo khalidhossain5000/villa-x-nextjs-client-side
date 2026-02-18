@@ -74,10 +74,8 @@ const PublicNavbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // sticky code ends
-  console.log(pathname, "this is pathname");
+
   return (
-
-
     <header
       className={`py-3 transition-all duration-300 ${
         pathname === "/"
@@ -100,20 +98,24 @@ const PublicNavbar = () => {
           </Link>
         </div>
         <nav className="hidden xl:flex items-center space-x-6 text-sm font-medium">
-          {navItems.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              prefetch={true}
-              className="text-black hover:text-gray-600 font-semibold transition-colors text-xl capitalize"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navItems.map((link) => {
+            const isActive = pathname === link.href;
+
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                prefetch={true}
+                className={`text-black hover:text-gray-600 font-semibold transition-colors text-xl capitalize ${isActive ? "bg-[#fceede] px-4 py-2 rounded-full" : ""}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
         <div className="auth-btns hidden md:flex items-center space-x-5">
           {/* host apply button div container */}
-          {role === "host" && (
+          {role === "guest" && (
             <div>
               {/* host req modal will open by clicking host your home */}
               <HostYourHomeInfo setIsOpen={setIsOpen} />
