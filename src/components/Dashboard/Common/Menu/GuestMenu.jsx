@@ -1,14 +1,15 @@
 import { GrUserAdmin } from "react-icons/gr";
-import { FaUserCog } from 'react-icons/fa'
+import { FaUserCog } from "react-icons/fa";
 import MenuItem from "../Sidebar/MenuItem";
 import { useState } from "react";
 import HostModal from "@/components/Shared/Modal/HostRequestModal/HostModal";
 import useRole from "@/Hooks/useRole";
 
 import Loader from "@/components/Shared/Loading/Loader";
+import { House } from "lucide-react";
 const GuestMenu = () => {
   const { role, roleLoading } = useRole();
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => {
     setIsOpen(false);
@@ -29,11 +30,11 @@ const GuestMenu = () => {
     // }
   };
 
-  if(roleLoading) return <Loader/>
+  if (roleLoading) return <Loader />;
 
   return (
     <>
-   
+      <MenuItem icon={House} label="Home Guest" address={"/guest/dashboard"} />
 
       {role === "guest" && (
         <div
@@ -45,17 +46,17 @@ const GuestMenu = () => {
           <span className="mx-4 font-medium">Become A Host</span>
         </div>
       )}
-<MenuItem icon={FaUserCog} label='My Bookings' address='/guest/dashboard/my-bookings' />
+      <MenuItem
+        icon={FaUserCog}
+        label="My Bookings"
+        address="/guest/dashboard/my-bookings"
+      />
 
-<MenuItem icon={FaUserCog} label='My Room Cancel Requests' address='/guest/dashboard/room-cancel-req' />
-
-
-
-
-
-
-
-
+      <MenuItem
+        icon={FaUserCog}
+        label="My Room Cancel Requests"
+        address="/guest/dashboard/room-cancel-req"
+      />
 
       <HostModal
         closeModal={closeModal}

@@ -6,7 +6,7 @@ import React from "react";
 
 const GuestDashboardHomePage = () => {
   return (
-    <PrivateRoute requiredRoles={["guest"]}>
+    <PrivateRoute requiredRoles={["guest", "host"]}>
       <div>
         <PageTitle className={`pt-6 lg:pt-12 font-playfair`}>
           My Profile & Stats

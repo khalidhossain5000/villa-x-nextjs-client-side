@@ -39,7 +39,7 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive);
   };
-
+console.log(toggle)
   //logout
 
   const signOutHandler = () => {
@@ -101,11 +101,13 @@ const Sidebar = () => {
             </div>
             <nav>
               {/* these are common route  */}
-              <MenuItem
+             {
+              role!=='guest' && toggle===true &&  <MenuItem
                 icon={House}
-                label="Home"
+                label="Home Host"
                 address={`/${role}/dashboard`}
               />
+             }
 
               {/* these are common route ends here */}
               {/* Host Menu Items */}

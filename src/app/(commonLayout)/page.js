@@ -4,17 +4,14 @@ import CollectionSlider from "@/components/HomePage/ExploreCollectionSlider/Coll
 import Facilities from "@/components/HomePage/FacilitiesSection/Facilities";
 import Info from "@/components/HomePage/InfoSection/Info";
 import RoomSlider from "@/components/HomePage/RoomSlider/RoomSlider";
-import Rooms from "@/components/HomePage/RoomsSection/Rooms";
 
-import React, { Suspense } from "react";
+import React from "react";
 
 const HomePage = () => {
   return (
     <div>
       <Banner />
-      {/* <Suspense fallback={"loadings....."}>
-        <Rooms />
-      </Suspense> */}
+  
       <RoomSlider />
       <Info />
 
