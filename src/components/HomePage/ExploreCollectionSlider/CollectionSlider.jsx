@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Pagination, Autoplay } from "swiper/modules";
 import Link from "next/link";
+import HomeButton from "@/components/Shared/Button/HomeButton";
 const CollectionSlider = () => {
   const axiosInstance = useAxios();
   // Fetch room data
@@ -62,14 +63,14 @@ const CollectionSlider = () => {
         }}
       />
 
-      <div className="container mx-auto ">
+      <div className="container mx-auto relative z-40">
         {/* title and button */}
         <div className="flex items-center justify-between ">
           {/* Small Label */}
           <div className="title">
             <div className="flex items-center gap-3 mb-4 lg:mb-6">
-              <div className="w-10 h-[1px] bg-gray-400"></div>
-              <p className="text-xs tracking-widest text-gray-500 uppercase font-playfair">
+              <div className="w-10 h-[2px] bg-amber-600"></div>
+              <p className="text-xs tracking-widest text-black dark:text-slate-100 uppercase font-playfair">
                 Recently Added
               </p>
             </div>
@@ -79,29 +80,14 @@ const CollectionSlider = () => {
               className={"font-raleway"}
             />
           </div>
-          {/* button */}
+      
           <div>
             {/* Button */}
-            <button className="group inline-flex items-center">
-              <span className="bg-[#8FA6A9] text-white px-6 py-3 text-sm tracking-wide uppercase">
-                Learn More
-              </span>
-              <span className="border border-[#8FA6A9] px-4 py-3 flex items-center justify-center">
-                <svg
-                  className="w-4 h-4 text-gray-800 group-hover:translate-x-1 transition"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </span>
-            </button>
+            <Link href="/all-rooms">
+              <HomeButton className={"hover:opacity-90 "}>
+                Explore More
+              </HomeButton>
+            </Link>
           </div>
         </div>
         {/* slider start */}

@@ -23,7 +23,7 @@ const PublicNavbar = () => {
   const { role } = useRole();
   const axiosSecure = useAxiosSecure();
   const [sticky, setSticky] = useState(false);
-  const pathname=usePathname()
+  const pathname = usePathname();
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/all-rooms", label: "All Rooms" },
@@ -74,9 +74,8 @@ const PublicNavbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   // sticky code ends
-  console.log(pathname,'this is pathname');
+  console.log(pathname, "this is pathname");
   return (
-    
     // <header
     //   className={`py-2 transition-all duration-300 ${
     //     sticky
@@ -86,19 +85,24 @@ const PublicNavbar = () => {
     // >
 
     <header
-  className={`py-3 transition-all duration-300 ${
-    pathname === "/"
-      ? sticky
-        ? "sticky top-0 left-0 w-full bg-slate-600 backdrop-blur-3xl shadow-md z-50"
-        : "absolute top-0 left-0 w-full bg-transparent z-[9999999]"
-      : "sticky top-0 left-0 w-full bg-linear-to-r from-primary via-[#0200cc] dark:via-[#0bc50b]  to-[#027016] shadow-md z-[9999999999]"
-  }`}
->
-
+      className={`py-3 transition-all duration-300 ${
+        pathname === "/"
+          ? sticky
+            ? "sticky top-0 left-0 w-full bg-white/90 backdrop-blur-3xl text-black shadow-2xl z-50"
+            : "absolute top-0 left-0 w-full bg-transparent z-[9999999] "
+          : "sticky top-0 left-0 w-full bg-linear-to-r from-primary via-[#0200cc] dark:via-[#0bc50b]  to-[#027016] shadow-md z-[9999999999]"
+      }`}
+    >
       <div className="container  mx-auto flex h-16 items-center justify-between px-4">
         <div className="logo">
           <Link href={"/"}>
-            <Image src={logo} alt="Logo" width={140} height={50}  className="w-38 lg:w-9/12" />
+            <Image
+              src={logo}
+              alt="Logo"
+              width={140}
+              height={50}
+              className="w-38 lg:w-9/12"
+            />
           </Link>
         </div>
         <nav className="hidden xl:flex items-center space-x-6 text-sm font-medium">
@@ -115,10 +119,10 @@ const PublicNavbar = () => {
         </nav>
         <div className="auth-btns hidden md:flex items-center space-x-5">
           {/* host apply button div container */}
-          {role==='host' && (
+          {role === "host" && (
             <div>
               {/* host req modal will open by clicking host your home */}
-              <HostYourHomeInfo setIsOpen={setIsOpen}/>
+              <HostYourHomeInfo setIsOpen={setIsOpen} />
 
               {/* host req modal here below  start here*/}
 
@@ -138,17 +142,14 @@ const PublicNavbar = () => {
         </div>
 
         {/* mobile menu responsive one here */}
-        
+
         <MobileMenu
           navItems={navItems}
           role={role}
           setIsOpen={setIsOpen}
-                          isOpen={isOpen}
-                closeModal={() => setIsOpen(false)}
-                modalHandler={modalHandler}
-          //   hasAccessToken={!!accessToken}
-          //   userInfo={userInfo}
-          //   dashboardRoute={dashboardRoute}
+          isOpen={isOpen}
+          closeModal={() => setIsOpen(false)}
+          modalHandler={modalHandler}
         />
       </div>
     </header>
