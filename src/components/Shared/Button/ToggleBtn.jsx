@@ -1,4 +1,4 @@
-const ToggleBtn = ({ toggleHandler,toggle }) => {
+const ToggleBtn = ({ toggleHandler }) => {
   return (
     <>
       <label
@@ -10,7 +10,6 @@ const ToggleBtn = ({ toggleHandler,toggle }) => {
           id='Toggle3'
           type='checkbox'
           className='hidden peer'
-          checked={toggle}
         />
         <span className='px-4 py-1 rounded-l-md bg-rose-400 peer-checked:bg-gray-300'>
           Guest

@@ -20,12 +20,20 @@ import HostMenu from "../Menu/HostMenu";
 import AdminMenu from "../Menu/AdminMenu";
 import Loader from "@/components/Shared/Loading/Loader";
 import ModeToggle from "@/components/Shared/ModeToggle/ModeToggle";
+import { Toggle } from "@/components/ui/toggle";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
+import ToggleBtn from "@/components/Shared/Button/ToggleBtn";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const [isActive, setActive] = useState(true);
   const { role, roleLoading } = useRole();
-
+  const [toggle, setToggle] = useState(false);
+  //   For guest/host menu item toggle button
+  const toggleHandler = (event) => {
+    setToggle(event.target.checked);
+  };
 
   // Sidebar Responsive Handler
   const handleToggle = () => {
@@ -73,24 +81,24 @@ const Sidebar = () => {
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
-         
-            <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-between items-center bg-[#017dee] mx-auto">
-              <Link href={"/"}>
-                <Image
-                  src={logo}
-                  alt="Logo"
-                  width={150}
-                  height={50}
-                  className=""
-                />
-              </Link>
-              <ModeToggle/>
-            </div>
-   
+          <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-between items-center bg-[#017dee] mx-auto">
+            <Link href={"/"}>
+              <Image
+                src={logo}
+                alt="Logo"
+                width={150}
+                height={50}
+                className=""
+              />
+            </Link>
+            <ModeToggle />
+          </div>
 
-         
           <div className="flex flex-col justify-between flex-1 mt-6">
-           
+            <div className=" ">
+              {/* If a user is host */}
+              {role === "host" && <ToggleBtn toggleHandler={toggleHandler} />}
+            </div>
             <nav>
               {/* these are common route  */}
               <MenuItem
@@ -102,7 +110,9 @@ const Sidebar = () => {
               {/* these are common route ends here */}
               {/* Host Menu Items */}
               {role === "guest" && <GuestMenu />}
-              {role === "host" && <HostMenu /> }
+              {/* {role === "host" && <HostMenu /> } */}
+              {role === "host" ? toggle ? <HostMenu /> : <GuestMenu /> : ""}
+
               {role === "admin" && <AdminMenu />}
             </nav>
           </div>

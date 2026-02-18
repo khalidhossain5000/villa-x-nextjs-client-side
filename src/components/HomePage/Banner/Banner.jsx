@@ -89,7 +89,7 @@ const Banner = () => {
           key={index}
           src={slide.image.src}
           alt="banner"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover "
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{
             opacity: index === currentIndex ? 1 : 0,
@@ -138,7 +138,7 @@ const Banner = () => {
       <AnimatePresence mode="wait">
         <motion.div //bg-[#365140] -->old card bg this was
           key={currentIndex}
-          className="absolute bottom-0 left-0 z-20 w-full lg:w-xl bg-[#f9a300] dark:bg-[#0a121f] dark:bg-gradient-none lg:py-12 lg:px-9 shadow-xl py-6 lg:py-9 rounded-lg"
+          className="absolute bottom-0 left-0 z-20 w-full lg:w-xl bg-[#f9a300] dark:bg-[#0a121f] dark:bg-gradient-none lg:py-12 lg:px-9 shadow-xl py-6  rounded-lg"
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 60, opacity: 0 }}

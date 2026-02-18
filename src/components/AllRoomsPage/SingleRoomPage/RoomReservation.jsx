@@ -149,7 +149,7 @@ const RoomReservation = ({ room }) => {
         <button
           disabled={room.hostInfo.email === user.email || room.booked}
           onClick={() => setIsOpen(true)}
-          className="w-full bg-rose-500 hover:bg-rose-600 text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-[#f9a300] text-black dark:text-white font-semibold py-3 px-6 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Reserve
         </button>

@@ -31,7 +31,7 @@ const SingleRoomLayout = ({ roomId }) => {
         className="absolute inset-0 z-0 dark:hidden"
         style={{
           background:
-            "radial-gradient(125% 125% at 50% 10%, #fff 40%, #0300ff90 100%)",
+            "radial-gradient(125% 125% at 50% 10%, #fff 40%, #f9a300 100%)",
         }}
       />
 
@@ -39,7 +39,7 @@ const SingleRoomLayout = ({ roomId }) => {
         className="absolute inset-0 z-0 hidden dark:block"
         style={{
           background:
-            "radial-gradient(125% 125% at 50% 10%, #0a192960 40%, #072607 100%)",
+            "radial-gradient(125% 125% at 50% 10%, #f0fdfa 40%, #f0fdfa 100%)",
         }}
       />
       <div className="max-w-7xl mx-auto z-50 relative py-22">
