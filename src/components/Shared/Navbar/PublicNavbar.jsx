@@ -25,12 +25,12 @@ const PublicNavbar = () => {
   const [sticky, setSticky] = useState(false);
   const pathname = usePathname();
   const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/all-rooms", label: "All Rooms" },
-    { href: "/host", label: "Available Host" },
-    { href: "/about", label: "About Us" },
-    { href: `/${role}/dashboard`, label: "Dashboard" },
-    { href: "/contact", label: "Contact Us" },
+    { href: "/", label: "Home",auth:false },
+    { href: "/all-rooms", label: "All Rooms" ,auth:false},
+    { href: "/host", label: "Available Host" ,auth:true},
+    { href: "/about", label: "About Us",auth:false },
+    { href: `/${role}/dashboard`, label: "Dashboard" ,auth:true},
+    { href: "/contact", label: "Contact Us" ,auth:false},
   ];
 
   // console.log(userInfo,'this is userInfo',role)
@@ -100,7 +100,7 @@ const PublicNavbar = () => {
         <nav className="hidden xl:flex items-center space-x-6 text-sm font-medium">
           {navItems.map((link) => {
             const isActive = pathname === link.href;
-
+if(link.auth && !userInfo?.email) return null
             return (
               <Link
                 key={link.label}
@@ -108,7 +108,9 @@ const PublicNavbar = () => {
                 prefetch={true}
                 className={`text-black dark:text-white hover:text-gray-600 font-semibold transition-colors text-xl capitalize ${isActive ? "bg-[#fceede] dark:bg-[#f9a300] px-4 py-2 rounded-full" : ""}`}
               >
-                {link.label}
+                {
+                  link.label
+                }
               </Link>
             );
           })}
