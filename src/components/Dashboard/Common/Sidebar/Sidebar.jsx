@@ -20,9 +20,7 @@ import HostMenu from "../Menu/HostMenu";
 import AdminMenu from "../Menu/AdminMenu";
 import Loader from "@/components/Shared/Loading/Loader";
 import ModeToggle from "@/components/Shared/ModeToggle/ModeToggle";
-import { Toggle } from "@/components/ui/toggle";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
+
 import ToggleBtn from "@/components/Shared/Button/ToggleBtn";
 
 const Sidebar = () => {
@@ -39,7 +37,7 @@ const Sidebar = () => {
   const handleToggle = () => {
     setActive(!isActive);
   };
-console.log(toggle)
+
   //logout
 
   const signOutHandler = () => {
@@ -76,7 +74,7 @@ console.log(toggle)
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 dark:bg-background w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-gray-100 dark:bg-[#0a121f] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -101,13 +99,13 @@ console.log(toggle)
             </div>
             <nav>
               {/* these are common route  */}
-             {
-              role!=='guest' && toggle===true &&  <MenuItem
-                icon={House}
-                label="Home Host"
-                address={`/${role}/dashboard`}
-              />
-             }
+              {role !== "guest" && toggle === true && (
+                <MenuItem
+                  icon={House}
+                  label="Home Host"
+                  address={`/${role}/dashboard`}
+                />
+              )}
 
               {/* these are common route ends here */}
               {/* Host Menu Items */}
@@ -120,17 +118,21 @@ console.log(toggle)
           </div>
         </div>
 
-        <div>
-          <hr />
+        <div className='text-center'>
+          <hr className='border-t border-gray-400 '/>
 
-          <MenuItem icon={FcSettings} label="Profile" address="/profile" />
+          {role !== "guest" && (
+            <MenuItem icon={FcSettings} label="Profile" address="/profile" />
+          )}
+
           <button
             onClick={signOutHandler}
-            className="flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform"
+            className="mt-4 hover:scale-110 transition duration-300 relative inline-flex h-12 active:scale-95 transistion overflow-hidden rounded-lg p-[1px] focus:outline-none w-full"
           >
-            <GrLogout className="w-5 h-5" />
-
-            <span className="mx-4 font-medium">Logouts</span>
+            <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#16100f_0%,#f9a300_50%,#f9a300_100%)]"></span>
+            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-red-600 px-7 text-sm lg:text-xl lg:font-bold font-medium text-slate-100 dark:text-white backdrop-blur-3xl gap-2 undefined ">
+              <GrLogout className="w-5 h-5" /> Logout
+            </span>
           </button>
         </div>
       </div>

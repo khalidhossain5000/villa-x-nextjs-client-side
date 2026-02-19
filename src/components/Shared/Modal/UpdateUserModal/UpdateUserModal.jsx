@@ -13,7 +13,7 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as='div'
-        className='relative z-10'
+        className='relative z-[99999999999999999999]'
         onClose={() => setIsOpen(false)}
       >
         <Transition.Child
@@ -29,7 +29,7 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
         </Transition.Child>
 
         <div className='fixed inset-0 overflow-y-auto'>
-          <div className='flex min-h-full items-center justify-center p-4 text-center'>
+          <div className='flex min-h-full items-center justify-center px-6 py-8  text-center'>
             <Transition.Child
               as={Fragment}
               enter='ease-out duration-300'
@@ -39,17 +39,17 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
               leaveFrom='opacity-100 scale-100'
               leaveTo='opacity-0 scale-95'
             >
-              <Dialog.Panel className='w-full h-56 max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all'>
+              <Dialog.Panel className='w-full h-56 max-w-md transform overflow-hidden rounded-2xl bg-white  p-6 text-left align-middle shadow-xl transition-all bg-linear-to-tr dark:from-black dark:via-slate-950 dark:to-cyan-950'>
                 <Dialog.Title
                   as='h3'
-                  className='text-lg font-medium text-center leading-6 text-gray-900'
+                  className='text-lg lg:text-xl lg:font-bold font-medium text-center leading-6 text-gray-900 dark:text-slate-200'
                 >
                   Update User Role
                 </Dialog.Title>
-                <div className='mt-4 w-full'>
+                <div className='mt-4 w-full '>
                   <Listbox value={selected} onChange={setSelected}>
                     <div className='relative mt-1'>
-                      <Listbox.Button className='relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
+                      <Listbox.Button className='relative w-full cursor-default rounded-lg bg-white dark:bg-gray-900 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm'>
                         <span className='block truncate'>{selected}</span>
                         <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
                           <AiOutlineDown
@@ -64,7 +64,7 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
                         leaveFrom='opacity-100'
                         leaveTo='opacity-0'
                       >
-                        <Listbox.Options className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm'>
+                        <Listbox.Options className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-gray-900 dark:text-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm'>
                           {roles.map((role, roleIdx) => (
                             <Listbox.Option
                               key={roleIdx}
@@ -72,7 +72,7 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
                                 `relative cursor-default select-none py-2 pl-10 pr-4 ${
                                   active
                                     ? 'bg-amber-100 text-amber-900'
-                                    : 'text-gray-900'
+                                    : 'text-gray-900 dark:text-slate-100'
                                 }`
                               }
                               value={role}
@@ -81,7 +81,7 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
                                 <>
                                   <span
                                     className={`block truncate ${
-                                      selected ? 'font-medium text-pink-600' : 'font-normal'
+                                        selected ? 'font-medium text-yellow-300 dark:text-[#f9a300]' : 'font-normal'
                                     }`}
                                   >
                                     {role}
@@ -105,17 +105,17 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
                 </div>
                 <hr className='mt-16 ' />
 
-                <div className='flex mt-2 justify-center gap-5'>
+                <div className='flex mt-4 justify-center gap-5'>
                   <button
                     type='button'
-                    className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
+                    className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2 cursor-pointer dark:bg-zinc-900 dark:text-white dark:hover:text-yellow-500 transition duration-500 hover:scale-105'
                     onClick={() => modalHandler(selected)}
                   >
                     Update
                   </button>
                   <button
                     type='button'
-                    className='inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
+                    className='inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 cursor-pointer dark:bg-red-600 dark:text-black dark:hover:text-rose-200 transition duration-500 hover:scale-105'
                     onClick={() => setIsOpen(false)}
                   >
                     Cancel

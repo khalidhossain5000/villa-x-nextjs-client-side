@@ -1,15 +1,17 @@
-import ManageUsers from '@/components/Dashboard/admin/ManageUsers/ManageUsers';
-import React from 'react';
+import ManageUsers from "@/components/Dashboard/admin/ManageUsers/ManageUsers";
+import PageTitle from "@/components/Shared/Title/PageTitle";
+import React from "react";
 
 const ManageUsersPage = () => {
-    return (
-        <div>
-            <h2 className='text-xl font-bold py-12 text-center text-fuchsia-600'>Manage Users Page</h2>
+  return (
+    <div>
+      <PageTitle className={`pt-6 lg:pt-12 font-playfair`}>
+        Manage Users Page
+      </PageTitle>
 
-
-            <ManageUsers/>
-        </div>
-    );
+      <ManageUsers />
+    </div>
+  );
 };
 
 export default ManageUsersPage;

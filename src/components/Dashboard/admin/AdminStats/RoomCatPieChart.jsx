@@ -38,7 +38,7 @@ const RoomCatPieChart = ({ roomCategoryChartData }) => {
   });
 
   return (
-    <Card className="flex flex-col flex-1">
+    <Card className="flex flex-col flex-1 h-full">
       <CardHeader className="items-center pb-0">
         <CardTitle>Room Category Distribution</CardTitle>
         <CardDescription>Current Statistics</CardDescription>

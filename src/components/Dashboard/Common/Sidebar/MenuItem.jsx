@@ -8,8 +8,8 @@ const MenuItem = ({ label, address, icon: Icon }) => {
   return (
     <Link
       href={address}
-      className={`flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700 ${
-        isActive ? "bg-gray-300 text-gray-700" : "text-gray-600"
+      className={`flex items-center px-4 py-2 my-5 transition-colors duration-300 transform hover:bg-gray-300 hover:text-gray-700  ${
+        isActive ? "bg-gray-300 text-gray-700 dark:bg-[#f9a300] dark:text-black" : "text-gray-600 dark:text-slate-400"
       }`}
     >
       <Icon className="w-5 h-5" />

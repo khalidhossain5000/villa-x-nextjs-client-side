@@ -39,7 +39,7 @@ const GuestMenu = () => {
       {role === "guest" && (
         <div
           onClick={() => setIsOpen(true)}
-          className="flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform text-gray-600  hover:bg-gray-300   hover:text-gray-700 cursor-pointer"
+          className="flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform text-gray-600  hover:bg-gray-300   hover:text-gray-700 cursor-pointer dark:text-slate-400"
         >
           <GrUserAdmin className="w-5 h-5" />
 

@@ -33,10 +33,20 @@ const HostAreaChart = () => {
       color: "#3b82f6", // bright blue
     },
   }
+const hasData = chartData && chartData.length > 0;
 
+  console.log(
+    hostChartData,
+    "this is host chart data",
+    chartData,
+    "chart data",
+    hasData,
+    "hasData",
+  );
   return (
-    <div className="w-full max-w-2xl shadow-2xl rounded-xl p-4 mt-12">
-      <ChartContainer config={chartConfig}>
+    <div className="w-full max-w-2xl shadow-2xl rounded-xl dark:shadow-emerald-500 dark:border dark:border-[#f9a300] p-4 mt-12">
+      {
+        hasData ? <ChartContainer config={chartConfig}>
         <AreaChart
           data={chartData}
           margin={{ left: 12, right: 12, top: 20, bottom: 20 }}
@@ -65,7 +75,10 @@ const HostAreaChart = () => {
             dot={true}
           />
         </AreaChart>
-      </ChartContainer>
+      </ChartContainer>  : <div className="h-[300px] flex items-center justify-center text-gray-400 text-lg font-medium">
+        No Monthly Booking data available to display
+      </div>
+      }
     </div>
   )
 }

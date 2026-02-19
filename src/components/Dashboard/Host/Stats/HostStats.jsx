@@ -31,7 +31,7 @@ const HostStats = () => {
         <div>
             <StatsCard hostStats={hostStats}/>
 
-            <div className="flex flex-col lg:flex-row gap-6 items-center">
+            <div className="flex flex-col lg:flex-row justify-center pt-6 gap-6 items-center px-4 xl:px-0">
               <HostLineChart/>
 
             <HostAreaChart />

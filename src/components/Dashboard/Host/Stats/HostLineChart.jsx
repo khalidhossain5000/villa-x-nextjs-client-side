@@ -34,41 +34,48 @@ const HostLineChart = () => {
   const chartConfig = {
     revenue: {
       label: "Revenue",
-      color: "#22c55e", 
+      color: "#22c55e",
     },
   };
+  const hasData = chartData && chartData.length > 0;
 
   return (
-    <div className="w-full max-w-2xl shadow-2xl rounded-lg mt-12 p-4">
-      <ChartContainer config={chartConfig}>
-        <LineChart
-          data={chartData}
-          margin={{ left: 12, right: 12, top: 20, bottom: 20 }}
-          width={600}
-          height={300}
-          accessibilityLayer
-        >
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            axisLine={false}
-            tickLine={false}
-            tickMargin={8}
-            tickFormatter={(value) => value.slice(0, 3)}
-          />
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent hideLabel />}
-          />
-          <Line
-            type="linear"
-            dataKey="revenue"
-            stroke="#22c55e"
-            strokeWidth={2}
-            dot={true}
-          />
-        </LineChart>
-      </ChartContainer>
+    <div className="w-full max-w-2xl shadow-2xl rounded-lg mt-12 p-4 dark:shadow-zinc-500 dark:border dark:border-[#f9a300]">
+      {hasData ? (
+        <ChartContainer config={chartConfig}>
+          <LineChart
+            data={chartData}
+            margin={{ left: 12, right: 12, top: 20, bottom: 20 }}
+            width={600}
+            height={300}
+            accessibilityLayer
+          >
+            <CartesianGrid vertical={false} />
+            <XAxis
+              dataKey="month"
+              axisLine={false}
+              tickLine={false}
+              tickMargin={8}
+              tickFormatter={(value) => value.slice(0, 3)}
+            />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Line
+              type="linear"
+              dataKey="revenue"
+              stroke="#22c55e"
+              strokeWidth={2}
+              dot={true}
+            />
+          </LineChart>
+        </ChartContainer>
+      ) : (
+        <div className="h-[300px] w-full flex items-center justify-center text-gray-400 text-lg font-medium">
+          No Monthly Revenue data available to display
+        </div>
+      )}
     </div>
   );
 };

@@ -12,7 +12,7 @@ const StatsCard = ({ hostStats }) => {
   return (
     <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-6 items-stretch px-3 xl:px-0">
       {/* TOTAL ORDERS CARD*/}
-      <div className="relative w-full max-w-xs sm:max-w-lg  rounded-xl p-5 lg:p-9 overflow-hidden bg-gradient-to-r from-green-600 to-emerald-500 text-white shadow-2xl h-full">
+      <div className="relative w-full max-w-xs sm:max-w-lg  rounded-xl p-5 lg:p-9 overflow-hidden bg-gradient-to-r from-green-600 to-emerald-500 dark:from-zinc-950 dark:to-indigo-950 text-white shadow-2xl h-full">
         {/* --- Background total room added Graphic --- */}
         <div className="absolute inset-0 flex items-center justify-start ml-24 opacity-10">
           <FaHouseDamage className="w-40 h-40 text-white rotate-12" />
@@ -48,7 +48,7 @@ const StatsCard = ({ hostStats }) => {
       </div>
 
       {/* ORDER COMPLETED CARD */}
-      <div className="relative w-full max-w-xs sm:max-w-lg  rounded-xl p-5 lg:p-9 overflow-hidden bg-gradient-to-r from-pink-600 to-rose-500 text-white shadow-2xl h-full">
+      <div className="relative w-full max-w-xs sm:max-w-lg  rounded-xl p-5 lg:p-9 overflow-hidden bg-gradient-to-r from-pink-600 to-rose-500 dark:from-gray-950 dark:to-blue-900 text-white shadow-2xl h-full">
         {/* --- Background Trend Graphic --- */}
         <div className="absolute inset-0 flex items-center justify-start ml-24 opacity-10">
           <IoIosTrendingUp className="w-40 h-40 text-white rotate-12" />
@@ -84,7 +84,7 @@ const StatsCard = ({ hostStats }) => {
       </div>
 
       {/* EDIT PROFILE CARD */}
-      <div className="relative w-full max-w-xs sm:max-w-lg rounded-xl p-5 lg:p-9 overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-2xl h-full">
+      <div className="relative w-full max-w-xs sm:max-w-lg rounded-xl p-5 lg:p-9 overflow-hidden bg-gradient-to-r from-blue-500 to-indigo-600 dark:from-slate-950 dark:to-blue-950 text-white shadow-2xl h-full">
         {/* --- Background Graphic --- */}
         <div className="absolute inset-0 flex items-center justify-start ml-24 opacity-10">
           <FaMoneyBillWave className="w-40 h-40 text-white rotate-12" />

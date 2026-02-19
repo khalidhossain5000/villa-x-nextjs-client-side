@@ -31,11 +31,15 @@ const AdminStats = () => {
         totalUsers={adminStats?.totalUsers}
       />
 
-      <div className="container flex flex-col lg:flex-row gap-6 lg:gap-9 pt-12 items-stretch flex-grow">
-        <UsersPieChart roleChartData={adminStats?.roleChartData} />
-        <RoomCatPieChart
+      <div className="container flex flex-col lg:flex-row gap-6 lg:gap-9 pt-12 items-stretch">
+        <div className="lg:flex-1">
+          <UsersPieChart roleChartData={adminStats?.roleChartData} />
+        </div>
+       <div className="lg:flex-1 h-full">
+         <RoomCatPieChart
           roomCategoryChartData={adminStats?.roomCategoryChartData}
         />
+       </div>
       </div>
     </div>
   );
