@@ -30,7 +30,7 @@ export const createUser = createAsyncThunk(
     
     //user info save to db start here
 
-    const result =await axios.post("http://localhost:5000/api/auth/register", {
+    const result =await axios.post("https://villla-x-nextjs-server-side.vercel.app/api/auth/register", {
       fullName: name,
       email,
       userRole: "guest",
