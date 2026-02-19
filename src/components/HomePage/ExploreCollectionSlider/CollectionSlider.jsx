@@ -27,7 +27,6 @@ const CollectionSlider = () => {
   });
 
   if (isLoading) return <Loader />; //will be replaced with skeletion loaing
-  console.log(allRoomData, "this is all room data");
   return (
     <div className="bg-[#fcf7f6] dark:bg-[#050911] relative py-12 lg:py-22">
       <div

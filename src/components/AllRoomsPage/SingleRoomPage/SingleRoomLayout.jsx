@@ -6,6 +6,7 @@ import React from "react";
 import Header from "./Header";
 import RoomInfo from "./RoomInfo";
 import RoomReservation from "./RoomReservation";
+import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
 
 const SingleRoomLayout = ({ roomId }) => {
   const axiosInstance = useAxios();
@@ -26,6 +27,7 @@ const SingleRoomLayout = ({ roomId }) => {
 
   if (!singleRoomData) return <Loader />;
   return (
+    <PrivateRoute requiredRoles={['guest']}>
     <div className="min-h-screen w-full relative z-0">
       <div
         className="absolute inset-0 z-0 dark:hidden"
@@ -56,6 +58,7 @@ const SingleRoomLayout = ({ roomId }) => {
         </div>
       </div>
     </div>
+    </PrivateRoute>
   );
 };
 

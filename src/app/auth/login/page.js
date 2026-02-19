@@ -39,22 +39,10 @@ const LoginPage = () => {
           </div>
 
           {/* Login Form */}
-<Suspense fallback={'loadingsss'}>
-
-          <LoginForm />
-</Suspense>
-          {/* Sign Up Link */}
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-600 dark:text-[#cbd5e1]">
-              Don&apos;t have an account?{" "}
-              <Link
-                href="/auth/register"
-                className="font-medium text-[#1a5f0e] dark:text-[#4ade80] hover:text-[#0d9276] dark:hover:text-[#71f9a3] transition-colors duration-200 cursor-pointer"
-              >
-                Sign up
-              </Link>
-            </p>
-          </div>
+          <Suspense fallback={"loadingsss"}>
+            <LoginForm />
+          </Suspense>
+          
         </div>
       </div>
     </div>

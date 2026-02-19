@@ -1,6 +1,7 @@
 "use client";
 import { useAuth } from "@/Hooks/useAuth";
 import { loginUser } from "@/Redux/Features/authSlice";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -90,6 +91,19 @@ const LoginForm = () => {
           Sign In
         </button>
       </form>
+      {/* Sign Up Link */}
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-600 dark:text-[#cbd5e1]">
+              Don&apos;t have an account?{" "}
+              <Link
+                href={`/auth/register?callbackUrl=${callbackUrl}`}
+             
+                className="font-medium text-[#1a5f0e] dark:text-[#4ade80] hover:text-[#0d9276] dark:hover:text-[#71f9a3] transition-colors duration-200 cursor-pointer"
+              >
+                Sign up
+              </Link>
+            </p>
+          </div>
     </div>
   );
 };

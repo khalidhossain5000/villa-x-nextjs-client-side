@@ -5,7 +5,7 @@ import React from "react";
 
 const RoomCard = ({ room }) => {
   return (
-    <Link href={`/room/${room?._id}`} className=" cursor-pointer group">
+    <div className=" cursor-pointer group">
       <div className="h-full bg-linear-to-tr from-[#f98d00] to-[#f9a300]  dark:from-[#0a121f] dark:to-[#0a0e16db] text-[#211f54] shadow-2xl w-full mx-auto relative overflow-hidden border border-yellow-400 dark:border-slate-900 hover:scale-105 transition-transform duration-300">
         <img
           src={room?.thumbnailImage}
@@ -48,7 +48,7 @@ const RoomCard = ({ room }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

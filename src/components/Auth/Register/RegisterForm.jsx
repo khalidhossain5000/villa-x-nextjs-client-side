@@ -7,9 +7,15 @@ import { registerSchema } from "@/ZodSchema/register.schema";
 import { useDispatch, useSelector } from "react-redux";
 import { createUser } from "@/Redux/Features/authSlice";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+
 const RegisterForm = () => {
     const [registering,setRegistering]=useState(false)
-   
+     const router = useRouter();
+       const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
     const dispatch=useDispatch()
     const {register,handleSubmit,formState:{errors}}=useForm({
         resolver:zodResolver(registerSchema)
@@ -24,8 +30,9 @@ const RegisterForm = () => {
         dispatch(createUser({email,password,name})).then((res)=>{
           console.log(res,'this is res inside create user')
           if(res.meta.requestStatus="fulfilled"){
-            toast.success("Register Sucess")
+            toast.success("Register Success")
             setRegistering(false)
+              router.push(callbackUrl);
           }
           setRegistering(false)
         }).catch((error)=>{
