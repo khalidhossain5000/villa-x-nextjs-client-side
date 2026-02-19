@@ -30,7 +30,7 @@ export const createUser = createAsyncThunk(
     
     //user info save to db start here
 
-    const result =await axios.post("https://villla-x-nextjs-server-side.vercel.app/api/auth/register", {
+    const result =await axios.post("http://localhost:5000/api/auth/register", {
       fullName: name,
       email,
       userRole: "guest",
@@ -66,8 +66,8 @@ export const googleSignIn=createAsyncThunk(
     const res= await signInWithPopup(auth,googleProvider)
     // console.log(res,'this is from gogle lign')
     //user info save to db start here
-
-    const result =await axios.post("https://villla-x-nextjs-server-side.vercel.app/api/auth/register", {
+// https://villla-x-nextjs-server-side.vercel.app
+    const result =await axios.post("http://localhost:5000/api/auth/register", {
       fullName: res.user.displayName,
       email: res.user.email,
       userRole: "guest",
