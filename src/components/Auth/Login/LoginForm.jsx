@@ -11,9 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const { user:loginUserData,error = null, loading: loginLoading = false } = useSelector(
-    (state) => state.auth,
-  );
+  const {
+    user: loginUserData,
+    error = null,
+    loading: loginLoading = false,
+  } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -25,42 +27,36 @@ const LoginForm = () => {
   const callbackUrl = searchParams.get("callbackUrl") || "/";
   // If user already logged-in → redirect home automatically
   useEffect(() => {
-    if ((!loading && !user == null)) {
+    if (!loading && !user == null) {
       router.push("/"); // redirect home
     }
   }, [user, loading, router, loginLoading]);
 
+  console.log(loginUserData?.email, "this is iemail");
 
-console.log(loginUserData?.email,'this is iemail')
-
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     const email = data.email;
     const password = data.password;
     try {
-    await dispatch(loginUser({ email, password })).unwrap();
+      await dispatch(loginUser({ email, password })).unwrap();
 
-    toast.success("Login Success", {
-      className: "w-[400px] h-[100px] text-xl font-bold relative z-[99999999999999999999999999999999999999999999999999999999999]",
-      removeDelay: 1000,
-      iconTheme: { primary: "#16061e", secondary: "#ef54e2" },
-      style: {
-        border: "1px solid #08086c",
-        color: "black",
-        backgroundImage: "linear-gradient(to bottom right, #f98d00,#f9a300)",
+      toast.success("Login Success", {
+        className:
+          "w-[400px] h-[100px] text-xl font-bold relative z-[99999999999999999999999999999999999999999999999999999999999]",
+        removeDelay: 1000,
+        iconTheme: { primary: "#16061e", secondary: "#ef54e2" },
+        style: {
+          border: "1px solid #08086c",
+          color: "black",
+          backgroundImage: "linear-gradient(to bottom right, #f98d00,#f9a300)",
+        },
+      });
 
-      },
-    });
-
-   
-    router.push(callbackUrl);
-
-  }
-  catch (err) {
-    toast.error(err?.message || "Login failed! Please try again.");
-    console.error('Login error:', err);
-  }
-
-   
+      router.push(callbackUrl);
+    } catch (err) {
+      toast.error(err?.message || "Login failed! Please try again.");
+      console.error("Login error:", err);
+    }
   };
 
   return (

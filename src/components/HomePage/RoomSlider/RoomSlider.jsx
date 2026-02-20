@@ -16,6 +16,7 @@ import "swiper/css/pagination";
 import { Navigation, Autoplay } from "swiper/modules";
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from "react-icons/fa";
 import Link from "next/link";
+import RoomSliderSkleton from "@/components/Shared/SkeletonLoader/RoomSliderSkleton";
 const RoomSlider = () => {
   const axiosInstance = useAxios();
 
@@ -31,10 +32,17 @@ const RoomSlider = () => {
     keepPreviousData: true,
   });
 
-  if (isLoading) return <Loader />;
+  
+  if (isLoading ) return <RoomSliderSkleton/>
 
   return (
     <div className="py-22 xl:py-48 bg-white  dark:bg-black relative ">
+
+
+
+
+
+
       <div
         className="absolute inset-0 z-0 dark:hidden"
         style={{
