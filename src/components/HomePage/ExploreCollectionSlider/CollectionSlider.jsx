@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import Link from "next/link";
 import HomeButton from "@/components/Shared/Button/HomeButton";
+import RoomSliderSkleton from "@/components/Shared/SkeletonLoader/RoomSliderSkleton";
 const CollectionSlider = () => {
   const axiosInstance = useAxios();
   // Fetch room data
@@ -26,7 +27,7 @@ const CollectionSlider = () => {
     keepPreviousData: true,
   });
 
-  if (isLoading) return <Loader />; //will be replaced with skeletion loaing
+  if (isLoading) return<RoomSliderSkleton/>
   return (
     <div className="bg-[#fcf7f6] dark:bg-[#050911] relative py-12 lg:py-22">
       <div

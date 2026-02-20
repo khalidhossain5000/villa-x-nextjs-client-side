@@ -6,6 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import RoomCard from "./RoomCard";
 import { useSearchParams } from "next/navigation";
 import { FaSearch } from "react-icons/fa";
+import RoomSliderSkleton from "@/components/Shared/SkeletonLoader/RoomSliderSkleton";
 
 const Rooms = () => {
   const axiosInstance = useAxios();
@@ -28,7 +29,7 @@ const Rooms = () => {
   useEffect(() => {
     inputRef.current?.focus();
   });
-  if (isLoading) return <Loader />;
+  if (isLoading) return <RoomSliderSkleton/>;
 
   return (
     <div className="flex items-start flex-col lg:flex-row gap-2 ">

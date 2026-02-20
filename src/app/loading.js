@@ -6,7 +6,7 @@ import logo from "../assets/logo/logohdsg.png";
 
 const HomePageLoading = () => {
   return (
-    <div className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0f0f13]">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0f0f13] z-[9999999999999999999999999999999999999999999999999999999999999999999999999999]">
       {/* Subtle moving dark gradient */}
       <motion.div
         animate={{
