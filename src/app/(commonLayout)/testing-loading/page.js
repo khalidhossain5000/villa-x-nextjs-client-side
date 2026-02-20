@@ -2,9 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import logo from "../../assets/logo/logohdsg.png";
+import logo from "../../../assets/logo/logohdsg.png";
 
-const RouteLoading = () => {
+const TestLoading = () => {
   return (
     <div className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]">
       
@@ -96,4 +96,4 @@ const RouteLoading = () => {
   );
 };
 
-export default RouteLoading;
+export default TestLoading;

@@ -3,13 +3,17 @@ import { useAuth } from "@/Hooks/useAuth";
 import { loginUser } from "@/Redux/Features/authSlice";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { RiLockPasswordLine, RiUserLine } from "react-icons/ri";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const { error = null, loading: loginLoading = false } = useSelector(
+    (state) => state.auth,
+  );
   const {
     register,
     handleSubmit,
@@ -21,18 +25,36 @@ const LoginForm = () => {
   const callbackUrl = searchParams.get("callbackUrl") || "/";
   // If user already logged-in → redirect home automatically
   useEffect(() => {
-    if (!loading && !user == null) {
+    if ((!loading && !user == null)) {
       router.push("/"); // redirect home
     }
-  }, [user, loading, router]);
+  }, [user, loading, router, loginLoading]);
 
+  useEffect(() => {
+    if (!loading && user?.email) {
+      toast.success("Login Success", {
+        className: "w-[400px] h-[100px] text-xl font-bold",
+        removeDelay: 1000,
+        iconTheme: { primary: "#16061e", secondary: "#ef54e2" },
+        style: {
+          border: "1px solid #08086c",
+          color: "black",
+          backgroundImage: "linear-gradient(to bottom right, #f98d00,#f9a300)",
+        },
+      });
+      router.push(callbackUrl);
+    }
+
+    if (!loading && error) {
+      toast.error(error);
+    }
+  }, [loading, user, error, router, callbackUrl]);
   const onSubmit = (data) => {
-    console.log(data);
     const email = data.email;
     const password = data.password;
     dispatch(loginUser({ email, password }));
-    router.push(callbackUrl);
   };
+
   return (
     <div>
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -52,6 +74,9 @@ const LoginForm = () => {
               placeholder="Enter your email"
             />
           </div>
+          {error && (
+            <p className="text-lg font-smibold text-red-600">{error}</p>
+          )}
         </div>
 
         {/* Password Input */}
@@ -85,7 +110,8 @@ const LoginForm = () => {
           type="submit"
           className="w-full py-3 px-4 bg-[#1a5f0e] dark:bg-[#4ade80] text-white font-semibold rounded-lg hover:bg-[#0d9276] dark:hover:bg-[#71f9a3] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1a5f0e] dark:focus:ring-[#4ade80] transition-all duration-200 transform hover:-translate-y-0.5"
         >
-          Sign In
+          {loginLoading ? "signing In ......." : "Sign In"}
+          {/* Sign In */}
         </button>
       </form>
       {/* Sign Up Link */}

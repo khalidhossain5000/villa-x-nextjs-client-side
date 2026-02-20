@@ -153,6 +153,7 @@ const authSlice = createSlice({
         state.user=getSafeUser(action.payload);
       })
       .addCase(loginUser.rejected,(state,action)=>{
+        state.loading=false
         state.error=action?.error?.message;
       })
 

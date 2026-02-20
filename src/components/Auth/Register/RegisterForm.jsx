@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RiLockPasswordLine, RiUserLine } from "react-icons/ri";
@@ -11,37 +11,70 @@ import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const RegisterForm = () => {
-    const [registering,setRegistering]=useState(false)
-     const router = useRouter();
-       const searchParams = useSearchParams();
+  const [registering, setRegistering] = useState(false);
+  const [fireBaseError, setfireBaseError] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
 
-    const dispatch=useDispatch()
-    const {register,handleSubmit,formState:{errors}}=useForm({
-        resolver:zodResolver(registerSchema)
-    })
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(registerSchema),
+  });
+  const onSubmit = (data) => {
+    setRegistering(true);
+    const email = data.email;
+    const password = data.password;
+    const name = data.fullName;
+    dispatch(createUser({ email, password, name }))
+      .then((res) => {
+        if (res?.payload?.accessToken) {
+          toast.success(`User Registered SuccessFully`, {
+            className: "w-[400px] h-[100px] text-xl font-bold ",
+            removeDelay: 1000,
+            iconTheme: {
+              primary: "#16061e",
+              secondary: "#ef54e2",
+            },
+            style: {
+              border: "1px solid #08086c",
+              color: "black",
+              backgroundImage:
+                "linear-gradient(to bottom right, #f98d00,#f9a300 )",
+            },
+          });
+          setRegistering(false);
+          router.push(callbackUrl);
+        }
+        if (res?.error?.message) {
+          toast.success(`${res?.error?.message}`, {
+            className: "w-[400px] h-[100px] text-xl font-bold ",
+            removeDelay: 1000,
+            iconTheme: {
+              primary: "#16061e",
+              secondary: "#ef54e2",
+            },
+            style: {
+              border: "1px solid #08086c",
+              color: "white",
+              backgroundImage:
+                "linear-gradient(to bottom right, #8d010a,#dc0018 )",
+            },
+          });
+          setfireBaseError(res.error.message);
+        }
+        setRegistering(false);
+      })
+      .catch((error) => {
+        console.log(error, "this is create user errro");
+        setRegistering(false);
+      });
+  };
 
-    const onSubmit=data=>{
-       console.log('register triggered')
-       setRegistering(true)
-        const email=data.email
-        const password=data.password
-        const name=data.fullName
-        dispatch(createUser({email,password,name})).then((res)=>{
-          console.log(res,'this is res inside create user')
-          if(res.meta.requestStatus="fulfilled"){
-            toast.success("Register Success")
-            setRegistering(false)
-              router.push(callbackUrl);
-          }
-          setRegistering(false)
-        }).catch((error)=>{
-          console.log(error,'this is create user errro')
-          setRegistering(false)
-        })
-        
-        
-    }
   return (
     <div>
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
@@ -61,6 +94,12 @@ const RegisterForm = () => {
               placeholder="Enter your Name"
             />
           </div>
+          {/* errors */}
+          {errors && (
+            <p className="text-lg font-smibold text-red-600">
+              {errors?.fullName?.message}
+            </p>
+          )}
         </div>
         {/* Email Input */}
         <div>
@@ -78,6 +117,9 @@ const RegisterForm = () => {
               placeholder="Enter your email"
             />
           </div>
+          {fireBaseError && (
+            <p className="text-lg font-smibold text-red-600">{fireBaseError}</p>
+          )}
         </div>
 
         {/* Password Input */}
