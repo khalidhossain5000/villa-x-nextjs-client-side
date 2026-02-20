@@ -15,15 +15,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { imageUpload } from "@/lib/ImageUpload/ImageUploaad";
 import { useAuth } from "@/Hooks/useAuth";
-
+import toast from "react-hot-toast";
 
 const UpdateProfile = () => {
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
-  const { updateFirebaseUserProfile,userInfo } = useAuth();
+  const { updateFirebaseUserProfile, userInfo } = useAuth();
   const [name, setName] = useState(userInfo.name);
- const [updating,setUpdating]=useState(false)
-   const [open, setOpen] = useState(false);
+  const [updating, setUpdating] = useState(false);
+  const [open, setOpen] = useState(false);
 
   // Handle Image Change
   const handleImageChange = (e) => {
@@ -43,9 +43,8 @@ const UpdateProfile = () => {
   // Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const image = e.target.image.files[0];
-    // const image_uri = await imageUpload(image);
-setUpdating(true)
+
+    setUpdating(true);
     let photoUrl = null;
 
     if (e?.target?.image?.files[0]) {
@@ -58,13 +57,33 @@ setUpdating(true)
 
     if (image || photoUrl) {
       updateFirebaseUserProfile(name, photoUrl)
-        setUpdating(false)
-         setOpen(false);
+        .then((res) => {
+          toast.success(`Profile is Updated SuccessFully`, {
+            className: "w-[400px] h-[100px] text-xl font-bold ",
+            removeDelay: 1000,
+            iconTheme: {
+              primary: "#16061e",
+              secondary: "#ef54e2",
+            },
+            style: {
+              border: "1px solid #08086c",
+              color: "black",
+              backgroundImage:
+                "linear-gradient(to bottom right, #00FF87,#60EFFF )",
+            },
+          });
+        })
+        .catch((error) => {
+          console.log(error, "update profile error is here");
+          toast.error(`${error},failed to update profile try again!`);
+        });
+      setUpdating(false);
+      setOpen(false);
     }
   };
 
   return (
-    <Dialog  open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
@@ -129,8 +148,11 @@ setUpdating(true)
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit" className="bg-pink-500 hover:bg-pink-600 cursor-pointer">
-              {updating? 'Profile Updating......' : 'Update Profile'}
+            <Button
+              type="submit"
+              className="bg-pink-500 hover:bg-pink-600 cursor-pointer"
+            >
+              {updating ? "Profile Updating......" : "Update Profile"}
             </Button>
           </DialogFooter>
         </form>

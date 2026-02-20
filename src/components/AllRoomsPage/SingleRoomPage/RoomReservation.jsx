@@ -4,9 +4,9 @@ import Calender from "./Calendar";
 import BookingModal from "@/components/Shared/Modal/BookingModal/BookingModal";
 import { useAuth } from "@/Hooks/useAuth";
 import { differenceInCalendarDays, formatDistance } from "date-fns";
-import Loader from "@/components/Shared/Loading/Loader";
 import useAxios from "@/Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
+import RoomDetailsSkeleton from "@/components/Shared/SkeletonLoader/RoomDetailsSkeleton";
 
 const RoomReservation = ({ room }) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -81,8 +81,8 @@ const RoomReservation = ({ room }) => {
     keepPreviousData: true,
     enabled: !!room._id,
   });
-  console.log(bookedRoomDate, "this is data and error ");
-  if (isLoading) return <Loader />;
+  
+  if (isLoading ) return <RoomDetailsSkeleton />;
 
   const disabledRanges = bookedRoomDate?.map((item, index) => ({
     startDate: new Date(item.from),
@@ -95,8 +95,7 @@ const RoomReservation = ({ room }) => {
       return date >= range.startDate && date <= range.endDate;
     });
   };
-  console.log(isDateBlocked, "this is blocked date function");
-  console.log(isDateBlocked(new Date("2026-01-17")));
+
 
   return (
     <div className="relative rounded-xl border-[1px] border-neutral-200 dark:border-none overflow-hidden bg-white">
@@ -142,8 +141,8 @@ const RoomReservation = ({ room }) => {
       </div>
       <hr />
       <div className="p-4 relative z-50">
-        <p>
-          <span className="h-2 w-2 rounded-full bg-green-600 inline-block animate-pulse mr-2 pb-4 "></span>
+        <p className='py-4'>
+          <span className="h-2 w-2 lg:h-3 md:w-3 rounded-full bg-red-500 inline-block animate-ping mr-2  "></span>
           Refers To : Already Booked
         </p>
         <button

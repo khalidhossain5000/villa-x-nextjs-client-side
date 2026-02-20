@@ -19,7 +19,7 @@ const Header = ({ room }) => {
       }}
       className="py-22 mt-6 lg:mt-12 lg:rounded-xl shadow-xl"
     >
-      <h2 className="text-center text-white font-playfair text-xl md:text-2xl lg:text-3xl">
+      <h2 className="text-center text-white font-bold dark:text-black font-playfair text-xl md:text-2xl lg:text-3xl xl:text-5xl">
         Explore Rooms Available Images:
       </h2>
 

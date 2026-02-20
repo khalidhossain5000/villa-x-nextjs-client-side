@@ -1,5 +1,4 @@
 "use client";
-import Loader from "@/components/Shared/Loading/Loader";
 import useAxios from "@/Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
@@ -7,6 +6,7 @@ import Header from "./Header";
 import RoomInfo from "./RoomInfo";
 import RoomReservation from "./RoomReservation";
 import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
+import RoomDetailsSkeleton from "@/components/Shared/SkeletonLoader/RoomDetailsSkeleton";
 
 const SingleRoomLayout = ({ roomId }) => {
   const axiosInstance = useAxios();
@@ -19,13 +19,12 @@ const SingleRoomLayout = ({ roomId }) => {
     },
     keepPreviousData: true,
   });
-  console.log(allRoomData, "this is data and error ");
-  if (isLoading) return <Loader />;
+
+  if (isLoading) return <RoomDetailsSkeleton />;
 
   const singleRoomData = allRoomData.find((room) => room._id == roomId.id);
-  console.log(singleRoomData, "this is single room data", roomId.id);
 
-  if (!singleRoomData) return <Loader />;
+  if (!singleRoomData) return <RoomDetailsSkeleton />;
   return (
     <PrivateRoute requiredRoles={['guest']}>
     <div className="min-h-screen w-full relative z-0">
@@ -37,13 +36,27 @@ const SingleRoomLayout = ({ roomId }) => {
         }}
       />
 
-      <div
-        className="absolute inset-0 z-0 hidden dark:block"
-        style={{
-          background:
-            "radial-gradient(125% 125% at 50% 10%, #f0fdfa 40%, #f0fdfa 100%)",
-        }}
-      />
+         <div
+      className="absolute inset-0 z-0 hidden dark:block"
+      style={{
+        background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(16, 185, 129, 0.25), transparent 70%), #000000",
+      }}
+    />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className="max-w-7xl mx-auto z-50 relative py-22">
         <div className="flex flex-col gap-6">
           <Header room={singleRoomData} />

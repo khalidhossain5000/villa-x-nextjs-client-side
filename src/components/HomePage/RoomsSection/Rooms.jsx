@@ -1,5 +1,4 @@
 "use client";
-import Loader from "@/components/Shared/Loading/Loader";
 import useAxios from "@/Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useRef, useState } from "react";

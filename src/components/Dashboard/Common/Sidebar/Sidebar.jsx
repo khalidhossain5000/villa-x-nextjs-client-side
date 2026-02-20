@@ -28,7 +28,7 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const [isActive, setActive] = useState(true);
   const { role, roleLoading } = useRole();
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState( true);
   const router=useRouter()
   //   For guest/host menu item toggle button
   const toggleHandler = (event) => {

@@ -95,9 +95,9 @@ const Profile = () => {
               <div>
                 <UpdateProfile />
 
-                <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
+                {/* <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
                   Change Password
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

@@ -8,7 +8,6 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
   const [selected, setSelected] = useState(user.userRole)
 
 
-  console.log(selected,'form modal')
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog

@@ -4,6 +4,7 @@ import useRole from "@/Hooks/useRole";
 import React from "react";
 import Loader from "../Shared/Loading/Loader";
 import { usePathname, useRouter } from "next/navigation";
+import RoomDetailsSkeleton from "../Shared/SkeletonLoader/RoomDetailsSkeleton";
 
 const PrivateRoute = ({ children, requiredRoles = [] }) => {
   const { userInfo, loading: authLoading } = useAuth();
@@ -11,7 +12,7 @@ const PrivateRoute = ({ children, requiredRoles = [] }) => {
   const router = useRouter();
   const pathname = usePathname();
   if (authLoading || roleLoading || !userInfo || role == null) {
-    return <Loader />;
+    return <RoomDetailsSkeleton />;
   }
 // console.log('requiredRoles',requiredRoles)
   // console.log(authLoading, "this is authloading", roleLoading, userInfo, role);
