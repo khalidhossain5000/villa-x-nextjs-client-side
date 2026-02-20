@@ -6,7 +6,7 @@ import logo from "../../assets/logo/logohdsg.png";
 
 const RouteLoading = () => {
   return (
-    <div className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505]">
+    <div className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505] z-[999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999]">
       
       {/* 1. Ambient Background Glow */}
       <div className="absolute inset-0 z-0">
