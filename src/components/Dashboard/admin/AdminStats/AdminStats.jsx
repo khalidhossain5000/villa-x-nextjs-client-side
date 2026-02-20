@@ -24,7 +24,6 @@ const AdminStats = () => {
   if (isLoading) return <ChartSkeleton />;
 
   const cardData = {};
-  console.log(adminStats, "adminStatsadminStats");
   return (
     <div>
       <AdminStatsCard

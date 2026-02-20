@@ -22,7 +22,7 @@ const GuestStats = () => {
   if (isLoading) return <DashboardSkeleton />;
 
   return (
-    <div className="pt-9 pb-6">
+    <div className="pt-9 pb-6 px-4 2xl:px-0">
       <GuestStatsCard guestStats={guestStats} />
     </div>
   );

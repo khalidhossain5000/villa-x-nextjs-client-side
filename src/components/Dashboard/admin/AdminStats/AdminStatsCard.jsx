@@ -8,10 +8,9 @@ import { MdOutlineWarehouse } from "react-icons/md";
 import { TbTrendingUp2 } from "react-icons/tb";
 
 const AdminStatsCard = ({totalUsers,totalRooms}) => {
-    console.log(totalUsers,'inside stat card')
     if(!totalUsers || !totalRooms) return <Loader/>
   return (
-    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2  gap-6 mt-6 items-stretch px-3 xl:px-0">
+    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2  gap-6 mt-6 items-stretch px-4 2xl:px-0">
       {/* TOTAL ORDERS CARD*/}
       <div className="relative w-full max-w-xs sm:max-w-lg lg:max-w-2xl  rounded-xl p-5 lg:p-9 overflow-hidden bg-gradient-to-r from-green-600 to-emerald-500 dark:from-gray-950 dark:to-blue-900 text-white shadow-2xl h-full">
         {/* --- Background total room added Graphic --- */}
