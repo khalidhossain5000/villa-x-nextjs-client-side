@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const { error = null, loading: loginLoading = false } = useSelector(
+  const { user:loginUserData,error = null, loading: loginLoading = false } = useSelector(
     (state) => state.auth,
   );
   const {
@@ -30,29 +30,37 @@ const LoginForm = () => {
     }
   }, [user, loading, router, loginLoading]);
 
-  useEffect(() => {
-    if (!loading && user?.email) {
-      toast.success("Login Success", {
-        className: "w-[400px] h-[100px] text-xl font-bold",
-        removeDelay: 1000,
-        iconTheme: { primary: "#16061e", secondary: "#ef54e2" },
-        style: {
-          border: "1px solid #08086c",
-          color: "black",
-          backgroundImage: "linear-gradient(to bottom right, #f98d00,#f9a300)",
-        },
-      });
-      router.push(callbackUrl);
-    }
 
-    if (!loading && error) {
-      toast.error(error);
-    }
-  }, [loading, user, error, router, callbackUrl]);
-  const onSubmit = (data) => {
+console.log(loginUserData?.email,'this is iemail')
+
+  const onSubmit = async(data) => {
     const email = data.email;
     const password = data.password;
-    dispatch(loginUser({ email, password }));
+    try {
+    await dispatch(loginUser({ email, password })).unwrap();
+
+    toast.success("Login Success", {
+      className: "w-[400px] h-[100px] text-xl font-bold relative z-[99999999999999999999999999999999999999999999999999999999999]",
+      removeDelay: 1000,
+      iconTheme: { primary: "#16061e", secondary: "#ef54e2" },
+      style: {
+        border: "1px solid #08086c",
+        color: "black",
+        backgroundImage: "linear-gradient(to bottom right, #f98d00,#f9a300)",
+
+      },
+    });
+
+   
+    router.push(callbackUrl);
+
+  }
+  catch (err) {
+    toast.error(err?.message || "Login failed! Please try again.");
+    console.error('Login error:', err);
+  }
+
+   
   };
 
   return (
