@@ -4,9 +4,6 @@
 First, run the development server and then  htgids
 
 
-Open [http://localhost:3000](http://localhost:3000) 
-
-
 
 
 
