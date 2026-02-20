@@ -11,6 +11,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import ChartSkeleton from "@/components/Shared/SkeletonLoader/ChartSkeleton";
 
 const HostLineChart = () => {
   const { userInfo: user } = useAuth();
@@ -27,7 +28,7 @@ const HostLineChart = () => {
     },
   });
 
-  if (isLoading) return <Loader />;
+  if (isLoading ) return <ChartSkeleton />;
 
   const chartData = hostChartData?.monthlyRevenue || [];
 

@@ -7,6 +7,7 @@ import React from "react";
 import AdminStatsCard from "./AdminStatsCard";
 import UsersPieChart from "./UsersPieChart";
 import RoomCatPieChart from "./RoomCatPieChart";
+import ChartSkeleton from "@/components/Shared/SkeletonLoader/ChartSkeleton";
 
 const AdminStats = () => {
   const { userInfo: user, loading } = useAuth();
@@ -20,7 +21,7 @@ const AdminStats = () => {
       return res.data;
     },
   });
-  if (isLoading) return <Loader />;
+  if (isLoading) return <ChartSkeleton />;
 
   const cardData = {};
   console.log(adminStats, "adminStatsadminStats");

@@ -5,6 +5,7 @@ import useAxiosSecure from "@/Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import GuestStatsCard from "./GuestStatsCard";
+import DashboardSkeleton from "@/components/Shared/SkeletonLoader/DashboardSkeleton";
 
 const GuestStats = () => {
   const { userInfo: user, loading } = useAuth();
@@ -18,7 +19,7 @@ const GuestStats = () => {
       return res.data;
     },
   });
-  if (isLoading) return <Loader />;
+  if (isLoading) return <DashboardSkeleton />;
 
   return (
     <div className="pt-9 pb-6">

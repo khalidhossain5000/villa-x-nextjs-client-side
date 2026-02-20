@@ -7,6 +7,7 @@ import React from 'react';
 import StatsCard from './StatsCard';
 import HostLineChart from './HostLineChart';
 import HostAreaChart from './HostAreaChart';
+import DashboardSkeleton from '@/components/Shared/SkeletonLoader/DashboardSkeleton';
 
 const HostStats = () => {
     const { userInfo: user, loading } = useAuth();
@@ -25,7 +26,11 @@ const HostStats = () => {
               return res.data;
             },
           });
-          if (isLoading) return <Loader />;
+
+
+
+       
+          if (isLoading ) return <DashboardSkeleton/>
           
     return (
         <div>

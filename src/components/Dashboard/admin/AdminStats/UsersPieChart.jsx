@@ -14,7 +14,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-// আপনার পছন্দের কালার সেট
 const roleColors = {
   admin: "#f97316", // Orange
   host: "#3b82f6",  // Blue
@@ -22,14 +21,11 @@ const roleColors = {
 }
 
 const UsersPieChart = ({ roleChartData }) => {
-  // ডাটা ফরম্যাট করা এবং কালার অ্যাসাইন করা
   const formattedData = roleChartData?.map((item) => ({
     ...item,
-    // যদি roleColors এ কালার না থাকে তবে ডিফল্ট কালার সেট হবে
     fill: roleColors[item.role?.toLowerCase()] || "#9ca3af",
   })) || []
 
-  // টোটাল ইউজার সংখ্যা বের করা (ঐচ্ছিক, ডোনাটের মাঝখানে দেখানোর জন্য)
   const totalUsers = formattedData.reduce((acc, curr) => acc + curr.users, 0);
 
   return (

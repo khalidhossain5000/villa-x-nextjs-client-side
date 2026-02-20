@@ -17,17 +17,16 @@ import {
 } from "@/components/ui/chart";
 
 const RoomCatPieChart = ({ roomCategoryChartData }) => {
-  // ডাটা না থাকলে বা লোড না হলে হ্যান্ডেল করার জন্য
   if (!roomCategoryChartData || roomCategoryChartData.length === 0) {
     return <p className="text-center">No data available</p>;
   }
 
-  // Chart এর জন্য ডাইনামিক কনফিগারেশন তৈরি
+  
   const chartConfig = {
     rooms: {
       label: "Total Rooms",
     },
-    // ডাটা থেকে ক্যাটাগরি অনুযায়ী লেবেল সেট করা
+    
   };
 
   roomCategoryChartData.forEach((item) => {

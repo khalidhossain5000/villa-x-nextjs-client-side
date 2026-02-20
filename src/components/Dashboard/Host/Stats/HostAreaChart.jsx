@@ -7,6 +7,7 @@ import useAxiosSecure from "@/Hooks/useAxiosSecure"
 import { useQuery } from "@tanstack/react-query"
 import { AreaChart, Area, CartesianGrid, XAxis } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import ChartSkeleton from "@/components/Shared/SkeletonLoader/ChartSkeleton"
 
 const HostAreaChart = () => {
   const { userInfo: user } = useAuth()
@@ -23,7 +24,7 @@ const HostAreaChart = () => {
     },
   })
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <ChartSkeleton />
 
   const chartData = hostChartData?.monthlyBookings || []
 
