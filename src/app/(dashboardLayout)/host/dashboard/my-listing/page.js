@@ -5,7 +5,10 @@ import React from 'react';
 const MyListingByHost = () => {
     return (
         <div>
-            <PageTitle className="pt-3">Add Room</PageTitle>
+         
+             <PageTitle className={`pt-6 lg:pt-12 font-playfair`}>
+               My Booking Lisitng
+               </PageTitle>
 
             <MyListing/>
         </div>

@@ -22,12 +22,14 @@ import Loader from "@/components/Shared/Loading/Loader";
 import ModeToggle from "@/components/Shared/ModeToggle/ModeToggle";
 
 import ToggleBtn from "@/components/Shared/Button/ToggleBtn";
+import { useRouter } from "next/navigation";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const [isActive, setActive] = useState(true);
   const { role, roleLoading } = useRole();
   const [toggle, setToggle] = useState(false);
+  const router=useRouter()
   //   For guest/host menu item toggle button
   const toggleHandler = (event) => {
     setToggle(event.target.checked);
@@ -42,6 +44,7 @@ const Sidebar = () => {
 
   const signOutHandler = () => {
     dispatch(signOutUser());
+    router.push('/')
   };
 
   if (roleLoading) return <Loader />;

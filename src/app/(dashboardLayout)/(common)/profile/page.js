@@ -1,16 +1,17 @@
-import Profile from '@/components/Dashboard/Common/Profile/Profile';
-import PageTitle from '@/components/Shared/Title/PageTitle';
-import React from 'react';
+import Profile from "@/components/Dashboard/Common/Profile/Profile";
+import PageTitle from "@/components/Shared/Title/PageTitle";
+import React from "react";
 
 const HostProfile = () => {
-    return (
-        <div>
-            <PageTitle className={`py-6`}>My Profile </PageTitle>
+  return (
+    <div>
+      <PageTitle className={`pt-6 lg:pt-12 font-playfair`}>
+        My Profile
+      </PageTitle>
 
-
-            <Profile/>
-        </div>
-    );
+      <Profile />
+    </div>
+  );
 };
 
 export default HostProfile;

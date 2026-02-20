@@ -21,13 +21,10 @@ const LoginForm = () => {
   const callbackUrl = searchParams.get("callbackUrl") || "/";
   // If user already logged-in → redirect home automatically
   useEffect(() => {
-    if (!loading && !user==null) {
+    if (!loading && !user == null) {
       router.push("/"); // redirect home
     }
   }, [user, loading, router]);
-
-
-
 
   const onSubmit = (data) => {
     console.log(data);
@@ -92,18 +89,17 @@ const LoginForm = () => {
         </button>
       </form>
       {/* Sign Up Link */}
-          <div className="mt-8 text-center">
-            <p className="text-sm text-gray-600 dark:text-[#cbd5e1]">
-              Don&apos;t have an account?{" "}
-              <Link
-                href={`/auth/register?callbackUrl=${callbackUrl}`}
-             
-                className="font-medium text-[#1a5f0e] dark:text-[#4ade80] hover:text-[#0d9276] dark:hover:text-[#71f9a3] transition-colors duration-200 cursor-pointer"
-              >
-                Sign up
-              </Link>
-            </p>
-          </div>
+      <div className="mt-8 text-center">
+        <p className="text-sm text-gray-600 dark:text-[#cbd5e1]">
+          Don&apos;t have an account?{" "}
+          <Link
+            href={`/auth/register?callbackUrl=${callbackUrl}`}
+            className="font-medium text-[#1a5f0e] dark:text-[#4ade80] hover:text-[#0d9276] dark:hover:text-[#71f9a3] transition-colors duration-200 cursor-pointer"
+          >
+            Sign up
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

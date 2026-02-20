@@ -47,6 +47,7 @@ const hasData = chartData && chartData.length > 0;
     <div className="w-full max-w-2xl shadow-2xl rounded-xl dark:shadow-emerald-500 dark:border dark:border-[#f9a300] p-4 mt-12">
       {
         hasData ? <ChartContainer config={chartConfig}>
+          <h2 className="text-center text-xl font-bold text-black dark:text-slate-200 ">Month Wise Room Bookings Chart</h2>
         <AreaChart
           data={chartData}
           margin={{ left: 12, right: 12, top: 20, bottom: 20 }}

@@ -7,31 +7,45 @@ import useRole from "@/Hooks/useRole";
 
 import Loader from "@/components/Shared/Loading/Loader";
 import { House } from "lucide-react";
+import useAxiosSecure from "@/Hooks/useAxiosSecure";
+import { useAuth } from "@/Hooks/useAuth";
+import toast from "react-hot-toast";
 const GuestMenu = () => {
   const { role, roleLoading } = useRole();
-
+  const axiosSecure = useAxiosSecure();
+  const { userInfo, loading } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const closeModal = () => {
     setIsOpen(false);
   };
-  const modalHandler = async () => {
-    // try {
-    //   const data = await becomeHost(user?.email)
-    //   console.log(data)
-    //   if (data.modifiedCount > 0) {
-    //     toast.success('Success!, Please wait for admin confirmation.')
-    //   } else {
-    //     toast.success('Please!, Wait for admin approval👊')
-    //   }
-    // } catch (err) {
-    //   console.log(err)
-    // } finally {
-    //   setIsOpen(false)
-    // }
+
+
+  if(!userInfo.email || loading || roleLoading) return <Loader/>
+
+  
+
+  // if (roleLoading) return <Loader />;
+const modalHandler = () => {
+    console.log("i want to be a host accpet requ");
+    axiosSecure
+      .patch(`/api/auth/update-user/${userInfo?.email}`, {
+        status: "requested",
+      })
+      .then((res) => {
+        toast.success("Host request sent wait for admin approval");
+        console.log(res.data, "this is res");
+      })
+      .catch((err) => {
+        console.log(err, "this eerrrr");
+        if (err.status === 400) {
+          toast.error(
+            "You have already sent a host request,wait for admin approval",
+          );
+        }
+      });
+
+    setIsOpen(false);
   };
-
-  if (roleLoading) return <Loader />;
-
   return (
     <>
       <MenuItem icon={House} label="Home Guest" address={"/guest/dashboard"} />

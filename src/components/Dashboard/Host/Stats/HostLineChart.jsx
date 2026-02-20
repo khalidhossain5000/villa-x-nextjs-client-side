@@ -43,6 +43,7 @@ const HostLineChart = () => {
     <div className="w-full max-w-2xl shadow-2xl rounded-lg mt-12 p-4 dark:shadow-zinc-500 dark:border dark:border-[#f9a300]">
       {hasData ? (
         <ChartContainer config={chartConfig}>
+          <h2 className="text-center text-xl font-bold text-black dark:text-slate-200 ">Month Wise Revenue Chart</h2>
           <LineChart
             data={chartData}
             margin={{ left: 12, right: 12, top: 20, bottom: 20 }}
