@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-'use client';
+"use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 import {
   FaHeart,
   FaUsers,
@@ -46,64 +46,127 @@ import {
   FaRegComments,
   FaRegHeart,
   FaRegMap,
-  FaRegStar
-} from 'react-icons/fa';
+  FaRegStar,
+} from "react-icons/fa";
 
 const Aboutpage = () => {
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
   };
 
   const fadeIn = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.8 } }
+    visible: { opacity: 1, transition: { duration: 0.8 } },
   };
 
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
-    }
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+    },
   };
 
   const scaleHover = {
-    whileHover: { scale: 1.02, transition: { duration: 0.2 } }
+    whileHover: { scale: 1.02, transition: { duration: 0.2 } },
   };
 
   // Team data with proper icons
   const team = [
-    { name: 'Alex Morgan', role: 'Founder & CEO', icon: <FaCrown className="text-4xl" />, bio: 'Hospitality expert with 15+ years experience.' },
-    { name: 'Jamie Chen', role: 'Head of Operations', icon: <FaRegHandshake className="text-4xl" />, bio: 'Ensures every stay runs smoothly.' },
-    { name: 'Taylor Smith', role: 'Customer Experience', icon: <FaRegComments className="text-4xl" />, bio: 'Passionate about traveler happiness.' },
-    { name: 'Jordan Lee', role: 'Partnerships', icon: <FaRegPaperPlane className="text-4xl" />, bio: 'Connecting hosts worldwide.' }
+    {
+      name: "Alex Morgan",
+      role: "Founder & CEO",
+      icon: <FaCrown className="text-4xl" />,
+      bio: "Hospitality expert with 15+ years experience.",
+    },
+    {
+      name: "Jamie Chen",
+      role: "Head of Operations",
+      icon: <FaRegHandshake className="text-4xl" />,
+      bio: "Ensures every stay runs smoothly.",
+    },
+    {
+      name: "Taylor Smith",
+      role: "Customer Experience",
+      icon: <FaRegComments className="text-4xl" />,
+      bio: "Passionate about traveler happiness.",
+    },
+    {
+      name: "Jordan Lee",
+      role: "Partnerships",
+      icon: <FaRegPaperPlane className="text-4xl" />,
+      bio: "Connecting hosts worldwide.",
+    },
   ];
 
   // Stats data
   const stats = [
-    { number: '50K+', label: 'Happy Travelers', icon: <FaSmile /> },
-    { number: '10K+', label: 'Unique Properties', icon: <FaHome /> },
-    { number: '120+', label: 'Countries', icon: <FaGlobe /> },
-    { number: '4.9', label: 'Avg Rating', icon: <FaStar /> }
+    { number: "50K+", label: "Happy Travelers", icon: <FaSmile /> },
+    { number: "10K+", label: "Unique Properties", icon: <FaHome /> },
+    { number: "120+", label: "Countries", icon: <FaGlobe /> },
+    { number: "4.9", label: "Avg Rating", icon: <FaStar /> },
   ];
 
   // Features data
   const features = [
-    { title: 'Verified Listings', desc: 'Every property is checked for quality.', icon: <FaCheckCircle /> },
-    { title: 'Instant Booking', desc: 'Secure your stay in minutes.', icon: <FaClock /> },
-    { title: 'Secure Payments', desc: 'Your transactions are protected.', icon: <FaLock /> },
-    { title: '24/7 Support', desc: 'We are here anytime, anywhere.', icon: <FaRegComments /> },
-    { title: 'Best Price Guarantee', desc: 'We match any lower rate.', icon: <FaGem /> },
-    { title: 'Local Experiences', desc: 'Discover hidden gems.', icon: <FaRegCompass /> }
+    {
+      title: "Verified Listings",
+      desc: "Every property is checked for quality.",
+      icon: <FaCheckCircle />,
+    },
+    {
+      title: "Instant Booking",
+      desc: "Secure your stay in minutes.",
+      icon: <FaClock />,
+    },
+    {
+      title: "Secure Payments",
+      desc: "Your transactions are protected.",
+      icon: <FaLock />,
+    },
+    {
+      title: "24/7 Support",
+      desc: "We are here anytime, anywhere.",
+      icon: <FaRegComments />,
+    },
+    {
+      title: "Best Price Guarantee",
+      desc: "We match any lower rate.",
+      icon: <FaGem />,
+    },
+    {
+      title: "Local Experiences",
+      desc: "Discover hidden gems.",
+      icon: <FaRegCompass />,
+    },
   ];
 
   // Testimonials
   const testimonials = [
-    { name: 'Sarah Johnson', text: 'Villax made finding our vacation home so easy. The platform is intuitive and the support is amazing!', role: 'Traveler', rating: 5 },
-    { name: 'Michael Brown', text: 'As a host, Villax helped me reach travelers from around the world. Highly recommended!', role: 'Host', rating: 5 },
-    { name: 'Emily Davis', text: 'I love the unique properties available. Every stay is an adventure. Thank you Villax!', role: 'Adventurer', rating: 5 }
+    {
+      name: "Sarah Johnson",
+      text: "Villax made finding our vacation home so easy. The platform is intuitive and the support is amazing!",
+      role: "Traveler",
+      rating: 5,
+    },
+    {
+      name: "Michael Brown",
+      text: "As a host, Villax helped me reach travelers from around the world. Highly recommended!",
+      role: "Host",
+      rating: 5,
+    },
+    {
+      name: "Emily Davis",
+      text: "I love the unique properties available. Every stay is an adventure. Thank you Villax!",
+      role: "Adventurer",
+      rating: 5,
+    },
   ];
 
   return (
@@ -131,7 +194,8 @@ const Aboutpage = () => {
               Welcome to Villax
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto text-gray-600 dark:text-gray-300 mb-10">
-              Your gateway to unforgettable stays and unique accommodations around the globe.
+              Your gateway to unforgettable stays and unique accommodations
+              around the globe.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
@@ -150,7 +214,7 @@ const Aboutpage = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
             className="grid lg:grid-cols-2 gap-12 items-center"
           >
@@ -159,13 +223,15 @@ const Aboutpage = () => {
                 Our Story
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
-                Villax was born from a simple idea: travel should feel like home, anywhere in the world.
-                Founded in 2020, we started with just a handful of properties and a dream to connect
-                travelers with unique, comfortable spaces.
+                Villax was born from a simple idea: travel should feel like
+                home, anywhere in the world. Founded in 2020, we started with
+                just a handful of properties and a dream to connect travelers
+                with unique, comfortable spaces.
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Today, we've grown into a global community of hosts and travelers, offering thousands of
-                curated stays. Our journey is fueled by passion for hospitality and innovation.
+                Today, we've grown into a global community of hosts and
+                travelers, offering thousands of curated stays. Our journey is
+                fueled by passion for hospitality and innovation.
               </p>
               <motion.div
                 variants={fadeInUp}
@@ -224,10 +290,13 @@ const Aboutpage = () => {
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#f98d00] to-[#f9a300] dark:from-[#0a121f] dark:to-[#0a0e16db] rounded-bl-full opacity-10 group-hover:scale-150 transition-transform duration-500" />
               <FaRocket className="text-5xl text-[#f98d00] dark:text-[#f9a300] mb-6" />
-              <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Our Mission</h3>
+              <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                Our Mission
+              </h3>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                To simplify room booking and create authentic connections between travelers and hosts,
-                ensuring every stay is safe, comfortable, and enriching.
+                To simplify room booking and create authentic connections
+                between travelers and hosts, ensuring every stay is safe,
+                comfortable, and enriching.
               </p>
             </motion.div>
             <motion.div
@@ -236,10 +305,13 @@ const Aboutpage = () => {
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#f98d00] to-[#f9a300] dark:from-[#0a121f] dark:to-[#0a0e16db] rounded-bl-full opacity-10 group-hover:scale-150 transition-transform duration-500" />
               <FaGlobe className="text-5xl text-[#f98d00] dark:text-[#f9a300] mb-6" />
-              <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Our Vision</h3>
+              <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                Our Vision
+              </h3>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                A world where travel knows no boundaries, and everyone can find their perfect home away
-                from home, fostering cultural exchange and mutual respect.
+                A world where travel knows no boundaries, and everyone can find
+                their perfect home away from home, fostering cultural exchange
+                and mutual respect.
               </p>
             </motion.div>
           </motion.div>
@@ -324,11 +396,6 @@ const Aboutpage = () => {
         </div>
       </section>
 
-
-
-
-     
-
       {/* TESTIMONIALS */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
@@ -412,12 +479,36 @@ const Aboutpage = () => {
             className="grid md:grid-cols-2 gap-6 lg:gap-8"
           >
             {[
-              { title: 'Verified Listings', desc: 'Every property is personally checked for quality and accuracy.', icon: <FaCheckCircle /> },
-              { title: 'Best Price Guarantee', desc: 'We match any lower price you find online.', icon: <FaGem /> },
-              { title: 'Secure Booking', desc: 'Your payments and personal data are always protected.', icon: <FaLock /> },
-              { title: 'Local Experiences', desc: 'Discover hidden gems with tips from local hosts.', icon: <FaRegCompass /> },
-              { title: '24/7 Customer Support', desc: 'We are here to help you anytime, anywhere.', icon: <FaRegComments /> },
-              { title: 'Flexible Cancellation', desc: 'Plans change? Many listings offer free cancellation.', icon: <FaRegCalendarAlt /> }
+              {
+                title: "Verified Listings",
+                desc: "Every property is personally checked for quality and accuracy.",
+                icon: <FaCheckCircle />,
+              },
+              {
+                title: "Best Price Guarantee",
+                desc: "We match any lower price you find online.",
+                icon: <FaGem />,
+              },
+              {
+                title: "Secure Booking",
+                desc: "Your payments and personal data are always protected.",
+                icon: <FaLock />,
+              },
+              {
+                title: "Local Experiences",
+                desc: "Discover hidden gems with tips from local hosts.",
+                icon: <FaRegCompass />,
+              },
+              {
+                title: "24/7 Customer Support",
+                desc: "We are here to help you anytime, anywhere.",
+                icon: <FaRegComments />,
+              },
+              {
+                title: "Flexible Cancellation",
+                desc: "Plans change? Many listings offer free cancellation.",
+                icon: <FaRegCalendarAlt />,
+              },
             ].map((item, index) => (
               <motion.div
                 key={index}
@@ -455,7 +546,8 @@ const Aboutpage = () => {
               Ready to Start Your Journey?
             </h2>
             <p className="text-lg lg:text-xl mb-10 max-w-2xl mx-auto opacity-90">
-              Join thousands of happy travelers and hosts. Discover your next adventure with Villax.
+              Join thousands of happy travelers and hosts. Discover your next
+              adventure with Villax.
             </p>
             <motion.button
               whileHover={{ scale: 1.05 }}
