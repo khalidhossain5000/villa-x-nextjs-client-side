@@ -7,6 +7,7 @@ import { LuBath } from "react-icons/lu";
 
 /* eslint-disable react/prop-types */
 const RoomInfo = ({ room }) => {
+  console.log(room,'this is roomsf')
   return (
     <div className="col-span-4 ">
       <h2 className=" text-black dark:text-text-primary font-playfair text-xl md:text-2xl py-4  font-bold lg:text-4xl text-center xl:text-left">
