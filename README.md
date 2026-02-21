@@ -11,13 +11,8 @@ With a focus on clean UI design, structured dashboards, and secure stripe transa
 ## 🚀🚀 Live Site :
 https://villa-x-nextjs-client-side.vercel.app
 
- ## Role Base Login Info :
 
- E-mail: newspaper@admin.com
-
- PassWord: 123456
-
-## 🔐 Role-Based Authentication Credentials (Demo)
+## 🔐 Role-Based Authentication Credentials :
 
 | Serial | Email               | Password              | Role  |
 |--------|--------------------|----------------------|-------|
@@ -29,62 +24,74 @@ https://villa-x-nextjs-client-side.vercel.app
 Use the following demo credentials to explore different dashboards and role-based features of the platform.
 
 ## Features
-
-- Secure Authentication with Firebase
-- Role-based access control (User, Premium User, Admin)
-- User profile management and editing
-- Article submission by users.
+- Redux for state management
+- Next.js powers dynamic routing across the platform.
+- Secure Authentication with Firebase.
+- Role-based access control (Admin, Host, Guest).
+- User profile management and editing.
+- Secure room booking and payment with Stripe.
 - Responsive design optimized for desktop, tablet, and mobile.
-- Role-based access control for Users, and Admins.
-- Premium content access with subscription and expiry.
-- Browse, search, and filter news articles by tags and publishers
-- Admin dashboard for managing articles and users
+- Role-based access control for Users, Host, and Admins.
+- Category wise room filter.
+- Browse, search, and filter Rooms in all rooms page.
+- Admin dashboard for managing User.
+- Awesome interface with light and dark mode support.
 - Notification and Toast Alerts.
-- Role assignment and user management by admins
-- Article statistics (views, likes)
+- Role assignment and user management by admins.
+- Room booking , revenue etc stats and chart in each role dashboard.
 - CORS configured securely
 - Token Authentication.
-- Form validation with React Hook Form or custom logic
-- Integration of Google Charts in the admin dashboard
-- Trending Article
+- Form validation with React Hook Form.
+- zod validation with react hook form .
+- shadcdn awesome interface .
+- tanstack query for data fetch and cache.
+- Integration of  Charts in the admin adn host dashboard.
+- Add room functionality in host dashboard.
+- Room galery and many more.
 
 
 ## Npm Packages :
 
 ### FrontEnd : 
-
-- @stripe/react-stripe-js
-- @stripe/stripe-js
-- @tailwindcss/vite
-- @tanstack/react-query
+- next JS 
+- next-themes
+- shadcdn
 - axios
-- firebase
-- gsap animations
-- react
-- react-awesome-button
-- react-countup
-- react-dom
-- react-google-charts
-- react-hook-form
-- react-hot-toast
-- react-icons
-- react-modal
-- react-router
-- react-select
-- react-simple-typewriter
+- framer-motion
+- lucide-react
+- swiper js.
 - react-spinners
+- react-hot-toast
+- headlessui/react
+- react hookform/resolvers
+- radix-ui/react-dialog
+- reduxjs/toolkit
+- @stripe/react-stripe-js
+- @tanstack/react-query
+- query string
+- clsx
+- lucide react
+- date-fns
+- firebase
+- react-date-range
+- react-dom
+- react-loading-skeleton
+- react-redux
+- recharts
+- redux
+- tailwind-merge
+- zod
 - sweetalert2
-- swiper
-- tailwindcss
 
 
 ## Npm Packages :
 
 ### BackEnd : 
-
+- nodejs
+- mongoose
+- mongodb
 - cors
 - dotenv
 - express
 - firebase-admin
-- mongodb
 - stripe
