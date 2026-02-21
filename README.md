@@ -92,14 +92,12 @@ Use the following demo credentials to explore different dashboards and role-base
 - express
 - firebase-admin
 - stripe
+
 # Role-Based Workflow
-
-
 
 ## Setup & installation instructions
 
-
-1.Clone the repository or Download the repository as Zip and after that follow this: 
+1.Clone the repository or Download the repository as Zip and after that follow this:
 
 ```bash
 git clone https://github.com/khalidhossain5000/villa-x-nextjs-client-side
@@ -129,26 +127,10 @@ NEXT_PUBLIC_appId
 NEXT_PUBLIC_IMGBB_API_KEY
 ```
 
-
 4.Run the development server
 
-```bash
+````bash
 npm run dev
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 This workflow visualizes the permissions and functionalities available to each user role.
 
@@ -198,3 +180,4 @@ flowchart TD
         C1 --> C1e[View My Bookings]
         C1 --> C1f[View Cancel Requests sent]
     end
+````
