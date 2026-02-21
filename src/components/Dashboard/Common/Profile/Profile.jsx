@@ -29,8 +29,8 @@ const Profile = () => {
     return <Loader />;
 
   return (
-    <div className="flex justify-center items-center h-full py-12 lg:py-20">
-      <div className="bg-white dark:bg-[#0f172b] shadow-lg rounded-2xl w-3/5">
+    <div className="flex justify-center items-center h-full py-12 lg:py-20 px-4 lg:px-0">
+      <div className="bg-white dark:bg-[#0f172b] shadow-lg rounded-2xl w-full lg:w-3/5">
         <img
           alt="profile"
           src={bgImg.src}
