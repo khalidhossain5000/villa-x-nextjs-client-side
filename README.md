@@ -1,4 +1,3 @@
-
 # Project Title : VillaX Room Booking Rental Website
 
 # Website Name: VillaX
@@ -6,24 +5,22 @@
 VillaX is a modern full-stack room rental platform designed to provide a seamless and intuitive booking experience. It combines a high-performance Next.js frontend with a structured Node.js and MongoDB(mongoose) backend to efficiently manage dynamic listings, reservations, and user interactions. The platform supports multiple user roles and ensures secure authentication while handling property management, booking workflows, and administrative controls.
 With a focus on clean UI design, structured dashboards, and secure stripe transactions, VillaX enables guests to explore and reserve accommodations, hosts to manage listings and availability, and administrators to oversee user roles and system operations with efficiency and scalability in mind.
 
-
-
 ## 🚀🚀 Live Site :
-https://villa-x-nextjs-client-side.vercel.app
 
+https://villa-x-nextjs-client-side.vercel.app
 
 ## 🔐 Role-Based Authentication Credentials :
 
-| Serial | Email               | Password              | Role  |
-|--------|--------------------|----------------------|-------|
-| 1      | admin@villax.com   | admin@villax.com     | Admin |
-| 2      | host@villax.com    | host@villax.com      | Host  |
-| 3      | guest@villax.com   | guest@villax.com     | Guest |
-
+| Serial | Email            | Password         | Role  |
+| ------ | ---------------- | ---------------- | ----- |
+| 1      | admin@villax.com | admin@villax.com | Admin |
+| 2      | host@villax.com  | host@villax.com  | Host  |
+| 3      | guest@villax.com | guest@villax.com | Guest |
 
 Use the following demo credentials to explore different dashboards and role-based features of the platform.
 
 ## Features
+
 - Redux for state management
 - Next.js powers dynamic routing across the platform.
 - Secure Authentication with Firebase.
@@ -45,15 +42,15 @@ Use the following demo credentials to explore different dashboards and role-base
 - zod validation with react hook form .
 - shadcdn awesome interface .
 - tanstack query for data fetch and cache.
-- Integration of  Charts in the admin adn host dashboard.
+- Integration of Charts in the admin adn host dashboard.
 - Add room functionality in host dashboard.
 - Room galery and many more.
 
-
 ## Npm Packages :
 
-### FrontEnd : 
-- next JS 
+### FrontEnd :
+
+- next JS
 - next-themes
 - shadcdn
 - axios
@@ -83,10 +80,10 @@ Use the following demo credentials to explore different dashboards and role-base
 - zod
 - sweetalert2
 
-
 ## Npm Packages :
 
-### BackEnd : 
+### BackEnd :
+
 - nodejs
 - mongoose
 - mongodb
@@ -96,7 +93,7 @@ Use the following demo credentials to explore different dashboards and role-base
 - firebase-admin
 - stripe
 
-# Role-Based Workflow
+  # Role-Based Workflow
 
 This workflow visualizes the permissions and functionalities available to each user role.
 
@@ -111,54 +108,7 @@ flowchart TD
     A1 --> A1b[View total rooms as chart]
     A1 --> A1c[View role-based users chart]
     A1 --> A1d[View category-wise pie chart]
-    
-    A --> A2[Manage Users]
-    A2 --> A2a[Update user roles: Host or Guest]
-    A2 --> A2b[Delete users]
-    A2 --> A2c[Monitor overall system]
 
-
-flowchart TD
-    B[Host] --> B1[Toggle Guest and Host Menu]
-    B1 --> B1a[View room count added by host]
-    B1 --> B1b[View booked count]
-    B1 --> B1c[View total revenue]
-    B1 --> B1d[Month-wise revenue chart]
-    B1 --> B1e[Month-wise room booking chart]
-    
-    B --> B2[Host Actions]
-    B2 --> B2a[Add Room]
-    B2 --> B2b[My Listing: view all added rooms]
-    B2 --> B2c[Manage Booking: approve/reject]
-    B2 --> B2d[Cancel Requests: manage cancellations]
-
-flowchart TD
-    C[Guest] --> C1[Guest Dashboard]
-    C1 --> C1a[View booking count]
-    C1 --> C1b[View total money spent]
-    C1 --> C1c[Update Profile]
-    C1 --> C1d[Apply to become Host]
-    C1 --> C1e[View My Bookings]
-    C1 --> C1f[View Cancel Requests sent]
-
-
-
-    # Role-Based Workflow
-
-This workflow visualizes the permissions and functionalities available to each user role.
-
----
-
-## 1. Admin Workflow
-
-```mermaid
-flowchart TD
-    A[Admin] --> A1[Home Dashboard]
-    A1 --> A1a[View total users as card]
-    A1 --> A1b[View total rooms as chart]
-    A1 --> A1c[View role-based users chart]
-    A1 --> A1d[View category-wise pie chart]
-    
     A --> A2[Manage Users]
     A2 --> A2a[Update user roles: Host or Guest]
     A2 --> A2b[Delete users]
@@ -174,7 +124,7 @@ flowchart TD
     B1 --> B1c[View total revenue]
     B1 --> B1d[Month-wise revenue chart]
     B1 --> B1e[Month-wise room booking chart]
-    
+
     B --> B2[Host Actions]
     B2 --> B2a[Add Room]
     B2 --> B2b[My Listing: view all added rooms]
@@ -191,3 +141,4 @@ flowchart TD
     C1 --> C1d[Apply to become Host]
     C1 --> C1e[View My Bookings]
     C1 --> C1f[View Cancel Requests sent]
+```
