@@ -67,8 +67,8 @@ const Calender = ({ value, handleDateChange, room, disabledRanges }) => {
                     : isPast
                       ? "text-black dark:text-gray-600 cursor-not-allowed dark:bg-gray-600" 
                       : isSelected
-                        ? "text-black font-bold"
-                        : "dark:text-gray-300 text-gray-800"
+                        ? "text-black font-bold dark:bg-cyan-600"
+                        : "dark:text-gray-300 text-gray-800 "
                 }`}
             >
               <span className="relative z-10 text-sm md:text-base">
