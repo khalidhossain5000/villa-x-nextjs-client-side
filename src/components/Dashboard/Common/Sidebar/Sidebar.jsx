@@ -23,6 +23,7 @@ import ModeToggle from "@/components/Shared/ModeToggle/ModeToggle";
 
 import ToggleBtn from "@/components/Shared/Button/ToggleBtn";
 import { useRouter } from "next/navigation";
+import { IoMdClose } from "react-icons/io";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -52,18 +53,19 @@ const Sidebar = () => {
   return (
     <>
       {/* Small Screen Navbar */}
-      <div className="bg-gray-100 text-gray-800 flex justify-between mlg:hidden relative z-[9999999999999999999999999999999999999999999999999999999]">
+      <div className="bg-gray-100 text-gray-800 flex justify-between lg:hidden relative z-[9999999999999999999999999999999999999999999999999999999]">
         <div>
-          <div className="block cursor-pointer p-4 font-bold">
+          <div className="flex items-center gap-2 cursor-pointer p-4 font-bold">
             <Link href={"/"}>
               <Image
                 src={logo}
                 alt="Logo"
                 width={150}
                 height={50}
-                className="dark:hidden"
+                className=""
               />
             </Link>
+            <ModeToggle />
           </div>
         </div>
 
@@ -71,7 +73,12 @@ const Sidebar = () => {
           onClick={handleToggle}
           className="mobile-menu-button p-4  focus:outline-none focus:bg-gray-200"
         >
-          <GiHamburgerMenu className="h-5 w-5 " />
+          
+      
+
+          {
+            !isActive ?     <IoMdClose className="h-5 w-5 " /> : <GiHamburgerMenu className="h-5 w-5 " />
+          }
         </button>
       </div>
 
