@@ -27,7 +27,7 @@ const PublicNavbar = () => {
   const navItems = [
     { href: "/", label: "Home", auth: false },
     { href: "/all-rooms", label: "All Rooms", auth: false },
-    { href: "/host", label: "Available Host", auth: true },
+    // { href: "/host", label: "Available Host", auth: true },
     { href: "/about", label: "About Us", auth: false },
     { href: `/${role}/dashboard`, label: "Dashboard", auth: true },
     { href: "/contact", label: "Contact Us", auth: false },
