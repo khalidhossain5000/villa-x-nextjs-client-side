@@ -96,10 +96,13 @@ Use the following demo credentials to explore different dashboards and role-base
 - firebase-admin
 - stripe
 
-
 # Role-Based Workflow
 
 This workflow visualizes the permissions and functionalities available to each user role.
+
+---
+
+## 1. Admin Workflow
 
 ```mermaid
 flowchart TD
@@ -108,27 +111,31 @@ flowchart TD
     A1 --> A1b[View total rooms as chart]
     A1 --> A1c[View role-based users chart]
     A1 --> A1d[View category-wise pie chart]
+    
     A --> A2[Manage Users]
     A2 --> A2a[Update user roles: Host or Guest]
     A2 --> A2b[Delete users]
     A2 --> A2c[Monitor overall system]
 
+
+flowchart TD
     B[Host] --> B1[Toggle Guest and Host Menu]
     B1 --> B1a[View room count added by host]
     B1 --> B1b[View booked count]
     B1 --> B1c[View total revenue]
     B1 --> B1d[Month-wise revenue chart]
     B1 --> B1e[Month-wise room booking chart]
+    
     B --> B2[Host Actions]
     B2 --> B2a[Add Room]
     B2 --> B2b[My Listing: view all added rooms]
     B2 --> B2c[Manage Booking: approve/reject]
     B2 --> B2d[Cancel Requests: manage cancellations]
-
+flowchart TD
     C[Guest] --> C1[Guest Dashboard]
     C1 --> C1a[View booking count]
     C1 --> C1b[View total money spent]
     C1 --> C1c[Update Profile]
     C1 --> C1d[Apply to become Host]
     C1 --> C1e[View My Bookings]
-    C1 --> C1f[View Cancel Requests sent] 
+    C1 --> C1f[View Cancel Requests sent]
