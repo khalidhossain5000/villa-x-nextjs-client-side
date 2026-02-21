@@ -119,36 +119,30 @@ body {
 
 
 
-/* globals.css */
 
-/* ক্যালেন্ডারের মেইন কন্টেইনার ডার্ক করা */
+
 .dark .rdrCalendarWrapper {
   background-color: #111827 !important; /* dark:bg-gray-900 */
   color: white !important;
 }
 
-/* মাসের নাম এবং বছর (যেমন: February 2026) */
 .dark .rdrMonthAndYearPickers select {
   color: white !important;
   background-color: transparent;
 }
 
-/* সপ্তাহের দিনগুলোর নাম (Sun, Mon...) */
 .dark .rdrWeekDay {
   color: #9ca3af !important; /* gray-400 */
 }
 
-/* দিনের নম্বরগুলো যেগুলো সিলেক্টেবল */
 .dark .rdrDayNumber span {
   color: #e5e7eb !important;
 }
 
-/* ক্যালেন্ডারের পেছনের গ্রিড ব্যাকগ্রাউন্ড */
 .dark .rdrMonths {
   background-color: transparent !important;
 }
 
-/* ইনএক্টিভ ডেট (মাসের বাইরের ডেট) */
 .dark .rdrDayPassive .rdrDayNumber span {
   color: #374151 !important; /* gray-700 */
 }
@@ -157,27 +151,25 @@ body {
 
 
 
-/* ১. প্রতিটি ডেট সেলের ব্যাকগ্রাউন্ড ডার্ক করা */
+
 .dark .rdrDay {
   background-color: transparent !important;
 }
 
-/* ২. ডেট নম্বরগুলোর পিছনের ছোট সাদা ব্লকটি রিমুভ করা */
+
 .dark .rdrDayNumber {
-  background-color: #111827 !important; /* আপনার ডার্ক মোড বেস কালার */
+  background-color: #111827 !important; 
 }
 
-/* ৩. হোভার করলে বা সিলেক্ট করলে যে ব্যাকগ্রাউন্ড আসে সেটি কন্ট্রোল করা */
 .dark .rdrDay:hover .rdrDayNumber {
-  background-color: #1f2937 !important; /* হোভার করলে একটু হালকা ধূসর হবে */
+  background-color: #1f2937 !important;
 }
 
-/* ৪. মাসের পুরো গ্রিড এরিয়া */
 .dark .rdrMonths {
   background-color: #111827 !important;
 }
 
-/* ৫. ইন-বিটুয়েন সিলেকশন (রেঞ্জ সিলেক্ট করার সময় মাঝখানের হালকা ছায়া) */
+
 .dark .rdrInRange {
-  background: rgba(15, 230, 14, 0.1) !important; /* আপনার সবুজ থিমের হালকা ভার্সন */
+  background: rgba(15, 230, 14, 0.1) !important; 
 }
