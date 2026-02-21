@@ -46,7 +46,7 @@ const Profile = () => {
             />
           </a>
 
-          <p className="p-2 px-4 text-xs text-white dark:text-black  bg-primary rounded-full font-bold">
+          <p className="p-2 px-4 text-xs text-white  dark:text-slate-200 bg-primary rounded-full font-bold">
             Role: {role && role.toUpperCase()}
           </p>
           <p className="mt-2 text-xl font-medium text-gray-800 dark:text-slate-100">
@@ -77,7 +77,7 @@ const Profile = () => {
               })}
           </p>
 
-          <div className="w-full p-2 mt-4 rounded-lg">
+          <div className="w-full p-2 mt-4 rounded-lg ">
             <div className="flex flex-wrap items-center justify-between text-sm text-gray-600 ">
               <p className="flex flex-col">
                 Name
@@ -92,7 +92,8 @@ const Profile = () => {
                 </span>
               </p>
 
-              <div>
+              <div className='py-6 lg:py-0'>
+
                 <UpdateProfile />
 
                 {/* <button className="bg-[#F43F5E] px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-[#af4053]">
