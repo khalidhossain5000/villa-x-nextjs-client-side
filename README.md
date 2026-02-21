@@ -94,6 +94,62 @@ Use the following demo credentials to explore different dashboards and role-base
 - stripe
 # Role-Based Workflow
 
+
+
+## Setup & installation instructions
+
+
+1.Clone the repository or Download the repository as Zip and after that follow this: 
+
+```bash
+git clone https://github.com/khalidhossain5000/villa-x-nextjs-client-side
+cd villa-x-nextjs-client-side folder-name-of-the-project-to-enter-the-folder
+
+```
+
+2.Install dependencies
+
+```bash
+npm install
+
+```
+
+3.Create environment variables
+
+```bash
+
+NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your_stripe_secret_will_be_here
+NEXT_PUBLIC_apiKey
+NEXT_PUBLIC_authDomain
+NEXT_PUBLIC_projectId
+NEXT_PUBLIC_storageBucket
+NEXT_PUBLIC_messagingSenderId
+NEXT_PUBLIC_appId
+NEXT_PUBLIC_IMGBB_API_KEY
+```
+
+
+4.Run the development server
+
+```bash
+npm run dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This workflow visualizes the permissions and functionalities available to each user role.
 
 ```mermaid
