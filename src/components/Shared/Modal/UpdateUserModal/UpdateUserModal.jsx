@@ -52,7 +52,7 @@ const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
                         <span className='block truncate'>{selected}</span>
                         <span className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2'>
                           <AiOutlineDown
-                            className='h-5 w-5 text-gray-400'
+                            className='h-5 w-5 text-gray-400 dark:text-white'
                             aria-hidden='true'
                           />
                         </span>

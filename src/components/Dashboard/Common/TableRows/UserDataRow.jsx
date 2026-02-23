@@ -65,7 +65,7 @@ if(loggedInUser?.email===user?.email) {
         {user?.status ? (
           <p
             className={`${
-              user.status === "verified" ? "text-green-500" : "text-yellow-500"
+              user.status === "verified" ? "text-green-500 bg-green-100 p-2 rounded-full font-bold" : "text-red-600 bg-red-100 p-2 rounded-full"
             } whitespace-no-wrap`}
           >
             {user.status}
