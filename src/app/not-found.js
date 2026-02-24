@@ -5,7 +5,7 @@ export default function NotFound() {
       <p className="text-xl mt-4">Page Not Found</p>
       <button
        
-        className="mt-6 px-6 py-3 bg-red-500 hover:bg-red-600 rounded-lg"
+        className="mt-6 px-6 py-3 bg-red-500 hover:bg-red-600 rounded-lg border border-red-700 text-white font-semibold transition duration-300"
       >
         Go Back Home
       </button>
