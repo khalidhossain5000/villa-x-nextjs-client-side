@@ -47,13 +47,16 @@ const MyListing = () => {
   // hadnle listi delte starts here
 
   const handleDeleteListing = async (id) => {
-    console.log(id, "this is id that to be delted");
     try {
       await mutateAsync(id);
     } catch (error) {
       console.log(error, "this is delte error");
     }
   };
+
+
+
+  // update specific single room is here
   return (
     <div>
       {myListingData &&
@@ -102,12 +105,12 @@ const MyListing = () => {
                       >
                         Delete
                       </th>
-                      {/* <th
+                      <th
                         scope="col"
                         className="px-5 py-3 bg-white dark:bg-[#1e293b] dark:text-slate-100  border-b border-gray-200 dark:border-primary text-gray-800  text-left text-sm uppercase font-normal"
                       >
                         Update
-                      </th> */}
+                      </th>
                     </tr>
                   </thead>
                   <tbody>

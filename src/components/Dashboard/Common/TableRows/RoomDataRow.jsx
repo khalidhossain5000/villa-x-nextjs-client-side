@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 import DeleteModal from "@/components/Shared/Modal/DeleteModal/DeleteModal";
+import UpdateRoomModal from "@/components/Shared/Modal/UpdateRoomModal/UpdateRoomModal";
 import React, { useState } from "react";
 
 const RoomDataRow = ({ room,handleDeleteListing }) => {
@@ -54,22 +55,17 @@ const RoomDataRow = ({ room,handleDeleteListing }) => {
         <button onClick={()=>setIsOpen(true)} className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
           <span
             aria-hidden="true"
-            className="absolute inset-0 bg-red-200 dark:border-primary opacity-50 rounded-full"
+            className="absolute inset-0 bg-red-200 dark:bg-red-600 dark:border-primary opacity-50 rounded-full"
           ></span>
           <span className="relative  dark:text-slate-100">Delete</span>
         </button>
         {/* delete modal here */}
         <DeleteModal isOpen={isOpen} closeModal={closeModal} handleDeleteListing={handleDeleteListing} id={room._id}/>
       </td>
-      {/* <td className="px-5 py-5 border-b border-gray-200 bg-white dark:border-primary dark:bg-[#1e293b] text-sm">
-        <span className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-green-200 opacity-50 rounded-full"
-          ></span>
-          <span className="relative  dark:text-slate-100">Update</span>
-        </span>
-      </td> */}
+      <td className="px-5 py-5 border-b border-gray-200 bg-white dark:border-primary  dark:bg-[#1e293b] text-sm">
+        
+        <UpdateRoomModal />
+      </td>
     </tr>
   );
 };

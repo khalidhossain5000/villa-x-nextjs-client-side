@@ -8,7 +8,7 @@ const NotFoundPage = () => {
       {/* title */}
       <div>
         <h1 className="text-2xl md:text-3xl lg:text-4xl 2xl:text-6xl font-poppins font-bold md:font-extrabold text-black text-center   py-6 lg:py-2 pt-9 lg:pt-5 lg:pb-6">
-          404 – This Page Went on Vacation
+          !!Oppss.....Not Found – This Page Went on Vacation
         </h1>
       </div>
       {/* image */}

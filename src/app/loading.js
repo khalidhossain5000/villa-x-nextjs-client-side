@@ -4,75 +4,96 @@ import React from "react";
 import { motion } from "framer-motion";
 import logo from "../assets/logo/logohdsg.png";
 
-const HomePageLoading = () => {
+const HomeLoading = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0f0f13] z-[9999999999999999999999999999999999999999999999999999999999999999999999999999]">
-      {/* Subtle moving dark gradient */}
-      <motion.div
-        animate={{
-          background: [
-            "radial-gradient(circle at 20% 20%, #1a1a22, #0f0f13)",
-            "radial-gradient(circle at 80% 80%, #1c1c26, #0f0f13)",
-            "radial-gradient(circle at 20% 20%, #1a1a22, #0f0f13)",
-          ],
-        }}
-        transition={{ duration: 8, repeat: Infinity }}
-        className="absolute inset-0"
-      />
+    <div className="relative h-screen flex flex-col items-center justify-center overflow-hidden bg-[#050505] z-[999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999]">
+      
+      {/* 1. Ambient Background Glow */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          animate={{
+            opacity: [0.4, 0.7, 0.4],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]"
+        />
+      </div>
 
-      {/* Soft Glow Halo */}
-      <div className="absolute w-64 h-64 rounded-full bg-gradient-to-r from-orange-500/20 to-red-600/20 blur-3xl" />
+      {/* 2. The "Reactor" Container (Animations happen here) */}
+      <div className="relative flex items-center justify-center w-80 h-80 z-10">
+        
+        {/* Outer Slow Ring */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 border-[1px] border-emerald-500/20 rounded-[40%] border-t-emerald-400/60"
+        />
 
-      {/* Rotating Segmented Ring */}
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-        className="absolute w-72 h-72 rounded-full border-[6px] border-transparent 
-                   border-t-orange-500 border-r-red-600"
-      />
+        {/* Middle Fast Ring (Counter-Clockwise) */}
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-4 border-[1px] border-emerald-500/10 rounded-full border-b-emerald-400/40"
+        />
 
-      {/* Secondary Slow Ring */}
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-        className="absolute w-80 h-80 rounded-full border border-orange-400/30"
-      />
+        {/* Inner Scanning Pulse */}
+        <motion.div
+          animate={{ 
+            scale: [1, 1.4],
+            opacity: [0.5, 0] 
+          }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+          className="absolute w-40 h-40 bg-emerald-500/20 rounded-full blur-xl"
+        />
 
-      {/* Static Logo */}
-      <img
-        src={logo.src}
-        alt="Logo"
-        className="w-40 h-40 z-10 drop-shadow-[0_0_40px_rgba(255,115,0,0.5)]"
-      />
+        {/* 3. STATIC LOGO (The Anchor) */}
+        <img
+          src={logo.src}
+          alt="Logo"
+          className="w-32 h-32 object-contain relative z-20 drop-shadow-[0_0_15px_rgba(52,211,153,0.3)]"
+        />
+      </div>
 
-      {/* Loading Text */}
-      <div className="absolute bottom-24 flex flex-col items-center">
-        <motion.h2
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.8, repeat: Infinity }}
-          className="text-orange-400 tracking-[0.4em] text-lg font-semibold"
+      {/* 4. Refined Progress Info */}
+      <div className="mt-12 flex flex-col items-center z-10">
+        <motion.div 
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           className="flex items-center gap-2 mb-2"
         >
-          LOADING
-        </motion.h2>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-emerald-500/60 font-medium">
+            System Integrity
+          </span>
+          <div className="h-[1px] w-12 bg-emerald-500/20" />
+          <span className="text-[10px] text-emerald-400 font-mono">OK</span>
+        </motion.div>
 
-        {/* Animated Dots */}
-        <div className="flex gap-2 mt-3">
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              animate={{ scale: [1, 1.6, 1], opacity: [0.4, 1, 0.4] }}
-              transition={{
-                duration: 1.2,
-                repeat: Infinity,
-                delay: i * 0.3,
-              }}
-              className="w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(255,115,0,0.8)]"
-            />
-          ))}
+        <h2 className="text-white text-xl font-light tracking-[0.2em] uppercase">
+          Initializing<span className="text-emerald-400">...</span>
+        </h2>
+
+        {/* Slim Progress Bar */}
+        <div className="w-48 h-[2px] bg-white/5 mt-6 relative overflow-hidden">
+          <motion.div
+            initial={{ x: "-100%" }}
+            animate={{ x: "100%" }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400 to-transparent"
+          />
         </div>
       </div>
+
+      {/* Subtle Footer Text */}
+      <motion.p
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 3, repeat: Infinity }}
+        className="absolute bottom-8 font-mono text-[9px] text-white/30 uppercase tracking-[0.5em]"
+      >
+        Secure Encryption Active
+      </motion.p>
     </div>
   );
 };
 
-export default HomePageLoading;
+export default HomeLoading;
