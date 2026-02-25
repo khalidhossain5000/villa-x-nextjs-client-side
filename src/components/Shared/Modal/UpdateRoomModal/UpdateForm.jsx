@@ -13,7 +13,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { TbFidgetSpinner } from "react-icons/tb";
 
-const UpdateForm = ({ room }) => {
+const UpdateForm = ({ room ,refetch}) => {
   const { userInfo } = useAuth();
   const axiosSecure = useAxiosSecure();
 
@@ -129,21 +129,23 @@ const UpdateForm = ({ room }) => {
       hostInfo,
     };
 console.log(roomData,'this is updated room data to be send to backend')
-    // axiosSecure
-    //   .put(`/api/rooms/${room._id}`, roomData)
-    //   .then((res) => {
-    //     if (res.data?.success) {
-    //       toast.success("Room Updated Successfully!", {
-    //         className: "w-[400px] h-[100px] text-xl font-bold",
-    //         style: { border: "1px solid #08086c", color: "black", backgroundImage: "linear-gradient(to bottom right, #00FF87,#60EFFF )" },
-    //       });
-    //       setUploading(false);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     toast.error("Failed to update room, try again!");
-    //     setUploading(false);
-    //   });
+    axiosSecure
+      .put(`/api/update-room/${room._id}`, roomData)
+      .then((res) => {
+        console.log(res,'this is res')
+        if (res.data?.success) {
+          toast.success("Room Updated Successfully!", {
+            className: "w-[400px] h-[100px] text-xl font-bold",
+            style: { border: "1px solid #08086c", color: "black", backgroundImage: "linear-gradient(to bottom right, #00FF87,#60EFFF )" },
+          });
+          setUploading(false);
+          refetch()
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        setUploading(false);
+      });
   };
 
   return (
@@ -181,7 +183,7 @@ console.log(roomData,'this is updated room data to be send to backend')
           </div>
 
           {/* Thumbnail */}
-          <div>
+          <div className='border border-yellow-400 rounded-lg'>
             <label className="block text-gray-600 dark:text-slate-100">Thumbnail Image</label>
             <input type="file" accept="image/*" name="image" onChange={(e) => handleImageChange(e.target.files[0])} className="block dark:text-white" />
             {uploadButtonText && <p>{uploadButtonText}</p>}

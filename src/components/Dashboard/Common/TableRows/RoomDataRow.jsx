@@ -4,7 +4,7 @@ import DeleteModal from "@/components/Shared/Modal/DeleteModal/DeleteModal";
 import UpdateRoomModal from "@/components/Shared/Modal/UpdateRoomModal/UpdateRoomModal";
 import React, { useState } from "react";
 
-const RoomDataRow = ({ room,handleDeleteListing ,handleRoomUpdate}) => {
+const RoomDataRow = ({ room,handleDeleteListing ,refetch}) => {
   const [isOpen,setIsOpen]=useState(false)
 
 
@@ -61,7 +61,7 @@ const RoomDataRow = ({ room,handleDeleteListing ,handleRoomUpdate}) => {
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white dark:border-primary  dark:bg-[#1e293b] text-sm">
         
-        <UpdateRoomModal room={room} roomId={room._id} handleRoomUpdate={handleRoomUpdate}/>
+        <UpdateRoomModal room={room} roomId={room._id} refetch={refetch}/>
       </td>
     </tr>
   );

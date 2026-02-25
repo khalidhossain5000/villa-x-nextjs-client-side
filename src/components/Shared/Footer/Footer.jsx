@@ -92,7 +92,7 @@ const Footer = () => {
       {/* copyrights */}
       <div className="border-t border-t-slate-200">
         <div className="max-w-7xl mx-auto pt-4">
-           <p className="text-lg text-black text-center font-medium">&copy;2026 <span className="font-bold">VillaX</span> All Rights Reserved</p>
+           <p className="text-lg text-black dark:text-slate-100 text-center font-medium">&copy;2026 <span className="font-bold">VillaX</span> All Rights Reserved</p>
         </div>
       </div>
     </footer>

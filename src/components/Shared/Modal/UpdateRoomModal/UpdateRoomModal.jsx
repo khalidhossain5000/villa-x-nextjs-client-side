@@ -9,8 +9,8 @@ import {
 import React from "react";
 import UpdateForm from "./UpdateForm";
 
-const UpdateRoomModal = ({ roomId ,room}) => {
-  console.log(roomId, "update to be a id ",room);
+const UpdateRoomModal = ({ roomId ,room,refetch}) => {
+ 
   return (
     <div>
       <Dialog>
@@ -30,7 +30,10 @@ const UpdateRoomModal = ({ roomId ,room}) => {
           <DialogHeader>
             <DialogTitle>Are you absolutely sure?</DialogTitle>
             <DialogDescription>
-            <UpdateForm room={room}></UpdateForm>
+                <div>
+
+            <UpdateForm room={room} roomId={roomId} refetch={refetch}></UpdateForm>
+                </div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

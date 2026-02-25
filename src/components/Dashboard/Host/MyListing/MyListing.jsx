@@ -56,10 +56,7 @@ const MyListing = () => {
 
 
 
-  // update specific single room is here
-  const handleRoomUpdate=async(id)=>{
-    console.log(id,'to be puda updated id is here')
-  }
+  
   return (
     <div>
       {myListingData &&
@@ -122,8 +119,8 @@ const MyListing = () => {
                         <RoomDataRow
                           key={room?._id}
                           room={room}
-                   handleRoomUpdate={handleRoomUpdate}
                           handleDeleteListing={handleDeleteListing}
+                          refetch={refetch}
                         />
                       ))}
                   </tbody>
