@@ -7,14 +7,15 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import React from "react";
+import UpdateForm from "./UpdateForm";
 
-const UpdateRoomModal = ({updateId}) => {
-    console.log(updateId,'update to be a id ')
+const UpdateRoomModal = ({ roomId ,room}) => {
+  console.log(roomId, "update to be a id ",room);
   return (
     <div>
       <Dialog>
         <DialogTrigger>
-          <button>
+          <div>
             <span className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
               <span
                 aria-hidden="true"
@@ -22,14 +23,14 @@ const UpdateRoomModal = ({updateId}) => {
               ></span>
               <span className="relative  dark:text-slate-100">Update</span>
             </span>
-          </button>
+          </div>
         </DialogTrigger>
-        <DialogContent>
+
+        <DialogContent className='max-w-5xl mx-auto max-h-[90vh] overflow-auto p-6'>
           <DialogHeader>
             <DialogTitle>Are you absolutely sure?</DialogTitle>
             <DialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
+            <UpdateForm room={room}></UpdateForm>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
