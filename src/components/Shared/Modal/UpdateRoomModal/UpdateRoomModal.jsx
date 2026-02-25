@@ -28,7 +28,7 @@ const UpdateRoomModal = ({ roomId ,room,refetch}) => {
 
         <DialogContent className='max-w-5xl mx-auto max-h-[90vh] overflow-auto p-6'>
           <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogTitle>Update Room</DialogTitle>
             <DialogDescription>
                 <div>
 
