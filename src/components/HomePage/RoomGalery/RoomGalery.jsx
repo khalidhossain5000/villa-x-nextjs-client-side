@@ -3,26 +3,22 @@ import ThreeDImageRing from "@/components/lightswind/3d-image-ring";
 import HomeTitle from "@/components/Shared/HomePage/HomeTitle/HomeTitle";
 import React from "react";
 const imageUrls = [
-    'https://ibb.co.com/dsC6tzxX',
-    'https://ibb.co.com/LX9WdpNx',
-    'https://ibb.co.com/Gfc7gLXb',
-    'https://ibb.co.com/JWcktP26',
-    'https://ibb.co.com/fYCcmRRk',
-    'https://ibb.co.com/MDbGfkZN'
+    
+    `https://images.pexels.com/photos/3201761/pexels-photo-3201761.jpeg?auto=compress&cs=tinysrgb&w=1200`,
+    'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/269155/pexels-photo-269155.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/3201763/pexels-photo-3201763.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/3201758/pexels-photo-3201758.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1200',
+
+
 ];
 
-//       const imageUrls = [
-//     "https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/114979/pexels-photo-114979.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/145939/pexels-photo-145939.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/698808/pexels-photo-698808.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//     "https://images.pexels.com/photos/2449540/pexels-photo-2449540.jpeg?auto=compress&cs=tinysrgb&w=1200",
-//   ];
+
 const RoomGalery = () => {
   return (
     <div className='container mx-auto py-14 lg:py-22'>
@@ -34,7 +30,7 @@ const RoomGalery = () => {
         />
       </div>
       {/* 3d image ring gallery below */}
-      <div className='h-96 lg:h-[500px]'>
+      <div className='h-96 lg:h-11/12'>
             <ThreeDImageRing images={imageUrls} />
 
       </div>
