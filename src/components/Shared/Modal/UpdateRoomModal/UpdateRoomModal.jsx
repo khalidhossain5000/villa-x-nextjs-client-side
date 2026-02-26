@@ -9,8 +9,7 @@ import {
 import React from "react";
 import UpdateForm from "./UpdateForm";
 
-const UpdateRoomModal = ({ roomId ,room,refetch}) => {
- 
+const UpdateRoomModal = ({ roomId, room, refetch }) => {
   return (
     <div>
       <Dialog>
@@ -26,14 +25,17 @@ const UpdateRoomModal = ({ roomId ,room,refetch}) => {
           </div>
         </DialogTrigger>
 
-        <DialogContent className='max-w-5xl mx-auto max-h-[90vh] overflow-auto p-6'>
+        <DialogContent className="max-w-5xl mx-auto max-h-[90vh] overflow-auto p-6">
           <DialogHeader>
             <DialogTitle>Update Room</DialogTitle>
             <DialogDescription>
-                <div>
-
-            <UpdateForm room={room} roomId={roomId} refetch={refetch}></UpdateForm>
-                </div>
+              <div>
+                <UpdateForm
+                  room={room}
+                  roomId={roomId}
+                  refetch={refetch}
+                ></UpdateForm>
+              </div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
