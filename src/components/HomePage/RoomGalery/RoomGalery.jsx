@@ -4,7 +4,7 @@ import HomeTitle from "@/components/Shared/HomePage/HomeTitle/HomeTitle";
 import React from "react";
 const imageUrls = [
     
-    `https://images.pexels.com/photos/3201761/pexels-photo-3201761.jpeg?auto=compress&cs=tinysrgb&w=1200`,
+    `https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1200`,
     'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1200',
     'https://images.pexels.com/photos/775219/pexels-photo-775219.jpeg?auto=compress&cs=tinysrgb&w=1200',
     'https://images.pexels.com/photos/269155/pexels-photo-269155.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -21,20 +21,41 @@ const imageUrls = [
 
 const RoomGalery = () => {
   return (
-    <div className='container mx-auto py-14 lg:py-22'>
+
+    <section className="bg-white relative">
+
+{/* light bg */}
+ <div
+    className="absolute inset-0 z-0 dark:hidden"
+    style={{
+      backgroundImage: `
+        radial-gradient(125% 125% at 50% 90%, #ffffff 40%, #f59e0b 100%)
+      `,
+      backgroundSize: "100% 100%",
+    }}
+  />
+
+
+
+
+    <div className='relative z-50 container mx-auto py-14 lg:py-22'>
       {/* title */}
-      <div className='py-6 lg:py-9'>
+      <div className=' lg:py-9'>
         <HomeTitle
           title={"Explore Room Gallery Images"}
-          className={"font-raleway"}
+          className={"font-raleway text-center xl:text-left"}
         />
       </div>
       {/* 3d image ring gallery below */}
-      <div className='h-96 lg:h-11/12'>
-            <ThreeDImageRing images={imageUrls} />
+      <div className='h-96 lg:h-105 2xl:h-120 xl:pt-6 pb-5'>
+            <ThreeDImageRing images={imageUrls} width={600} imageDistance={1000} height={800} perspective={3000} staggerDelay={0.5}/>
 
       </div>
     </div>
+
+
+
+    </section>
   );
 };
 

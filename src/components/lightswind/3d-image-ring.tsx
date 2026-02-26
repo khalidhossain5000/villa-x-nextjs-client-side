@@ -147,7 +147,7 @@ export function ThreeDImageRing({
     const deltaX = clientX - startX.current;
 
     // Update velocity based on deltaX
-    velocity.current = -deltaX * 0.5; // Factor of 0.5 to control sensitivity
+    velocity.current = -deltaX * 0.15; // Factor of 0.5 to control sensitivity
 
     rotationY.set(currentRotationY.current + velocity.current);
 
