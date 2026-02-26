@@ -2,6 +2,7 @@ import About from "@/components/HomePage/AboutSection/About";
 import Banner from "@/components/HomePage/Banner/Banner";
 import CollectionSlider from "@/components/HomePage/ExploreCollectionSlider/CollectionSlider";
 import Facilities from "@/components/HomePage/FacilitiesSection/Facilities";
+import Faq from "@/components/HomePage/FaqSection/Faq";
 import Info from "@/components/HomePage/InfoSection/Info";
 import RoomGalery from "@/components/HomePage/RoomGalery/RoomGalery";
 import RoomSlider from "@/components/HomePage/RoomSlider/RoomSlider";
@@ -20,6 +21,7 @@ const HomePage = () => {
       <CollectionSlider />
       <Facilities/>
       <RoomGalery/>
+      <Faq/>
     </div>
   );
 };
