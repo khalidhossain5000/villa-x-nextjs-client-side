@@ -66,7 +66,7 @@ const CollectionSlider = () => {
 
       <div className="container mx-auto relative z-40">
         {/* title and button */}
-        <div className="flex items-center justify-between ">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-5 lg:gap-0">
           {/* Small Label */}
           <div className="title">
             <div className="flex items-center gap-3 mb-4 lg:mb-6">
@@ -95,7 +95,7 @@ const CollectionSlider = () => {
 
         <div
         
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 py-6 xl:py-9"
+          className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  gap-4 lg:gap-6 py-6 xl:py-9  overflow-x-hidden"
         >
           {allRoomData.map((room) => (
             <CollectionCard key={room._id} room={room}>
