@@ -12,7 +12,31 @@ const RoomCard = ({ room }) => {
           className="max-h-60 lg:h-96 w-full"
           alt={room?.title}
         />
+        
         <div className="contentds p-6 font-urbanist mt-6">
+           {/* Availability */}
+          <div className="flex justify-between text-sm sm:text-base font-medium text-gray-700 dark:text-gray-400 mb-5 ">
+            <span>
+             Available From{" "}
+              <span className="font-semibold">
+                {new Date(room.from).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
+            </span>
+
+            <span>
+              To{" "}
+              <span className="font-semibold">
+                {new Date(room.to).toLocaleDateString("en-US", {
+                  month: "long",
+                  day: "numeric",
+                })}
+              </span>
+            </span>
+          </div>
+          
           <h3 className="text-[#211f54] dark:text-slate-200  text-xl font-medium">
             <span className="font-bold">Hosted By</span> :{" "}
             {room?.hostInfo?.name}
@@ -25,17 +49,19 @@ const RoomCard = ({ room }) => {
           </p>
 
           <div className="dateandauthor flex items-center justify-between py-2 lg:py-5">
+            
             <h2 className="text-gray-900 dark:text-[#f9a300] font-bold">
               Category {room?.category}
             </h2>
             <h2 className="text-gray-900 dark:text-[#f9a300 font-bold">
-              {new Date(room?.createdAt).toLocaleDateString("en-US", {
+              Added : {new Date(room?.createdAt).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
             </h2>
           </div>
+           
           <div className="mx-auto text-center">
             <Link href={`/room/${room._id}`}>
               <button className="hover:scale-110 w-full transition duration-300 relative inline-flex h-12 active:scale-95 transistion overflow-hidden rounded-lg p-[1px] focus:outline-none">
