@@ -33,6 +33,9 @@ console.log(cancelReq)
         <p className="text-gray-900 whitespace-no-wrap truncate">{cancelReq?.roomId.slice(0,5)}.....</p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+        <p className="text-gray-900 whitespace-no-wrap truncate">{cancelReq?.cancelReason}</p>
+      </td>
+      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <button
           onClick={() => handleBookingCancelReqApproval(cancelReq.bookingId,cancelReq._id)}
           className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"

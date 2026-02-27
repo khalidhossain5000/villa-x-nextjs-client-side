@@ -7,16 +7,22 @@ import DeleteModalRoom from "@/components/Shared/Modal/DeleteMyBookingModal/Dele
 
 const TableRow = ({ booking, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
-  console.log(booking, "this is bookinginfo inside table row");
+ 
   const closeModal = () => setIsOpen(false);
   const axiosSecure = useAxiosSecure();
-  const cancelBookingRequestData = {
-    bookingId: booking._id,
-    roomId: booking.roomId,
-    requestedByInfo: { ...booking.guest },
-    hostEmail: booking.hostEmail,
-  };
 
+
+ 
+
+  // const cancelBookingRequestData = {
+  //   bookingId: booking._id,
+  //   roomId: booking.roomId,
+  //   requestedByInfo: { ...booking.guest },
+  //   hostEmail: booking.hostEmail,
+  //   cancelReason: cancelReason,
+  // };
+
+  
   //checking if booking date is expirted or not
   const toDate = new Date(booking.to);
   const today = new Date(); // current date
@@ -24,22 +30,58 @@ const TableRow = ({ booking, refetch }) => {
   // Check if "to" date is in the past
   const isExpired = toDate < today;
 
-  console.log(isExpired, "is expired or not", booking);
+  // console.log(isExpired, "is expired or not", booking);
 
-  const modalHandler = async (id) => {
+
+  
+
+  const modalHandler = async (id, cancelReason) => {
+    console.log(id, "this is id from modal handler");
+      const cancelBookingRequestData = {
+    bookingId: booking._id,
+    roomId: booking.roomId,
+    requestedByInfo: { ...booking.guest },
+    hostEmail: booking.hostEmail,
+    cancelReason: cancelReason,
+  };
+
     try {
       axiosSecure
         .post("/api/room-cancel-request", cancelBookingRequestData)
         .then((res) => {
           console.log(res, "this is res");
-          toast.success("Cancel request sent to host");
+         toast.success(
+  ({ icon, message }) => (
+    <div className="flex items-start gap-2">
+      <span className="text-green-600 text-lg">{icon}</span>
+      <div>
+        <p className="font-semibold text-green-700">Cancel Request Sent!</p>
+        <p className="text-sm text-green-600">
+          Your cancellation request has been sent successfully. The host will review it and take action shortly.
+        </p>
+      </div>
+    </div>
+  ),
+  {
+    duration: 5000,
+    style: {
+      background: "#f0fdf4", // light green background
+      border: "1px solid #34d399", // green border
+      color: "#166534", // main text color
+      padding: "12px 16px",
+      borderRadius: "8px",
+      boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+      fontFamily: "Inter, sans-serif",
+    },
+  }
+);
         })
         .catch((err) => {
           console.log(err, "this is cancel req errorr");
         });
 
       refetch();
-      toast.success("Booking Canceled");
+      
     } catch (err) {
       console.log(err);
       toast.error(err.message);
@@ -126,6 +168,7 @@ const TableRow = ({ booking, refetch }) => {
           closeModal={closeModal}
           modalHandler={modalHandler}
           id={booking._id}
+         
         />
       </td>
     </tr>

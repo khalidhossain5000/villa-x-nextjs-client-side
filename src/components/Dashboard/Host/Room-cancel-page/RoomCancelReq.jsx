@@ -24,15 +24,11 @@ const RoomCancelReq = () => {
   } = useQuery({
     queryKey: ["roomCancelReqData", userInfo?.email],
     queryFn: async () => {
-      //   const res = await axiosSecure.get(
-      //     `/api/rooms?email=${userInfo?.email}`,
-      //   );
-
-      const res = await axiosSecure.get(`/api/all-room-cancel-requests`);
+      const res = await axiosSecure.get(`/api/all-room-cancel-requests/${userInfo?.email}`);
       return res.data.cancelRequests;
     },
     keepPreviousData: true,
-    // enabled: !!userInfo?.email,
+    enabled: !!userInfo?.email,
   });
 
   if (isLoading) return <Loader />;
@@ -40,7 +36,7 @@ const RoomCancelReq = () => {
   console.log(roomCancelReqData, "this is room cancel req data");
   // hadnle listi delte starts here
   const handleBookingCancelReqApproval = async (roomId,cancelReqId) => {
-    console.log(roomId,'to be delted',cancelReqId)
+   
     Swal.fire({
       title: "Are you sure?",
       text: "This action cannot be undone!",
@@ -112,6 +108,11 @@ const RoomCancelReq = () => {
                         className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800 dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary  text-left text-sm uppercase font-normal"
                       >
                         Room Id
+                      </th>  <th
+                        scope="col"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800 dark:bg-[#1e293b]  dark:text-slate-100 dark:border-primary  text-left text-sm uppercase font-normal"
+                      >
+                        Reason
                       </th>
                       <th
                         scope="col"
