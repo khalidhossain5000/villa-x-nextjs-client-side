@@ -15,12 +15,16 @@ const CollectionCard = ({ room }) => {
   return (
     <div className="bg-linear-to-tr from-[#f98d00] to-[#f9a300] border dark:from-[#0a121f] dark:to-[#0a0e16db] rounded-lg shadow-sm p-1 relative overflow-hidden ">
       {/* thumbnail image */}
-      <div className="text-center h-6/12">
+      <div className="text-center h-6/12 relative">
         <img
           src={room.thumbnailImage}
           alt="room thumbnail image"
           className="h-full w-full object-cover mx-auto shadow-2xl rounded-lg shadow-yellow-600"
         />
+        {/* host info */}
+        <div className='bg-[#fac512] px-2 py-1 shadow-xl absolute top-1 left-1 rounded-sm shadow-yellow-900'>
+<h2 className='text-sm font-semibold text-black font-playfair'>Hosted By : {room.hostInfo.name} </h2>
+          </div>
       </div>
 
       {/* content */}
@@ -29,12 +33,29 @@ const CollectionCard = ({ room }) => {
         <h1 className="text-center text-xl md:text-2xl font-raleway font-semibold">
           {room.title}
         </h1>
-       {/* guest bedrom bath etc info */}
-       <div className='flex items-center gap-6 justify between px-6'>
-        <h5><span><FaPeopleGroup /></span>{room.total_guest}</h5>
-        <h5><span><MdBedroomParent /></span>{room.bedrooms}</h5>
-        <h5><span><MdOutlineBathroom /></span>{room.bathrooms}</h5>
-       </div>
+        {/* guest bedrom bath etc info */}
+        <div className="flex items-center gap-4 justify-between px-6 mt-4">
+          <h5 className="flex items-center gap-2 font-semibold text-lg text-black">
+            <span className="">
+              <FaPeopleGroup />
+            </span>
+            <span className="hidden md:block">Guests</span> {room.total_guest}
+          </h5>
+          <h5 className="flex items-center gap-2 font-semibold text-lg text-black">
+            <span className="">
+              <MdBedroomParent />
+            </span>
+            <span className="hidden md:block">Bedrooms</span>
+            {room.bedrooms}
+          </h5>
+          <h5 className="flex items-center gap-2 font-semibold text-lg text-black">
+            <span className="">
+              <MdOutlineBathroom />
+            </span>
+            <span className="hidden md:block">Bathrooms</span>
+            {room.bathrooms}
+          </h5>
+        </div>
 
         {/* more info section */}
         <div>
@@ -42,7 +63,7 @@ const CollectionCard = ({ room }) => {
           <div className="flex items-center justify-between pt-6 px-2">
             <h4 className="text-m  lg:hidden">
               Available From :
-              <span className='font-bold'>
+              <span className="font-bold">
                 {new Date(room.from).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
@@ -52,14 +73,13 @@ const CollectionCard = ({ room }) => {
 
             <h4 className="text-m  lg:hidden">
               To :{" "}
-              <span className='font-bold'>
+              <span className="font-bold">
                 {new Date(room.to).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
                 })}
               </span>
             </h4>
-
 
             {/* large device */}
             <h4 className="text-m hidden lg:block">
@@ -87,8 +107,15 @@ const CollectionCard = ({ room }) => {
       </div>
 
       {/* footer button */}
-      <div className="text-center">
-        <Link href="/all-rooms">
+      <div className="text-center flex items-center  justify-between">
+        <h2 className="text-gray-900 font-bold text-lg ">
+          $ {room.price}{" "}
+          <span className="text-sm text-[#204f5e] font-semibold">
+            per night
+          </span>
+        </h2>
+
+        <Link href={`/room/${room._id}`} className="ml-auto">
           <HomeButton className={"hover:opacity-90 "}>Explore More</HomeButton>
         </Link>
       </div>
