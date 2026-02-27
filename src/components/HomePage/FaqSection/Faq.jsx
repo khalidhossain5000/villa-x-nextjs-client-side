@@ -12,7 +12,7 @@ const Faq = () => {
       <div className="max-w-7xl mx-auto py-14 lg:py-22">
         <div className=" lg:py-9">
           <HomeTitle
-            title={"Explore Room Gallery Images"}
+            title={"FAQ - Explore Frequently Asked Questions"}
             className={"font-raleway text-center xl:text-left"}
           />
         </div>

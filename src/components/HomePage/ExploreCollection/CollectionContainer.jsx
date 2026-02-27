@@ -15,6 +15,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import Link from "next/link";
 import HomeButton from "@/components/Shared/Button/HomeButton";
 import RoomSliderSkleton from "@/components/Shared/SkeletonLoader/RoomSliderSkleton";
+import CollectionCard from "./CollectionCard";
 const CollectionSlider = () => {
   const axiosInstance = useAxios();
   // Fetch room data
@@ -90,59 +91,18 @@ const CollectionSlider = () => {
             </Link>
           </div>
         </div>
-        {/* slider start */}
+        {/* grid start card here  */}
 
-        <Swiper
-          slidesPerView={4}
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 2,
-              spaceBetween: 40,
-            },
-            1024: {
-              slidesPerView: 3,
-              spaceBetween: 50,
-            },
-            1280: {
-              slidesPerView: 4,
-              spaceBetween: 50,
-            },
-          }}
-          spaceBetween={30}
-          pagination={{
-            clickable: true,
-            type: "fraction",
-          }}
-          modules={[Pagination, Autoplay]}
-          autoplay={true}
-          loop={true}
-          className="mySwiper"
+        <div
+        
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 py-6 xl:py-9"
         >
           {allRoomData.map((room) => (
-            <SwiperSlide key={room._id}>
-              <Link href={`/room/${room._id}`}>
-                <div className="w-full h-full relative py-12">
-                  {/* Background Image */}
-                  <img
-                    src={room?.thumbnailImage}
-                    alt={room?.title}
-                    className="w-full h-120 xl:w-200 object-cover rounded-lg"
-                  />
-
-                  {/* Text Overlay */}
-                  <div className="absolute bottom-10 left-10 text-white bg-black/30 p-4 rounded">
-                    <h2 className="text-2xl font-bold">{room.title}</h2>
-                    <p className="mt-1">{room.description.slice(0, 90)}</p>
-                  </div>
-                </div>
-              </Link>
-            </SwiperSlide>
+            <CollectionCard key={room._id} room={room}>
+             
+            </CollectionCard>
           ))}
-        </Swiper>
+        </div>
       </div>
     </div>
   );

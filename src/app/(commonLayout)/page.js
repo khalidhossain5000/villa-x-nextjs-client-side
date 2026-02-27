@@ -1,6 +1,7 @@
 import About from "@/components/HomePage/AboutSection/About";
 import Banner from "@/components/HomePage/Banner/Banner";
-import CollectionSlider from "@/components/HomePage/ExploreCollectionSlider/CollectionSlider";
+import CollectionSlider from "@/components/HomePage/ExploreCollection/CollectionContainer";
+
 import Facilities from "@/components/HomePage/FacilitiesSection/Facilities";
 import Faq from "@/components/HomePage/FaqSection/Faq";
 import Info from "@/components/HomePage/InfoSection/Info";

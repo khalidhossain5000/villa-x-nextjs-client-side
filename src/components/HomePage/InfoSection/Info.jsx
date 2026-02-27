@@ -45,7 +45,7 @@ const Info = () => {
      
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-center gap-x-9 gap-y-16 px-2 xl:px-0">
         {activities.map((act, i) => (
-          <div key={i} className="bg-linear-to-tr from-[#f98d00] to-[#f9a300] border dark:from-[#0a121f] dark:to-[#0a0e16db] rounded-2xl shadow-sm flex items-center gap-6 gap-y-16 py-12 px-6 hover:scale-110 transition duration-300">
+          <div key={i} className="bg-linear-to-tr from-[#f98d00] to-[#f9a300] border dark:from-[#0a121f] dark:to-[#0a0e16db] rounded-2xl shadow-sm flex items-center gap-6 gap-y-16 py-12 px-6 hover:scale-110 transition duration-300 hover:from-[#e67e00] hover:to-[#e69500] dark:hover:from-[#0f1a2e] dark:hover:to-[#121a2b]">
             <div className="img">
                 <Image
                 src={act.icon}
