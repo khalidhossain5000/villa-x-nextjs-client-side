@@ -92,7 +92,7 @@ const CollectionCard = ({ room }) => {
 
           <Link href={`/room/${room._id}`}>
             <HomeButton className="px-4 py-2 text-sm sm:text-base hover:opacity-90">
-              Explore More
+            Details
             </HomeButton>
           </Link>
         </div>
@@ -100,16 +100,17 @@ const CollectionCard = ({ room }) => {
 
       {/* Animated Border Beams */}
       <BorderBeam
-        duration={6}
-        size={400}
-        className="from-transparent via-orange-500 to-transparent"
+       
+        size={500}
+        borderWidth={4}
+        className="from-transparent via-orange-500 dark:via-[#45e0df] to-transparent"
       />
       <BorderBeam
-        duration={6}
+        
         delay={3}
         size={400}
-        borderWidth={2}
-        className="from-transparent via-blue-500 to-transparent"
+        borderWidth={3}
+        className="from-transparent via-[#fafc1f] to-transparent"
       />
     </div>
   );

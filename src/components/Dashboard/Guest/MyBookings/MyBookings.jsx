@@ -74,6 +74,7 @@ const MyBookings = () => {
                       >
                         Action
                       </th>
+                      
                     </tr>
                   </thead>
                   <tbody>

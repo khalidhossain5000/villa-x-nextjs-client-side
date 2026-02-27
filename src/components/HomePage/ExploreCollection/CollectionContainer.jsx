@@ -97,7 +97,7 @@ const CollectionSlider = () => {
         
           className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3  gap-4 lg:gap-6 py-6 xl:py-9  overflow-x-hidden"
         >
-          {allRoomData.map((room) => (
+          {allRoomData.slice(0,6).map((room) => (
             <CollectionCard key={room._id} room={room}>
              
             </CollectionCard>

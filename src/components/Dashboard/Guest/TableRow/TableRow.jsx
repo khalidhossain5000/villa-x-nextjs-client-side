@@ -17,10 +17,17 @@ const TableRow = ({ booking, refetch }) => {
     hostEmail: booking.hostEmail,
   };
 
+  //checking if booking date is expirted or not
+  const toDate = new Date(booking.to);
+  const today = new Date(); // current date
+
+  // Check if "to" date is in the past
+  const isExpired = toDate < today;
+
+  console.log(isExpired, "is expired or not", booking);
+
   const modalHandler = async (id) => {
     try {
-     
-
       axiosSecure
         .post("/api/room-cancel-request", cancelBookingRequestData)
         .then((res) => {
@@ -40,6 +47,7 @@ const TableRow = ({ booking, refetch }) => {
       closeModal();
     }
   };
+
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent text-sm">
@@ -54,7 +62,9 @@ const TableRow = ({ booking, refetch }) => {
             </div>
           </div>
           <div className="ml-3">
-            <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">{booking?.title}</p>
+            <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">
+              {booking?.title}
+            </p>
           </div>
         </div>
       </td>
@@ -77,7 +87,9 @@ const TableRow = ({ booking, refetch }) => {
         </div>
       </td>
       <td className="px-5 py-5 border-b dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent border-gray-200 bg-white text-sm">
-        <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">${booking?.price}</p>
+        <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">
+          ${booking?.price}
+        </p>
       </td>
       <td className="px-5 py-5 border-b dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent border-gray-200 bg-white text-sm">
         <p className="text-gray-900 dark:text-slate-100 whitespace-no-wrap">
@@ -90,16 +102,25 @@ const TableRow = ({ booking, refetch }) => {
         </p>
       </td>
       <td className="px-5 py-5 border-b dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent border-gray-200 bg-white text-sm">
-        <button
-          onClick={() => setIsOpen(true)}
-          className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
-        >
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
-          ></span>
-          <span className="relative">Cancel</span>
-        </button>
+        {isExpired ? (
+          <p className="inline-block px-3 py-1 text-sm font-semibold rounded-full bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-300 shadow-sm">
+            Expired /{" "}
+            <span className="text-green-700 dark:text-green-300">
+              Completed
+            </span>
+          </p>
+        ) : (
+          <button
+            onClick={() => setIsOpen(true)}
+            className="relative cursor-pointer inline-block px-3 py-1 font-semibold text-green-900 leading-tight"
+          >
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 bg-red-200 opacity-50 rounded-full"
+            ></span>
+            <span className="relative">Cancel</span>
+          </button>
+        )}
         <DeleteModalRoom
           isOpen={isOpen}
           closeModal={closeModal}
