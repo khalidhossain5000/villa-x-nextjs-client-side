@@ -39,13 +39,13 @@ const RoomDataRow = ({ room,handleDeleteListing ,refetch}) => {
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b] dark:border-primary  dark:text-slate-100 text-sm">
         <p className="text-gray-900 whitespace-no-wrap  dark:text-slate-100">
-          {room?.from} 
+          {room?.from.split("T")[0]} 
       
         </p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b] dark:border-primary  dark:text-slate-100 text-sm">
         <p className="text-gray-900 whitespace-no-wrap  dark:text-slate-100">
-          {room?.to}
+          {room?.to.split("T")[0]}
         </p>
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white dark:bg-[#1e293b] dark:border-primary text-sm">

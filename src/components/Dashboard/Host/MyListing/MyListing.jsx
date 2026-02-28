@@ -39,7 +39,7 @@ const MyListing = () => {
     },
     onSuccess: (data) => {
       console.log(data, "this is delte response data over here");
-      refetch()
+      refetch();
       toast.success("Listing detlted");
     },
   });
@@ -54,9 +54,6 @@ const MyListing = () => {
     }
   };
 
-
-
-  
   return (
     <div>
       {myListingData &&

@@ -7,7 +7,7 @@ import useAxiosSecure from '@/Hooks/useAxiosSecure'
 
 const BookedRoomRow = ({ booking, refetch }) => {
   let [isOpen, setIsOpen] = useState(false)
-console.log(booking,'thsdf dboksdfnsdf')
+
   const closeModal = () => setIsOpen(false)
 const axiosSecure=useAxiosSecure()
   const modalHandler = async id => {

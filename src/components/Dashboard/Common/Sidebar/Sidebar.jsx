@@ -29,11 +29,12 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const [isActive, setActive] = useState(true);
   const { role, roleLoading } = useRole();
-  const [toggle, setToggle] = useState( true);
+  const [toggle, setToggle] = useState( false);
   const router=useRouter()
   //   For guest/host menu item toggle button
   const toggleHandler = (event) => {
-    setToggle(event.target.checked);
+    // setToggle(event.target.checked);
+    setToggle(!toggle)
   };
 
   // Sidebar Responsive Handler
