@@ -1,14 +1,16 @@
-import MyRoomCancelReq from '@/components/Dashboard/Guest/RoomCancelReq/MyRoomCancelReq';
-import React from 'react';
+import MyRoomCancelReq from "@/components/Dashboard/Guest/RoomCancelReq/MyRoomCancelReq";
+import PageTitle from "@/components/Shared/Title/PageTitle";
+import React from "react";
 
 const page = () => {
-    return (
-        <div>
-            <h2>This is room cancel request by the user</h2>
-
-            <MyRoomCancelReq/>
-        </div>
-    );
+  return (
+    <div>
+      <PageTitle className={`pt-6 lg:pt-12 font-playfair`}>
+        My Room Cancel Request
+      </PageTitle>
+      <MyRoomCancelReq />
+    </div>
+  );
 };
 
 export default page;

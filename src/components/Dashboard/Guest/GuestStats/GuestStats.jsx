@@ -20,7 +20,7 @@ const GuestStats = () => {
     },
   });
   if (isLoading) return <DashboardSkeleton />;
-
+console.log("Guest Stats:", guestStats);
   return (
     <div className="pt-9 pb-6 px-4 2xl:px-0">
       <GuestStatsCard guestStats={guestStats} />

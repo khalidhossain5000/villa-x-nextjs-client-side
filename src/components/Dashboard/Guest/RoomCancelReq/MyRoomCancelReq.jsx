@@ -52,37 +52,37 @@ const MyRoomCancelReq = () => {
                     <tr>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent font-bold"
                       >
                         BookingId
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent"
                       >
                         Requested At
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent"
                       >
                         Requested By Name
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent"
                       >
                         Requested By Email
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent"
                       >
                         Room Id
                       </th>
                       <th
                         scope="col"
-                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                        className="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal dark:bg-[#1e293b]  dark:text-slate-100 dark:border-accent"
                       >
                         Cancel Status
                       </th>

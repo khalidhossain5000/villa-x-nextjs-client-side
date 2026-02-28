@@ -38,18 +38,19 @@ const RoomCancelReq = () => {
   const handleBookingCancelReqApproval = async (roomId,cancelReqId) => {
    
     Swal.fire({
-      title: "Are you sure?",
-      text: "This action cannot be undone!",
+      title: "Approve Cancellation Request?",
+        text: "Once approved, the user's booking cancellation will be processed. This action cannot be undone!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, delete it!",
-      cancelButtonText: "No, cancel",
+      confirmButtonText: "Yes, approve it",
+      cancelButtonText: "No, keep booking",
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/api/delete-booking/${roomId}`).then((res)=>{
             console.log(res)
+            refetch()
         })
         .catch((err)=>{
             console.log(err)
@@ -57,12 +58,16 @@ const RoomCancelReq = () => {
 
         axiosSecure.patch(`/api/update-status/${cancelReqId}`,{status:'approved'}).then((res)=>{
             console.log(res)
+              refetch()
             
         })
         .catch((err)=>{
             console.log(err)
         })
-        Swal.fire("Deleted! and Status updated", "Your data has been deleted. and updated", "success");
+        Swal.fire(  "Cancellation Approved!",
+  "The user's booking cancellation request has been successfully approved and updated.",
+  "success");
+    refetch()
       }
     });
   };
