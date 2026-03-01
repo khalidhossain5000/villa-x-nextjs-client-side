@@ -32,7 +32,8 @@ Use the following demo credentials to explore different dashboards and role-base
 - Category wise room filter.
 - Browse, search, and filter Rooms in all rooms page.
 - Admin dashboard for managing User.
-- room cancel request with reason and manage by the host
+- room cancel request reason provided by the user.
+- room cancel request manage by the host approve or reject.
 - Awesome interface with light and dark mode support.
 - Notification and Toast Alerts.
 - Role assignment and user management by admins.
