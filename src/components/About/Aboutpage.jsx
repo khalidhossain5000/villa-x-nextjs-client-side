@@ -48,6 +48,7 @@ import {
   FaRegMap,
   FaRegStar,
 } from "react-icons/fa";
+import Link from "next/link";
 
 const Aboutpage = () => {
   // Animation variants
@@ -534,7 +535,7 @@ const Aboutpage = () => {
       </section>
 
       {/* CALL TO ACTION */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#f98d00] to-[#f9a300] dark:from-[#0a121f] dark:to-[#0a0e16db] text-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#f9bb00f9] to-[#f94700f0] dark:from-[#0a121f] dark:to-[#0a0e16db] text-white max-w-6xl mx-auto rounded-2xl shadow-xl text-center">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial="hidden"
@@ -549,13 +550,16 @@ const Aboutpage = () => {
               Join thousands of happy travelers and hosts. Discover your next
               adventure with Villax.
             </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#f98d00] dark:bg-gray-900 dark:text-[#f9a300] px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all"
-            >
-              Find Your Stay
-            </motion.button>
+            <Link href="/all-rooms">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-[#f98d00] dark:bg-gray-900 dark:text-[#f9a300] px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+              >
+                Find Your Stay
+              </motion.button>
+            </Link>
+            
           </motion.div>
         </div>
       </section>

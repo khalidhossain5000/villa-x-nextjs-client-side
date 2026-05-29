@@ -8,7 +8,7 @@ import RoomSliderSkleton from "@/components/Shared/SkeletonLoader/RoomSliderSkle
 
 const AllRooms = () => {
   return (
-    <div className="px-4 lg:px-20 pt-20 min-h-screen w-full bg-[#f0fdfa] dark:bg-primary relative">
+    <div className="px-4 lg:px-20 pt-20 min-h-screen w-full bg-[#f99000] dark:bg-primary relative">
       <div
         className="absolute inset-0 z-0 dark:hidden"
         style={{

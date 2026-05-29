@@ -7,30 +7,23 @@ import LoginForm from "@/components/Auth/Login/LoginForm";
 const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center relative">
-    <div
-      style={{
-        background:
-          "radial-gradient(125% 125% at 50% 90%, #f1f5f9 30%, #71f9a3 100%)",
-      }}
-      className="dark:hidden absolute inset-0 z-0  p-4 transition-colors duration-300"
-    />
+      <div
+        style={{
+          background:
+            "radial-gradient(125% 125% at 50% 90%, #f1f5f9 30%, #71f9a3 100%)",
+        }}
+        className="dark:hidden absolute inset-0 z-0  p-4 transition-colors duration-300"
+      />
 
-    {/* Azure Depths */}
-        <div
-          className="hidden dark:block absolute inset-0 z-0"
-          style={{
-            background:
-              " radial-gradient(125% 125% at 50% 100%, #000000 40%, #fdc70060 100%)",
-          }}
-        />
+      {/* Azure Depths */}
+      <div
+        className="hidden dark:block absolute inset-0 z-0"
+        style={{
+          background:
+            " radial-gradient(125% 125% at 50% 100%, #000000 40%, #fdc70060 100%)",
+        }}
+      />
 
-
-
-
-
-
-
-      
       <div className="w-full max-w-md relative z-50">
         {/* Login Card */}
         <div className="bg-white dark:bg-[#0a1929] rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-800 transition-all duration-300">
@@ -62,8 +55,6 @@ const LoginPage = () => {
           </Suspense>
         </div>
       </div>
-   
-
     </div>
   );
 };

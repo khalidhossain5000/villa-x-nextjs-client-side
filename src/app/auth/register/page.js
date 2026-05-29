@@ -25,6 +25,14 @@ const RegisterPage = () => {
         }}
       />
 
+
+
+
+
+
+
+
+
       <div className="w-full max-w-md relative z-50">
         {/* Login Card */}
         <div className="bg-white dark:bg-[#0a1929] rounded-2xl shadow-xl p-8 border border-gray-200 dark:border-gray-800 transition-all duration-300">

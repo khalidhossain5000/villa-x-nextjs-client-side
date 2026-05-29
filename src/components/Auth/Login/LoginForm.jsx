@@ -32,7 +32,6 @@ const LoginForm = () => {
     }
   }, [user, loading, router, loginLoading]);
 
-  console.log(loginUserData?.email, "this is iemail");
 
   const onSubmit = async (data) => {
     const email = data.email;
