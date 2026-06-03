@@ -8,12 +8,13 @@ import { useAuth } from './useAuth';
 const useRole = () => {
     const { userInfo } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const { isLoading: roleLoading, data: role = 'null' } = useQuery({
-        queryKey: ['user-role', userInfo?.email],
+    console.log(userInfo,'this is user info from useRole','user role has been hitted')
+    const { isLoading: roleLoading, data: role  } = useQuery({
+        queryKey: ['user-roles', userInfo?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/api/auth/role?email=${userInfo.email}`);
-            
-            return res.data?.userRole || 'null';
+            const res = await axiosSecure.get(`/api/auth/role/${userInfo.email}`);
+            console.log(res,'this is res')
+            return res.data?.userRole ;
         },
         enabled: !!userInfo?.email,
     })

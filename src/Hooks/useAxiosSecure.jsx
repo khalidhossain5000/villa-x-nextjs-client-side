@@ -7,7 +7,7 @@ import Loader from "@/components/Shared/Loading/Loader";
 import { signOutUser } from "@/Redux/Features/authSlice";
 
 const axiosSecure = axios.create({
-  // baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000",
+  // baseURL:"http://localhost:5000",
   baseURL: process.env.NEXT_PUBLIC_API_URL,
 });
 
@@ -31,7 +31,7 @@ const useAxiosSecure = () => {
         return response;
       },
       (error) => {
-        console.log(error);
+        console.log(error,'this is axiossecure error');
 
         const statusCode = error.status;
         if (statusCode === 401 || statusCode === 403) {

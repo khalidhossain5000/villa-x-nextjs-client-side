@@ -39,7 +39,7 @@ export const createUser = createAsyncThunk(
         userRole: "guest",
       },
     );
-
+console.log(result,'tjos osresit')
     // user info save to db end here
 
     // return res.user;
