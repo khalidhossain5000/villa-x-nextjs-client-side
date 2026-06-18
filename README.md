@@ -13,7 +13,7 @@ https://villa-x-nextjs-client-side.vercel.app
 
 | Serial | Email            | Password         | Role  |
 | ------ | ---------------- | ---------------- | ----- |
-| 1      | villax@admin.com | villax@admin.com| Admin |
+| 1      | villax@admin.com | villax@admin.com | Admin |
 | 2      | villax@host.com  | villax@host.com  | Host  |
 | 3      | guest@villax.com | guest@villax.com | Guest |
 
@@ -46,7 +46,7 @@ Use the following demo credentials to explore different dashboards and role-base
 - tanstack query for data fetch and cache.
 - Integration of Charts in the admin adn host dashboard.
 - Add room functionality in host dashboard.
-- Room galery and many more.
+
 
 ## Npm Packages :
 
