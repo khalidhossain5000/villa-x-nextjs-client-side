@@ -46,7 +46,7 @@ Use the following demo credentials to explore different dashboards and role-base
 - tanstack query for data fetch and cache.
 - Integration of Charts in the admin adn host dashboard.
 - Add room functionality in host dashboard.
-
+- Room galery and many more.
 
 ## Npm Packages :
 
